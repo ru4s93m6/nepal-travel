@@ -1,0 +1,65 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'zh-tw' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const isEn = lang === 'en';
+const baseUrl = isEn ? '/en' : '';
+---
+
+<nav class="absolute top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/50 to-transparent">
+  <div class="flex items-center justify-between py-6 px-8 max-w-7xl mx-auto">
+    <!-- Logo -->
+    <div id="logo">
+      <a href={`${baseUrl}/`}>
+        <img src="/logo.png" alt="Oriental Express Travel Logo" class="h-12 w-auto" />
+      </a>
+    </div>
+    
+    <!-- Main Navigator -->
+    <div class="hidden md:flex gap-8 text-white font-medium">
+      <a href={`${baseUrl}/`} class="hover:text-amber-400 transition-colors">
+        {t('nav.home')}
+      </a>
+      <a href="#aboutUs" class="hover:text-amber-400 transition-colors">
+        {t('nav.about')}
+      </a>
+      <a href={`${baseUrl}/tours`} class="hover:text-amber-400 transition-colors">
+        {t('nav.tours')}
+      </a>
+      <a href="#contactUs" class="hover:text-amber-400 transition-colors">
+        {t('nav.contact')}
+      </a>
+    </div>
+    
+    <!-- Language Switch -->
+    <div class="flex gap-2 text-white">
+      <a 
+        href="/" 
+        class={`px-3 py-1 rounded transition-colors ${
+          lang === 'zh-tw' 
+            ? 'bg-amber-500 font-bold' 
+            : 'hover:bg-white/10'
+        }`}
+      >
+        中文
+      </a>
+      <span class="self-center">|</span>
+      <a 
+        href="/en" 
+        class={`px-3 py-1 rounded transition-colors ${
+          lang === 'en' 
+            ? 'bg-amber-500 font-bold' 
+            : 'hover:bg-white/10'
+        }`}
+      >
+        English
+      </a>
+    </div>
+  </div>
+</nav>

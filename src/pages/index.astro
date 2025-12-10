@@ -1,16 +1,18 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.astro';
+import Contact from '../components/Contact.astro';
+import About from '../components/About.astro';
+import { useTranslations } from '../i18n/utils';
 
+const lang = 'zh-tw';
+const t = useTranslations(lang);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={t('home.title')} lang={lang}>
+  <Navigation lang={lang} />
+  <Hero lang={lang} />
+  <About lang={lang} />
+  <Contact lang={lang} />
+</BaseLayout>

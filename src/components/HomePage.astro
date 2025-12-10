@@ -1,0 +1,24 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'zh-tw' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<main class="p-8 h-screen">
+  <h1 class="text-4xl font-bold mb-4 text-blue-600">{t('home.title')}</h1>
+  <p class="text-xl mb-6">{t('home.subtitle')}</p>
+  <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+    {t('button.learnMore')}
+  </button>
+</main>
+
+<section id="contactUs" class="p-8">
+    <h3 class="text-2xl font-bold mb-4 text-blue-600">{t('contact.title')}</h3>
+    <p>{t('contact.name')}: Oriental Express Travel P.Ltd.</p>
+    <p>{t('contact.name')}</p>
+</section>
