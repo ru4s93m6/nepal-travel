@@ -1,0 +1,199 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Destination information
+const destinations = [
+  {
+    id: 'kathmandu',
+    image: '/kathmandu.jpg', 
+  },
+  {
+    id: 'pokhara',
+    image: '/pokhara.jpg',
+  },
+  {
+    id: 'annapurna',
+    image: '/annapurna.jpg',
+  },
+  {
+    id: 'chitwan',
+    image: '/chitwan.jpg',
+  },
+  {
+    id: 'everest',
+    image: '/everest.jpg',
+  },
+];
+---
+
+<section id="tours" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <!-- 標題區域 -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">
+        {t('itinerary.title')}
+      </h2>
+      <p class="text-xl text-gray-600 mb-6">
+        {t('itinerary.subtitle')}
+      </p>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        {t('itinerary.description')}
+      </p>
+    </div>
+
+    <!-- 卡片網格 - 預設顯示 -->
+    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto transition-opacity duration-300">
+      {destinations.map((dest) => (
+        <div 
+          class="destination-card relative overflow-hidden rounded-lg shadow-lg cursor-pointer group h-80"
+          data-destination={dest.id}
+          data-name={t(`itinerary.destinations.${dest.id}.name`)}
+          data-location={t(`itinerary.destinations.${dest.id}.location`)}
+          data-description={t(`itinerary.destinations.${dest.id}.description`)}
+          data-image={dest.image}
+        >
+          <img 
+            src={dest.image} 
+            alt={t(`itinerary.destinations.${dest.id}.name`)}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-white text-2xl font-bold mb-1">
+              {t(`itinerary.destinations.${dest.id}.name`)}
+            </h3>
+            <p class="text-white/90 text-sm">
+              {t(`itinerary.destinations.${dest.id}.location`)}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 詳細視圖 - 預設隱藏 -->
+    <div id="detail-view" class="hidden max-w-7xl mx-auto transition-opacity duration-300">
+      <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+        <!-- 返回按鈕 -->
+        <div class="p-6 border-b">
+          <button 
+            id="back-button"
+            class="cursor-pointer flex items-center gap-2 text-blue-600 hover:text-blue-800 transition font-medium"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            {t('itinerary.button.close')}
+          </button>
+        </div>
+
+        <!-- 詳細內容 -->
+        <div class="flex flex-col lg:flex-row">
+          <!-- 圖片區域 -->
+          <div class="lg:w-1/2">
+            <img 
+              id="detail-image"
+              src="" 
+              alt=""
+              class="w-full h-64 lg:h-full object-cover"
+            />
+          </div>
+
+          <!-- 文字說明區域 -->
+          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+            <h2 id="detail-name" class="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+            </h2>
+            <p id="detail-location" class="text-blue-600 text-lg mb-6">
+            </p>
+            <p id="detail-description" class="text-gray-700 leading-relaxed text-lg">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const cardsGrid = document.getElementById('cards-grid');
+  const detailView = document.getElementById('detail-view');
+  const backButton = document.getElementById('back-button');
+  const cards = document.querySelectorAll('.destination-card');
+  
+  const detailImage = document.getElementById('detail-image') as HTMLImageElement;
+  const detailName = document.getElementById('detail-name');
+  const detailLocation = document.getElementById('detail-location');
+  const detailDescription = document.getElementById('detail-description');
+
+  // 點擊卡片顯示詳細資訊
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const cardElement = card as HTMLElement;
+      
+      // 從 data attributes 取得資料
+      const name = cardElement.getAttribute('data-name') || '';
+      const location = cardElement.getAttribute('data-location') || '';
+      const description = cardElement.getAttribute('data-description') || '';
+      const image = cardElement.getAttribute('data-image') || '';
+
+      // 設定詳細視圖內容
+      if (detailImage) {
+        detailImage.src = image;
+        detailImage.alt = name;
+      }
+      if (detailName) detailName.textContent = name;
+      if (detailLocation) detailLocation.textContent = location;
+      if (detailDescription) detailDescription.textContent = description;
+
+      // 平滑切換動畫
+      if (cardsGrid) {
+        cardsGrid.style.opacity = '0';
+        setTimeout(() => {
+          cardsGrid.classList.add('hidden');
+          if (detailView) {
+            detailView.classList.remove('hidden');
+            // 強制重繪以觸發動畫
+            detailView.offsetHeight;
+            detailView.style.opacity = '1';
+          }
+        }, 300);
+      }
+    });
+  });
+
+  // 返回按鈕
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      if (detailView) {
+        detailView.style.opacity = '0';
+        setTimeout(() => {
+          detailView.classList.add('hidden');
+          if (cardsGrid) {
+            cardsGrid.classList.remove('hidden');
+            // 強制重繪以觸發動畫
+            cardsGrid.offsetHeight;
+            cardsGrid.style.opacity = '1';
+          }
+        }, 300);
+      }
+    });
+  }
+</script>
+
+<style>
+  #cards-grid,
+  #detail-view {
+    opacity: 1;
+  }
+
+  .destination-card {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .destination-card:hover {
+    transform: translateY(-4px);
+  }
+</style>

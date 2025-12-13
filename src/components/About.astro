@@ -9,10 +9,10 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="aboutUs" class="py-20 px-8 bg-white">
+<section id="about" class="py-20 px-6 bg-stone-50">
   <div class="max-w-6xl mx-auto">
     <!-- Section title -->
-    <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center text-blue-900">
+    <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center text-stone-800">
       {t('about.title')}
     </h2>
 
@@ -20,115 +20,110 @@ const t = useTranslations(lang);
     <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
       <!-- Left: Company introduction -->
       <div class="space-y-6">
-        <h3 class="text-3xl font-bold text-gray-900 leading-tight">
+        <h3 class="text-3xl font-bold text-stone-900 leading-tight">
           {t('about.subtitle')}
         </h3>
         
-        <p class="text-lg text-gray-700 leading-relaxed">
+        <p class="text-lg text-stone-700 leading-relaxed">
           {t('about.intro')}
         </p>
 
-        <p class="text-lg text-gray-700 leading-relaxed">
+        <p class="text-lg text-stone-700 leading-relaxed">
           {t('about.experience')}
         </p>
 
         <!-- Main features -->
         <div class="space-y-4 pt-4">
           <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h4 class="font-semibold text-gray-900">{t('about.feature1.title')}</h4>
-              <p class="text-gray-600">{t('about.feature1.desc')}</p>
+              <h4 class="font-semibold text-stone-900">{t('about.feature1.title')}</h4>
+              <p class="text-stone-600">{t('about.feature1.desc')}</p>
             </div>
           </div>
 
           <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h4 class="font-semibold text-gray-900">{t('about.feature2.title')}</h4>
-              <p class="text-gray-600">{t('about.feature2.desc')}</p>
+              <h4 class="font-semibold text-stone-900">{t('about.feature2.title')}</h4>
+              <p class="text-stone-600">{t('about.feature2.desc')}</p>
             </div>
           </div>
 
           <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h4 class="font-semibold text-gray-900">{t('about.feature3.title')}</h4>
-              <p class="text-gray-600">{t('about.feature3.desc')}</p>
+              <h4 class="font-semibold text-stone-900">{t('about.feature3.title')}</h4>
+              <p class="text-stone-600">{t('about.feature3.desc')}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 右側：創辦人照片 -->
+      <!-- Right: Founder photo -->
       <div class="relative">
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+        <div class="relative rounded-lg overflow-hidden shadow-xl">
           <img 
             src="/founder.jpeg" 
             alt={t('about.founderAlt')}
             class="w-full h-150 object-cover"
           />
-          <!-- 照片上的名片資訊 -->
+          <!-- Business card info overlay -->
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-            <!-- <p class="text-white font-semibold text-xl mb-1">{t('about.founderName')}</p> -->
-            <p class="text-white/90">{t('about.founderTitle')} Raju Gurung</p>
-            <p class="text-white/80 text-sm mt-2">{t('about.founderYears')}</p>
+            <p class="text-white/90 font-medium">{t('about.founderTitle')} Raju Gurung</p>
+            <p class="text-white/80 text-sm mt-1">{t('about.founderYears')}</p>
           </div>
         </div>
-        
-        <!-- 裝飾元素 -->
-        <div class="absolute -top-4 -right-4 w-24 h-24 bg-amber-500/20 rounded-full blur-2xl -z-10"></div>
-        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl -z-10"></div>
       </div>
     </div>
 
-    <!-- 客製化服務說明 -->
-    <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-2xl p-8 md:p-12">
+    <!-- Customization services -->
+    <div class="bg-gradient-to-br from-amber-50 to-stone-100 rounded-lg p-8 md:p-12 border border-amber-100">
       <div class="text-center mb-8">
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+        <h3 class="text-2xl md:text-3xl font-bold text-stone-900 mb-4">
           {t('about.customization.title')}
         </h3>
-        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+        <p class="text-lg text-stone-700 max-w-3xl mx-auto">
           {t('about.customization.subtitle')}
         </p>
       </div>
 
-      <!-- 客製化服務項目 -->
+      <!-- Service items -->
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
-          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-amber-200/50 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
           </div>
-          <h4 class="font-bold text-gray-900 mb-2">{t('about.customization.item1.title')}</h4>
-          <p class="text-gray-600 text-sm">{t('about.customization.item1.desc')}</p>
+          <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item1.title')}</h4>
+          <p class="text-stone-600 text-sm">{t('about.customization.item1.desc')}</p>
         </div>
 
-        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
+        <div class="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-amber-200/50 hover:shadow-lg transition-shadow">
           <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
             </svg>
           </div>
-          <h4 class="font-bold text-gray-900 mb-2">{t('about.customization.item2.title')}</h4>
-          <p class="text-gray-600 text-sm">{t('about.customization.item2.desc')}</p>
+          <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item2.title')}</h4>
+          <p class="text-stone-600 text-sm">{t('about.customization.item2.desc')}</p>
         </div>
 
-        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow">
-          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-amber-200/50 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
             </svg>
           </div>
-          <h4 class="font-bold text-gray-900 mb-2">{t('about.customization.item3.title')}</h4>
-          <p class="text-gray-600 text-sm">{t('about.customization.item3.desc')}</p>
+          <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item3.title')}</h4>
+          <p class="text-stone-600 text-sm">{t('about.customization.item3.desc')}</p>
         </div>
       </div>
     </div>

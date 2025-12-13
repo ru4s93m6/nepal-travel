@@ -64,6 +64,41 @@ export const ui = {
       phone: '電話',
       email: '電子郵件',
     },
+    itinerary: {
+      title: '熱門景點',
+      subtitle: '探索尼泊爾的絕美秘境',
+      description: '以下是我們精選的熱門旅遊景點，每個地方都有其獨特的魅力與故事。讓這些美景成為您規劃行程的靈感來源，我們將為您量身打造專屬的旅程。',
+      destinations: {
+        kathmandu: {
+          name: '加德滿都',
+          location: 'Kathmandu',
+          description: '尼泊爾的首都，充滿古老寺廟與文化遺產。這座城市融合了印度教與佛教文化，擁有眾多聯合國教科文組織世界遺產，包括杜巴廣場、猴廟等。漫步在塔美爾區的街道上，感受這座千年古城的獨特魅力。',
+        },
+        pokhara: {
+          name: '博卡拉',
+          location: 'Pokhara',
+          description: '尼泊爾的冒險之都，坐落在費瓦湖畔，可以欣賞到壯麗的安娜普納山脈。這裡是眾多健行路線的起點，也是體驗滑翔傘的絕佳地點。在湖畔欣賞日出時的魚尾峰倒影，是最令人難忘的體驗。',
+        },
+        annapurna: {
+          name: '安娜普納',
+          location: 'Annapurna',
+          description: '世界十大高峰之一，安娜普納環線是全球最受歡迎的健行路線之一。沿途可以欣賞到多樣的地形景觀，從亞熱帶森林到高山草原，體驗不同的文化村落，感受喜馬拉雅山脈的壯闊之美。',
+        },
+        chitwan: {
+          name: '奇旺國家公園',
+          location: 'Chitwan',
+          description: '尼泊爾第一座國家公園，是觀賞野生動物的天堂。您可以騎大象穿越叢林，尋找獨角犀牛、孟加拉虎的蹤跡，或是在河邊觀賞鱷魚。這裡豐富的生態系統，讓您體驗與大自然最親密的接觸。',
+        },
+        everest: {
+          name: '聖母峰基地營',
+          location: 'Everest Base Camp',
+          description: '世界之巔的朝聖之旅，前往海拔 5,364 公尺的聖母峰基地營。這趟健行將帶您穿越雪巴人的村落，欣賞壯麗的冰川與高峰，體驗高山文化。站在世界最高峰腳下，感受人類挑戰極限的精神。',
+        },
+      },
+      button: {
+        close: '返回',
+      }
+    },
   },
   'en': {
     nav: {
@@ -122,6 +157,41 @@ export const ui = {
       name: 'Company Name',
       phone: 'Phone',
       email: 'Email',
+    },
+    itinerary: {
+      title: 'Popular Destinations',
+      subtitle: 'Discover Nepal\'s Hidden Gems',
+      description: 'Here are our handpicked popular travel destinations, each with its unique charm and story. Let these beautiful landscapes inspire your travel plans, and we will craft a personalized journey just for you.',
+      destinations: {
+        kathmandu: {
+          name: 'Kathmandu',
+          location: 'Kathmandu',
+          description: 'The capital of Nepal, filled with ancient temples and cultural heritage. This city blends Hindu and Buddhist cultures, featuring numerous UNESCO World Heritage sites including Durbar Square and the Monkey Temple. Stroll through the streets of Thamel and feel the unique charm of this millennium-old city.',
+        },
+        pokhara: {
+          name: 'Pokhara',
+          location: 'Pokhara',
+          description: 'Nepal\'s adventure capital, situated by Phewa Lake with stunning views of the Annapurna range. This is the starting point for numerous trekking routes and an ideal spot for paragliding. Watching the reflection of Machhapuchhre at sunrise from the lakeside is an unforgettable experience.',
+        },
+        annapurna: {
+          name: 'Annapurna',
+          location: 'Annapurna',
+          description: 'One of the world\'s ten highest peaks, the Annapurna Circuit is among the most popular trekking routes globally. Along the way, you can admire diverse landscapes from subtropical forests to alpine meadows, experience different cultural villages, and feel the grandeur of the Himalayas.',
+        },
+        chitwan: {
+          name: 'Chitwan National Park',
+          location: 'Chitwan',
+          description: 'Nepal\'s first national park, a paradise for wildlife watching. You can ride elephants through the jungle, search for one-horned rhinos and Bengal tigers, or watch crocodiles by the river. The rich ecosystem here offers the most intimate contact with nature.',
+        },
+        everest: {
+          name: 'Everest Base Camp',
+          location: 'Everest Base Camp',
+          description: 'A pilgrimage to the top of the world, trekking to Everest Base Camp at 5,364 meters. This journey takes you through Sherpa villages, past magnificent glaciers and peaks, experiencing high-altitude culture. Standing at the foot of the world\'s highest mountain, feel the spirit of human perseverance.',
+        },
+      },
+      button: {
+        close: 'Back',
+      }
     },
   },
 } as const;
