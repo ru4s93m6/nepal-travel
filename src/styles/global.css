@@ -7,11 +7,6 @@
   }
 }
 
-/* Scroll margin for fixed navbar */
-section {
-  scroll-margin-top: 5rem;
-}
-
 /* Custom selection color - 主題黃色 */
 ::selection {
   background-color: #F59E0B;
