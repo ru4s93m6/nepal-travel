@@ -29,17 +29,17 @@ const destinations = [
 ];
 ---
 
-<section id="tours" class="py-20 bg-gray-50">
-  <div class="container mx-auto px-4">
+<section id="tours" class="py-20 bg-stone-50">
+  <div class="container mx-auto px-6">
     <!-- 標題區域 -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-800 mb-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
         {t('itinerary.title')}
       </h2>
-      <p class="text-xl text-gray-600 mb-6">
+      <p class="text-xl text-stone-600 mb-6">
         {t('itinerary.subtitle')}
       </p>
-      <p class="text-gray-600 max-w-3xl mx-auto">
+      <p class="text-stone-600 max-w-3xl mx-auto leading-relaxed">
         {t('itinerary.description')}
       </p>
     </div>
@@ -48,7 +48,7 @@ const destinations = [
     <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto transition-opacity duration-300">
       {destinations.map((dest) => (
         <div 
-          class="destination-card relative overflow-hidden rounded-lg shadow-lg cursor-pointer group h-80"
+          class="destination-card relative overflow-hidden rounded-lg shadow-lg cursor-pointer group h-80 touch-manipulation"
           data-destination={dest.id}
           data-name={t(`itinerary.destinations.${dest.id}.name`)}
           data-location={t(`itinerary.destinations.${dest.id}.location`)}
@@ -58,10 +58,11 @@ const destinations = [
           <img 
             src={dest.image} 
             alt={t(`itinerary.destinations.${dest.id}.name`)}
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            class="w-full h-full object-cover card-image"
+            loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
             <h3 class="text-white text-2xl font-bold mb-1">
               {t(`itinerary.destinations.${dest.id}.name`)}
             </h3>
@@ -75,12 +76,12 @@ const destinations = [
 
     <!-- 詳細視圖 - 預設隱藏 -->
     <div id="detail-view" class="hidden max-w-7xl mx-auto transition-opacity duration-300">
-      <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+      <div class="bg-white rounded-lg shadow-xl overflow-hidden border border-stone-200">
         <!-- 返回按鈕 -->
-        <div class="p-6 border-b">
+        <div class="p-6 border-b border-stone-200">
           <button 
             id="back-button"
-            class="cursor-pointer flex items-center gap-2 text-blue-600 hover:text-blue-800 transition font-medium"
+            class="cursor-pointer flex items-center gap-2 text-amber-700 hover:text-amber-800 transition font-medium"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -89,25 +90,26 @@ const destinations = [
           </button>
         </div>
 
-        <!-- 詳細內容 -->
-        <div class="flex flex-col lg:flex-row">
-          <!-- 圖片區域 -->
-          <div class="lg:w-1/2">
+        <!-- 詳細內容 - 固定高度 -->
+        <div class="flex flex-col lg:flex-row lg:h-[600px]">
+          <!-- 圖片區域 - 固定高度,底部對齊 -->
+          <div class="lg:w-1/2 h-64 lg:h-full overflow-hidden bg-stone-100">
             <img 
               id="detail-image"
               src="" 
               alt=""
-              class="w-full h-64 lg:h-full object-cover"
+              class="w-full h-full object-cover object-bottom"
+              loading="lazy"
             />
           </div>
 
           <!-- 文字說明區域 -->
-          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-            <h2 id="detail-name" class="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center overflow-y-auto">
+            <h2 id="detail-name" class="text-3xl lg:text-4xl font-bold text-stone-900 mb-2">
             </h2>
-            <p id="detail-location" class="text-blue-600 text-lg mb-6">
+            <p id="detail-location" class="text-amber-700 text-lg mb-6 font-medium">
             </p>
-            <p id="detail-description" class="text-gray-700 leading-relaxed text-lg">
+            <p id="detail-description" class="text-stone-700 leading-relaxed text-lg">
             </p>
           </div>
         </div>
@@ -129,7 +131,9 @@ const destinations = [
 
   // 點擊卡片顯示詳細資訊
   cards.forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
       const cardElement = card as HTMLElement;
       
       // 從 data attributes 取得資料
@@ -147,16 +151,19 @@ const destinations = [
       if (detailLocation) detailLocation.textContent = location;
       if (detailDescription) detailDescription.textContent = description;
 
-      // 平滑切換動畫
       if (cardsGrid) {
         cardsGrid.style.opacity = '0';
         setTimeout(() => {
           cardsGrid.classList.add('hidden');
           if (detailView) {
             detailView.classList.remove('hidden');
-            // 強制重繪以觸發動畫
-            detailView.offsetHeight;
+            void detailView.offsetHeight;
             detailView.style.opacity = '1';
+            
+            const toursSection = document.getElementById('tours');
+            if (toursSection) {
+              toursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
           }
         }, 300);
       }
@@ -165,15 +172,16 @@ const destinations = [
 
   // 返回按鈕
   if (backButton) {
-    backButton.addEventListener('click', () => {
+    backButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
       if (detailView) {
         detailView.style.opacity = '0';
         setTimeout(() => {
           detailView.classList.add('hidden');
           if (cardsGrid) {
             cardsGrid.classList.remove('hidden');
-            // 強制重繪以觸發動畫
-            cardsGrid.offsetHeight;
+            void cardsGrid.offsetHeight;
             cardsGrid.style.opacity = '1';
           }
         }, 300);
@@ -191,9 +199,36 @@ const destinations = [
   .destination-card {
     position: relative;
     transition: transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
   }
 
-  .destination-card:hover {
-    transform: translateY(-4px);
+  @media (hover: hover) and (pointer: fine) {
+    .destination-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    .destination-card:hover .card-image {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-image {
+    transition: transform 0.5s ease;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .destination-card:active {
+      transform: scale(0.98);
+    }
+  }
+
+  #detail-view {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  #detail-image {
+    min-height: 100%;
   }
 </style>
