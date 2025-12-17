@@ -14,47 +14,49 @@ export const ui = {
       contact: '聯絡我們',
     },
     home: {
-      title: '探索喜馬拉雅山的壯麗',
-      subtitle: '專業在地導遊帶您體驗尼泊爾之美',
+      title: '喜馬拉雅山腳下的神秘國度',
+      subtitle: '讓我們一起探索尼泊爾的千年文化之美',
     },
     button: {
       learnMore: '了解更多',
     },
     about: {
       title: '關於我們',
-      subtitle: '旅行是一段個人化的旅程',
-      intro: '我們是深耕尼泊爾超過 20 年的在地旅行社，由經驗豐富的旅遊專家團隊組成。我們深刻理解世界上最迷人目的地的每一個細節，相信每一趟旅程都應該是獨一無二的。',
-      experience: '多年來，我們服務過來自台灣、日本、中國、歐美等世界各地的旅客，累積了豐富的跨文化服務經驗。無論您來自哪裡，我們都能提供最貼心的在地服務。',
+      leadText: '認識帶領你探索喜馬拉雅的在地嚮導',
+      founderLabel: '創辦人介紹',
+      subtitle: '讓在地嚮導,帶你走進真正的尼泊爾',
+      intro: '我們是一家在尼泊爾深耕超過 20 年的在地旅行社。這些年來，我們不只帶領旅客走訪知名景點，更陪伴他們深入了解尼泊爾的文化、生活與風景。',
+      experience: '對我們來說，每一趟旅程都不只是行程安排，而是一段值得細細體驗的故事。因此，我們特別重視旅途中的每一個細節，讓旅行不只是「看見」，而是真正「走進」尼泊爾。',
+      experience1: '多年來，我們服務過來自台灣、日本、中國及歐美等地的旅客，無論您來自哪裡，我們都能提供貼心而可靠的在地服務。',
       feature1: {
-        title: '健行專業嚮導',
-        desc: '從聖母峰基地營到安娜普納環線，我們的專業嚮導熟悉每一條山徑'
+        title: '熟悉山徑的在地嚮導',
+        desc: '從聖母峰基地營到安娜普納環線，由熟悉地形的在地嚮導全程帶領'
       },
       feature2: {
-        title: '家庭友善行程',
-        desc: '提供適合全家大小的輕鬆行程，讓每位家庭成員都能享受旅程'
+        title: '彈性行程設計',
+        desc: '根據您的興趣與節奏量身打造，每一天的行程都能隨心調整'
       },
       feature3: {
-        title: '專業認證嚮導',
-        desc: '所有嚮導均持有專業證照，具備高山急救與豐富帶團經驗'
+        title: '全程交通與協助',
+        desc: '提供專車接送與在地支援，讓您專心享受旅程本身'
       },
-      founderAlt: '創辦人照片',
-      founderName: '創辦人姓名',
+      founderAlt: '創辦人 Raju Gurung',
       founderTitle: '創辦人兼執行長',
       founderYears: '深耕尼泊爾旅遊 20+ 年',
       customization: {
         title: '為您量身打造的旅程',
-        subtitle: '我們不只是帶您旅行，更希望您能在旅途中實現夢想、深度體驗尼泊爾的美',
+        subtitle: '我們不只是帶您旅行,更希望您能在旅途中實現夢想、深度體驗尼泊爾的美',
         item1: {
           title: '彈性團隊規模',
-          desc: '無論是獨自旅行、情侶出遊，還是團體旅遊，我們都能客製化安排最適合的行程'
+          desc: '無論是獨自出發，或與他人同行，我們都會事先清楚說明行程安排，並盡量以小團方式進行，讓每位旅客都能保有自己的旅行節奏。'
         },
         item2: {
           title: '文化飲食安排',
-          desc: '日本料理、中式餐廳、台灣小吃？我們能在旅途中安排您熟悉的家鄉美食，讓您在異地也能感受家的溫暖'
+          desc: '旅途中，我們會貼心安排合適的餐食選擇，無論是當地料理或熟悉的口味，都希望您在異地也能吃得安心、自在。'
         },
         item3: {
           title: '多語言服務',
-          desc: '提供中文、英文、日文等多語言嚮導服務，溝通零障礙，讓旅程更安心'
+          desc: '我們提供中文、英文、日文等導遊協助，讓溝通變得簡單，您只需要專心享受旅途本身。'
         }
       }
     },
@@ -87,7 +89,7 @@ export const ui = {
         chitwan: {
           name: '奇旺國家公園',
           location: 'Chitwan',
-          description: '尼泊爾第一座國家公園，是觀賞野生動物的天堂。您可以騎大象穿越叢林，尋找獨角犀牛、孟加拉虎的蹤跡，或是在河邊觀賞鱷魚。這裡豐富的生態系統，讓您體驗與大自然最親密的接觸。',
+          description: '尼泊爾第一座國家公園，是觀賞野生動物的天堂。您可以騎大象穿越叢林，尋找獨角犀牛、孟加拉虎的蹤跡,或是在河邊觀賞鱷魚。這裡豐富的生態系統，讓您體驗與大自然最親密的接觸。',
         },
         everest: {
           name: '聖母峰基地營',
@@ -108,43 +110,45 @@ export const ui = {
       contact: 'Contact',
     },
     home: {
-      title: 'Explore the Majesty of Himalayas',
-      subtitle: 'Experience Nepal with Professional Local Guides',
+      title: 'A Mystical Kingdom at the Himalayas',
+      subtitle: 'Let\'s Explore Nepal\'s Timeless Beauty',
     },
     button: {
       learnMore: 'Learn More',
     },
     about: {
       title: 'About Us',
-      subtitle: 'Travel is a Personal Journey',
-      intro: 'We are a locally-rooted travel agency with over 20 years of experience in Nepal. Our team of seasoned travel experts brings in-depth knowledge of the world\'s most captivating destinations. We believe that every journey should be unique and personal.',
-      experience: 'Over the years, we have served travelers from Taiwan, Japan, China, Europe, America, and around the globe, building rich cross-cultural service expertise. No matter where you come from, we provide the most thoughtful local service.',
+      leadText: 'Meet Your Local Guide to the Himalayas',
+      founderLabel: 'Your Nepal Guide',
+      subtitle: 'Let a Local Guide Take You Into the Real Nepal',
+      intro: 'We are a locally based travel agency in Nepal with over 20 years of experience. Over the years, we have guided travelers not only to Nepal’s most well-known destinations, but also helped them gain a deeper understanding of the country’s culture, daily life, and landscapes.',
+      experience: 'To us, travel is more than just an itinerary. It is a personal journey shaped by thoughtful planning and attention to detail, allowing each traveler to truly experience Nepal rather than simply pass through it.',
+      experience1: 'We have had the pleasure of welcoming travelers from Taiwan, Japan, China, Europe, and North America. No matter where you come from, our team is committed to providing reliable, personalized, and genuinely local service throughout your journey.',
       feature1: {
-        title: 'Adventure Trek Experts',
-        desc: 'From Everest Base Camp to Annapurna Circuit, our professional guides know every trail'
+        title: 'Experienced Trekking Team',
+        desc: 'From Everest Base Camp to the Annapurna Circuit, our local guides lead you with confidence and care.'
       },
       feature2: {
-        title: 'Family-Friendly',
-        desc: 'We offer relaxed itineraries suitable for all family members to enjoy the journey'
+        title: 'Flexible Itineraries',
+        desc: 'Tailored to your interests and pace, with the freedom to adjust plans each day'
       },
       feature3: {
-        title: 'Certified Expert Guides',
-        desc: 'All guides are professionally certified with high-altitude first aid and extensive experience'
+        title: 'Private Transportation',
+        desc: 'Private transportation and local assistance ensure a smooth and worry-free journey.'
       },
-      founderAlt: 'Founder Photo',
-      founderName: 'Founder Name',
+      founderAlt: 'Founder Raju Gurung',
       founderTitle: 'Founder & CEO',
       founderYears: '20+ Years in Nepal Tourism',
       customization: {
         title: 'Tailored Journey Just for You',
-        subtitle: 'We don\'t just take you traveling – we\'re your partner in making travel dreams come true',
+        subtitle: 'We don\'t just take you traveling – we help you realize your dreams and deeply experience the beauty of Nepal',
         item1: {
           title: 'Flexible Group Size',
-          desc: 'Whether solo travel, couples, or group tours, we customize the perfect itinerary for you'
+          desc: 'Whether you travel solo or join others along the way, we clearly communicate the group arrangement in advance and keep groups small whenever possible, so everyone can travel at a comfortable pace.'
         },
         item2: {
-          title: 'Cultural Dining Arrangements',
-          desc: 'Japanese cuisine, Chinese restaurants, or Taiwanese snacks? We can arrange familiar home-style food during your journey'
+          title: 'Cultural & Dietary Consideration',
+          desc: 'During your journey, we thoughtfully arrange meals that suit your preferences—whether local cuisine or familiar flavors—so you can dine with comfort and ease.'
         },
         item3: {
           title: 'Multilingual Service',
