@@ -1,12 +1,24 @@
 ---
+import SEO from '../components/SEO.astro';
 import '../styles/global.css';
 
 interface Props {
-  title: string;
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
   lang: 'zh-tw' | 'en';
+  noindex?: boolean;
 }
 
-const { title, lang } = Astro.props;
+const { 
+  title, 
+  description, 
+  keywords, 
+  image, 
+  lang,
+  noindex = false 
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -14,7 +26,16 @@ const { title, lang } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
+
+    <!--SEO components - includes all meta tags -->
+    <SEO 
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+      lang={lang}
+      noindex={noindex}
+    />
   </head>
   <body>
     <slot />

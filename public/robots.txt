@@ -1,0 +1,33 @@
+# robots.txt for Oriental Express Travel
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Block admin or private pages (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Important pages for crawling
+Allow: /zh-tw/
+Allow: /en/
+Allow: /about
+Allow: /itinerary
+Allow: /contact
+
+# Sitemap location
+Sitemap: https://nepal-travel.vercel.app/sitemap-index.xml
+Sitemap: https://nepal-travel.vercel.app/sitemap-0.xml
+
+# Crawl-delay (optional, for slower crawlers)
+# Crawl-delay: 1
+
+# Specific rules for common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
