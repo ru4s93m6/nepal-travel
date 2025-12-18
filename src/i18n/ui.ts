@@ -62,9 +62,11 @@ export const ui = {
     },
     contact: {
       title: '聯絡我們',
-      name: '公司名稱',
+      subtitle: '期待與您一同探索尼泊爾的美麗',
+      companyLabel: '公司名稱',
       phone: '電話',
       email: '電子郵件',
+      cta: '無論是行程規劃或任何疑問，我們都隨時為您服務',
     },
     itinerary: {
       title: '熱門景點',
@@ -158,9 +160,11 @@ export const ui = {
     },
     contact: {
       title: 'Contact Us',
-      name: 'Company Name',
+      subtitle: 'We look forward to exploring Nepal\'s beauty with you',
+      companyLabel: 'Company Name',
       phone: 'Phone',
       email: 'Email',
+      cta: 'Whether it\'s planning your trip or answering questions, we\'re here to help',
     },
     itinerary: {
       title: 'Popular Destinations',
