@@ -4,27 +4,37 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Destination information
+// Destination information with SEO-friendly image attributes
 const destinations = [
   {
     id: 'kathmandu',
-    image: '/kathmandu.jpg', 
+    image: '/kathmandu.jpg',
+    width: 800,
+    height: 600,
   },
   {
     id: 'pokhara',
     image: '/pokhara.jpg',
+    width: 800,
+    height: 600,
   },
   {
     id: 'annapurna',
     image: '/annapurna.jpg',
+    width: 800,
+    height: 600,
   },
   {
     id: 'chitwan',
     image: '/chitwan.jpg',
+    width: 800,
+    height: 600,
   },
   {
     id: 'everest',
     image: '/everest.jpg',
+    width: 800,
+    height: 600,
   },
 ];
 ---
@@ -54,21 +64,24 @@ const destinations = [
           data-location={t(`itinerary.destinations.${dest.id}.location`)}
           data-description={t(`itinerary.destinations.${dest.id}.description`)}
           data-image={dest.image}
+          data-width={dest.width}
+          data-height={dest.height}
         >
           <img 
             src={dest.image} 
-            alt={t(`itinerary.destinations.${dest.id}.name`)}
+            alt={`${t(`itinerary.destinations.${dest.id}.name`)} - ${t(`itinerary.destinations.${dest.id}.location`)} | Oriental Express Travel Nepal`}
+            title={t(`itinerary.destinations.${dest.id}.name`)}
+            width={dest.width}
+            height={dest.height}
             class="w-full h-full object-cover card-image"
             loading="lazy"
+            decoding="async"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
           <div class="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
             <h3 class="text-white text-2xl font-bold mb-1">
               {t(`itinerary.destinations.${dest.id}.name`)}
             </h3>
-            {/* <p class="text-white/90 text-sm">
-              {t(`itinerary.destinations.${dest.id}.location`)}
-            </p> */}
           </div>
         </div>
       ))}
@@ -82,8 +95,9 @@ const destinations = [
           <button 
             id="back-button"
             class="cursor-pointer flex items-center gap-2 text-amber-700 hover:text-amber-800 transition font-medium"
+            aria-label={t('itinerary.button.close')}
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
             {t('itinerary.button.close')}
@@ -98,8 +112,12 @@ const destinations = [
               id="detail-image"
               src="" 
               alt=""
+              title=""
+              width="800"
+              height="600"
               class="w-full h-full object-cover object-bottom"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -145,7 +163,8 @@ const destinations = [
       // 設定詳細視圖內容
       if (detailImage) {
         detailImage.src = image;
-        detailImage.alt = name;
+        detailImage.alt = `${name} - ${location} | Oriental Express Travel Nepal`;
+        detailImage.title = name;
       }
       if (detailName) detailName.textContent = name;
       if (detailLocation) detailLocation.textContent = location;
