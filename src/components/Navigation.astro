@@ -9,20 +9,29 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const isEn = lang === 'en';
-const baseUrl = isEn ? '/en' : '';
+const baseUrl = isEn ? '/en' : '/zh-tw';
+
+// Language options
+const languages = [
+  { code: 'zh-tw', name: '中文', flag: '🇹🇼', url: '/zh-tw' },
+  { code: 'en', name: 'English', flag: '🇬🇧', url: '/en' },
+];
+
+const currentLang = languages.find(l => l.code === lang);
+const otherLangs = languages.filter(l => l.code !== lang);
 ---
 
 <nav class="absolute top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/50 to-transparent">
-  <div class="flex items-center justify-between py-6 px-8 max-w-7xl mx-auto">
+  <div class="flex items-center justify-between py-6 px-4 md:px-8 max-w-7xl mx-auto">
     <!-- Logo -->
     <div id="logo">
       <a href={`${baseUrl}/`}>
-        <img src="/logo.png" alt="Oriental Express Travel Logo" class="h-12 w-auto" />
+        <img src="/logo.png" alt="Oriental Express Travel Logo" class="h-10 md:h-12 w-auto" />
       </a>
     </div>
     
-    <!-- Main Navigator -->
-    <div class="hidden md:flex gap-8 text-white font-medium">
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex gap-8 text-white font-medium">
       <a href={`${baseUrl}/`} class="hover:text-amber-400 transition-colors">
         {t('nav.home')}
       </a>
@@ -37,29 +46,121 @@ const baseUrl = isEn ? '/en' : '';
       </a>
     </div>
     
-    <!-- Language Switch -->
-    <div class="flex gap-2 text-white">
-      <a 
-        href="/" 
-        class={`px-3 py-1 rounded transition-colors ${
-          lang === 'zh-tw' 
-            ? 'bg-amber-500 font-bold' 
-            : 'hover:bg-white/10'
-        }`}
-      >
-        中文
-      </a>
-      <span class="self-center">|</span>
-      <a 
-        href="/en" 
-        class={`px-3 py-1 rounded transition-colors ${
-          lang === 'en' 
-            ? 'bg-amber-500 font-bold' 
-            : 'hover:bg-white/10'
-        }`}
-      >
-        English
-      </a>
+    <div class="hidden md:flex gap-2 text-white text-sm">
+      {languages.map((language, index) => (
+        <>
+          <a 
+            href={language.url} 
+            class={`px-3 py-1.5 rounded transition-all ${
+              lang === language.code 
+                ? 'bg-amber-500 font-bold shadow-lg' 
+                : 'hover:bg-white/10'
+            }`}
+          >
+            {/* <span class="hidden lg:inline">{language.flag}</span> */}
+            {' '}{language.name}
+          </a>
+          {index < languages.length - 1 && (
+            <span class="self-center text-white/50">|</span>
+          )}
+        </>
+      ))}
     </div>
+
+    <!-- Language Selector - Mobile (下拉式) -->
+    <div class="relative md:hidden" id="mobile-lang-selector">
+      <!-- 當前語言按鈕 -->
+      <button 
+        type="button"
+        id="lang-button"
+        class="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-all"
+        aria-label="選擇語言"
+      >
+        <!-- <span class="text-xl">{currentLang.flag}</span> -->
+        <span class="font-medium text-sm">{currentLang.name}</span>
+        <svg class="w-4 h-4 transition-transform" id="lang-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      <!-- 下拉選單 -->
+      <div 
+        id="lang-dropdown"
+        class="absolute right-0 mt-2 w-40 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 overflow-hidden opacity-0 invisible transition-all duration-200 transform origin-top-right scale-95"
+      >
+        {otherLangs.map((language) => (
+          <a 
+            href={language.url}
+            class="flex items-center gap-3 px-4 py-3 text-white hover:bg-amber-500 transition-colors"
+          >
+            {/* <span class="text-xl">{language.flag}</span> */}
+            <span class="font-medium text-sm">{language.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- <button 
+      type="button"
+      id="mobile-menu-button"
+      class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg ml-2"
+      aria-label="選單"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button> -->
   </div>
 </nav>
+
+<script>
+  const langButton = document.getElementById('lang-button');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const langArrow = document.getElementById('lang-arrow');
+
+  if (langButton && langDropdown) {
+    let isOpen = false;
+
+    // 切換下拉選單
+    const toggleDropdown = () => {
+      isOpen = !isOpen;
+      
+      if (isOpen) {
+        langDropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+        langDropdown.classList.add('opacity-100', 'visible', 'scale-100');
+        langArrow?.classList.add('rotate-180');
+      } else {
+        langDropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+        langDropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+        langArrow?.classList.remove('rotate-180');
+      }
+    };
+
+    // 點擊按鈕切換
+    langButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    // 點擊外部關閉
+    document.addEventListener('click', (e) => {
+      if (isOpen && !langButton.contains(e.target as Node) && !langDropdown.contains(e.target as Node)) {
+        toggleDropdown();
+      }
+    });
+
+    // ESC 鍵關閉
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        toggleDropdown();
+      }
+    });
+  }
+
+</script>
+
+<style>
+  #lang-arrow {
+    transition: transform 0.2s ease-in-out;
+  }
+</style>
