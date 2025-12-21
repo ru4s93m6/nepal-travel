@@ -13,7 +13,8 @@ export default defineConfig({
     defaultLocale: 'zh-tw',
     locales: ['zh-tw', 'en'],
     routing: {
-      prefixDefaultLocale: true 
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: false
     }
   },
   site: 'https://nepal-travel.vercel.app',
