@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oriental Express Travel - Loading...</title>
-    <meta name="robots" content="noindex, nofollow" />
+    <title>Oriental Express Travel - 尼泊爾旅遊專家 | Nepal Travel Expert</title>
+    
+    <!-- 讓 robots 不索引這個頁面 -->
+    <meta name="robots" content="noindex, follow" />
+    
+    <!-- Meta refresh 後備 -->
+    <meta http-equiv="refresh" content="2; url=/zh-tw/" />
+    
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="深耕尼泊爾超過20年的在地旅行社。提供聖母峰基地營、安娜普納環線等專業健行行程，客製化家庭旅遊與多語言嚮導服務。讓我們帶您探索喜馬拉雅山的壯麗美景。" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nepal-travel.vercel.app/" />
+    <meta property="og:title" content="Oriental Express Travel | 尼泊爾旅遊專家 - Nepal Travel Expert" />
+    <meta property="og:description" content="深耕尼泊爾超過20年的在地旅行社 | Leading Nepal travel agency with over 20 years of local experience. 提供聖母峰基地營、安娜普納環線等專業健行行程。" />
+    <meta property="og:image" content="https://nepal-travel.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Oriental Express Travel - 尼泊爾喜馬拉雅山旅遊" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:site_name" content="Oriental Express Travel" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://nepal-travel.vercel.app/" />
+    <meta name="twitter:title" content="Oriental Express Travel - 尼泊爾旅遊專家" />
+    <meta name="twitter:description" content="深耕尼泊爾超過20年的在地旅行社。提供聖母峰基地營、安娜普納環線等專業健行行程。" />
+    <meta name="twitter:image" content="https://nepal-travel.vercel.app/og-image.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     
     <style>
       * {
@@ -33,18 +64,18 @@
         to { opacity: 1; transform: translateY(0); }
       }
 
-      /* Logo */
       .logo-container {
         margin-bottom: 40px;
       }
 
       .logo {
-        width: 400px;
-        height: 100px;
+        width: 200px;
+        height: auto;
+        max-width: 90%;
         margin: 0 auto;
+        display: block;
       }
 
-      /* Loading Spinner */
       .spinner {
         width: 60px;
         height: 60px;
@@ -59,7 +90,6 @@
         to { transform: rotate(360deg); }
       }
 
-      /* Text */
       .loading-text {
         font-size: 20px;
         color: rgba(255, 255, 255, 0.9);
@@ -72,7 +102,6 @@
         color: rgba(255, 255, 255, 0.6);
       }
 
-      /* Dots animation */
       .dots {
         display: inline-block;
       }
@@ -88,19 +117,26 @@
         60% { content: '..'; }
         80%, 100% { content: '...'; }
       }
+
+      @media (max-width: 640px) {
+        .loading-text {
+          font-size: 18px;
+        }
+        
+        .loading-subtext {
+          font-size: 12px;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="loading-container">
-      <!-- Logo -->
       <div class="logo-container">
         <img src="/logo.png" alt="Oriental Express Travel" class="logo" />
       </div>
 
-      <!-- Loading Spinner -->
       <div class="spinner"></div>
 
-      <!-- Loading Text -->
       <div class="loading-text">
         <span class="dots">Loading</span>
       </div>
@@ -116,7 +152,7 @@
         
         if (savedLang && (savedLang === 'zh-tw' || savedLang === 'en')) {
           // Redirect to saved language
-          window.location.href = `/${savedLang}/`;
+          window.location.replace('/' + savedLang + '/');
           return;
         }
 
@@ -145,8 +181,8 @@
         // Save preference
         localStorage.setItem('preferredLanguage', targetLang);
         
-        setTimeout(() => {
-          window.location.href = `/${targetLang}/`;
+        setTimeout(function() {
+          window.location.replace('/' + targetLang + '/');
         }, 1000);
       })();
     </script>
