@@ -10,11 +10,11 @@ const t = useTranslations(lang);
 
 // Hero carousel images
 const heroImages = [
-  { src: '/hero.jpg', alt: 'Boudhanath Stupa' },
-  { src: '/sadhu.jpg', alt: 'Nepal Sadhu' },
-  { src: '/flag.jpg', alt: 'Nepal Flag and mountain' },
-  { src: '/annapurna.jpg', alt: 'Annapurna Range' },
-  { src: '/titas.jpg', alt: 'Kathmandu Valley' },
+  { src: '/hero.webp', alt: 'Boudhanath Stupa' },
+  { src: '/sadhu.webp', alt: 'Nepal Sadhu' },
+  { src: '/flag.webp', alt: 'Nepal Flag and mountain' },
+  { src: '/annapurna.webp', alt: 'Annapurna Range' },
+  { src: '/titas.webp', alt: 'Kathmandu Valley' },
 ];
 ---
 
@@ -30,6 +30,11 @@ const heroImages = [
           src={image.src} 
           alt={image.alt} 
           class="w-full h-full object-cover"
+          loading={index === 0 ? 'eager' : 'lazy'}
+          fetchpriority={index === 0 ? 'high' : 'low'}
+          decoding={index === 0 ? 'sync' : 'async'}
+          width="1920"
+          height="1080"
         />
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
@@ -129,7 +134,7 @@ const heroImages = [
   }
 
   function startAutoPlay() {
-    autoPlayInterval = window.setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    autoPlayInterval = window.setInterval(nextSlide, 5000);
   }
 
   function stopAutoPlay() {
