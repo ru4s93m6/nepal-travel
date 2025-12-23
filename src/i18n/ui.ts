@@ -11,6 +11,7 @@ export const ui = {
       home: '首頁',
       tours: '行程介紹',
       about: '關於我們',
+      FAQ: '常見問題',
       contact: '聯絡我們',
     },
     home: {
@@ -103,12 +104,31 @@ export const ui = {
         close: '返回',
       }
     },
+    faq:[
+      {
+        question: "尼泊爾的最佳旅遊季節是什麼時候？",
+        answer: "尼泊爾的最佳旅遊季節通常是春季（3月至5月）和秋季（9月至11月）。這兩個季節天氣晴朗，適合進行戶外活動和健行。"
+      },
+      {
+        question: "旅行的費用大約是多少?",
+        answer: "旅行費用會根據行程長短、住宿標準和活動內容而有所不同。請聯繫我們以獲取量身定制的報價。"
+      },
+      {
+        question: "旅程包含哪些服務?",
+        answer: "我們的旅程通常包含住宿、交通、導遊服務和部分餐食。如果您已經有規畫好的行程，我們可以依照您的需求提供客製化的服務，如果您第一次來尼泊爾旅遊，我們也可以提供完整的行前規劃服務。如果您需要幫忙協助訂購機票、詢問簽證等相關事宜，我們也很樂意提供幫助。"
+      },
+      {
+        question: "怎麼聯繫我們?",
+        answer: "您可以透過連絡我們的WhatsApp或電子郵件與我們聯繫。我們會盡快回覆您的詢問，協助您規劃理想的尼泊爾之旅。如果是中文服務需求，我們也有中文專員可以協助您。"
+      }
+    ]
   },
   'en': {
     nav: {
       home: 'Home',
       tours: 'Tours',
       about: 'About',
+      FAQ: 'FAQ',
       contact: 'Contact',
     },
     home: {
@@ -201,5 +221,23 @@ export const ui = {
         close: 'Back',
       }
     },
+    faq: [
+    {
+      question: "What is the best time to visit Nepal?",
+      answer: "The best time to visit Nepal is typically during spring (March to May) and autumn (September to November). These seasons offer clear weather, making them ideal for outdoor activities and trekking."
+    },
+    {
+      question: "How much does a trip typically cost?",
+      answer: "Trip costs vary depending on the duration, accommodation standards, and activities included. Please contact us for a customized quote tailored to your needs."
+    },
+    {
+      question: "What services are included in your trips?",
+      answer: "Our trips typically include accommodation, transportation, guide services, and some meals. If you already have a planned itinerary, we can provide customized services based on your needs. For first-time visitors to Nepal, we also offer comprehensive pre-trip planning services. If you need assistance with flight bookings, visa inquiries, or other related matters, we're happy to help."
+    },
+    {
+      question: "How can I contact you?",
+      answer: "You can reach us via WhatsApp or email. We'll respond to your inquiries promptly and help you plan your ideal Nepal adventure. For Chinese-language support, we also have Chinese-speaking staff available to assist you."
+    }
+  ]
   },
 } as const;
