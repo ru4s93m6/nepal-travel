@@ -17,7 +17,7 @@ export default defineConfig({
       redirectToDefaultLocale: false
     }
   },
-  site: 'https://nepal-travel.vercel.app',
+  site: 'https://oriental-express-travel.com',
   integrations: [
     sitemap({
       i18n: {
