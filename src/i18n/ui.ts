@@ -49,11 +49,11 @@ export const ui = {
         subtitle: '我們不只是帶您旅行,更希望您能在旅途中實現夢想、深度體驗尼泊爾的美',
         item1: {
           title: '彈性團隊規模',
-          desc: '無論是獨自出發，或與他人同行，我們都會事先清楚說明行程安排，並盡量以小團方式進行，讓每位旅客都能保有自己的旅行節奏。'
+          desc: '我們主要採「包團」方式規劃行程，無論是一人獨自出發、親友同行，或是企業與大型旅遊團體，我們都能依需求妥善安排。行程內容、節奏與服務細節皆可彈性調整，確保每一趟旅程都符合您的期待，讓旅行自在又安心。'
         },
         item2: {
           title: '文化飲食安排',
-          desc: '旅途中，我們會貼心安排合適的餐食選擇，無論是當地料理或熟悉的口味，都希望您在異地也能吃得安心、自在。'
+          desc: '旅途中，我們會依照您的喜好協助安排餐食與餐廳，無論是想品嚐道地的尼泊爾料理，或選擇熟悉安心的口味，我們都能陪同並妥善安排，讓您在異地也能吃得安心、自在。'
         },
         item3: {
           title: '多語言服務',
@@ -67,6 +67,7 @@ export const ui = {
       companyLabel: '公司名稱',
       phone: '電話',
       email: '電子郵件',
+      address:'地址',
       cta: '無論是行程規劃或任何疑問，我們都隨時為您服務',
     },
     itinerary: {
@@ -166,11 +167,11 @@ export const ui = {
         subtitle: 'We don\'t just take you traveling – we help you realize your dreams and deeply experience the beauty of Nepal',
         item1: {
           title: 'Flexible Group Size',
-          desc: 'Whether you travel solo or join others along the way, we clearly communicate the group arrangement in advance and keep groups small whenever possible, so everyone can travel at a comfortable pace.'
+          desc: 'We primarily arrange private tours, welcoming everyone from solo travelers to families, friends, and large group tours. Each journey is thoughtfully planned according to your group size, travel style, and pace, allowing for flexible itineraries and personalized service to ensure a smooth and enjoyable experience for every traveler.'
         },
         item2: {
           title: 'Cultural & Dietary Consideration',
-          desc: 'During your journey, we thoughtfully arrange meals that suit your preferences—whether local cuisine or familiar flavors—so you can dine with comfort and ease.'
+          desc: 'During your journey, we arrange meals and restaurants based on your preferences. Whether you wish to enjoy authentic Nepalese cuisine or prefer familiar and comforting flavors, our team will accompany you and make thoughtful arrangements, ensuring you can dine with ease and peace of mind while traveling abroad.'
         },
         item3: {
           title: 'Multilingual Service',
@@ -184,6 +185,7 @@ export const ui = {
       companyLabel: 'Company Name',
       phone: 'Phone',
       email: 'Email',
+      address:'Address',
       cta: 'Whether it\'s planning your trip or answering questions, we\'re here to help',
     },
     itinerary: {

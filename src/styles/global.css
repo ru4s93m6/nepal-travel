@@ -9,12 +9,12 @@
 
 /* Custom selection color - 主題黃色 */
 ::selection {
-  background-color: #e87f26;
+  background-color: #DCA54A;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #e87f26;
+  background-color: #DCA54A;
   color: white;
 }
 
