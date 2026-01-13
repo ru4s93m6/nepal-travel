@@ -9,7 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-   i18n: {
+  i18n: {
     defaultLocale: 'zh-tw',
     locales: ['zh-tw', 'en'],
     routing: {
@@ -26,6 +26,9 @@ export default defineConfig({
           'zh-tw': 'zh-TW',
           'en': 'en-US',
         },
+      },
+      filter: (page) => {
+        return page !== 'https://oriental-express-travel.com/';
       },
     }),
   ],
