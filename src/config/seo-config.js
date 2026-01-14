@@ -3,12 +3,12 @@
 // ============================================
 export const homePageSEO = {
   'zh-tw': {
-    title: 'Oriental Express Travel - 尼泊爾旅遊專家 | 20年在地經驗',
+    title: 'Oriental Express Travel - 尼泊爾在地旅行社 | 20年在地經驗',
     description: '深耕尼泊爾超過20年的在地旅行社。位於加德滿都Thamel區,提供聖母峰基地營、安娜普納環線等專業健行行程，客製化家庭旅遊與多語言嚮導服務。讓我們帶您探索喜馬拉雅山的壯麗美景。',
     keywords: '尼泊爾旅遊,Nepal travel,聖母峰,Everest,安娜普納,Annapurna,加德滿都,Kathmandu,博卡拉,Pokhara,尼泊爾健行,Nepal trekking,喜馬拉雅山,Himalayas,在地導遊,local guide,Oriental Express,Thamel',
   },
   'en': {
-    title: 'Oriental Express Travel - Nepal Travel Expert | 20+ Years Experience',
+    title: 'Oriental Express Travel - Nepal Travel Agency | 20+ Years Local Experience',
     description: 'Leading Nepal travel agency with over 20 years of local expertise in Thamel, Kathmandu. Offering Everest Base Camp, Annapurna Circuit treks, customized family tours with multilingual guides. Explore the magnificent Himalayas with us.',
     keywords: 'Nepal travel,Everest trekking,Annapurna Circuit,Kathmandu tours,Pokhara,Himalayas,local guide,Nepal travel agency,trekking Nepal,Chitwan,Oriental Express,Thamel',
   }
@@ -19,12 +19,12 @@ export const homePageSEO = {
 // ============================================
 export const aboutPageSEO = {
   'zh-tw': {
-    title: '關於我們 - 20年尼泊爾旅遊專家 | Oriental Express Travel',
-    description: '認識 Oriental Express Travel 團隊。20年深耕尼泊爾的旅遊專家，提供專業健行嚮導、家庭友善行程與多語言服務。創辦人 Raju Gurung 帶領經驗豐富的在地團隊，為您量身打造難忘旅程。',
+    title: '關於我們 - 20年尼泊爾在地旅行社 | Oriental Express Travel',
+    description: '認識 Oriental Express Travel 團隊。20年深耕尼泊爾的在地旅行社，提供專業健行嚮導、家庭友善行程與多語言服務。創辦人 Raju Gurung 帶領經驗豐富的在地團隊，為您量身打造難忘旅程。',
     keywords: '尼泊爾旅行社,Oriental Express,Raju Gurung,專業導遊,在地團隊,客製化旅遊,尼泊爾旅遊推薦,20年經驗',
   },
   'en': {
-    title: 'About Us - 20+ Years Nepal Travel Experts | Oriental Express',
+    title: 'About Us - 20+ Years Nepal Travel Experts | Oriental Express Travel',
     description: 'Meet the Oriental Express Travel team. 20+ years of Nepal travel expertise with professional trek guides, family-friendly tours, and multilingual services. Founder Raju Gurung leads an experienced local team to craft your perfect journey.',
     keywords: 'Nepal travel agency,Oriental Express,Raju Gurung,professional guides,local team,customized tours,Nepal tourism,experienced guides',
   }
