@@ -1,33 +1,4 @@
-# robots.txt for Oriental Express Travel
-
-# Allow all search engines to crawl content pages
 User-agent: *
-Allow: /zh-tw/
-Allow: /en/
-Disallow: /
+Allow: /
 
-# Block admin or private pages (if any)
-# Disallow: /admin/
-# Disallow: /private/
-
-# Sitemap location
 Sitemap: https://oriental-express-travel.com/sitemap-index.xml
-
-# Crawl-delay (optional, for slower crawlers)
-# Crawl-delay: 1
-
-# Specific rules for common bots
-User-agent: Googlebot
-Allow: /zh-tw/
-Allow: /en/
-Disallow: /
-
-User-agent: Bingbot
-Allow: /zh-tw/
-Allow: /en/
-Disallow: /
-
-User-agent: Slurp
-Allow: /zh-tw/
-Allow: /en/
-Disallow: /
