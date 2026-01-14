@@ -3,7 +3,7 @@
 // ============================================
 export const homePageSEO = {
   'zh-tw': {
-    title: 'Oriental Express Travel - 尼泊爾在地旅行社 | 20年在地經驗',
+    title: 'Oriental Express Travel - 尼泊爾在地旅行社 | 20年服務經驗',
     description: '深耕尼泊爾超過20年的在地旅行社。位於加德滿都Thamel區,提供聖母峰基地營、安娜普納環線等專業健行行程，客製化家庭旅遊與多語言嚮導服務。讓我們帶您探索喜馬拉雅山的壯麗美景。',
     keywords: '尼泊爾旅遊,Nepal travel,聖母峰,Everest,安娜普納,Annapurna,加德滿都,Kathmandu,博卡拉,Pokhara,尼泊爾健行,Nepal trekking,喜馬拉雅山,Himalayas,在地導遊,local guide,Oriental Express,Thamel',
   },
