@@ -121,6 +121,10 @@ export const ui = {
       {
         question: "怎麼聯繫我們?",
         answer: "您可以透過連絡我們的WhatsApp或電子郵件與我們聯繫。我們會盡快回覆您的詢問，協助您規劃理想的尼泊爾之旅。如果是中文服務需求，我們也有中文專員可以協助您。"
+      },
+      {
+        question: "如何付費?",
+        answer: "目前我們接受銀行轉帳付款，並同時提供彈性的付款方式，旅客也可選擇於抵達尼泊爾後以現金支付。若您已選擇現金付款方式，我們將不會另行提供轉帳資訊，以確保您的資金安全；同時也提醒您留意任何可疑或詐騙訊息。如對付款方式有任何疑問，歡迎隨時與我們聯繫。"
       }
     ]
   },
@@ -239,6 +243,10 @@ export const ui = {
     {
       question: "How can I contact you?",
       answer: "You can reach us via WhatsApp or email. We'll respond to your inquiries promptly and help you plan your ideal Nepal adventure. For Chinese-language support, we also have Chinese-speaking staff available to assist you."
+    },
+    {
+      question: "How do I make a payment?",
+      answer: "We currently accept payment via bank transfer and also offer flexible payment options. Travelers may choose to pay in cash upon arrival in Nepal. If you select the cash payment option, we will not send bank transfer details to ensure the security of your funds. Please also remain cautious of any suspicious or fraudulent messages. If you have any questions regarding payment methods, feel free to contact us."
     }
   ]
   },
