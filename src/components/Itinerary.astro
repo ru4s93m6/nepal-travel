@@ -156,7 +156,7 @@ const regions = [
                     data-id={dest.id}>
                   <div class="flex gap-4">
                     <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-gray-200">
-                       <img src={dest.image} class="w-full h-full object-cover" loading="lazy" />
+                       <img src={dest.image} alt={t(`itinerary.destinations.${dest.id}.name`)} class="w-full h-full object-cover" loading="lazy" />
                     </div>
                     <div>
                        <h4 class="font-bold text-brand-blue text-lg">{t(`itinerary.destinations.${dest.id}.name`)}</h4>
@@ -195,7 +195,7 @@ const regions = [
             <img 
               id="detail-image"
               src="" 
-              alt=""
+              alt="Nepal Destination"
               title=""
               width="800"
               height="600"
