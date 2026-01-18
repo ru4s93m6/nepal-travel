@@ -44,7 +44,7 @@ const otherLangs = languages.filter(l => l.code !== lang);
       <a href="#faq" class="hover:text-amber-400 transition-colors">
         {t('nav.FAQ')}
       </a>
-      <a href="#contactUs" class="hover:text-amber-400 transition-colors">
+      <a href="#contactUs" class="hover:text-brand-gold transition-colors">
         {t('nav.contact')}
       </a>
     </div>
@@ -56,7 +56,7 @@ const otherLangs = languages.filter(l => l.code !== lang);
             href={language.url} 
             class={`px-3 py-1.5 rounded transition-all ${
               lang === language.code 
-                ? 'bg-amber-500 font-bold shadow-lg' 
+                ? 'bg-brand-gold font-bold shadow-lg text-brand-blue' 
                 : 'hover:bg-white/10'
             }`}
           >
@@ -89,12 +89,12 @@ const otherLangs = languages.filter(l => l.code !== lang);
       <!-- 下拉選單 -->
       <div 
         id="lang-dropdown"
-        class="absolute right-0 mt-2 w-40 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 overflow-hidden opacity-0 invisible transition-all duration-200 transform origin-top-right scale-95"
+        class="absolute right-0 mt-2 w-40 bg-brand-blue/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 overflow-hidden opacity-0 invisible transition-all duration-200 transform origin-top-right scale-95"
       >
         {otherLangs.map((language) => (
           <a 
             href={language.url}
-            class="flex items-center gap-3 px-4 py-3 text-white hover:bg-amber-500 transition-colors"
+            class="flex items-center gap-3 px-4 py-3 text-white hover:bg-brand-gold hover:text-brand-blue transition-colors"
           >
             {/* <span class="text-xl">{language.flag}</span> */}
             <span class="font-medium text-sm">{language.name}</span>
