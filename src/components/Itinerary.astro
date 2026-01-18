@@ -1,87 +1,171 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { nepalZones } from "../data/nepal-map-data";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Destination information with SEO-friendly image attributes
+// Projection Constants (derived from MapsVG metadata)
+const MAP_WIDTH = 800.36517;
+const MAP_HEIGHT = 454.28867;
+const MIN_LON = 80.051163;
+const MAX_LON = 88.193593;
+const MIN_LAT = 26.348125;
+const MAX_LAT = 30.431317;
+
+const LON_SPAN = MAX_LON - MIN_LON;
+const LAT_SPAN = MAX_LAT - MIN_LAT;
+
+// Helper to project Lat/Lon to SVG Pixels
+function project(lat: number, lng: number) {
+  const x = ((lng - MIN_LON) / LON_SPAN) * MAP_WIDTH;
+  const y = ((MAX_LAT - lat) / LAT_SPAN) * MAP_HEIGHT;
+  return { x, y };
+}
+
+// Destination information with SEO-friendly image attributes and Lat/Lon
 const destinations = [
-  {
-    id: 'kathmandu',
-    image: '/kathmandu.webp',
-    width: 800,
-    height: 600,
-  },
-  {
-    id: 'pokhara',
-    image: '/pokhara.webp',
-    width: 800,
-    height: 600,
-  },
-  {
-    id: 'annapurna',
-    image: '/annapurna.webp',
-    width: 800,
-    height: 600,
-  },
-  {
-    id: 'chitwan',
-    image: '/chitwan.webp',
-    width: 800,
-    height: 600,
-  },
-  {
-    id: 'everest',
-    image: '/everest.webp',
-    width: 800,
-    height: 600,
-  },
+  // Kathmandu Valley (Central) - Spread out for UX
+  { id: 'kathmandu_durbar', image: '/kathmandu.webp', lat: 27.6950, lng: 85.2900, region: 'kathmandu' }, // Moved SE
+  { id: 'boudhanath', image: '/boudhanath.webp', lat: 27.7250, lng: 85.3750, region: 'kathmandu' }, // Moved NE
+  { id: 'pashupatinath', image: '/pashupatinath.webp', lat: 27.7120, lng: 85.3550, region: 'kathmandu' }, // Slight East
+  { id: 'thamel', image: '/thamel.webp', lat: 27.7250, lng: 85.3050, region: 'kathmandu' }, // Moved NW
+  { id: 'bhaktapur', image: '/bhaktapur.webp', lat: 27.6710, lng: 85.4298, region: 'kathmandu' }, // Keep
+  { id: 'nagarkot', image: '/nagarkot.webp', lat: 27.7174, lng: 85.5046, region: 'kathmandu' }, // Keep
+  
+  // Pokhara & Annapurna (West) - Spread out for UX
+  { id: 'phewa', image: '/pokhara.webp', lat: 28.2000, lng: 83.9500, region: 'pokhara' }, // Slight South
+  { id: 'sarangkot', image: '/sarangkot.webp', lat: 28.2550, lng: 83.9350, region: 'pokhara' }, // Moved NW
+  { id: 'machhapuchhre', image: '/machhapuchhre.webp', lat: 28.5300, lng: 83.9493, region: 'pokhara' }, // Keep
+  { id: 'abc', image: '/annapurna.webp', lat: 28.5800, lng: 83.8500, region: 'pokhara' }, // Moved NW
+  { id: 'poon_hill', image: '/poon_hill.webp', lat: 28.3800, lng: 83.6500, region: 'pokhara' }, // Moved SW
+  { id: 'mardi_himal', image: '/mardi_himal.webp', lat: 28.4600, lng: 84.0000, region: 'pokhara' }, // Moved East
+  { id: 'mustang', image: '/mustang.webp', lat: 29.1866, lng: 83.9515, region: 'pokhara' }, // Keep
+
+  // Everest (East)
+  { id: 'ebc', image: '/everest.webp', lat: 28.0026, lng: 86.8528, region: 'everest' },
+
+  // Others
+  { id: 'chitwan', image: '/chitwan.webp', lat: 27.5291, lng: 84.3542, region: 'others' },
+  { id: 'lumbini', image: '/lumbini.webp', lat: 27.4840, lng: 83.2760, region: 'others' }, 
+  { id: 'langtang', image: '/langtang.webp', lat: 28.2128, lng: 85.6028, region: 'others' },
+];
+
+const regions = [
+  { id: 'kathmandu', label: 'Kathmandu Valley' },
+  { id: 'pokhara', label: 'Pokhara & Annapurna' },
+  { id: 'everest', label: 'Everest Region' },
+  { id: 'others', label: 'Other Highlights' },
 ];
 ---
 
-<section id="tours" class="py-20 bg-stone-50">
+<section id="tours" class="py-20 bg-brand-cream overflow-hidden">
   <div class="container mx-auto px-6">
-    <!-- 標題區域 -->
+    <!-- Title Section -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-blue mb-4">
         {t('itinerary.title')}
       </h2>
-      <p class="text-xl text-stone-600 mb-6">
+      <p class="text-xl text-brand-blue/80 mb-6">
         {t('itinerary.subtitle')}
       </p>
-      <p class="text-stone-600 max-w-3xl mx-auto leading-relaxed">
+      <p class="text-brand-blue/70 max-w-3xl mx-auto leading-relaxed">
         {t('itinerary.description')}
       </p>
     </div>
 
-    <!-- 卡片網格 - 預設顯示 -->
-    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto transition-opacity duration-300">
-      {destinations.map((dest) => (
-        <div 
-          class="destination-card relative overflow-hidden rounded-lg shadow-lg cursor-pointer group h-80 touch-manipulation"
-          data-destination={dest.id}
-          data-name={t(`itinerary.destinations.${dest.id}.name`)}
-          data-location={t(`itinerary.destinations.${dest.id}.location`)}
-          data-description={t(`itinerary.destinations.${dest.id}.description`)}
-          data-image={dest.image}
-          data-width={dest.width}
-          data-height={dest.height}
-        >
-          <img 
-            src={dest.image} 
-            alt={`${t(`itinerary.destinations.${dest.id}.name`)} - ${t(`itinerary.destinations.${dest.id}.location`)} | Oriental Express Travel Nepal`}
-            title={t(`itinerary.destinations.${dest.id}.name`)}
-            width={dest.width}
-            height={dest.height}
-            class="w-full h-full object-cover card-image"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
-            <h3 class="text-white text-2xl font-bold mb-1">
-              {t(`itinerary.destinations.${dest.id}.name`)}
+    <!-- Desktop View: Interactive Zoomed Map -->
+    <div id="desktop-map-view" class="hidden md:block relative transition-opacity duration-300">
+       <div class="relative w-full max-w-7xl mx-auto aspect-[2/1] bg-brand-cream/50 rounded-3xl border border-brand-gold/20 shadow-xl overflow-hidden backdrop-blur-sm p-4">
+        <!-- Zoomed ViewBox: showing only the country, larger -->
+        <svg viewBox="0 0 800.36517 454.28867" class="w-full h-full" id="nepal-map-itinerary">
+          
+          <!-- Detailed Zones -->
+          <g class="drop-shadow-sm">
+            {nepalZones.map((zone) => (
+              <path
+                id={zone.id}
+                d={zone.d}
+                fill="#F5F5F0"
+                stroke="#D4AF37"
+                stroke-width="1"
+                class="hover:fill-brand-gold/10 transition-colors duration-300"
+              >
+                <title>{zone.name}</title>
+              </path>
+            ))}
+          </g>
+
+          <!-- Dynamic Location Markers -->
+          {destinations.map((dest) => {
+            const { x, y } = project(dest.lat, dest.lng);
+            return (
+            <g class="map-node cursor-pointer group" 
+               data-id={dest.id} 
+               transform={`translate(${x}, ${y})`}>
+               
+               <!-- Invisible Hit Area (Larger) for stable hover -->
+               <circle r="12" fill="transparent" />
+
+               <!-- Visible Dot -->
+               <circle r="3" fill="#1A2B49" class="transition-all duration-300 group-hover:scale-150 group-hover:fill-brand-gold shadow-lg relative z-20 pointer-events-none" />
+               <!-- Ping Animation: Only active on hover -->
+               <circle r="8" stroke="#D4AF37" stroke-width="0.5" fill="none" class="hidden group-hover:block group-hover:animate-ping opacity-60 pointer-events-none" />
+            </g>
+            );
+          })}
+          
+        </svg>
+        <div class="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+          <p class="text-brand-blue/60 text-sm animate-bounce">{t('itinerary.clickHint') || '點擊地點查看詳情'}</p>
+        </div>
+        
+        <!-- Zoom Controls -->
+        <div class="absolute bottom-6 right-6 flex flex-col gap-2 z-30">
+            <button id="zoom-in" class="w-10 h-10 bg-white/90 hover:bg-brand-gold text-brand-blue hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-brand-gold/30 hover:scale-110" aria-label="Zoom In">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </button>
+            <button id="zoom-out" class="w-10 h-10 bg-white/90 hover:bg-brand-gold text-brand-blue hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-brand-gold/30 hover:scale-110" aria-label="Zoom Out">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+            </button>
+        </div>
+      </div>
+      
+      <!-- Tooltip (Fixed Position) -->
+      <div id="map-tooltip" class="fixed top-0 left-0 bg-brand-blue/90 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-2xl z-50 pointer-events-none backdrop-blur-sm border border-white/10 opacity-0 transition-opacity duration-150" style="will-change: top, left;">
+      </div>
+    </div>
+
+    <!-- Mobile View: Region List (Accordion style) -->
+    <div id="mobile-list-view" class="md:hidden space-y-6">
+      {regions.map((region) => (
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-brand-gold/10">
+          <div class="bg-brand-blue/5 p-4 border-b border-brand-gold/10 flex justify-between items-center">
+            <h3 class="font-serif text-xl font-bold text-brand-blue">
+               { region.id === 'kathmandu' ? '加德滿都谷地' : 
+                 region.id === 'pokhara' ? '博卡拉與安娜普納' : 
+                 region.id === 'everest' ? '聖母峰區域' : '其他精選' }
             </h3>
+            <span class="text-brand-gold text-sm font-bold">
+               {destinations.filter(d => d.region === region.id).length} 個景點
+            </span>
+          </div>
+          <div class="divide-y divide-gray-100">
+            {destinations.filter(d => d.region === region.id).map(dest => (
+               <div class="p-4 hover:bg-brand-cream/30 transition-colors cursor-pointer mobile-dest-item" 
+                    data-id={dest.id}>
+                  <div class="flex gap-4">
+                    <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-gray-200">
+                       <img src={dest.image} class="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                    <div>
+                       <h4 class="font-bold text-brand-blue text-lg">{t(`itinerary.destinations.${dest.id}.name`)}</h4>
+                       <p class="text-gray-500 text-sm line-clamp-2 mt-1">{t(`itinerary.destinations.${dest.id}.description`)}</p>
+                       <span class="text-brand-gold text-xs font-bold mt-2 inline-block">了解更多 &rarr;</span>
+                    </div>
+                  </div>
+               </div>
+            ))}
           </div>
         </div>
       ))}
@@ -123,9 +207,9 @@ const destinations = [
 
           <!-- 文字說明區域 -->
           <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center overflow-y-auto">
-            <h2 id="detail-name" class="text-3xl lg:text-4xl font-bold text-stone-900 mb-2">
+            <h2 id="detail-name" class="text-3xl lg:text-4xl font-serif font-bold text-brand-blue mb-2">
             </h2>
-            <p id="detail-location" class="text-amber-700 text-lg mb-6 font-medium">
+            <p id="detail-location" class="text-brand-gold text-lg mb-6 font-medium">
             </p>
             <p id="detail-description" class="text-stone-700 leading-relaxed text-lg">
             </p>
@@ -136,76 +220,364 @@ const destinations = [
   </div>
 </section>
 
+<!-- Embedding Data for JS access -->
+<div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
+<!-- Translations for JS -->
+<div id="translations-data" 
+     data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}
+     data-locations={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.location`) }), {}))}
+     data-descriptions={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.description`) }), {}))}
+     class="hidden">
+</div>
+
 <script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
   const cardsGrid = document.getElementById('cards-grid');
   const detailView = document.getElementById('detail-view');
   const backButton = document.getElementById('back-button');
-  const cards = document.querySelectorAll('.destination-card');
+  const mapNodes = document.querySelectorAll('.map-node');
   
   const detailImage = document.getElementById('detail-image') as HTMLImageElement;
   const detailName = document.getElementById('detail-name');
   const detailLocation = document.getElementById('detail-location');
   const detailDescription = document.getElementById('detail-description');
 
-  // 點擊卡片顯示詳細資訊
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      e.stopPropagation();
-      
-      const cardElement = card as HTMLElement;
-      
-      // 從 data attributes 取得資料
-      const name = cardElement.getAttribute('data-name') || '';
-      const location = cardElement.getAttribute('data-location') || '';
-      const description = cardElement.getAttribute('data-description') || '';
-      const image = cardElement.getAttribute('data-image') || '';
+  // Load Data
+  const destinationsElement = document.getElementById('destinations-data');
+  const translationsElement = document.getElementById('translations-data');
+  
+  const rawDestinations = destinationsElement ? JSON.parse(destinationsElement.dataset.destinations || '[]') : [];
+  const names = translationsElement ? JSON.parse(translationsElement.dataset.names || '{}') : {};
+  const locations = translationsElement ? JSON.parse(translationsElement.dataset.locations || '{}') : {};
+  const descriptions = translationsElement ? JSON.parse(translationsElement.dataset.descriptions || '{}') : {};
 
-      // 設定詳細視圖內容
+  // Map Animation
+  // Animate zones drawing in
+  gsap.fromTo("#nepal-map-itinerary path", 
+    { strokeDashoffset: 1000, strokeDasharray: 1000, fillOpacity: 0 },
+    { 
+      strokeDashoffset: 0, 
+      fillOpacity: 1, 
+      duration: 2.0, 
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#tours",
+        start: "top 70%"
+      }
+    }
+  );
+
+  gsap.fromTo(".map-node",
+    { scale: 0, opacity: 0 },
+    {
+      scale: 1,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.05,
+      delay: 1.5,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: "#tours",
+        start: "top 70%"
+      }
+    }
+  );
+
+  // Unified Open Logic
+  function openDetail(id: string) {
+      const dest = rawDestinations.find((d:any) => d.id === id);
+      if (!dest) return;
+
+      const name = names[id];
+      const location = locations[id];
+      const description = descriptions[id];
+      const image = dest.image;
+
+      // Populate Detail View
       if (detailImage) {
         detailImage.src = image;
-        detailImage.alt = `${name} - ${location} | Oriental Express Travel Nepal`;
+        detailImage.alt = `${name} - ${location}`;
         detailImage.title = name;
       }
       if (detailName) detailName.textContent = name;
       if (detailLocation) detailLocation.textContent = location;
       if (detailDescription) detailDescription.textContent = description;
 
-      if (cardsGrid) {
-        cardsGrid.style.opacity = '0';
-        setTimeout(() => {
-          cardsGrid.classList.add('hidden');
-          if (detailView) {
-            detailView.classList.remove('hidden');
-            void detailView.offsetHeight;
-            detailView.style.opacity = '1';
-            
-            const toursSection = document.getElementById('tours');
-            if (toursSection) {
-              toursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }
-        }, 300);
+      // Switch View
+      const desktopMap = document.getElementById('desktop-map-view');
+      const mobileList = document.getElementById('mobile-list-view'); // Specific ID for mobile list
+
+      // Hide both Map and List
+      if (desktopMap) {
+        gsap.to(desktopMap, { opacity: 0, display: 'none', duration: 0.3 });
       }
+      if (mobileList) {
+        gsap.to(mobileList, { opacity: 0, display: 'none', duration: 0.3 });
+      }
+
+      // Show Detail
+      if (detailView) {
+          detailView.classList.remove('hidden');
+          gsap.fromTo(detailView, 
+            { opacity: 0, y: 20, display: 'block' }, 
+            { opacity: 1, y: 0, display: 'block', duration: 0.5 }
+          );
+          document.getElementById('tours')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+  }
+
+  // Map Click Interaction
+  mapNodes.forEach(node => {
+    node.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = node.getAttribute('data-id');
+      if(id) openDetail(id);
     });
   });
 
-  // 返回按鈕
+  // Mobile List Click Interaction
+  const mobileItems = document.querySelectorAll('.mobile-dest-item');
+  mobileItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = item.getAttribute('data-id');
+      if(id) openDetail(id);
+    });
+  });
+
+  // Back Button Interaction
   if (backButton) {
     backButton.addEventListener('click', (e) => {
       e.stopPropagation();
       
+      const desktopMap = document.getElementById('desktop-map-view');
+      const mobileList = document.getElementById('mobile-list-view');
+
       if (detailView) {
-        detailView.style.opacity = '0';
-        setTimeout(() => {
-          detailView.classList.add('hidden');
-          if (cardsGrid) {
-            cardsGrid.classList.remove('hidden');
-            void cardsGrid.offsetHeight;
-            cardsGrid.style.opacity = '1';
+        gsap.to(detailView, {
+          opacity: 0,
+          y: 20,
+          duration: 0.3,
+          onComplete: () => {
+            detailView.classList.add('hidden');
+            detailView.style.display = 'none'; // Ensure it's hidden
+
+            // Restore View based on Screen Size
+            if (window.innerWidth >= 768) {
+               if(desktopMap) {
+                 desktopMap.style.display = 'block';
+                 gsap.to(desktopMap, { opacity: 1, duration: 0.5 });
+               }
+            } else {
+               if(mobileList) {
+                  mobileList.style.display = 'block';
+                  gsap.to(mobileList, { opacity: 1, duration: 0.5 });
+               }
+            }
           }
-        }, 300);
+        });
       }
     });
+  }
+
+  // Zoom & Pan State
+  let currentZoom = 1;
+  const maxZoom = 4;
+  const minZoom = 1;
+  const originalWidth = 800.36517;
+  const originalHeight = 454.28867;
+  
+  // Current ViewBox State (Start fully zoomed out)
+  let viewBoxX = 0;
+  let viewBoxY = 0;
+  let viewBoxW = originalWidth;
+  let viewBoxH = originalHeight;
+
+  const svgFn = document.getElementById('nepal-map-itinerary');
+  const zoomInBtn = document.getElementById('zoom-in');
+  const zoomOutBtn = document.getElementById('zoom-out');
+  const mapTooltip = document.getElementById('map-tooltip');
+
+  // Move Tooltip to Body to avoid stacking context issues with Fixed positioning
+  if (mapTooltip && mapTooltip.parentElement !== document.body) {
+      document.body.appendChild(mapTooltip);
+  }
+
+  // Helper: Apply ViewBox
+  function applyViewBox() {
+      if (svgFn) {
+        gsap.to(svgFn, {
+            attr: { viewBox: `${viewBoxX} ${viewBoxY} ${viewBoxW} ${viewBoxH}` },
+            duration: 0.5,
+            ease: "power2.out"
+        });
+      }
+      
+      // Update Markers Scale (Inverse Scale to keep constant size)
+      gsap.to('.map-node', {
+        scale: 1 / currentZoom,
+        transformOrigin: "center center", 
+        duration: 0.5
+      });
+  }
+
+  function updateZoom(newZoom: number) {
+    if (newZoom < minZoom) newZoom = minZoom;
+    if (newZoom > maxZoom) newZoom = maxZoom;
+
+    // 1. Calculate the center of the CURRENT view
+    const currentCenterX = viewBoxX + viewBoxW / 2;
+    const currentCenterY = viewBoxY + viewBoxH / 2;
+
+    // 2. Update Zoom Level
+    currentZoom = newZoom;
+
+    // 3. Calculate new Width/Height based on Zoom Factor
+    const newW = originalWidth / currentZoom;
+    const newH = originalHeight / currentZoom;
+
+    // 4. Calculate new X/Y to keep the same center
+    viewBoxX = currentCenterX - newW / 2;
+    viewBoxY = currentCenterY - newH / 2;
+    viewBoxW = newW;
+    viewBoxH = newH;
+    
+    // Hide Tooltip on Zoom
+    if (mapTooltip) mapTooltip.style.opacity = '0';
+
+    applyViewBox();
+  }
+
+  // Panning Logic (Draggable)
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  
+  if (svgFn) {
+      // Mouse Events
+      svgFn.addEventListener('mousedown', onDragStart);
+      svgFn.addEventListener('mousemove', onDragMove);
+      window.addEventListener('mouseup', onDragEnd);
+      
+      // Touch Events for Mobile
+      svgFn.addEventListener('touchstart', onDragStart, { passive: false });
+      svgFn.addEventListener('touchmove', onDragMove, { passive: false });
+      window.addEventListener('touchend', onDragEnd);
+      
+      // Prevent default drag behavior
+      svgFn.style.cursor = 'grab';
+  }
+
+  function onDragStart(e: MouseEvent | TouchEvent) {
+      // Hide Tooltip on Drag Start
+      if (mapTooltip) mapTooltip.style.opacity = '0';
+
+      // Don't drag if clicking a node
+      if ((e.target as HTMLElement).closest('.map-node')) return;
+      
+      isDragging = true;
+      if (svgFn) svgFn.style.cursor = 'grabbing';
+      
+      // Get pointer position
+      const clientX = (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
+      const clientY = (e as MouseEvent).clientY || (e as TouchEvent).touches[0].clientY;
+      
+      startX = clientX;
+      startY = clientY;
+  }
+  
+  // Hide Tooltip on Scroll (Global) - Prevents "floating" tag when page moves
+  window.addEventListener('scroll', () => {
+      if (mapTooltip) mapTooltip.style.opacity = '0';
+  }, { passive: true });
+
+  function onDragMove(e: MouseEvent | TouchEvent) {
+      if (!isDragging) return;
+      e.preventDefault(); // Prevent scrolling on touch
+
+      const clientX = (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
+      const clientY = (e as MouseEvent).clientY || (e as TouchEvent).touches[0].clientY;
+
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      // Convert Screen Delta to SVG User Unit Delta
+      const svgRect = svgFn!.getBoundingClientRect();
+      const scaleX = viewBoxW / svgRect.width;
+      const scaleY = viewBoxH / svgRect.height;
+
+      // Update viewBox coordinates
+      viewBoxX -= dx * scaleX;
+      viewBoxY -= dy * scaleY;
+
+      svgFn!.setAttribute('viewBox', `${viewBoxX} ${viewBoxY} ${viewBoxW} ${viewBoxH}`);
+
+      startX = clientX;
+      startY = clientY;
+  }
+
+  function onDragEnd() {
+      if (isDragging) {
+        isDragging = false;
+        if (svgFn) svgFn.style.cursor = 'grab';
+      }
+  }
+
+  // Tooltip Logic
+  mapNodes.forEach(node => {
+      node.addEventListener('mouseenter', (e) => {
+          const id = node.getAttribute('data-id');
+          if (id && mapTooltip) {
+              const name = names[id];
+              mapTooltip.textContent = name;
+              
+              // Position fixed to the node (Spot)
+              const rect = node.getBoundingClientRect();
+              const centerX = rect.left + rect.width / 2;
+              const topY = rect.top;
+              
+              mapTooltip.style.left = `${centerX}px`;
+              mapTooltip.style.top = `${topY}px`;
+              mapTooltip.style.transform = 'translate(-50%, -120%)'; // Center above
+              
+              mapTooltip.style.opacity = '1';
+          }
+      });
+
+      // Removed mousemove (User prefers fixed position on spot)
+      /*
+      node.addEventListener('mousemove', (e) => {
+          if (mapTooltip) {
+             const offset = 15;
+             mapTooltip.style.left = (e.clientX + offset) + 'px';
+             mapTooltip.style.top = (e.clientY + offset) + 'px';
+          }
+      });
+      */
+
+      node.addEventListener('mouseleave', () => {
+          if (mapTooltip) {
+              mapTooltip.style.opacity = '0';
+          }
+      });
+  });
+
+  // Buttons
+  if (zoomInBtn && zoomOutBtn) {
+      zoomInBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateZoom(currentZoom * 1.5);
+      });
+
+      zoomOutBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateZoom(currentZoom / 1.5);
+      });
   }
 </script>
 

@@ -70,7 +70,7 @@ export const ui = {
       companyLabel: '公司名稱',
       phone: '電話',
       email: '電子郵件',
-      address:'地址',
+      address: '地址',
       cta: '無論是行程規劃或任何疑問，我們都隨時為您服務',
     },
     itinerary: {
@@ -78,37 +78,98 @@ export const ui = {
       subtitle: '探索尼泊爾的絕美秘境',
       description: '以下是我們精選的熱門旅遊景點，每個地方都有其獨特的魅力與故事。讓這些美景成為您規劃行程的靈感來源，我們將為您量身打造專屬的旅程。',
       destinations: {
-        kathmandu: {
-          name: '加德滿都',
-          location: 'Kathmandu',
-          description: '尼泊爾的首都，充滿古老寺廟與文化遺產。這座城市融合了印度教與佛教文化，擁有眾多聯合國教科文組織世界遺產，包括杜巴廣場、猴廟等。漫步在塔美爾區的街道上，感受這座千年古城的獨特魅力。',
+        kathmandu_durbar: {
+          name: '加德滿都杜巴廣場',
+          location: 'Kathmandu Durbar Square',
+          description: '加德滿都谷地的古老皇宮廣場，是尼泊爾昔日王朝的權力中心。這裡匯集了精美的木雕建築、神廟與皇宮，雖然歷經地震滄桑，仍保留著濃厚的歷史韻味。活女神庫瑪麗(Kumari)也居住於此，見證著這座城市的輝煌歷史。',
         },
-        pokhara: {
-          name: '博卡拉',
-          location: 'Pokhara',
-          description: '尼泊爾的冒險之都，坐落在費瓦湖畔，可以欣賞到壯麗的安娜普納山脈。這裡是眾多健行路線的起點，也是體驗滑翔傘的絕佳地點。在湖畔欣賞日出時的魚尾峰倒影，是最令人難忘的體驗。',
+        boudhanath: {
+          name: '博達哈大佛塔',
+          location: 'Boudhanath Stupa',
+          description: '世界上最大的佛塔之一，也是藏傳佛教在尼泊爾的重要聖地。巨大的白色圓頂與繪有慧眼的金色塔尖，象徵著佛陀的智慧與慈悲。每天都有無數信徒與遊客在此轉經繞塔，感受莊嚴而寧靜的宗教氛圍。',
         },
-        annapurna: {
-          name: '安娜普納',
-          location: 'Annapurna',
-          description: '世界十大高峰之一，安娜普納環線是全球最受歡迎的健行路線之一。沿途可以欣賞到多樣的地形景觀，從亞熱帶森林到高山草原，體驗不同的文化村落，感受喜馬拉雅山脈的壯闊之美。',
+        pashupatinath: {
+          name: '帕殊帕提那神廟',
+          location: 'Pashupatinath Temple',
+          description: '尼泊爾最神聖的濕婆神廟，位於巴格馬蒂河畔。這裡是印度教徒舉行火葬儀式的地方，以此送別親人回歸自然。神廟建築宏偉，也是苦行僧聚集之地，展現了尼泊爾生死觀與宗教信仰的獨特面貌。',
+        },
+        bhaktapur: {
+          name: '巴德崗杜巴廣場',
+          location: 'Bhaktapur Durbar Square',
+          description: '被譽為「露天博物館」的巴德崗，是加德滿都谷地保存最完整的古城。紅磚建築、精緻木雕與55窗宮，展現了尼瓦爾工藝的極致。這裡生活步調悠閒，彷彿時光倒流至中古世紀。',
+        },
+        phewa: {
+          name: '費瓦湖',
+          location: 'Phewa Lake',
+          description: '博卡拉的靈魂所在，湖水倒映著壯麗的魚尾峰。泛舟湖上，享受寧靜的湖光山色，或參觀湖心的巴拉希神廟，是博卡拉最愜意的體驗。傍晚時分，湖畔的日落更是美不勝收。',
+        },
+        sarangkot: {
+          name: '薩朗科',
+          location: 'Sarangkot',
+          description: '博卡拉最佳的日出觀賞點。清晨時分，金色的陽光灑落在安娜普納群峰與魚尾峰上，景色壯麗震撼。這裡也是體驗滑翔傘的熱門起飛點，讓您像鳥兒一樣俯瞰博卡拉美景。',
+        },
+        machhapuchhre: {
+          name: '魚尾峰',
+          location: 'Machhapuchhre',
+          description: '因峰頂形狀酷似魚尾而得名，是尼泊爾最美麗的山峰之一。這座聖山至今禁止攀登，保持著神秘與純淨。無論在博卡拉的哪個角落，都能仰望這座神聖的山峰。',
         },
         chitwan: {
           name: '奇旺國家公園',
-          location: 'Chitwan',
-          description: '尼泊爾第一座國家公園，是觀賞野生動物的天堂。您可以騎大象穿越叢林，尋找獨角犀牛、孟加拉虎的蹤跡,或是在河邊觀賞鱷魚。這裡豐富的生態系統，讓您體驗與大自然最親密的接觸。',
+          location: 'Chitwan National Park',
+          description: '世界自然遺產，是珍稀野生動物的庇護所。您可以騎大象或搭乘吉普車穿越叢林，尋找獨角犀牛、孟加拉虎與多種鳥類的蹤跡。夜晚的塔魯族文化表演，更展現了當地濃厚的民族風情。',
         },
-        everest: {
+        nagarkot: {
+          name: '納加闊特',
+          location: 'Nagarkot',
+          description: '加德滿都谷地邊緣的知名山城，以觀賞喜馬拉雅山脈全景而聞名。如果天氣晴朗，甚至可以遠眺聖母峰。這裡的日出與日落景色絕美，是享受山林寧靜與清新空氣的絕佳去處。',
+        },
+        ebc: {
           name: '聖母峰基地營',
-          location: 'Everest Base Camp',
-          description: '世界之巔的朝聖之旅，前往海拔 5,364 公尺的聖母峰基地營。這趟健行將帶您穿越雪巴人的村落，欣賞壯麗的冰川與高峰，體驗高山文化。站在世界最高峰腳下，感受人類挑戰極限的精神。',
+          location: 'Everest Base Camp - EBC',
+          description: '登山者的終極夢想，通往世界最高峰的門戶。這趟健行不僅是體能的挑戰，更是心靈的洗禮。沿途經過雪巴村落、騰波切修道院與昆布冰川，親眼見證地球之巔的壯闊。',
+        },
+        abc: {
+          name: '安娜普納基地營',
+          location: 'Annapurna Base Camp - ABC',
+          description: '走進安娜普納群峰的懷抱，360度被雪山環繞的震撼體驗。相比EBC，這條路線路程較短且風景多樣，從梯田、森林到冰川，是體驗喜馬拉雅高山魅力的經典路線。',
+        },
+        poon_hill: {
+          name: '潘恩山',
+          location: 'Poon Hill',
+          description: '著名的短途健行路線，以欣賞道拉吉里峰與安娜普納群峰的日出而聞名。當第一道曙光照亮雪白山頭，展現出「黃金雪山」的奇景，絕對讓人永生難忘。',
+        },
+        thamel: {
+          name: '塔美爾',
+          location: 'Thamel',
+          description: '加德滿都的旅遊中心，匯集了各式餐廳、酒吧、登山用品店與手工藝品店。這裡充滿異國情調與熱鬧氛圍，是採買紀念品、享受美食與結識來自世界各地旅人的好地方。',
+        },
+        lumbini: {
+          name: '藍毗尼',
+          location: 'Lumbini',
+          description: '佛陀的誕生地，全世界佛教徒心目中的聖地。摩耶夫人廟與阿育王石柱見證了歷史，園區內各國風格的寺廟展現了佛教藝術的多樣性，充滿了寧靜與祥和的能量。',
+        },
+        langtang: {
+          name: '朗塘谷',
+          location: 'Langtang',
+          description: '距離加德滿都最近的高山健行路線，被稱為「世界上最美麗的谷地」之一。這裡保留了純樸的藏族文化，擁有壯麗的冰川與山谷景色，適合喜愛清幽與文化的健行者。',
+        },
+        mardi_himal: {
+          name: '馬迪峰',
+          location: 'Mardi Himal',
+          description: '近年來新興的熱門健行路線，能近距離仰望魚尾峰。這條路線沿著山脊而行，視野開闊，人潮相對較少，能更安靜地享受被雪山與雲海包圍的感動。',
+        },
+        mustang: {
+          name: '慕斯塘',
+          location: 'Mustang',
+          description: '被稱為「最後的禁地」，保留了古老的藏傳佛教文化與獨特的荒漠地貌。這裡曾經是獨立的王國，擁有神祕的洞穴與古老寺廟，彷彿穿越時空，進入了一個遺世獨立的秘境。',
         },
       },
       button: {
         close: '返回',
-      }
+      },
+      clickHint: '點擊景點了解更多',
     },
-    faq:[
+    faq: [
       {
         question: "尼泊爾的最佳旅遊季節是什麼時候",
         answer: "尼泊爾的最佳旅遊季節通常是春季（3月至5月）和秋季（9月至11月）。這兩個季節天氣晴朗，適合進行戶外活動和健行。"
@@ -195,7 +256,7 @@ export const ui = {
       companyLabel: 'Company Name',
       phone: 'Phone',
       email: 'Email',
-      address:'Address',
+      address: 'Address',
       cta: 'Whether it\'s planning your trip or answering questions, we\'re here to help',
     },
     itinerary: {
@@ -203,57 +264,118 @@ export const ui = {
       subtitle: 'Discover Nepal\'s Hidden Gems',
       description: 'Here are our handpicked popular travel destinations, each with its unique charm and story. Let these beautiful landscapes inspire your travel plans, and we will craft a personalized journey just for you.',
       destinations: {
-        kathmandu: {
-          name: 'Kathmandu',
-          location: 'Kathmandu',
-          description: 'The capital of Nepal, filled with ancient temples and cultural heritage. This city blends Hindu and Buddhist cultures, featuring numerous UNESCO World Heritage sites including Durbar Square and the Monkey Temple. Stroll through the streets of Thamel and feel the unique charm of this millennium-old city.',
+        kathmandu_durbar: {
+          name: 'Kathmandu Durbar Square',
+          location: 'Kathmandu Durbar Square',
+          description: 'The ancient royal palace square of the Kathmandu Valley, once the center of power. It houses exquisite wood carvings, temples, and palaces. Despite earthquake damage, it retains its historical charm. The Living Goddess Kumari also resides here, witnessing the city\'s glorious history.',
         },
-        pokhara: {
-          name: 'Pokhara',
-          location: 'Pokhara',
-          description: 'Nepal\'s adventure capital, situated by Phewa Lake with stunning views of the Annapurna range. This is the starting point for numerous trekking routes and an ideal spot for paragliding. Watching the reflection of Machhapuchhre at sunrise from the lakeside is an unforgettable experience.',
+        boudhanath: {
+          name: 'Boudhanath Stupa',
+          location: 'Boudhanath Stupa',
+          description: 'One of the largest stupas in the world and a major sanctuary for Tibetan Buddhism in Nepal. Its massive white dome and golden spire painted with wisdom eyes symbolize the Buddha\'s compassion. Countless pilgrims and visitors circumambulate the stupa daily.',
         },
-        annapurna: {
-          name: 'Annapurna',
-          location: 'Annapurna',
-          description: 'One of the world\'s ten highest peaks, the Annapurna Circuit is among the most popular trekking routes globally. Along the way, you can admire diverse landscapes from subtropical forests to alpine meadows, experience different cultural villages, and feel the grandeur of the Himalayas.',
+        pashupatinath: {
+          name: 'Pashupatinath Temple',
+          location: 'Pashupatinath Temple',
+          description: 'The most sacred Shiva temple in Nepal, located on the banks of the Bagmati River. It is where Hindus perform cremation ceremonies to send off their loved ones. The majestic temple is also a gathering place for Sadhus, showcasing unique aspects of Nepalese faith.',
+        },
+        bhaktapur: {
+          name: 'Bhaktapur Durbar Square',
+          location: 'Bhaktapur Durbar Square',
+          description: 'Known as an "open-air museum," Bhaktapur is the most well-preserved ancient city in the valley. With its red brick architecture, exquisite wood carvings, and the 55-Window Palace, it displays the pinnacle of Newari craftsmanship. The relaxed pace here feels like stepping back in time.',
+        },
+        phewa: {
+          name: 'Phewa Lake',
+          location: 'Phewa Lake',
+          description: 'The soul of Pokhara, capturing the reflection of the magnificent Mt. Machhapuchhre. Boating on the lake or visiting the Barahi Temple in its center is a relaxing experience. The sunset views by the lakeside are breathtaking.',
+        },
+        sarangkot: {
+          name: 'Sarangkot',
+          location: 'Sarangkot',
+          description: 'The best sunrise viewpoint in Pokhara. At dawn, golden sunlight illuminates the Annapurna range and Machhapuchhre, creating a stunning scene. It is also a popular take-off point for paragliding, offering a bird\'s-eye view of Pokhara.',
+        },
+        machhapuchhre: {
+          name: 'Machhapuchhre',
+          location: 'Machhapuchhre',
+          description: 'Named for its fishtail-shaped summit, it is one of Nepal\'s most beautiful peaks. This sacred mountain remains unclimbed to preserve its purity. Its majestic presence dominates the skyline of Pokhara.',
         },
         chitwan: {
           name: 'Chitwan National Park',
-          location: 'Chitwan',
-          description: 'Nepal\'s first national park, a paradise for wildlife watching. You can ride elephants through the jungle, search for one-horned rhinos and Bengal tigers, or watch crocodiles by the river. The rich ecosystem here offers the most intimate contact with nature.',
+          location: 'Chitwan National Park',
+          description: 'A World Heritage site and sanctuary for rare wildlife. You can explore the jungle by jeep or elephant to spot one-horned rhinos, Bengal tigers, and various bird species. Cultural performances by the Tharu people showcase rich local traditions.',
         },
-        everest: {
-          name: 'Everest Base Camp',
-          location: 'Everest Base Camp',
-          description: 'A pilgrimage to the top of the world, trekking to Everest Base Camp at 5,364 meters. This journey takes you through Sherpa villages, past magnificent glaciers and peaks, experiencing high-altitude culture. Standing at the foot of the world\'s highest mountain, feel the spirit of human perseverance.',
+        nagarkot: {
+          name: 'Nagarkot',
+          location: 'Nagarkot',
+          description: 'Famous for its panoramic views of the Himalayas from the edge of the Kathmandu Valley. On clear days, you can even see Mt. Everest. It is a perfect getaway for sunrise and sunset views, fresh mountain air, and tranquility.',
+        },
+        ebc: {
+          name: 'Everest Base Camp - EBC',
+          location: 'Everest Base Camp - EBC',
+          description: 'The ultimate dream for trekkers, the gateway to the world\'s highest peak. This journey is a test of endurance and a spiritual experience, passing through Sherpa villages, Tengboche Monastery, and the Khumbu Glacier to witness the top of the world.',
+        },
+        abc: {
+          name: 'Annapurna Base Camp - ABC',
+          location: 'Annapurna Base Camp - ABC',
+          description: 'Walk into the heart of the Annapurna sanctuary, a 360-degree amphitheater of snow-capped peaks. Compared to EBC, this trek is shorter and offers diverse scenery, from terraced fields and forests to glaciers, capturing the essence of the Himalayas.',
+        },
+        poon_hill: {
+          name: 'Poon Hill',
+          location: 'Poon Hill',
+          description: 'A famous short trek renowned for its sunrise views over Dhaulagiri and the Annapurna range. Watching the first light turn the snowy peaks into gold is an unforgettable spectacle.',
+        },
+        thamel: {
+          name: 'Thamel',
+          location: 'Thamel',
+          description: 'The tourist hub of Kathmandu, bustling with restaurants, bars, trekking shops, and handicraft stores. It has a vibrant, exotic atmosphere, perfect for shopping for souvenirs, enjoying food, and meeting travelers from around the globe.',
+        },
+        lumbini: {
+          name: 'Lumbini',
+          location: 'Lumbini',
+          description: 'The birthplace of Lord Buddha and a sacred site for Buddhists worldwide. The Maya Devi Temple and Ashoka Pillar bear witness to history, while monasteries from various nations showcase diverse Buddhist art in a peaceful setting.',
+        },
+        langtang: {
+          name: 'Langtang Valley',
+          location: 'Langtang',
+          description: 'One of the most beautiful valleys in the world, and the closest high-altitude trek to Kathmandu. It preserves authentic Tibetan culture and offers stunning glacier and valley views, ideal for those seeking tranquility and culture.',
+        },
+        mardi_himal: {
+          name: 'Mardi Himal',
+          location: 'Mardi Himal',
+          description: 'A rapidly growing trekking route offering close-up views of Machhapuchhre. The trail follows a ridge with open vistas and fewer crowds, allowing you to quietly enjoy being surrounded by snow-capped mountains and sea of clouds.',
+        },
+        mustang: {
+          name: 'Mustang',
+          location: 'Mustang',
+          description: 'Known as the "Last Forbidden Kingdom," preserving ancient Tibetan Buddhist culture and unique desert landscapes. Once an independent kingdom, its mysterious caves and ancient monasteries feel like a journey back in time to a hidden world.',
         },
       },
       button: {
         close: 'Back',
-      }
+      },
+      clickHint: 'Click to learn more',
     },
     faq: [
-    {
-      question: "What is the best time to visit Nepal",
-      answer: "The best time to visit Nepal is typically during spring (March to May) and autumn (September to November). These seasons offer clear weather, making them ideal for outdoor activities and trekking."
-    },
-    {
-      question: "How much does a trip typically cost",
-      answer: "Trip costs vary depending on the duration, accommodation standards, and activities included. Please contact us for a customized quote tailored to your needs."
-    },
-    {
-      question: "What services are included in your trips",
-      answer: "Our trips typically include accommodation, transportation, guide services, and some meals. If you already have a planned itinerary, we can provide customized services based on your needs. For first-time visitors to Nepal, we also offer comprehensive pre-trip planning services. If you need assistance with flight bookings, visa inquiries, or other related matters, we're happy to help."
-    },
-    {
-      question: "How can I contact you",
-      answer: "You can reach us via WhatsApp or email. We'll respond to your inquiries promptly and help you plan your ideal Nepal adventure. For Chinese-language support, we also have Chinese-speaking staff available to assist you."
-    },
-    {
-      question: "How do I make a payment",
-      answer: "We currently accept payment via bank transfer and also offer flexible payment options. Travelers may choose to pay in cash upon arrival in Nepal. If you select the cash payment option, we will not send bank transfer details to ensure the security of your funds. Please also remain cautious of any suspicious or fraudulent messages. If you have any questions regarding payment methods, feel free to contact us."
-    }
-  ]
+      {
+        question: "What is the best time to visit Nepal",
+        answer: "The best time to visit Nepal is typically during spring (March to May) and autumn (September to November). These seasons offer clear weather, making them ideal for outdoor activities and trekking."
+      },
+      {
+        question: "How much does a trip typically cost",
+        answer: "Trip costs vary depending on the duration, accommodation standards, and activities included. Please contact us for a customized quote tailored to your needs."
+      },
+      {
+        question: "What services are included in your trips",
+        answer: "Our trips typically include accommodation, transportation, guide services, and some meals. If you already have a planned itinerary, we can provide customized services based on your needs. For first-time visitors to Nepal, we also offer comprehensive pre-trip planning services. If you need assistance with flight bookings, visa inquiries, or other related matters, we're happy to help."
+      },
+      {
+        question: "How can I contact you",
+        answer: "You can reach us via WhatsApp or email. We'll respond to your inquiries promptly and help you plan your ideal Nepal adventure. For Chinese-language support, we also have Chinese-speaking staff available to assist you."
+      },
+      {
+        question: "How do I make a payment",
+        answer: "We currently accept payment via bank transfer and also offer flexible payment options. Travelers may choose to pay in cash upon arrival in Nepal. If you select the cash payment option, we will not send bank transfer details to ensure the security of your funds. Please also remain cautious of any suspicious or fraudulent messages. If you have any questions regarding payment methods, feel free to contact us."
+      }
+    ]
   },
 } as const;
