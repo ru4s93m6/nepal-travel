@@ -353,7 +353,7 @@ export const ui = {
       button: {
         close: 'Back',
       },
-      clickHint: 'Click to learn more',
+      clickHint: 'Click spots to learn more',
     },
     faq: [
       {
