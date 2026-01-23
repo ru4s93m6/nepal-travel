@@ -80,7 +80,22 @@ const regions = [
         <!-- Zoomed ViewBox: showing only the country, larger -->
         <svg viewBox="0 0 800.36517 454.28867" class="w-full h-full" id="nepal-map-itinerary">
           
-          <!-- Detailed Zones -->
+          <!-- Background Border Sealer (Thicker stroke to fill gaps) -->
+          <g class="pointer-events-none">
+            {nepalZones.map((zone) => (
+              <path
+                d={zone.d}
+                fill="none"
+                stroke="#D4AF37"
+                stroke-width="3"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                class="opacity-100"
+              />
+            ))}
+          </g>
+
+          <!-- Detailed Zones (Interactive Top Layer) -->
           <g class="drop-shadow-sm">
             {nepalZones.map((zone) => (
               <path
@@ -89,6 +104,8 @@ const regions = [
                 fill="#F5F5F0"
                 stroke="#D4AF37"
                 stroke-width="1"
+                stroke-linejoin="round"
+                stroke-linecap="round"
                 class="hover:fill-brand-gold/10 transition-colors duration-300"
               >
                 <title>{zone.name}</title>
