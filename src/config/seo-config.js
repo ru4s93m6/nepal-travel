@@ -3,13 +3,13 @@
 // ============================================
 export const homePageSEO = {
   'zh-tw': {
-    title: 'Oriental Express Travel - 尼泊爾在地旅行社 | 20年服務經驗',
-    description: '深耕尼泊爾超過20年的在地旅行社。位於加德滿都Thamel區,提供聖母峰基地營、安娜普納環線等專業健行行程，客製化家庭旅遊與多語言嚮導服務。讓我們帶您探索喜馬拉雅山的壯麗美景。',
+    title: '尼泊爾旅遊推薦：在地旅行社 Oriental Express | 喜馬拉雅山健行與私人包團專家',
+    description: '我們是在地深耕 20 年的旅行社，致力於帶您像當地人一樣深度體驗尼泊爾。不論是加德滿都的世界遺產巡禮、博卡拉的費瓦湖風光，或是挑戰安納普納等經典健行路段，我們提供不受人數與日期限制的私人包團服務，讓您的旅程保有最大的靈活性。歡迎與我們聯繫，一起規劃您的理想行程。',
     keywords: '尼泊爾旅遊,Nepal travel,聖母峰,Everest,安娜普納,Annapurna,加德滿都,Kathmandu,博卡拉,Pokhara,尼泊爾健行,Nepal trekking,喜馬拉雅山,Himalayas,在地導遊,local guide,Oriental Express,Thamel',
   },
   'en': {
-    title: 'Oriental Express Travel - Nepal Travel Agency | 20+ Years Local Experience',
-    description: 'Leading Nepal travel agency with over 20 years of local expertise in Thamel, Kathmandu. Offering Everest Base Camp, Annapurna Circuit treks, customized family tours with multilingual guides. Explore the magnificent Himalayas with us.',
+    title: 'Nepal Travel & Trekking Agency | Himalaya Tour Expert - Oriental Express',
+    description: `With 20 years of local expertise, we help you experience the authentic beauty and culture of Nepal. Whether you're exploring Kathmandu's heritage sites, relaxing by Phewa Lake in Pokhara, or trekking the Annapurna Circuit, our private tours offer full flexibility with no date or group size limits. Let us handle the details while you enjoy the journey. Contact us to start planning!`,
     keywords: 'Nepal travel,Everest trekking,Annapurna Circuit,Kathmandu tours,Pokhara,Himalayas,local guide,Nepal travel agency,trekking Nepal,Chitwan,Oriental Express,Thamel',
   }
 };
