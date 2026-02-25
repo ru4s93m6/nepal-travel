@@ -3,14 +3,14 @@
 // ============================================
 export const homePageSEO = {
   'zh-tw': {
-    title: '尼泊爾旅遊推薦：在地旅行社 Oriental Express | 喜馬拉雅山健行與私人包團專家',
-    description: '我們是在地深耕 20 年的旅行社，致力於帶您像當地人一樣深度體驗尼泊爾。不論是加德滿都的世界遺產巡禮、博卡拉的費瓦湖風光，或是挑戰安納普納等經典健行路段，我們提供不受人數與日期限制的私人包團服務，讓您的旅程保有最大的靈活性。歡迎與我們聯繫，一起規劃您的理想行程。',
-    keywords: '尼泊爾旅遊,Nepal travel,聖母峰,Everest,安娜普納,Annapurna,加德滿都,Kathmandu,博卡拉,Pokhara,尼泊爾健行,Nepal trekking,喜馬拉雅山,Himalayas,在地導遊,local guide,Oriental Express,Thamel',
+    title: '尼泊爾私人導遊與健行 | Oriental Express Travel 在地團隊・彈性包團',
+    description: '想前往尼泊爾健行或深度旅行？Oriental Express Travel是在地經營 20 年的團隊，提供彈性的私人包團服務，不限人數與出發日期。無論是安納普納健行、聖母峰基地營，或加德滿都文化導覽，我們都能依您的步調客製行程，安心探索尼泊爾的美麗。',
+    keywords: '尼泊爾旅遊,尼泊爾健行,私人包團,在地導遊,聖母峰基地營,安納普納健行,加德滿都旅遊,Oriental Express Travel,Nepal Trekking',
   },
   'en': {
-    title: 'Nepal Travel & Trekking Agency | Himalaya Tour Expert - Oriental Express',
-    description: `With 20 years of local expertise, we help you experience the authentic beauty and culture of Nepal. Whether you're exploring Kathmandu's heritage sites, relaxing by Phewa Lake in Pokhara, or trekking the Annapurna Circuit, our private tours offer full flexibility with no date or group size limits. Let us handle the details while you enjoy the journey. Contact us to start planning!`,
-    keywords: 'Nepal travel,Everest trekking,Annapurna Circuit,Kathmandu tours,Pokhara,Himalayas,local guide,Nepal travel agency,trekking Nepal,Chitwan,Oriental Express,Thamel',
+    title: 'Local Nepal Private Tours & Trekking | Oriental Express Travel',
+    description: 'Travel Nepal with Oriental Express, a locally based team with over 20 years of experience. We offer private trekking and custom tours with flexible dates and group sizes — from Annapurna and Everest Base Camp treks to cultural tours in Kathmandu. Plan your journey at your own pace with trusted local guides.',
+    keywords: 'Nepal travel agency,Nepal trekking,private tours Nepal,local guide Nepal,Annapurna Base Camp,Everest Base Camp,Kathmandu tours,Oriental Express Travel',
   }
 };
 
