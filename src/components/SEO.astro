@@ -25,15 +25,23 @@ const {
   modifiedTime,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || url);
+const canonicalPath = Astro.url.pathname.endsWith('/') 
+  ? Astro.url.pathname 
+  : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(canonicalPath, Astro.site || url);
+
 const ogImageURL = new URL(image, Astro.site || url);
 
 const latitude = "27.715362";
 const longitude = "85.312726";
 
 // Alternate language URLs
-const zhtwURL = new URL('/zh-tw' + Astro.url.pathname.replace('/en', ''), Astro.site || url);
-const enURL = new URL('/en' + Astro.url.pathname.replace('/zh-tw', ''), Astro.site || url);
+let rawPath = Astro.url.pathname.replace(/^\/(zh-tw|en)/, '');
+if (!rawPath.startsWith('/')) rawPath = '/' + rawPath;
+if (!rawPath.endsWith('/')) rawPath = rawPath + '/';
+
+const zhtwURL = new URL(`/zh-tw${rawPath}`.replace(/\/+/g, '/'), Astro.site || url);
+const enURL = new URL(`/en${rawPath}`.replace(/\/+/g, '/'), Astro.site || url);
 ---
 
 <!-- Primary Meta Tags -->
