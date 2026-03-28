@@ -83,6 +83,11 @@ export const ui = {
           location: 'Kathmandu Durbar Square',
           description: '位於加德滿都谷地的古老皇宮廣場，曾是尼泊爾王朝的權力中心。這裡匯集精美的木雕建築、神廟與宮殿，儘管歷經地震洗禮，仍保有濃厚的歷史韻味。活女神庫瑪麗（Kumari）也居住於此，靜靜見證著城市的興衰。',
         },
+        patan_durbar: {
+          name: '帕坦杜巴廣場',
+          location: 'Patan Durbar Square',
+          description: '位於加德滿都谷地的帕坦古城，被譽為「藝術之城」。這座廣場以其精緻的紐瓦麗（Newari）木雕與金屬工藝聞名於世。漫步在古老的宮殿、神廟與庭院之間，彷彿走進了尼泊爾最輝煌的工匠歷史中。這裡也是體驗當地傳統藝術與悠閒氛圍的絕佳之地。',
+        },
         boudhanath: {
           name: '博達哈大佛塔',
           location: 'Boudhanath Stupa',
@@ -268,6 +273,11 @@ export const ui = {
           name: 'Kathmandu Durbar Square',
           location: 'Kathmandu Durbar Square',
           description: 'Once the royal heart of Nepal, this historic palace complex showcases exquisite wood carvings, temples, and courtyards. Despite past earthquakes, it remains rich in heritage and cultural significance. The living goddess Kumari still resides here, quietly witnessing the city’s history unfold.',
+        },
+        patan_durbar: {
+          name: 'Patan Durbar Square',
+          location: 'Patan Durbar Square',
+          description: 'Located in the ancient city of Patan, often called the "City of Fine Arts." This square is world-renowned for its exquisite Newari woodcarvings and metal craftsmanship. Strolling among the ancient palaces, temples, and courtyards feels like stepping into the golden age of Nepalese artisanship. It is the perfect place to experience traditional art and soak in a vibrant, artistic atmosphere.',
         },
         boudhanath: {
           name: 'Boudhanath Stupa',
