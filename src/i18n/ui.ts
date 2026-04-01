@@ -77,6 +77,13 @@ export const ui = {
       title: '熱門景點',
       subtitle: '探索尼泊爾的絕美秘境',
       description: '以下為我們精選的熱門旅遊景點，每個地方都擁有獨特的魅力與故事。讓這些風景成為您規劃旅程的靈感，我們也能為您量身打造專屬行程。',
+      destinationsCount: '個景點',
+      regions: {
+        kathmandu: '加德滿都谷地',
+        pokhara: '博卡拉與安娜普納',
+        everest: '聖母峰區域',
+        others: '其他精選',
+      },
       destinations: {
         kathmandu_durbar: {
           name: '加德滿都杜巴廣場',
@@ -268,6 +275,13 @@ export const ui = {
       title: 'Top Destinations',
       subtitle: 'Discover the Hidden Wonders of Nepal',
       description: 'Explore our handpicked selection of Nepal’s most captivating destinations—each with its own story and charm. Let these remarkable places inspire your journey, while we craft a personalized experience just for you.',
+      destinationsCount: 'Destinations',
+      regions: {
+        kathmandu: 'Kathmandu Valley',
+        pokhara: 'Pokhara & Annapurna',
+        everest: 'Everest Region',
+        others: 'Other Highlights',
+      },
       destinations: {
         kathmandu_durbar: {
           name: 'Kathmandu Durbar Square',

@@ -179,12 +179,10 @@ const regions = [
         <div class="bg-white rounded-xl shadow-md overflow-hidden border border-brand-gold/10">
           <div class="bg-brand-blue/5 p-4 border-b border-brand-gold/10 flex justify-between items-center">
             <h3 class="font-serif text-xl font-bold text-brand-blue">
-               { region.id === 'kathmandu' ? '加德滿都谷地' : 
-                 region.id === 'pokhara' ? '博卡拉與安娜普納' : 
-                 region.id === 'everest' ? '聖母峰區域' : '其他精選' }
+               {t(`itinerary.regions.${region.id}` as any)}
             </h3>
             <span class="text-brand-gold text-sm font-bold">
-               {destinations.filter(d => d.region === region.id).length} 個景點
+               {destinations.filter(d => d.region === region.id).length} {t('itinerary.destinationsCount')}
             </span>
           </div>
           <div class="divide-y divide-gray-100">
@@ -198,7 +196,7 @@ const regions = [
                     <div>
                        <h4 class="font-bold text-brand-blue text-lg">{t(`itinerary.destinations.${dest.id}.name`)}</h4>
                        <p class="text-gray-500 text-sm line-clamp-2 mt-1">{t(`itinerary.destinations.${dest.id}.description`)}</p>
-                       <span class="text-brand-gold text-xs font-bold mt-2 inline-block">了解更多 &rarr;</span>
+                       <span class="text-brand-gold text-xs font-bold mt-2 inline-block">{t('button.learnMore')} &rarr;</span>
                     </div>
                   </div>
                </div>
