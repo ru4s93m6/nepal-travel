@@ -16,7 +16,7 @@ export const ui = {
     },
     home: {
       title: '喜馬拉雅山腳下的神秘國度',
-      subtitle: '讓我們一起探索尼泊爾的千年文化之美',
+      subtitle: '深耕20年的尼泊爾當地旅行社，帶您探索千年文化之美',
     },
     button: {
       learnMore: '了解更多',
