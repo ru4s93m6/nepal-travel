@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { nepalZones } from "../data/nepal-map-data";
+import { getImage } from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -16,6 +17,8 @@ const MAX_LAT = 30.431317;
 const LON_SPAN = MAX_LON - MIN_LON;
 const LAT_SPAN = MAX_LAT - MIN_LAT;
 
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.webp');
+
 // Helper to project Lat/Lon to SVG Pixels
 function project(lat: number, lng: number) {
   const x = ((lng - MIN_LON) / LON_SPAN) * MAP_WIDTH;
@@ -24,7 +27,7 @@ function project(lat: number, lng: number) {
 }
 
 // Destination information with SEO-friendly image attributes and Lat/Lon
-const destinations = [
+const rawDestinations = [
   // Kathmandu Valley (Central) - Spread out for UX
   { id: 'kathmandu_durbar', image: '/kathmandu.webp', lat: 27.6950, lng: 85.2900, region: 'kathmandu' }, // Moved SE
   { id: 'patan_durbar', image: '/patan.webp', lat: 27.6727, lng: 85.3253, region: 'kathmandu' },
@@ -51,6 +54,22 @@ const destinations = [
   { id: 'lumbini', image: '/lumbini.webp', lat: 27.4840, lng: 83.2760, region: 'others' }, 
   { id: 'langtang', image: '/langtang.webp', lat: 28.2128, lng: 85.6028, region: 'others' },
 ];
+
+const destinations = await Promise.all(rawDestinations.map(async (dest) => {
+  const imagePath = `/src/assets${dest.image}`;
+  let mobileSrc = dest.image;
+  let desktopSrc = dest.image;
+  
+  if (images[imagePath]) {
+    const imgModule = await images[imagePath]();
+    const mobileImg = await getImage({ src: imgModule.default, width: 200, format: 'webp' });
+    const desktopImg = await getImage({ src: imgModule.default, width: 800, format: 'webp' });
+    mobileSrc = mobileImg.src;
+    desktopSrc = desktopImg.src;
+  }
+  
+  return { ...dest, mobileSrc, desktopSrc };
+}));
 
 const regions = [
   { id: 'kathmandu', label: 'Kathmandu Valley' },
@@ -174,7 +193,7 @@ const regions = [
                     data-id={dest.id}>
                   <div class="flex gap-4">
                     <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-gray-200">
-                       <img src={dest.image} alt={t(`itinerary.destinations.${dest.id}.name`)} class="w-full h-full object-cover" loading="lazy" />
+                       <img src={dest.mobileSrc} alt={t(`itinerary.destinations.${dest.id}.name`)} class="w-full h-full object-cover" loading="lazy" />
                     </div>
                     <div>
                        <h4 class="font-bold text-brand-blue text-lg">{t(`itinerary.destinations.${dest.id}.name`)}</h4>
@@ -314,7 +333,7 @@ const regions = [
       const name = names[id];
       const location = locations[id];
       const description = descriptions[id];
-      const image = dest.image;
+      const image = dest.desktopSrc || dest.image;
 
       // Populate Detail View
       if (detailImage) {

@@ -1,5 +1,11 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/hero.webp';
+import sadhuImg from '../assets/sadhu.webp';
+import flagImg from '../assets/flag.webp';
+import annapurnaImg from '../assets/annapurna.webp';
+import titasImg from '../assets/titas.webp';
 
 interface Props {
   lang: 'zh-tw' | 'en';
@@ -10,11 +16,11 @@ const t = useTranslations(lang);
 
 // Hero carousel images
 const heroImages = [
-  { src: '/hero.webp', alt: 'Boudhanath Stupa' },
-  { src: '/sadhu.webp', alt: 'Nepal Sadhu' },
-  { src: '/flag.webp', alt: 'Nepal Flag and mountain' },
-  { src: '/annapurna.webp', alt: 'Annapurna Range' },
-  { src: '/titas.webp', alt: 'Kathmandu Valley' },
+  { src: heroImg, alt: 'Boudhanath Stupa' },
+  { src: sadhuImg, alt: 'Nepal Sadhu' },
+  { src: flagImg, alt: 'Nepal Flag and mountain' },
+  { src: annapurnaImg, alt: 'Annapurna Range' },
+  { src: titasImg, alt: 'Kathmandu Valley' },
 ];
 ---
 
@@ -26,15 +32,17 @@ const heroImages = [
         class={`carousel-slide absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
         data-index={index}
       >
-        <img 
+        <Image 
           src={image.src} 
           alt={image.alt} 
           class="w-full h-full object-cover"
           loading={index === 0 ? 'eager' : 'lazy'}
           fetchpriority={index === 0 ? 'high' : 'low'}
           decoding={index === 0 ? 'sync' : 'async'}
-          width="1920"
-          height="1080"
+          width={1920}
+          height={1080}
+          widths={[720, 1080, 1920]}
+          sizes="(max-width: 768px) 720px, (max-width: 1200px) 1080px, 1920px"
         />
         <!-- Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
