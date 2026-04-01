@@ -45,7 +45,7 @@ export const ui = {
         desc: '提供專車接送與在地支援，讓您專心享受旅程本身'
       },
       founderAlt: '創辦人 Raju Gurung',
-      founderTitle: '創辦人兼執行長',
+      founderTitle: '創辦人&執行長',
       founderYears: '深耕尼泊爾旅遊 20+ 年',
       customization: {
         title: '為您量身打造的旅程',
