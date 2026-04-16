@@ -16,33 +16,33 @@ export const ui = {
     },
     home: {
       title: '喜馬拉雅山腳下的神秘國度',
-      subtitle: '深耕20年的尼泊爾當地旅行社，帶您探索千年文化之美',
+      subtitle: '具備多年旅遊經驗的在地團隊所打造的尼泊爾當地旅行社，帶您探索千年文化之美',
     },
     button: {
       learnMore: '了解更多',
     },
     about: {
       title: '關於我們',
-      leadText: '認識帶領你探索喜馬拉雅的在地嚮導',
+      leadText: '認識帶領你探索喜馬拉雅的在地團隊',
       founderLabel: '創辦人介紹',
-      subtitle: '讓在地嚮導，帶你走進真正的尼泊爾',
-      intro: '我們是一家在尼泊爾深耕超過 20 年的當地旅行社。這些年來，我們不只帶領旅客走訪知名景點，更陪伴他們深入了解尼泊爾的文化、生活與風景。',
+      subtitle: '讓在地團隊，帶你走進真正的尼泊爾',
+      intro: '我們是一家在尼泊爾有多年經驗當地旅行社。這些年來，我們不只帶領旅客走訪知名景點，更陪伴他們深入了解尼泊爾的文化、生活與風景。',
       experience: '對我們來說，每一趟旅程都不只是行程安排，而是一段值得細細體驗的故事。因此，我們特別重視旅途中的每一個細節，讓旅行不只是「看見」，而是真正「走進」尼泊爾。',
       rotaryMember: '扶輪社會員',
       rotaryLink: 'https://rchimalayangurkhas.org.np/club-standing-committee/',
       rotaryAriaLabel: '前往扶輪社官網',
-      experience1: '多年來，我們服務過來自台灣、日本、中國及歐美等地的旅客，無論您來自哪裡，我們都能提供貼心而可靠的在地服務。創辦人 Raju 同時也是扶輪社的活躍成員，致力於回饋尼泊爾社區。',
+      experience1: '多年來，我們服務過來自世界各地的旅客，無論您來自哪裡，我們都能提供貼心而可靠的在地服務。創辦人 Raju 同時也是扶輪社的活躍成員，致力於回饋尼泊爾社區。',
       feature1: {
         title: '熟悉山徑的在地嚮導',
-        desc: '從聖母峰基地營到安娜普納環線，由熟悉地形的在地嚮導全程帶領'
+        desc: '從聖母峰基地營到安娜普納環線等等，由熟悉地形的在地嚮導全程帶領您安全登頂'
       },
       feature2: {
         title: '彈性行程設計',
-        desc: '根據您的興趣與節奏量身打造，每一天的行程都能隨心調整'
+        desc: '根據您的興趣與體能量身打造，每一天的行程都能與我們討論調整'
       },
       feature3: {
         title: '全程交通與協助',
-        desc: '提供專車接送與在地支援，讓您專心享受旅程本身'
+        desc: '提供專車接送與行程協助，讓您專心享受旅程本身'
       },
       founderAlt: '創辦人 Raju Gurung',
       founderTitle: '創辦人&執行長',
@@ -214,22 +214,22 @@ export const ui = {
     },
     home: {
       title: 'A Mystical Kingdom at the Himalayas',
-      subtitle: 'Let\'s Explore Nepal\'s Timeless Beauty',
+      subtitle: 'Your Trusted Local Travel Agency in Nepal, guiding you to explore its endless beauty',
     },
     button: {
       learnMore: 'Learn More',
     },
     about: {
       title: 'About Us',
-      leadText: 'Meet Your Local Guide to the Himalayas',
-      founderLabel: 'Your Nepal Guide',
-      subtitle: 'Let a Local Guide Take You Into the Real Nepal',
-      intro: 'We are a locally based travel agency in Nepal with over 20 years of experience. Over the years, we have guided travelers not only to Nepal’s most well-known destinations, but also helped them gain a deeper understanding of the country’s culture, daily life, and landscapes.',
+      leadText: 'Meet Your Local Team to the Himalayas',
+      founderLabel: 'Founder & CEO',
+      subtitle: 'Let a Local Team Take You Into the Real Nepal',
+      intro: 'We are a locally based travel agency in Nepal with years of experience. Over the years, we have guided travelers not only to Nepal’s most well-known destinations, but also helped them gain a deeper understanding of the country’s culture, daily life, and landscapes.',
       experience: 'To us, travel is more than just an itinerary. It is a personal journey shaped by thoughtful planning and attention to detail, allowing each traveler to truly experience Nepal rather than simply pass through it.',
       rotaryMember: 'Rotary Club Member',
       rotaryLink: 'https://rchimalayangurkhas.org.np/club-standing-committee/',
       rotaryAriaLabel: 'Verify on Rotary Club website',
-      experience1: 'We have had the pleasure of welcoming travelers from Taiwan, Japan, China, Europe, and North America. No matter where you come from, our team is committed to providing reliable, personalized, and genuinely local service throughout your journey. Our founder Raju is also an active Rotary Club member, dedicated to giving back to the Nepali community.',
+      experience1: 'Over the years, we have had the pleasure of welcoming travelers from all over the world. No matter where you come from, our team is committed to providing reliable, personalized, and genuinely local service throughout your journey. Our founder Raju is also an active Rotary Club member, dedicated to giving back to the Nepali community.',
       feature1: {
         title: 'Experienced Trekking Team',
         desc: 'From Everest Base Camp to the Annapurna Circuit, our local guides lead you with confidence and care.'
