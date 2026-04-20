@@ -241,13 +241,16 @@ const regions = [
           </div>
 
           <!-- 文字說明區域 -->
-          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center overflow-y-auto">
-            <h2 id="detail-name" class="text-3xl lg:text-4xl font-serif font-bold text-brand-blue mb-2">
-            </h2>
-            <p id="detail-location" class="text-brand-gold text-lg mb-6 font-medium">
-            </p>
-            <p id="detail-description" class="text-stone-700 leading-relaxed text-lg">
-            </p>
+          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center overflow-y-auto relative">
+            <h2 id="detail-name" class="text-3xl lg:text-4xl font-serif font-bold text-brand-blue mb-2"></h2>
+            <p id="detail-location" class="text-brand-gold text-lg mb-6 font-medium"></p>
+            <p id="detail-description" class="text-stone-700 leading-relaxed text-lg mb-12"></p>
+            
+            <div class="mt-auto flex justify-end">
+              <a id="detail-tour-link" href="#" target="_blank" style="display: none;" class="items-center gap-2 text-brand-blue font-bold transition-all bg-amber-400 hover:bg-amber-500 shadow-md hover:shadow-lg hover:-translate-y-0.5 px-6 py-3 rounded-full">
+                {t('itinerary.button.checkTour')}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -257,6 +260,7 @@ const regions = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
+<div id="available-tours" data-tours='["ebc"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}
@@ -284,11 +288,13 @@ const regions = [
   // Load Data
   const destinationsElement = document.getElementById('destinations-data');
   const translationsElement = document.getElementById('translations-data');
+  const availableToursElement = document.getElementById('available-tours');
   
   const rawDestinations = destinationsElement ? JSON.parse(destinationsElement.dataset.destinations || '[]') : [];
   const names = translationsElement ? JSON.parse(translationsElement.dataset.names || '{}') : {};
   const locations = translationsElement ? JSON.parse(translationsElement.dataset.locations || '{}') : {};
   const descriptions = translationsElement ? JSON.parse(translationsElement.dataset.descriptions || '{}') : {};
+  const availableTours = availableToursElement ? JSON.parse(availableToursElement.dataset.tours || '[]') : [];
 
   // Map Animation
   // Animate zones drawing in
@@ -327,6 +333,21 @@ const regions = [
   function openDetail(id: string) {
       const dest = rawDestinations.find((d:any) => d.id === id);
       if (!dest) return;
+      
+      const detailTourLink = document.getElementById('detail-tour-link') as HTMLAnchorElement;
+      
+      // Determine if a tailored itinerary exists
+      if (detailTourLink) {
+          if (availableTours.includes(id)) {
+            const isEn = window.location.pathname.startsWith('/en');
+            const baseUrl = isEn ? '/en' : '/zh-tw';
+            detailTourLink.href = `${baseUrl}/tours/${id}`;
+            detailTourLink.style.display = 'inline-flex';
+          } else {
+            detailTourLink.style.display = 'none';
+            detailTourLink.href = '#';
+          }
+      }
 
       const name = names[id];
       const location = locations[id];

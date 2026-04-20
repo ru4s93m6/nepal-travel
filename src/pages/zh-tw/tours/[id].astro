@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import TourDetail from '../../../components/TourDetail.astro';
+import Contact from '../../../components/Contact.astro';
+import { ebcTour } from '../../../data/tours/ebc';
+
+export function getStaticPaths() {
+  const tours = [ebcTour];
+  return tours.map(tour => ({
+    params: { id: tour.id },
+    props: { tour },
+  }));
+}
+
+const { id } = Astro.params;
+const { tour } = Astro.props;
+const lang = 'zh-tw';
+const content = tour.locales[lang as 'zh-tw' | 'en'];
+
+const seoTitle = `${content.title} | Oriental Express Travel`;
+const seoDescription = content.overview.substring(0, 160) + '...';
+const seoKeywords = `${content.title}, 尼泊爾旅遊, Nepal Trekking, 尼泊爾當地旅行社, 聖母峰基地營`;
+
+---
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  lang={lang}
+>
+  <Navigation lang={lang} />
+  <TourDetail tour={tour} />
+  <Contact lang={lang} />
+</BaseLayout>

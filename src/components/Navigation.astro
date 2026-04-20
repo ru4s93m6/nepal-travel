@@ -8,13 +8,27 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
+const currentPath = Astro.url.pathname;
+function getPathForLang(targetLang: 'zh-tw' | 'en') {
+  if (targetLang === lang) return currentPath;
+  if (targetLang === 'zh-tw') {
+    let p = currentPath.replace(/^\/en/, '/zh-tw');
+    if (p === currentPath && !currentPath.startsWith('/zh-tw')) p = '/zh-tw' + currentPath;
+    return p;
+  } else {
+    let p = currentPath.replace(/^\/zh-tw/, '/en');
+    if (p === currentPath && !currentPath.startsWith('/en')) p = '/en' + currentPath;
+    return p;
+  }
+}
+
 const isEn = lang === 'en';
 const baseUrl = isEn ? '/en' : '/zh-tw';
 
 // Language options
 const languages = [
-  { code: 'zh-tw', name: '中文', flag: '🇹🇼', url: '/zh-tw' },
-  { code: 'en', name: 'English', flag: '🇬🇧', url: '/en' },
+  { code: 'zh-tw', name: '中文', flag: '🇹🇼', url: getPathForLang('zh-tw') },
+  { code: 'en', name: 'English', flag: '🇬🇧', url: getPathForLang('en') },
 ];
 
 const currentLang = languages.find(l => l.code === lang);
@@ -44,7 +58,7 @@ const otherLangs = languages.filter(l => l.code !== lang);
       <a href="#faq" class="hover:text-amber-400 transition-colors">
         {t('nav.FAQ')}
       </a>
-      <a href="#contactUs" class="hover:text-brand-gold transition-colors">
+      <a href="#contactUs" class="hover:text-amber-400 transition-colors">
         {t('nav.contact')}
       </a>
     </div>

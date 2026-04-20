@@ -178,6 +178,7 @@ export const ui = {
       },
       button: {
         close: '返回',
+        checkTour: '查看詳細套裝行程 ↗',
       },
       clickHint: '點擊景點了解更多',
     },
@@ -376,6 +377,7 @@ export const ui = {
       },
       button: {
         close: 'Back',
+        checkTour: 'View Detailed Itinerary ↗',
       },
       clickHint: 'Click to explore more',
     },
