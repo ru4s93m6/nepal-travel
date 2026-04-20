@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import type { TourData } from '../data/tours/ebc';
+import { Image } from 'astro:assets';
 
 interface Props {
   tour: TourData;
@@ -37,11 +38,20 @@ const ui = {
   }
 }[lang];
 
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+const imagePath = tour.heroImage;
+if (!images[imagePath]) {
+  console.warn(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`);
+}
 ---
 <div class="tour-detail-page bg-brand-cream min-h-screen font-sans">
   <!-- Hero Section -->
   <section class="relative h-[65vh] min-h-[500px] flex items-center justify-center pt-20">
-    <img src={tour.heroImage} alt={content.title} class="absolute inset-0 w-full h-full object-cover" />
+    {images[imagePath] ? (
+      <Image src={images[imagePath]()} alt={content.title} class="absolute inset-0 w-full h-full object-cover" />
+    ) : (
+      <img src={tour.heroImage} alt={content.title} class="absolute inset-0 w-full h-full object-cover" />
+    )}
     <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
     
     <div class="relative z-10 text-center px-4 max-w-5xl mt-12">
