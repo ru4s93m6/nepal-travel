@@ -4,9 +4,10 @@ import Navigation from '../../../components/Navigation.astro';
 import TourDetail from '../../../components/TourDetail.astro';
 import Contact from '../../../components/Contact.astro';
 import { ebcTour } from '../../../data/tours/ebc';
+import { langtangTour } from '../../../data/tours/langtang';
 
 export function getStaticPaths() {
-  const tours = [ebcTour];
+  const tours = [ebcTour, langtangTour];
   return tours.map(tour => ({
     params: { id: tour.id },
     props: { tour },
