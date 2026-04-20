@@ -76,7 +76,7 @@ export const ui = {
     itinerary: {
       title: '熱門景點',
       subtitle: '探索尼泊爾的絕美秘境',
-      description: '以下為我們精選的熱門旅遊景點，每個地方都擁有獨特的魅力與故事。讓這些風景成為您規劃旅程的靈感，我們也能為您量身打造專屬行程。',
+      description: '以下為我們精選的熱門旅遊景點與重點套裝行程。您可以參考裡面所設計的經典路線作為靈感，所有的行程天數與內容，我們都能完全依照您的需求，為您深度客製化專屬的完美旅途！',
       destinationsCount: '個景點',
       regions: {
         kathmandu: '加德滿都谷地',
@@ -275,7 +275,7 @@ export const ui = {
     itinerary: {
       title: 'Top Destinations',
       subtitle: 'Discover the Hidden Wonders of Nepal',
-      description: 'Explore our handpicked selection of Nepal’s most captivating destinations—each with its own story and charm. Let these remarkable places inspire your journey, while we craft a personalized experience just for you.',
+      description: 'Explore our handpicked selection of Nepal’s most captivating destinations. You can refer to these classic tour packages as inspiration for your journey, every itinerary can be fully customized and tailor-made to perfectly match your preferences and pace.',
       destinationsCount: 'Destinations',
       regions: {
         kathmandu: 'Kathmandu Valley',
@@ -379,7 +379,7 @@ export const ui = {
         close: 'Back',
         checkTour: 'View Detailed Itinerary ↗',
       },
-      clickHint: 'Click to explore more',
+      clickHint: 'Click spots to explore more',
     },
     faq: [
       {
