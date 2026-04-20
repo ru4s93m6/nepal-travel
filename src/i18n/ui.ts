@@ -60,7 +60,7 @@ export const ui = {
         },
         item3: {
           title: '多語言服務',
-          desc: '我們提供中文、英文、日文等導遊協助，讓溝通變得簡單，您只需要專心享受旅途本身。'
+          desc: '我們的核心團隊提供流利的英文與法文服務。若您需要中文或其他語言的隨行嚮導，我們也能透過在地的專業合作網絡，為您妥善安排專屬的外包語系嚮導，讓語言完全不是旅行的障礙。'
         }
       }
     },
@@ -258,7 +258,7 @@ export const ui = {
         },
         item3: {
           title: 'Multilingual Service',
-          desc: 'We provide guides in Chinese, English, Japanese, and more – seamless communication for a worry-free journey'
+          desc: 'Our core team speaks fluent English and French. Should you require a guide in Chinese or other languages, we can easily arrange trusted freelance guides through our local network, ensuring seamless communication throughout your journey.'
         }
       }
     },
