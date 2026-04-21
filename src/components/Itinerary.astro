@@ -260,7 +260,7 @@ const regions = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
-<div id="available-tours" data-tours='["ebc", "langtang", "chitwan"]' class="hidden"></div>
+<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}

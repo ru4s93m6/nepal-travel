@@ -25,17 +25,17 @@ export const chitwanTour: TourData = {
         {
           day: 1,
           title: 'Arrival in Chitwan & Cultural Experience',
-          description: 'We will drive to Chitwan and transfer to your designated resort. After lunch, our guide will take you on a tour of the local Tharu Village to learn about their unique lifestyle. Later in the evening, enjoy a traditional Tharu cultural dance performance. Meals included: Lunch, Dinner.'
+          description: 'We will drive to Chitwan and transfer to your designated resort. After lunch, our guide will take you on a tour of the local Tharu Village to learn about their unique lifestyle. Later in the evening, enjoy a traditional Tharu cultural dance performance.'
         },
         {
           day: 2,
           title: 'Full Day Jungle Safari',
-          description: 'A thrilling day full of jungle activities. We will start with a peaceful dugout canoe ride on the Rapti River. Enjoy a guided Jungle Walk to spot wildlife followed by a visit to the Elephant Breeding Centre and Gharial Crocodile Breeding Centre. Before sunset, we will embark on an exhilarating Jeep Safari deep into Chitwan National Park. Meals included: Breakfast, Lunch, Dinner.'
+          description: 'A thrilling day full of jungle activities. We will start with a peaceful dugout canoe ride on the Rapti River. Enjoy a guided Jungle Walk to spot wildlife followed by a visit to the Elephant Breeding Centre and Gharial Crocodile Breeding Centre. Before sunset, we will embark on an exhilarating Jeep Safari deep into Chitwan National Park.'
         },
         {
           day: 3,
           title: 'Departure to Kathmandu',
-          description: 'Enjoy a relaxing morning and a hearty breakfast at your resort. Afterwards, we will leave Chitwan and drive back to Kathmandu, concluding your unforgettable jungle safari tour. Drop off at your hotel in Kathmandu. Meals included: Breakfast.'
+          description: 'Enjoy a relaxing morning and a hearty breakfast at your resort. Afterwards, we will leave Chitwan and drive back to Kathmandu, concluding your unforgettable jungle safari tour. Drop off at your hotel in Kathmandu.'
         }
       ],
       includes: [

@@ -6,9 +6,10 @@ import Contact from '../../../components/Contact.astro';
 import { ebcTour } from '../../../data/tours/ebc';
 import { langtangTour } from '../../../data/tours/langtang';
 import { chitwanTour } from '../../../data/tours/chitwan';
+import { lumbiniTour } from '../../../data/tours/lumbini';
 
 export function getStaticPaths() {
-  const tours = [ebcTour, langtangTour, chitwanTour];
+  const tours = [ebcTour, langtangTour, chitwanTour, lumbiniTour];
   return tours.map(tour => ({
     params: { id: tour.id },
     props: { tour },
