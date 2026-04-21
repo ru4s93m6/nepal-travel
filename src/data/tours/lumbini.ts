@@ -43,7 +43,7 @@ export const lumbiniTour: TourData = {
       ],
       excludes: [
         'Lunches and Dinners during the tour',
-        'Personal expenses (Laundry, phone calls, extra drinks, etc.)',
+        'Personal expenses',
         'Tips and gratuities for the driver and hotel staff'
       ],
       notes: [
@@ -88,7 +88,7 @@ export const lumbiniTour: TourData = {
         '飯店每日早餐'
       ],
       excludes: [
-        '個人旅遊花費（如洗衣、額外飲食、通訊費等）',
+        '個人旅遊花費',
         '給予司機與飯店服務人員的小費'
       ],
       notes: [
