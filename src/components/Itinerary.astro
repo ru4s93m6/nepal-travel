@@ -342,10 +342,21 @@ const regions = [
       
       // Determine if a tailored itinerary exists
       if (detailTourLink) {
-          if (availableTours.includes(id)) {
+          const multiTourMapping: Record<string, string> = {
+            'kathmandu_durbar': 'kathmandu_valley',
+            'patan_durbar': 'kathmandu_valley',
+            'boudhanath': 'kathmandu_valley',
+            'pashupatinath': 'kathmandu_valley',
+            'bhaktapur': 'kathmandu_valley',
+            'thamel': 'kathmandu_valley',
+            'nagarkot': 'kathmandu_valley'
+          };
+          const finalTourId = availableTours.includes(id) ? id : (multiTourMapping[id] || null);
+
+          if (finalTourId) {
             const isEn = window.location.pathname.startsWith('/en');
             const baseUrl = isEn ? '/en' : '/zh-tw';
-            detailTourLink.href = `${baseUrl}/tours/${id}`;
+            detailTourLink.href = `${baseUrl}/tours/${finalTourId}`;
             detailTourLink.style.display = 'inline-flex';
           } else {
             detailTourLink.style.display = 'none';
