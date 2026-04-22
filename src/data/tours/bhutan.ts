@@ -22,13 +22,14 @@ export const bhutanTour: TourData = {
         'Bhutanese tourist visa processing and Sustainable Development Fee (SDF)',
         'Return flights from Kathmandu (KTM) to Paro (PBH)',
         '3 Nights accommodation in government-approved 3-star standard hotels (upgradable to 4/5-star)',
-        'All meals (Breakfast, Lunch, Dinner) during the stay in Bhutan',
+        'Daily breakfast at the hotels',
         'Licensed English-speaking Bhutanese tour guide',
         'All ground transportation within Bhutan using comfortable private vehicles',
         'All entrance fees for museums, monuments, and Dzongs as per the itinerary'
       ],
       excludes: [
         'Personal travel insurance (highly recommended)',
+        'Lunches and dinners in Bhutan',
         'Beverages (alcohol, premium coffees, etc.) and laundry services',
         'Tipping for the localized guide and driver at the end of the tour',
         'Pony ride fee for the Tiger\'s Nest hike (optional)'
@@ -77,13 +78,14 @@ export const bhutanTour: TourData = {
         '不丹旅遊簽證申辦手續及永續發展規費 (SDF)',
         '尼泊爾加德滿都 (KTM) 至不丹帕羅 (PBH) 的來回國際機票',
         '3 晚入住不丹政府認證之 3 星級標準旅館 (可協助升等 4/5 星級)',
-        '在不丹期間的所有餐食 (包含每日早、中、晚餐)',
+        '每日飯店早餐',
         '全程由具國家執照的專業不丹英文導遊隨行解說',
         '在不丹境內所有交通接駁，全程搭乘舒適專用車輛',
         '行程表內所有博物館、寺廟及宗堡的門票費用'
       ],
       excludes: [
         '個人旅遊平安保險 (建議自行購買)',
+        '在不丹期間的午餐與晚餐',
         '私人消費如酒精飲料、特色咖啡、洗衣服務等',
         '給予不丹當地導遊與司機的感謝小費',
         '攀登虎穴寺前半段選擇騎乘騾馬的額外費用 (可選)'
