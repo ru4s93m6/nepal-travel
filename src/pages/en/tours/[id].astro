@@ -8,9 +8,10 @@ import { langtangTour } from '../../../data/tours/langtang';
 import { chitwanTour } from '../../../data/tours/chitwan';
 import { lumbiniTour } from '../../../data/tours/lumbini';
 import { abcTour } from '../../../data/tours/abc';
+import { poonHillTour } from '../../../data/tours/poon_hill';
 
 export function getStaticPaths() {
-  const tours = [ebcTour, langtangTour, chitwanTour, lumbiniTour, abcTour];
+  const tours = [ebcTour, langtangTour, chitwanTour, lumbiniTour, abcTour, poonHillTour];
   return tours.map(tour => ({
     params: { id: tour.id },
     props: { tour },
