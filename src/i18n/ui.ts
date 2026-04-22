@@ -189,10 +189,6 @@ export const ui = {
     },
     faq: [
       {
-        question: "旅行社有提供不丹的旅遊行程嗎？",
-        answer: "是的，我們有提供！我們可以為您安排銜接不丹的<a href='/zh-tw/tours/bhutan' class='text-brand-gold underline hover:text-amber-800 transition'>套裝行程</a>。我們與不丹當地的旅行業者合作，為您處理所有手續，包含不丹簽證、從加德滿都出發的機票、住宿與導覽行程。"
-      },
-      {
         question: "尼泊爾的最佳旅遊季節是什麼時候",
         answer: "尼泊爾的最佳旅遊季節通常是春季（3月至5月）和秋季（9月至11月）。這兩個季節天氣晴朗，適合進行戶外活動和健行。"
       },
@@ -207,6 +203,10 @@ export const ui = {
       {
         question: "怎麼聯繫我們",
         answer: "您可以透過連絡我們的WhatsApp或電子郵件與我們聯繫。我們會盡快回覆您的詢問，協助您規劃理想的尼泊爾之旅。如果是中文服務需求，我們也有中文專員可以協助您。"
+      },
+      {
+        question: "旅行社有提供不丹的旅遊行程嗎",
+        answer: "是的，我們有提供！我們可以為您安排銜接不丹的<a href='/zh-tw/tours/bhutan' class='text-brand-gold underline hover:text-amber-800 transition'>套裝行程</a>。我們與不丹當地的旅行業者合作，為您處理所有手續，包含不丹簽證、從加德滿都出發的機票、住宿與導覽行程。"
       },
       {
         question: "如何付費",
@@ -397,10 +397,6 @@ export const ui = {
     },
     faq: [
       {
-        question: "Do you offer tours to Bhutan?",
-        answer: "Yes, we do! We can arrange a seamless <a href='/en/tours/bhutan' class='text-brand-gold underline hover:text-amber-800 transition'>Bhutan tour package</a> to extend your Nepal holiday. We work with trusted Bhutanese tour operators to handle everything for you, including your Bhutan visa, flights from Kathmandu, accommodations, and guided tours."
-      },
-      {
         question: "What is the best time to visit Nepal",
         answer: "The best time to visit Nepal is typically during spring (March to May) and autumn (September to November). These seasons offer clear weather, making them ideal for outdoor activities and trekking."
       },
@@ -415,6 +411,10 @@ export const ui = {
       {
         question: "How can I contact you",
         answer: "You can reach us via WhatsApp or email. We'll respond to your inquiries promptly and help you plan your ideal Nepal adventure. For Chinese-language support, we also have Chinese-speaking staff available to assist you."
+      },
+      {
+        question: "Do you offer tours to Bhutan",
+        answer: "Yes, we do! We can arrange a seamless <a href='/en/tours/bhutan' class='text-brand-gold underline hover:text-amber-800 transition'>Bhutan tour package</a> to extend your Nepal holiday. We work with trusted Bhutanese tour operators to handle everything for you, including your Bhutan visa, flights from Kathmandu, accommodations, and guided tours."
       },
       {
         question: "How do I make a payment",
