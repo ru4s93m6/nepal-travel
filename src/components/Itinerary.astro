@@ -53,6 +53,7 @@ const rawDestinations = [
   { id: 'chitwan', image: '/chitwan.webp', lat: 27.5291, lng: 84.3542, region: 'others' },
   { id: 'lumbini', image: '/lumbini.webp', lat: 27.4840, lng: 83.2760, region: 'others' }, 
   { id: 'langtang', image: '/langtang.webp', lat: 28.2128, lng: 85.6028, region: 'others' },
+  { id: 'manaslu', image: '/manaslu.webp', lat: 28.5500, lng: 84.5600, region: 'others' },
 ];
 
 const destinations = await Promise.all(rawDestinations.map(async (dest) => {
@@ -263,7 +264,7 @@ const regions = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
-<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "poon_hill"]' class="hidden"></div>
+<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "poon_hill", "manaslu"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}

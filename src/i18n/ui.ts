@@ -175,6 +175,11 @@ export const ui = {
           location: 'Mustang',
           description: '被稱為「最後的秘境」，保留完整的藏傳佛教文化與獨特荒漠地貌。昔日為獨立王國，擁有古老寺廟與神秘洞穴，彷彿走入與世隔絕的時空之中。',
         },
+        manaslu: {
+          name: '馬納斯魯大環線',
+          location: 'Manaslu Circuit',
+          description: '被譽為安娜普納環線的最佳替代方案，這條隱秘的路線圍繞著世界第八高峰馬納斯魯峰。擁有未受破壞的藏族村落與令人屏息的高山隘口，是尋求遠離人潮的資深健行者的完美挑戰。',
+        },
       },
       button: {
         close: '返回',
@@ -373,6 +378,11 @@ export const ui = {
           name: 'Mustang',
           location: 'Mustang',
           description: 'Often called the “Last Forbidden Kingdom,” Mustang preserves ancient Tibetan culture and striking desert landscapes. Its caves, monasteries, and history create a journey unlike any other.',
+        },
+        manaslu: {
+          name: 'Manaslu Circuit',
+          location: 'Manaslu Circuit',
+          description: 'Often considered the best alternative to the Annapurna Circuit, this pristine trek circles the 8th highest mountain in the world. With its untouched Tibetan villages and breathtaking high passes, it is the perfect challenge for experienced trekkers seeking a pure Himalayan escape.',
         },
       },
       button: {
