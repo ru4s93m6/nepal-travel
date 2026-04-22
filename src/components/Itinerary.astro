@@ -17,7 +17,7 @@ const MAX_LAT = 30.431317;
 const LON_SPAN = MAX_LON - MIN_LON;
 const LAT_SPAN = MAX_LAT - MIN_LAT;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.webp');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{webp,png,jpg,jpeg}');
 
 // Helper to project Lat/Lon to SVG Pixels
 function project(lat: number, lng: number) {
@@ -260,7 +260,7 @@ const regions = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
-<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini"]' class="hidden"></div>
+<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}
