@@ -43,9 +43,7 @@ const faqs = t('faq');
             </svg>
           </summary>
           <div class="px-6 pb-6 pt-2">
-            <div class="pl-12 text-brand-blue/80 leading-relaxed border-l-4 border-brand-gold/30 pl-6 ml-8">
-              {faq.answer}
-            </div>
+            <div class="pl-12 text-brand-blue/80 leading-relaxed border-l-4 border-brand-gold/30 pl-6 ml-8" set:html={faq.answer} />
           </div>
         </details>
       ))}
