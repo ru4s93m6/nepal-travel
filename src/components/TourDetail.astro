@@ -46,7 +46,7 @@ if (!images[imagePath]) {
 ---
 <div class="tour-detail-page bg-brand-cream min-h-screen font-sans">
   <!-- Hero Section -->
-  <section class="relative h-[65vh] min-h-[500px] flex items-center justify-center pt-20">
+  <section class="relative min-h-[65vh] flex flex-col justify-end md:justify-center items-center pt-32 pb-16 md:pb-20">
     {images[imagePath] ? (
       <Image src={images[imagePath]()} alt={content.title} class="absolute inset-0 w-full h-full object-cover" />
     ) : (
@@ -59,18 +59,26 @@ if (!images[imagePath]) {
       <p class="text-xl md:text-2xl text-white/90 drop-shadow-lg mb-10 max-w-3xl mx-auto">{content.subtitle}</p>
       
       <!-- Quick Facts -->
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-white text-lg max-w-3xl mx-auto shadow-2xl">
-        <div class="flex flex-col items-center flex-1 min-w-[120px]">
+      <div class="flex flex-col md:flex-row justify-center items-center gap-x-8 gap-y-6 md:gap-y-4 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl py-8 px-6 md:p-6 mb-8 md:mb-0 text-white text-lg w-full max-w-3xl mx-auto shadow-2xl">
+        <div class="flex flex-col items-center flex-1 w-full">
           <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.duration}</span>
           <span class="font-bold text-xl">{tour.durationDays} Days</span>
         </div>
-        <div class="w-px bg-white/20 hidden md:block"></div>
-        <div class="flex flex-col items-center flex-1 min-w-[120px]">
+        
+        <!-- Divider -->
+        <div class="w-px self-stretch bg-white/20 hidden md:block"></div>
+        <div class="h-px w-2/3 bg-white/10 md:hidden"></div>
+        
+        <div class="flex flex-col items-center flex-1 w-full">
           <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.maxAlt}</span>
           <span class="font-bold text-xl">{tour.maxAltitude} m</span>
         </div>
-        <div class="w-px bg-white/20 hidden md:block"></div>
-        <div class="flex flex-col items-center flex-1 min-w-[120px]">
+        
+        <!-- Divider -->
+        <div class="w-px self-stretch bg-white/20 hidden md:block"></div>
+        <div class="h-px w-2/3 bg-white/10 md:hidden"></div>
+        
+        <div class="flex flex-col items-center flex-1 w-full">
           <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.difficulty}</span>
           <span class="font-bold text-xl">{tour.difficulty}</span>
         </div>

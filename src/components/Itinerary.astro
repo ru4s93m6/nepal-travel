@@ -159,6 +159,9 @@ const regions = [
         
         <!-- Zoom Controls -->
         <div class="absolute bottom-6 right-6 flex flex-col gap-2 z-30">
+            <button id="recenter-map" class="w-10 h-10 bg-white/90 hover:bg-brand-gold text-brand-blue hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-brand-gold/30 hover:scale-110" aria-label="Recenter Map" title="Recenter">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v2m0 12v2m8-8h-2M6 12H4m12 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            </button>
             <button id="zoom-in" class="w-10 h-10 bg-white/90 hover:bg-brand-gold text-brand-blue hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-brand-gold/30 hover:scale-110" aria-label="Zoom In">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
             </button>
@@ -443,7 +446,7 @@ const regions = [
 
   // Zoom & Pan State
   let currentZoom = 1;
-  const maxZoom = 4;
+  const maxZoom = 16;
   const minZoom = 1;
   const originalWidth = 800.36517;
   const originalHeight = 454.28867;
@@ -466,6 +469,12 @@ const regions = [
 
   // Helper: Apply ViewBox
   function applyViewBox() {
+      // Boundary Constraints: Prevent map from being dragged completely out
+      if (viewBoxX < 0) viewBoxX = 0;
+      if (viewBoxX + viewBoxW > originalWidth) viewBoxX = originalWidth - viewBoxW;
+      if (viewBoxY < 0) viewBoxY = 0;
+      if (viewBoxY + viewBoxH > originalHeight) viewBoxY = originalHeight - viewBoxH;
+
       if (svgFn) {
         gsap.to(svgFn, {
             attr: { viewBox: `${viewBoxX} ${viewBoxY} ${viewBoxW} ${viewBoxH}` },
@@ -571,6 +580,12 @@ const regions = [
       viewBoxX -= dx * scaleX;
       viewBoxY -= dy * scaleY;
 
+      // Boundary Constraints: Prevent dragging outside map bounds
+      if (viewBoxX < 0) viewBoxX = 0;
+      if (viewBoxX + viewBoxW > originalWidth) viewBoxX = originalWidth - viewBoxW;
+      if (viewBoxY < 0) viewBoxY = 0;
+      if (viewBoxY + viewBoxH > originalHeight) viewBoxY = originalHeight - viewBoxH;
+
       svgFn!.setAttribute('viewBox', `${viewBoxX} ${viewBoxY} ${viewBoxW} ${viewBoxH}`);
 
       startX = clientX;
@@ -624,6 +639,16 @@ const regions = [
   });
 
   // Buttons
+  const recenterBtn = document.getElementById('recenter-map');
+  if (recenterBtn) {
+      recenterBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          viewBoxX = (originalWidth - viewBoxW) / 2;
+          viewBoxY = (originalHeight - viewBoxH) / 2;
+          applyViewBox();
+      });
+  }
+
   if (zoomInBtn && zoomOutBtn) {
       zoomInBtn.addEventListener('click', (e) => {
           e.stopPropagation();
