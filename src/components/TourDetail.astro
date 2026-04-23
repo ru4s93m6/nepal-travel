@@ -262,3 +262,28 @@ if (!images[imagePath]) {
     scrollbar-width: none;
   }
 </style>
+
+<!-- Semantic JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": content.title,
+  "description": content.subtitle,
+  "touristType": [
+    "Sightseeing",
+    "Mountain Trekking",
+    "Culture"
+  ],
+  "itinerary": {
+    "@type": "ItemList",
+    "itemListElement": content.itinerary.map((day, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "TouristAttraction",
+        "name": day.title,
+        "description": day.description
+      }
+    }))
+  }
+})} />
