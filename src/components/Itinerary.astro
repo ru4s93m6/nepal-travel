@@ -250,7 +250,7 @@ const regions = [
             <p id="detail-location" class="text-brand-gold text-lg mb-6 font-medium"></p>
             <p id="detail-description" class="text-stone-700 leading-relaxed text-lg mb-12"></p>
             
-            <div class="mt-auto flex justify-end">
+            <div class="mt-auto flex flex-wrap gap-4 justify-end" id="detail-tour-links-container">
               <a id="detail-tour-link" href="#" target="_blank" style="display: none;" class="items-center gap-2 text-white font-medium transition-all bg-brand-blue hover:bg-brand-gold shadow-md hover:shadow-lg hover:-translate-y-0.5 px-6 py-3 rounded-full tracking-wide">
                 {t('itinerary.button.checkTour')}
               </a>
@@ -264,12 +264,17 @@ const regions = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
-<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "poon_hill", "manaslu"]' class="hidden"></div>
+<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "act", "poon_hill", "manaslu"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}
      data-locations={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.location`) }), {}))}
      data-descriptions={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.description`) }), {}))}
+     data-ui={JSON.stringify({
+       checkTour: t('itinerary.button.checkTour'),
+       checkABC: t('itinerary.button.checkABC'),
+       checkACT: t('itinerary.button.checkACT'),
+     })}
      class="hidden">
 </div>
 
@@ -298,6 +303,7 @@ const regions = [
   const names = translationsElement ? JSON.parse(translationsElement.dataset.names || '{}') : {};
   const locations = translationsElement ? JSON.parse(translationsElement.dataset.locations || '{}') : {};
   const descriptions = translationsElement ? JSON.parse(translationsElement.dataset.descriptions || '{}') : {};
+  const uiLabels = translationsElement ? JSON.parse(translationsElement.dataset.ui || '{}') : {};
   const availableTours = availableToursElement ? JSON.parse(availableToursElement.dataset.tours || '[]') : [];
 
   // Map Animation
@@ -341,26 +347,42 @@ const regions = [
       const detailTourLink = document.getElementById('detail-tour-link') as HTMLAnchorElement;
       
       // Determine if a tailored itinerary exists
-      if (detailTourLink) {
-          const multiTourMapping: Record<string, string> = {
+      const container = document.getElementById('detail-tour-links-container');
+      if (container) {
+          // Clear previous custom buttons (keep the template if needed, but easier to just rebuild)
+          container.innerHTML = '';
+          
+          const multiTourMapping: Record<string, string | string[]> = {
             'kathmandu_durbar': 'kathmandu_valley',
             'patan_durbar': 'kathmandu_valley',
             'boudhanath': 'kathmandu_valley',
             'pashupatinath': 'kathmandu_valley',
             'bhaktapur': 'kathmandu_valley',
             'thamel': 'kathmandu_valley',
-            'nagarkot': 'kathmandu_valley'
+            'nagarkot': 'kathmandu_valley',
+            'abc': ['abc', 'act'] // Special case: Annapurna Region links to both
           };
-          const finalTourId = availableTours.includes(id) ? id : (multiTourMapping[id] || null);
+          
+          const tourIds = multiTourMapping[id] || (availableTours.includes(id) ? id : null);
+          const finalTourIds = Array.isArray(tourIds) ? tourIds : (tourIds ? [tourIds] : []);
 
-          if (finalTourId) {
+          if (finalTourIds.length > 0) {
             const isEn = window.location.pathname.startsWith('/en');
             const baseUrl = isEn ? '/en' : '/zh-tw';
-            detailTourLink.href = `${baseUrl}/tours/${finalTourId}`;
-            detailTourLink.style.display = 'inline-flex';
-          } else {
-            detailTourLink.style.display = 'none';
-            detailTourLink.href = '#';
+            
+            finalTourIds.forEach(tourId => {
+              const btn = document.createElement('a');
+              btn.href = `${baseUrl}/tours/${tourId}`;
+              btn.target = '_blank';
+              btn.className = 'flex items-center gap-2 text-white font-medium transition-all bg-brand-blue hover:bg-brand-gold shadow-md hover:shadow-lg hover:-translate-y-0.5 px-6 py-3 rounded-full tracking-wide';
+              
+              // Custom label logic
+              if (tourId === 'abc') btn.textContent = uiLabels.checkABC;
+              else if (tourId === 'act') btn.textContent = uiLabels.checkACT;
+              else btn.textContent = uiLabels.checkTour;
+              
+              container.appendChild(btn);
+            });
           }
       }
 

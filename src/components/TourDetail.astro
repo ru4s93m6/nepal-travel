@@ -24,6 +24,7 @@ const ui = {
     maxAlt: '最高海拔',
     day: 'Day',
     daySuffix: '',
+    faq: '常見問題 (FAQ)',
   },
   'en': {
     overview: 'Overview',
@@ -35,6 +36,7 @@ const ui = {
     maxAlt: 'Max Altitude',
     day: 'Day',
     daySuffix: '',
+    faq: 'Frequently Asked Questions',
   }
 }[lang];
 
@@ -63,7 +65,7 @@ if (!images[imagePath]) {
     <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
     
     <div class="relative z-10 text-center px-4 max-w-5xl mt-12">
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-2xl leading-tight text-shadow-sm">{content.title}</h1>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-2xl leading-tight text-shadow-sm whitespace-pre-line">{content.title}</h1>
       <p class="text-xl md:text-2xl text-white/90 drop-shadow-lg mb-10 max-w-3xl mx-auto">{content.subtitle}</p>
       
       <!-- Quick Facts -->
@@ -101,6 +103,9 @@ if (!images[imagePath]) {
       <a href="#itinerary" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.itinerary}</a>
       <a href="#includes" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.includes}</a>
       <a href="#gear" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.gear}</a>
+      {content.faq && content.faq.length > 0 && (
+        <a href="#faq" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.faq}</a>
+      )}
     </div>
   </div>
 
@@ -212,6 +217,34 @@ if (!images[imagePath]) {
             </ul>
           </div>
         </section>
+
+        <!-- FAQ Section -->
+        {content.faq && content.faq.length > 0 && (
+          <section id="faq" class="scroll-mt-20">
+            <h2 class="text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
+               <span class="w-8 h-1 bg-brand-gold inline-block rounded-full"></span> 
+               {ui.faq}
+            </h2>
+            <div class="space-y-4">
+              {content.faq.map((item) => (
+                <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                  <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-xl text-brand-blue hover:bg-stone-50 transition-colors">
+                    <span class="font-bold flex items-center gap-4">
+                       <span class="text-brand-gold font-bold text-2xl leading-none mt-[-2px]">Q.</span>
+                       {item.question}
+                    </span>
+                    <span class="transition group-open:rotate-180 text-brand-gold ml-4">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                  </summary>
+                  <div class="text-stone-600 p-6 pt-0 text-lg leading-relaxed border-t border-stone-100 bg-stone-50/50">
+                    <p class="mt-4"><span class="font-bold text-emerald-600 mr-2">A.</span>{item.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
     </div>
   </main>
 </div>
@@ -287,3 +320,18 @@ if (!images[imagePath]) {
     }))
   }
 })} />
+
+{content.faq && content.faq.length > 0 && (
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": content.faq.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+})} />
+)}

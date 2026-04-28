@@ -62,7 +62,7 @@ export const chitwanTour: TourData = {
       ]
     },
     'zh-tw': {
-      title: '奇旺國家公園叢林探險 (Chitwan Tour)',
+      title: '奇旺國家公園叢林探險\n(Chitwan Tour)',
       subtitle: '深入叢林，近距離體驗尼泊爾豐富的野生生態與文化',
       overview: '奇旺國家公園（Chitwan National Park）是尼泊爾第一座國家公園，位於中南部特萊平原（Terai Lowlands），以其令人驚嘆的生物多樣性聞名於世。這片茂密的森林與草原，是獨角犀牛與孟加拉虎等珍稀哺乳動物的家園。園區內棲息著豐富的鳥類，在拉普蒂河（Rapti River）上還能乘坐傳統獨木舟，近距離觀賞野生鱷魚。除了大自然的震撼之外，這趟旅程也會帶您走進特萊平原特有的塔魯族（Tharu）部落，感受最道地的文化風情。\n\n請注意：這份 3 天的標準行程均可依照您的時間與興趣進行客製化微調，不論是想增加叢林探險的深度，還是純粹想在渡假村放鬆，我們都能為您安排。',
       highlights: [

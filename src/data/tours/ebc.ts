@@ -13,6 +13,10 @@ export interface TourContent {
   includes: string[];
   excludes: string[];
   notes: string[];
+  faq?: {
+    question: string;
+    answer: string;
+  }[];
 }
 
 export interface TourData {
@@ -157,10 +161,11 @@ export const ebcTour: TourData = {
         'Personal first aid kit and altitude sickness medication (Diamox)',
         'Water bottle or hydration bladder (min 2L) and purification tablets/filter',
         'Headlamp with spare batteries'
-      ]
+      ],
+      faq: []
     },
     'zh-tw': {
-      title: '聖母峰基地營健行 (EBC Trek)',
+      title: '聖母峰基地營健行\n(EBC Trek)',
       subtitle: '走進世界之巔，體驗雪巴文化與冰川奇景的極致旅程',
       overview: '聖母峰基地營（Everest Base Camp, EBC）健行是全球最具代表性的高山健行路線之一。這趟旅程將帶您深入薩加瑪塔國家公園（Sagarmatha National Park），沿途您將穿梭於傳統的雪巴村落、跨越壯觀的吊橋、仰望包括聖母峰（Mount Everest）、洛子峰（Lhotse）與阿瑪達布拉姆峰（Ama Dablam）在內的群山峻嶺。我們將拜訪著名的天波切修道院（Tengboche Monastery），感受高山信仰的寧靜，最終抵達海拔 5,364 公尺的聖母峰基地營，並登上卡拉帕塔（Kala Patthar）欣賞令人屏息的聖母峰日出。\n\n請注意：本行程天數（15天）為預估標準，實際行程會視旅客的體能狀況與高山適應程度進行彈性調整。我們的首要任務是確保您在安全、健康的前提下，順利完成這趟壯麗的旅程。',
       highlights: [
@@ -277,7 +282,8 @@ export const ebcTour: TourData = {
         '個人常備藥品、高山症藥物及急救包',
         '個人水壺或水袋（建議最少準備 2 公升）與淨水藥片/淨水器',
         '頭燈及備用電池'
-      ]
+      ],
+      faq: []
     }
   }
 };

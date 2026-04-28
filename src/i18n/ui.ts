@@ -141,9 +141,9 @@ export const ui = {
           description: '這條經典路線是登山者心中的朝聖之旅，也是全球健行愛好者的夢想清單之一。沿途穿越雪巴村落、造訪騰波切修道院，並近距離欣賞昆布冰川，親身感受世界之巔的壯闊。這不僅是體能的挑戰，更是一段深刻的心靈旅程。',
         },
         abc: {
-          name: '安娜普納基地營',
-          location: 'Annapurna Base Camp - ABC',
-          description: '深入安娜普納群峰之中，體驗被雪山360度環繞的震撼。相較EBC路線較短，景觀卻豐富多變，從梯田、森林到高山冰雪，是探索喜馬拉雅的經典選擇。',
+          name: '安娜普納山區',
+          location: 'Annapurna Region',
+          description: '世界級的健行殿堂，擁有安娜普納基地營 (ABC) 與大環線 (ACT) 等多條聞名全球的健行路線。從壯麗的雪山全景到豐富的在地文化，這裡是每位旅人探索喜馬拉雅的最佳起點。',
         },
         poon_hill: {
           name: '普恩山',
@@ -184,6 +184,8 @@ export const ui = {
       button: {
         close: '返回',
         checkTour: '查看詳細套裝行程 ↗',
+        checkABC: '查看 ABC 基地營行程 ↗',
+        checkACT: '查看 ACT 大環線行程 ↗',
       },
       clickHint: '點擊景點了解更多',
     },
@@ -349,9 +351,9 @@ export const ui = {
           description: 'A legendary pilgrimage for mountaineers and a bucket-list trek for adventurers worldwide. Journey through Sherpa villages, visit Tengboche Monastery, and witness the Khumbu Glacier up close—an अनुभव that is as spiritually moving as it is physically demanding.',
         },
         abc: {
-          name: 'Annapurna Base Camp',
-          location: 'Annapurna Base Camp - ABC',
-          description: 'Surrounded by towering peaks, this trek offers a breathtaking 360-degree Himalayan panorama. Shorter than EBC yet incredibly diverse, it passes through terraced fields, forests, and alpine landscapes.',
+          name: 'Annapurna Region',
+          location: 'Annapurna Region',
+          description: 'A world-class trekking destination home to legendary routes like Annapurna Base Camp (ABC) and the Annapurna Circuit (ACT). From 360-degree mountain views to rich local culture, this region is a must-visit for every Himalayan adventurer.',
         },
         poon_hill: {
           name: 'Poon Hill',
@@ -392,6 +394,8 @@ export const ui = {
       button: {
         close: 'Back',
         checkTour: 'View Detailed Itinerary ↗',
+        checkABC: 'View ABC Itinerary ↗',
+        checkACT: 'View Annapurna Circuit (ACT) ↗',
       },
       clickHint: 'Click spots to explore more',
     },
