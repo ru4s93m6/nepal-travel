@@ -4,12 +4,12 @@
 export const homePageSEO = {
   'zh-tw': {
     title: '尼泊爾當地旅行社 | Oriental Express Travel 彈性包團・深度旅遊',
-    description: 'Oriental Express Travel是由擁有多年在地經驗的團隊所創立的尼泊爾當地旅行社，提供彈性的私人包團服務，不限於人數與出發日期。無論是安納普納健行、聖母峰基地營，或加德滿都文化導覽，我們都能依您的步調客製行程，安心並且深度地探索尼泊爾的美麗。',
+    description: 'Oriental Express Travel 是一間深耕尼泊爾的當地旅行社。我們專注於彈性的私人客製化包團，無論人數多寡、隨時都能出發。無論是輕鬆的古都文化巡禮、野生動物生態遊，還是挑戰自我的高山健行，交給專業的團隊，帶你深度體驗最真實的尼泊爾。',
     keywords: '尼泊爾旅遊,尼泊爾健行,尼泊爾包團,尼泊爾導遊,聖母峰基地營,安納普納健行,加德滿都旅遊,尼泊爾旅行社,尼泊爾當地旅行社,尼泊爾在地旅行社,Oriental Express Travel,Nepal Trekking',
   },
   'en': {
     title: 'Local Nepal Travel Agency | Oriental Express Travel',
-    description: 'Travel Nepal with Oriental Express, a locally based team with many years of experience. We offer private trekking and custom tours with flexible dates and group sizes — from Annapurna and Everest Base Camp treks to cultural tours in Kathmandu. Plan your journey at your own pace with trusted local guides.',
+    description: 'Oriental Express Travel is a local travel agency deeply rooted in Nepal. We specialize in flexible, private custom tours for any group size, departing anytime. Whether it\'s a relaxing cultural city tour, a wildlife jungle safari, or a challenging high-altitude trek, let our expert local team guide you to experience the authentic Nepal.',
     keywords: 'Nepal travel agency,Nepal trekking,Nepal private tours,Nepal local guide,Annapurna Base Camp,Everest Base Camp,Kathmandu tours,Oriental Express Travel',
   }
 };
