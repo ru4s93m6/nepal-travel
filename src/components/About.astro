@@ -1,5 +1,9 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+import busGroup from '../assets/bus-group.webp';
+import busExterior from '../assets/bus-exterior.webp';
+import busInterior from '../assets/bus-interior.webp';
 
 interface Props {
   lang: 'zh-tw' | 'en';
@@ -159,6 +163,42 @@ const t = useTranslations(lang);
           </div>
           <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item3.title')}</h4>
           <p class="text-stone-600 text-sm">{t('about.customization.item3.desc')}</p>
+        </div>
+      </div>
+
+      <!-- Real Tour & Transport Gallery -->
+      <div class="mt-16 pt-12 border-t border-stone-200">
+        <div class="text-center mb-8">
+          <h4 class="text-2xl font-bold text-stone-900 mb-3">{lang === 'zh-tw' ? '舒適的專車接送與團體服務' : 'Comfortable Private Transport & Group Services'}</h4>
+          <p class="text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            {lang === 'zh-tw' 
+              ? '我們會依照您的實際人數，安排最適合的專屬車型。從適合 1-4 人小團體的舒適休旅車，到專為多人團體準備的寬敞冷氣巴士，皆能提供平穩又舒適的點對點接送服務。' 
+              : 'We arrange the most suitable transportation based on your group size. From comfortable SUVs for small groups of up to 4 people, to spacious air-conditioned buses for larger parties, we ensure your intercity travel is safe, relaxing, and hassle-free.'}
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3] group">
+            <Image 
+              src={busGroup} 
+              alt="Happy tourists with our transport" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3] group">
+            <Image 
+              src={busExterior} 
+              alt="Modern tourist bus exterior" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3] group">
+            <Image 
+              src={busInterior} 
+              alt="Comfortable tourist bus interior" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
         </div>
       </div>
     </div>
