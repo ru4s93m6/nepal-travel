@@ -178,7 +178,7 @@ export const ui = {
         manaslu: {
           name: '馬納斯魯大環線',
           location: 'Manaslu Circuit',
-          description: '被譽為安娜普納環線的最佳替代方案，這條隱秘的路線圍繞著世界第八高峰馬納斯魯峰。擁有未受破壞的藏族村落與令人屏息的高山隘口，是尋求遠離人潮的資深健行者的完美挑戰。',
+          description: '被譽為安娜普納環線的最佳替代路線，這條隱秘的路線圍繞著世界第八高峰馬納斯魯峰。擁有未受破壞的藏族村落與令人屏息的高山隘口，是尋求遠離人潮的資深健行者的完美挑戰。',
         },
       },
       button: {
@@ -186,6 +186,8 @@ export const ui = {
         checkTour: '查看詳細套裝行程 ↗',
         checkABC: '查看 ABC 基地營行程 ↗',
         checkACT: '查看 ACT 大環線行程 ↗',
+        checkEBC: '查看 EBC 基地營行程 ↗',
+        checkGokyo: '查看 Gokyo 湖健行行程 ↗',
       },
       clickHint: '點擊景點了解更多',
     },
@@ -396,6 +398,8 @@ export const ui = {
         checkTour: 'View Detailed Itinerary ↗',
         checkABC: 'View ABC Itinerary ↗',
         checkACT: 'View Annapurna Circuit (ACT) ↗',
+        checkEBC: 'View EBC Itinerary ↗',
+        checkGokyo: 'View Gokyo Lake Trek ↗',
       },
       clickHint: 'Click spots to explore more',
     },

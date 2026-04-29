@@ -264,7 +264,7 @@ const regions = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
-<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "act", "poon_hill", "manaslu"]' class="hidden"></div>
+<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "act", "poon_hill", "manaslu", "gokyo"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}
@@ -274,6 +274,8 @@ const regions = [
        checkTour: t('itinerary.button.checkTour'),
        checkABC: t('itinerary.button.checkABC'),
        checkACT: t('itinerary.button.checkACT'),
+       checkEBC: t('itinerary.button.checkEBC'),
+       checkGokyo: t('itinerary.button.checkGokyo'),
      })}
      class="hidden">
 </div>
@@ -360,7 +362,8 @@ const regions = [
             'bhaktapur': 'kathmandu_valley',
             'thamel': 'kathmandu_valley',
             'nagarkot': 'kathmandu_valley',
-            'abc': ['abc', 'act'] // Special case: Annapurna Region links to both
+            'abc': ['abc', 'act'], // Special case: Annapurna Region links to both
+            'ebc': ['ebc', 'gokyo'] // Special case: Everest Region links to both
           };
           
           const tourIds = multiTourMapping[id] || (availableTours.includes(id) ? id : null);
@@ -379,6 +382,8 @@ const regions = [
               // Custom label logic
               if (tourId === 'abc') btn.textContent = uiLabels.checkABC;
               else if (tourId === 'act') btn.textContent = uiLabels.checkACT;
+              else if (tourId === 'ebc') btn.textContent = uiLabels.checkEBC;
+              else if (tourId === 'gokyo') btn.textContent = uiLabels.checkGokyo;
               else btn.textContent = uiLabels.checkTour;
               
               container.appendChild(btn);
