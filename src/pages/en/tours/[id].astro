@@ -32,6 +32,30 @@ const seoTitle = `${content.title} | Oriental Express Travel`;
 const seoDescription = content.overview.substring(0, 160) + '...';
 const seoKeywords = `${content.title}, Nepal Trekking, Nepal local travel agency, ${id.toUpperCase()}`;
 
+// Generate Schema Markup for TouristTrip
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": content.title,
+  "description": content.overview,
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Oriental Express Travel",
+    "url": "https://oriental-express-travel.com"
+  },
+  "itinerary": {
+    "@type": "ItemList",
+    "itemListElement": content.itinerary.map((day, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "TouristAttraction",
+        "name": `Day ${day.day}: ${day.title}`,
+        "description": day.description
+      }
+    }))
+  }
+};
 ---
 <BaseLayout 
   title={seoTitle}
@@ -39,6 +63,7 @@ const seoKeywords = `${content.title}, Nepal Trekking, Nepal local travel agency
   keywords={seoKeywords}
   lang={lang}
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaData)} />
   <TourDetail tour={tour} />
   <Contact lang={lang} />
 </BaseLayout>
