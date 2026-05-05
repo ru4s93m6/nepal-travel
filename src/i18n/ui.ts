@@ -105,6 +105,11 @@ export const ui = {
           location: 'Pashupatinath Temple',
           description: '尼泊爾最神聖的濕婆神廟，坐落於巴格馬蒂河畔。這裡是印度教重要的火葬場所，象徵生命回歸自然的循環。壯觀的寺廟建築與聚集於此的苦行僧，展現深刻的宗教文化與生死觀。',
         },
+        swayambhunath: {
+          name: '斯瓦揚布納特（猴廟）',
+          location: 'Swayambhunath Stupa',
+          description: '位於加德滿都谷地的一座古老佛塔，因為有許多猴子棲息而又被稱為「猴廟」。這裡是尼泊爾最神聖的佛教聖地之一，高聳的佛塔上繪有佛眼，俯瞰著整個加德滿都谷地。爬上三百多階的石梯後，可以飽覽整個市區的壯麗景色。',
+        },
         bhaktapur: {
           name: '巴德崗杜巴廣場',
           location: 'Bhaktapur Durbar Square',
@@ -316,6 +321,11 @@ export const ui = {
           name: 'Pashupatinath Temple',
           location: 'Pashupatinath Temple',
           description: 'Nepal’s most sacred Hindu temple dedicated to Lord Shiva, set along the Bagmati River. It is an important cremation site, reflecting the cycle of life and death. The temple’s striking architecture and resident sadhus offer a powerful glimpse into spiritual traditions.',
+        },
+        swayambhunath: {
+          name: 'Swayambhunath Stupa',
+          location: 'Swayambhunath Stupa',
+          description: 'An ancient religious architecture atop a hill in the Kathmandu Valley, affectionately known as the "Monkey Temple" due to the holy monkeys living there. It is one of the most sacred Buddhist pilgrimage sites in Nepal. The stupa is adorned with the all-seeing eyes of Buddha, watching over the valley. After climbing the 365 stone steps, you are rewarded with a breathtaking panoramic view of Kathmandu city.',
         },
         bhaktapur: {
           name: 'Bhaktapur Durbar Square',
