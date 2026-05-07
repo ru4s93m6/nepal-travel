@@ -140,6 +140,11 @@ export const ui = {
           location: 'Nagarkot',
           description: '位於加德滿都谷地邊緣的山城，以遼闊的喜馬拉雅山景聞名。天氣晴朗時甚至可遠眺聖母峰。日出與日落景色特別迷人，是遠離城市、享受寧靜的好去處。',
         },
+        shivapuri: {
+          name: '希瓦普里國家公園',
+          location: 'Shivapuri Nagarjun National Park',
+          description: '距離加德滿都市區最近的國家公園，是遠離塵囂、享受清新空氣的絕佳去處。這裡擁有豐富的動植物生態與多條健行步道，也是重要的水源保護區。這裡有許多不同的健行路線，可以根據自己的體能選擇。',
+        },
         ebc: {
           name: '聖母峰基地營',
           location: 'Everest Base Camp - EBC',
@@ -356,6 +361,11 @@ export const ui = {
           name: 'Nagarkot',
           location: 'Nagarkot',
           description: 'Perched on the edge of the Kathmandu Valley, Nagarkot offers sweeping Himalayan views. On clear days, even Mount Everest can be seen in the distance. Sunrise and sunset here are truly spectacular.',
+        },
+        shivapuri: {
+          name: 'Shivapuri Nagarjun National Park',
+          location: 'Shivapuri Nagarjun National Park',
+          description: 'The closest national park to Kathmandu, making it an ideal short escape from the city hustle. Known for its rich biodiversity, dense forests, and watershed areas, the park offers numerous hiking trails. There are many different hiking trails, which can be chosen according to one\'s physical fitness.',
         },
         ebc: {
           name: 'Everest Base Camp',
