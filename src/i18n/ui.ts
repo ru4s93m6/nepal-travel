@@ -199,6 +199,13 @@ export const ui = {
         checkEBC: '查看 EBC 基地營行程 ↗',
         checkGokyo: '查看 Gokyo 湖健行行程 ↗',
       },
+      filter: {
+        all: '全部景點',
+        trekking: '高山健行',
+        culture: '文化與宗教',
+        nature: '自然與生態',
+        leisure: '休閒度假',
+      },
       clickHint: '點擊景點了解更多',
     },
     faq: [
@@ -420,6 +427,13 @@ export const ui = {
         checkACT: 'View Annapurna Circuit (ACT) ↗',
         checkEBC: 'View EBC Itinerary ↗',
         checkGokyo: 'View Gokyo Lake Trek ↗',
+      },
+      filter: {
+        all: 'All Highlights',
+        trekking: 'Trekking',
+        culture: 'Culture & History',
+        nature: 'Wildlife & Nature',
+        leisure: 'Leisure & View',
       },
       clickHint: 'Click spots to explore more',
     },

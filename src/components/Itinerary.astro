@@ -29,33 +29,33 @@ function project(lat: number, lng: number) {
 // Destination information with SEO-friendly image attributes and Lat/Lon
 const rawDestinations = [
   // Kathmandu Valley (Central) - Spread out for UX
-  { id: 'kathmandu_durbar', image: '/kathmandu.webp', lat: 27.6950, lng: 85.2900, region: 'kathmandu' }, // Moved SE
-  { id: 'patan_durbar', image: '/patan.webp', lat: 27.6727, lng: 85.3253, region: 'kathmandu' },
-  { id: 'boudhanath', image: '/boudhanath.webp', lat: 27.7250, lng: 85.3750, region: 'kathmandu' }, // Moved NE
-  { id: 'pashupatinath', image: '/pashupatinath.webp', lat: 27.7120, lng: 85.3550, region: 'kathmandu' }, // Slight East
-  { id: 'swayambhunath', image: '/swayambhunath.webp', lat: 27.7149, lng: 85.2903, region: 'kathmandu' },
-  { id: 'shivapuri', image: '/shivapuri.webp', lat: 27.8033, lng: 85.3856, region: 'kathmandu' },
-  { id: 'thamel', image: '/thamel.webp', lat: 27.7250, lng: 85.3050, region: 'kathmandu' }, // Moved NW
-  { id: 'bhaktapur', image: '/bhaktapur.webp', lat: 27.6710, lng: 85.4298, region: 'kathmandu' }, // Keep
-  { id: 'nagarkot', image: '/nagarkot.webp', lat: 27.7174, lng: 85.5046, region: 'kathmandu' }, // Keep
+  { id: 'kathmandu_durbar', image: '/kathmandu.webp', lat: 27.6950, lng: 85.2900, region: 'kathmandu', category: 'culture' }, // Moved SE
+  { id: 'patan_durbar', image: '/patan.webp', lat: 27.6727, lng: 85.3253, region: 'kathmandu', category: 'culture' },
+  { id: 'boudhanath', image: '/boudhanath.webp', lat: 27.7250, lng: 85.3750, region: 'kathmandu', category: 'culture' }, // Moved NE
+  { id: 'pashupatinath', image: '/pashupatinath.webp', lat: 27.7120, lng: 85.3550, region: 'kathmandu', category: 'culture' }, // Slight East
+  { id: 'swayambhunath', image: '/swayambhunath.webp', lat: 27.7149, lng: 85.2903, region: 'kathmandu', category: 'culture' },
+  { id: 'shivapuri', image: '/shivapuri.webp', lat: 27.8033, lng: 85.3856, region: 'kathmandu', category: 'nature' },
+  { id: 'thamel', image: '/thamel.webp', lat: 27.7250, lng: 85.3050, region: 'kathmandu', category: 'leisure' }, // Moved NW
+  { id: 'bhaktapur', image: '/bhaktapur.webp', lat: 27.6710, lng: 85.4298, region: 'kathmandu', category: 'culture' }, // Keep
+  { id: 'nagarkot', image: '/nagarkot.webp', lat: 27.7174, lng: 85.5046, region: 'kathmandu', category: 'leisure' }, // Keep
   
   // Pokhara & Annapurna (West) - Spread out for UX
-  { id: 'phewa', image: '/pokhara.webp', lat: 28.2000, lng: 83.9500, region: 'pokhara' }, // Slight South
-  { id: 'sarangkot', image: '/sarangkot.webp', lat: 28.2550, lng: 83.9350, region: 'pokhara' }, // Moved NW
-  { id: 'machhapuchhre', image: '/machhapuchhre.webp', lat: 28.5300, lng: 83.9493, region: 'pokhara' }, // Keep
-  { id: 'abc', image: '/annapurna.webp', lat: 28.5800, lng: 83.8500, region: 'pokhara' }, // Moved NW
-  { id: 'poon_hill', image: '/poon_hill.webp', lat: 28.3800, lng: 83.6500, region: 'pokhara' }, // Moved SW
-  { id: 'mardi_himal', image: '/mardi_himal.webp', lat: 28.4600, lng: 84.0000, region: 'pokhara' }, // Moved East
-  { id: 'mustang', image: '/mustang.webp', lat: 29.1866, lng: 83.9515, region: 'pokhara' }, // Keep
+  { id: 'phewa', image: '/pokhara.webp', lat: 28.2000, lng: 83.9500, region: 'pokhara', category: 'leisure' }, // Slight South
+  { id: 'sarangkot', image: '/sarangkot.webp', lat: 28.2550, lng: 83.9350, region: 'pokhara', category: 'leisure' }, // Moved NW
+  { id: 'machhapuchhre', image: '/machhapuchhre.webp', lat: 28.5300, lng: 83.9493, region: 'pokhara', category: 'nature' }, // Keep
+  { id: 'abc', image: '/annapurna.webp', lat: 28.5800, lng: 83.8500, region: 'pokhara', category: 'trekking' }, // Moved NW
+  { id: 'poon_hill', image: '/poon_hill.webp', lat: 28.3800, lng: 83.6500, region: 'pokhara', category: 'trekking' }, // Moved SW
+  { id: 'mardi_himal', image: '/mardi_himal.webp', lat: 28.4600, lng: 84.0000, region: 'pokhara', category: 'trekking' }, // Moved East
+  { id: 'mustang', image: '/mustang.webp', lat: 29.1866, lng: 83.9515, region: 'pokhara', category: 'trekking' }, // Keep
 
   // Everest (East)
-  { id: 'ebc', image: '/everest.webp', lat: 28.0026, lng: 86.8528, region: 'everest' },
+  { id: 'ebc', image: '/everest.webp', lat: 28.0026, lng: 86.8528, region: 'everest', category: 'trekking' },
 
   // Others
-  { id: 'chitwan', image: '/chitwan.webp', lat: 27.5291, lng: 84.3542, region: 'others' },
-  { id: 'lumbini', image: '/lumbini.webp', lat: 27.4840, lng: 83.2760, region: 'others' }, 
-  { id: 'langtang', image: '/langtang.webp', lat: 28.2128, lng: 85.6028, region: 'others' },
-  { id: 'manaslu', image: '/manaslu.webp', lat: 28.5500, lng: 84.5600, region: 'others' },
+  { id: 'chitwan', image: '/chitwan.webp', lat: 27.5291, lng: 84.3542, region: 'others', category: 'nature' },
+  { id: 'lumbini', image: '/lumbini.webp', lat: 27.4840, lng: 83.2760, region: 'others', category: 'culture' }, 
+  { id: 'langtang', image: '/langtang.webp', lat: 28.2128, lng: 85.6028, region: 'others', category: 'trekking' },
+  { id: 'manaslu', image: '/manaslu.webp', lat: 28.5500, lng: 84.5600, region: 'others', category: 'trekking' },
 ];
 
 const destinations = await Promise.all(rawDestinations.map(async (dest) => {
@@ -80,6 +80,13 @@ const regions = [
   { id: 'everest', label: 'Everest Region' },
   { id: 'others', label: 'Other Highlights' },
 ];
+
+const categories = [
+  'trekking',
+  'culture',
+  'nature',
+  'leisure'
+];
 ---
 
 <section id="tours" class="py-20 bg-brand-cream overflow-hidden">
@@ -95,6 +102,20 @@ const regions = [
       <p class="text-brand-blue/70 max-w-3xl mx-auto leading-relaxed">
         {t('itinerary.description')}
       </p>
+    </div>
+
+    <!-- Desktop Map Filter Tabs -->
+    <div class="hidden md:flex justify-center mb-8">
+      <div class="inline-flex flex-wrap justify-center gap-2 bg-stone-100 rounded-2xl p-1.5 shadow-inner border border-stone-200" id="map-filters">
+        <button class="filter-btn active px-6 py-2 rounded-xl text-sm font-medium transition-all text-white bg-brand-blue shadow-md" data-category="all">
+          {t('itinerary.filter.all' as any) || 'All Highlights'}
+        </button>
+        {categories.map(cat => (
+          <button class="filter-btn px-6 py-2 rounded-xl text-sm font-medium transition-all text-stone-600 hover:text-brand-blue hover:bg-white" data-category={cat}>
+            {t(`itinerary.filter.${cat}` as any)}
+          </button>
+        ))}
+      </div>
     </div>
 
     <!-- Desktop View: Interactive Zoomed Map -->
@@ -142,6 +163,7 @@ const regions = [
             return (
             <g class="map-node cursor-pointer group" 
                data-id={dest.id} 
+               data-category={dest.category}
                transform={`translate(${x}, ${y})`}>
                
                <!-- Invisible Hit Area (Larger) for stable hover -->
@@ -677,6 +699,36 @@ const regions = [
           if (mapTooltip) {
               mapTooltip.style.opacity = '0';
           }
+      });
+  });
+
+  // Map Filter Logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+
+  filterBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const category = btn.getAttribute('data-category');
+          
+          // Update Active State
+          filterBtns.forEach(b => {
+             b.classList.remove('bg-brand-blue', 'text-white', 'shadow-md');
+             b.classList.add('text-stone-600', 'hover:text-brand-blue', 'hover:bg-white');
+          });
+          btn.classList.remove('text-stone-600', 'hover:text-brand-blue', 'hover:bg-white');
+          btn.classList.add('bg-brand-blue', 'text-white', 'shadow-md');
+
+          // Filter nodes
+          mapNodes.forEach(node => {
+              const nodeCat = node.getAttribute('data-category');
+              if (category === 'all' || nodeCat === category) {
+                  gsap.to(node, { opacity: 1, duration: 0.3 });
+                  node.style.pointerEvents = 'auto';
+              } else {
+                  gsap.to(node, { opacity: 0, duration: 0.3 });
+                  node.style.pointerEvents = 'none';
+              }
+          });
       });
   });
 
