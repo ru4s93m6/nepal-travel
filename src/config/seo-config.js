@@ -9,7 +9,7 @@ export const homePageSEO = {
   },
   'en': {
     title: 'Local Nepal Travel Agency | Oriental Express Travel',
-    description: 'Oriental Express Travel is a local travel agency deeply rooted in Nepal. We specialize in flexible, private custom tours for any group size, departing anytime. Whether it\'s a relaxing cultural city tour, a wildlife jungle safari, or a challenging high-altitude trek, let our expert local team guide you to experience the authentic Nepal.',
+    description: 'Oriental Express Travel is a local travel agency in Nepal. We specialize in flexible, private custom tours, wildlife safaris, and high-altitude treks.',
     keywords: 'Nepal travel agency,Nepal trekking,Nepal private tours,Nepal local guide,Annapurna Base Camp,Everest Base Camp,Kathmandu tours,Oriental Express Travel',
   }
 };
@@ -25,7 +25,7 @@ export const aboutPageSEO = {
   },
   'en': {
     title: 'About Us - 20+ Years Nepal Travel Experts | Oriental Express Travel',
-    description: 'Meet the Oriental Express Travel team. 20+ years of Nepal travel expertise with professional trek guides, family-friendly tours, and multilingual services. Founder Raju Gurung leads an experienced local team to craft your perfect journey.',
+    description: 'Meet the Oriental Express Travel team. Over 20 years of Nepal travel expertise providing professional trek guides, custom tours, and multilingual services.',
     keywords: 'Nepal travel agency,Oriental Express,Raju Gurung,professional guides,local team,customized tours,Nepal tourism,experienced guides',
   }
 };
@@ -41,7 +41,7 @@ export const toursPageSEO = {
   },
   'en': {
     title: 'Popular Nepal Destinations - Everest, Annapurna, Kathmandu | Oriental Express',
-    description: 'Discover Nepal\'s top 5 destinations: Kathmandu ancient city, Pokhara lakeside, Annapurna range, Chitwan National Park, Everest Base Camp. Expert guides with 20 years experience craft unforgettable Himalayan journeys.',
+    description: 'Discover Nepal\'s top destinations: Kathmandu, Pokhara, Annapurna, Chitwan, and Everest Base Camp. Expert guides craft unforgettable Himalayan journeys.',
     keywords: 'Nepal destinations,Everest Base Camp,Annapurna Circuit,Kathmandu tours,Pokhara,Chitwan,Nepal trekking routes,Himalayas travel',
   }
 };
@@ -57,7 +57,7 @@ export const contactPageSEO = {
   },
   'en': {
     title: 'Contact Us - Oriental Express Travel | Nepal Travel Inquiry',
-    description: 'Contact Oriental Express Travel today! Located in Chhaya Center, Thamel, Kathmandu. Nepal travel consultation and itinerary planning services. Phone: +977-9818840319, Email: info@orientalexpress.com.np. Reach us instantly via WhatsApp.',
+    description: 'Contact Oriental Express Travel in Thamel, Kathmandu for Nepal travel consultation and itinerary planning. Email: info@orientalexpress.com.np.',
     keywords: 'Nepal travel inquiry,Oriental Express contact,travel planning,Nepal travel agency,Kathmandu tourism service,Thamel',
   }
 };

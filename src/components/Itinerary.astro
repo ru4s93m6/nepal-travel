@@ -65,8 +65,8 @@ const destinations = await Promise.all(rawDestinations.map(async (dest) => {
   
   if (images[imagePath]) {
     const imgModule = await images[imagePath]();
-    const mobileImg = await getImage({ src: imgModule.default, width: 200, format: 'webp' });
-    const desktopImg = await getImage({ src: imgModule.default, width: 800, format: 'webp' });
+    const mobileImg = await getImage({ src: imgModule.default, width: 200, format: 'webp', quality: 80 });
+    const desktopImg = await getImage({ src: imgModule.default, width: 800, format: 'webp', quality: 80 });
     mobileSrc = mobileImg.src;
     desktopSrc = desktopImg.src;
   }

@@ -9,6 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'zh-tw',
     locales: ['zh-tw', 'en'],
