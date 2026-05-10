@@ -227,7 +227,7 @@ export const ui = {
       },
       {
         question: "旅行社有提供不丹的旅遊行程嗎",
-        answer: "是的，我們有提供！我們可以為您安排銜接不丹的<a href='/zh-tw/tours/bhutan' class='text-brand-gold underline hover:text-amber-800 transition'>套裝行程</a>。我們與不丹當地的旅行業者合作，為您處理所有手續，包含不丹簽證、從加德滿都出發的機票、住宿與導覽行程。"
+        answer: "是的，我們有提供！我們可以為您安排銜接不丹的<a href='/zh-tw/tours/bhutan/' class='text-brand-gold underline hover:text-amber-800 transition'>套裝行程</a>。我們與不丹當地的旅行業者合作，為您處理所有手續，包含不丹簽證、從加德滿都出發的機票、住宿與導覽行程。"
       },
       {
         question: "如何付費",
@@ -456,7 +456,7 @@ export const ui = {
       },
       {
         question: "Do you offer tours to Bhutan",
-        answer: "Yes, we do! We can arrange a seamless <a href='/en/tours/bhutan' class='text-brand-gold underline hover:text-amber-800 transition'>Bhutan tour package</a> to extend your Nepal holiday. We work with trusted Bhutanese tour operators to handle everything for you, including your Bhutan visa, flights from Kathmandu, accommodations, and guided tours."
+        answer: "Yes, we do! We can arrange a seamless <a href='/en/tours/bhutan/' class='text-brand-gold underline hover:text-amber-800 transition'>Bhutan tour package</a> to extend your Nepal holiday. We work with trusted Bhutanese tour operators to handle everything for you, including your Bhutan visa, flights from Kathmandu, accommodations, and guided tours."
       },
       {
         question: "How do I make a payment",
