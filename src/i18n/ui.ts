@@ -244,8 +244,8 @@ export const ui = {
       contact: 'Contact',
     },
     home: {
-      title: 'A Mystical Kingdom at the Himalayas',
-      subtitle: 'Your Trusted Local Travel Agency in Nepal, guiding you to explore its endless beauty',
+      title: 'Your Trusted Local Travel Agency in Nepal',
+      subtitle: 'Explore the mystical Himalayas with Oriental Express, a government-registered local team.',
     },
     button: {
       learnMore: 'Learn More',
