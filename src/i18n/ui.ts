@@ -230,9 +230,13 @@ export const ui = {
         answer: "是的，我們有提供！我們可以為您安排銜接不丹的<a href='/zh-tw/tours/bhutan/' class='text-brand-gold underline hover:text-amber-800 transition'>套裝行程</a>。我們與不丹當地的旅行業者合作，為您處理所有手續，包含不丹簽證、從加德滿都出發的機票、住宿與導覽行程。"
       },
       {
+        question: "旅行社可以幫忙代訂機票嗎",
+        answer: "除了完整的套裝行程，我們也提供國際與尼泊爾國內機票的代訂服務。我們可以幫您找出最優惠、時間最順的航班，為您省去比價與搜尋的麻煩。若您有需求，隨時歡迎與我們聯繫報價。"
+      },
+      {
         question: "如何付費",
         answer: "目前我們接受銀行轉帳付款，並同時提供彈性的付款方式，旅客也可選擇於抵達尼泊爾後以現金支付。若您已選擇現金付款方式，我們將不會另行提供轉帳資訊，以確保您的資金安全；同時也提醒您留意任何可疑或詐騙訊息。如對付款方式有任何疑問，歡迎隨時與我們聯繫。"
-      }
+      },
     ]
   },
   'en': {
@@ -461,6 +465,10 @@ export const ui = {
       {
         question: "How do I make a payment",
         answer: "We currently accept payment via bank transfer and also offer flexible payment options. Travelers may choose to pay in cash upon arrival in Nepal. If you select the cash payment option, we will not send bank transfer details to ensure the security of your funds. Please also remain cautious of any suspicious or fraudulent messages. If you have any questions regarding payment methods, feel free to contact us."
+      },
+      {
+        question: "Do you help with booking flight tickets",
+        answer: "Yes, we do! In addition to our tour packages, we offer ticketing services for both international and domestic flights in Nepal. We can help you find the best prices and the most convenient flight schedules, saving you the hassle of comparing and searching. Feel free to contact us for a quote anytime."
       }
     ]
   },
