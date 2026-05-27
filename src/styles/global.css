@@ -91,3 +91,17 @@ h6 {
     height: 28px;
   }
 }
+
+/* Hide details marker of default style of safari */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::marker {
+  display: none;
+  content: "";
+}
+
+summary {
+  list-style: none;
+}
