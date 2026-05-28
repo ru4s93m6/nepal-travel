@@ -309,7 +309,7 @@ export const ui = {
     itinerary: {
       title: 'Top Destinations',
       subtitle: 'Discover the Hidden Wonders of Nepal',
-      description: ‘Explore our handpicked selection of Nepal’s most captivating destinations. You can refer to these classic tour packages as inspiration for your journey. Every itinerary can be fully customized and tailor-made to perfectly match your preferences and pace.’,
+      description: 'Explore our handpicked selection of Nepal\'s most captivating destinations. You can refer to these classic tour packages as inspiration for your journey. Every itinerary can be fully customized and tailor-made to perfectly match your preferences and pace.',
       destinationsCount: 'Destinations',
       regions: {
         kathmandu: 'Kathmandu Valley',
@@ -321,7 +321,7 @@ export const ui = {
         kathmandu_durbar: {
           name: 'Kathmandu Durbar Square',
           location: 'Kathmandu Durbar Square',
-          description: 'Once the royal heart of Nepal, this historic palace complex showcases exquisite wood carvings, temples, and courtyards. Despite past earthquakes, it remains rich in heritage and cultural significance. The living goddess Kumari still resides here, quietly witnessing the city’s history unfold.',
+          description: 'Once the royal heart of Nepal, this historic palace complex showcases exquisite wood carvings, temples, and courtyards. Despite past earthquakes, it remains rich in heritage and cultural significance. The living goddess Kumari still resides here, quietly witnessing the city\'s history unfold.',
         },
         patan_durbar: {
           name: 'Patan Durbar Square',
@@ -336,7 +336,7 @@ export const ui = {
         pashupatinath: {
           name: 'Pashupatinath Temple',
           location: 'Pashupatinath Temple',
-          description: 'Nepal’s most sacred Hindu temple dedicated to Lord Shiva, set along the Bagmati River. It is an important cremation site, reflecting the cycle of life and death. The temple’s striking architecture and resident sadhus offer a powerful glimpse into spiritual traditions.',
+          description: 'Nepal\'s most sacred Hindu temple dedicated to Lord Shiva, set along the Bagmati River. It is an important cremation site, reflecting the cycle of life and death. The temple\'s striking architecture and resident sadhus offer a powerful glimpse into spiritual traditions.',
         },
         swayambhunath: {
           name: 'Swayambhunath Stupa',
@@ -346,7 +346,7 @@ export const ui = {
         bhaktapur: {
           name: 'Bhaktapur Durbar Square',
           location: 'Bhaktapur Durbar Square',
-          description: 'Often called a “living museum,” this ancient city preserves the finest examples of Newari craftsmanship. With its red-brick streets and intricately carved temples, it offers a timeless journey into Nepal’s past.',
+          description: 'Often called a “living museum,” this ancient city preserves the finest examples of Newari craftsmanship. With its red-brick streets and intricately carved temples, it offers a timeless journey into Nepal\'s past.',
         },
         phewa: {
           name: 'Phewa Lake',
