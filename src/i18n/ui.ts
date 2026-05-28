@@ -49,7 +49,7 @@ export const ui = {
       founderYears: '深耕尼泊爾旅遊 20+ 年',
       customization: {
         title: '為您量身打造的旅程',
-        subtitle: '我們不只是帶您旅行,更希望您能在旅途中實現夢想、深度體驗尼泊爾的美',
+        subtitle: '我們不只是帶您旅行，更希望您能在旅途中實現夢想、深度體驗尼泊爾的美',
         item1: {
           title: '彈性團隊規模',
           desc: '我們主要採包團方式規劃行程，無論是一人獨自出發、親友同行，或是企業與大型旅遊團體，我們都能依需求妥善安排。行程內容、節奏與服務細節皆可彈性調整，為您打造最符合期待的專屬旅程。'
@@ -210,31 +210,31 @@ export const ui = {
     },
     faq: [
       {
-        question: "尼泊爾的最佳旅遊季節是什麼時候",
+        question: "尼泊爾的最佳旅遊季節是什麼時候？",
         answer: "尼泊爾的最佳旅遊季節通常是春季（3月至5月）和秋季（9月至11月）。這兩個季節天氣晴朗，適合進行戶外活動和健行。"
       },
       {
-        question: "旅行的費用大約是多少",
+        question: "旅行的費用大約是多少？",
         answer: "旅行費用會根據行程長短、住宿標準和活動內容而有所不同。請聯繫我們以獲取量身定制的報價。"
       },
       {
-        question: "旅程包含哪些服務",
+        question: "旅程包含哪些服務？",
         answer: "我們的旅程通常包含住宿、交通、導遊服務和部分餐食。如果您已經有規畫好的行程，我們可以依照您的需求提供客製化的服務，如果您第一次來尼泊爾旅遊，我們也可以提供完整的行前規劃服務。如果您需要幫忙協助訂購機票、詢問簽證等相關事宜，我們也很樂意提供幫助。"
       },
       {
-        question: "怎麼聯繫我們",
-        answer: "您可以透過連絡我們的WhatsApp或電子郵件與我們聯繫。我們會盡快回覆您的詢問，協助您規劃理想的尼泊爾之旅。如果是中文服務需求，我們也有中文專員可以協助您。"
+        question: "如何聯絡我們？",
+        answer: "您可以透過WhatsApp或電子郵件與我們聯絡。我們會盡快回覆您的詢問，協助您規劃理想的尼泊爾之旅。如果是中文服務需求，我們也有中文專員可以協助您。"
       },
       {
-        question: "旅行社有提供不丹的旅遊行程嗎",
+        question: "旅行社有提供不丹的旅遊行程嗎？",
         answer: "是的，我們有提供！我們可以為您安排銜接不丹的<a href='/zh-tw/tours/bhutan/' class='text-brand-gold underline hover:text-amber-800 transition'>套裝行程</a>。我們與不丹當地的旅行業者合作，為您處理所有手續，包含不丹簽證、從加德滿都出發的機票、住宿與導覽行程。"
       },
       {
-        question: "旅行社可以幫忙代訂機票嗎",
+        question: "旅行社可以幫忙代訂機票嗎？",
         answer: "除了完整的套裝行程，我們也提供國際與尼泊爾國內機票的代訂服務。我們可以幫您找出最優惠、時間最順的航班，為您省去比價與搜尋的麻煩。若您有需求，隨時歡迎與我們聯繫報價。"
       },
       {
-        question: "如何付費",
+        question: "如何付費？",
         answer: "目前我們接受銀行轉帳付款，並同時提供彈性的付款方式，旅客也可選擇於抵達尼泊爾後以現金支付。若您已選擇現金付款方式，我們將不會另行提供轉帳資訊，以確保您的資金安全；同時也提醒您留意任何可疑或詐騙訊息。如對付款方式有任何疑問，歡迎隨時與我們聯繫。"
       },
     ]
@@ -282,7 +282,7 @@ export const ui = {
       founderYears: '20+ Years in Nepal Tourism',
       customization: {
         title: 'Tailored Journey Just for You',
-        subtitle: 'We don\'t just take you traveling – we help you realize your dreams and deeply experience the beauty of Nepal',
+        subtitle: 'We don\'t just take you on a trip – we help you realize your dreams and deeply experience the beauty of Nepal',
         item1: {
           title: 'Flexible Group Size',
           desc: 'We primarily arrange private tours, welcoming everyone from solo travelers to families, friends, and large group tours. Each journey is thoughtfully planned according to your group size, travel style, and pace, allowing for flexible itineraries and personalized service to ensure a smooth and enjoyable experience for every traveler.'
@@ -309,7 +309,7 @@ export const ui = {
     itinerary: {
       title: 'Top Destinations',
       subtitle: 'Discover the Hidden Wonders of Nepal',
-      description: 'Explore our handpicked selection of Nepal’s most captivating destinations. You can refer to these classic tour packages as inspiration for your journey, every itinerary can be fully customized and tailor-made to perfectly match your preferences and pace.',
+      description: ‘Explore our handpicked selection of Nepal’s most captivating destinations. You can refer to these classic tour packages as inspiration for your journey. Every itinerary can be fully customized and tailor-made to perfectly match your preferences and pace.’,
       destinationsCount: 'Destinations',
       regions: {
         kathmandu: 'Kathmandu Valley',
@@ -381,7 +381,7 @@ export const ui = {
         ebc: {
           name: 'Everest Base Camp',
           location: 'Everest Base Camp - EBC',
-          description: 'A legendary pilgrimage for mountaineers and a bucket-list trek for adventurers worldwide. Journey through Sherpa villages, visit Tengboche Monastery, and witness the Khumbu Glacier up close—an अनुभव that is as spiritually moving as it is physically demanding.',
+          description: 'A legendary pilgrimage for mountaineers and a bucket-list trek for adventurers worldwide. Journey through Sherpa villages, visit Tengboche Monastery, and witness the Khumbu Glacier up close—an experience that is as spiritually moving as it is physically demanding.',
         },
         abc: {
           name: 'Annapurna Region',
@@ -406,7 +406,7 @@ export const ui = {
         langtang: {
           name: 'Langtang Valley',
           location: 'Langtang',
-          description: 'One of the closest हिमालयन trekking regions to Kathmandu, known for its dramatic valleys and glaciers. It offers a unique blend of natural beauty and Tibetan-influenced culture.',
+          description: 'One of the closest Himalayan trekking regions to Kathmandu, known for its dramatic valleys and glaciers. It offers a unique blend of natural beauty and Tibetan-influenced culture.',
         },
         mardi_himal: {
           name: 'Mardi Himal',
@@ -443,31 +443,31 @@ export const ui = {
     },
     faq: [
       {
-        question: "What is the best time to visit Nepal",
+        question: "What is the best time to visit Nepal?",
         answer: "The best time to visit Nepal is typically during spring (March to May) and autumn (September to November). These seasons offer clear weather, making them ideal for outdoor activities and trekking."
       },
       {
-        question: "How much does a trip typically cost",
+        question: "How much does a trip typically cost?",
         answer: "Trip costs vary depending on the duration, accommodation standards, and activities included. Please contact us for a customized quote tailored to your needs."
       },
       {
-        question: "What services are included in your trips",
+        question: "What services are included in your trips?",
         answer: "Our trips typically include accommodation, transportation, guide services, and some meals. If you already have a planned itinerary, we can provide customized services based on your needs. For first-time visitors to Nepal, we also offer comprehensive pre-trip planning services. If you need assistance with flight bookings, visa inquiries, or other related matters, we're happy to help."
       },
       {
-        question: "How can I contact you",
+        question: "How can I contact you?",
         answer: "You can reach us via WhatsApp or email. We'll respond to your inquiries promptly and help you plan your ideal Nepal adventure. For Chinese-language support, we also have Chinese-speaking staff available to assist you."
       },
       {
-        question: "Do you offer tours to Bhutan",
+        question: "Do you offer tours to Bhutan?",
         answer: "Yes, we do! We can arrange a seamless <a href='/en/tours/bhutan/' class='text-brand-gold underline hover:text-amber-800 transition'>Bhutan tour package</a> to extend your Nepal holiday. We work with trusted Bhutanese tour operators to handle everything for you, including your Bhutan visa, flights from Kathmandu, accommodations, and guided tours."
       },
       {
-        question: "How do I make a payment",
+        question: "How do I make a payment?",
         answer: "We currently accept payment via bank transfer and also offer flexible payment options. Travelers may choose to pay in cash upon arrival in Nepal. If you select the cash payment option, we will not send bank transfer details to ensure the security of your funds. Please also remain cautious of any suspicious or fraudulent messages. If you have any questions regarding payment methods, feel free to contact us."
       },
       {
-        question: "Do you help with booking flight tickets",
+        question: "Do you help with booking flight tickets?",
         answer: "Yes, we do! In addition to our tour packages, we offer ticketing services for both international and domestic flights in Nepal. We can help you find the best prices and the most convenient flight schedules, saving you the hassle of comparing and searching. Feel free to contact us for a quote anytime."
       }
     ]

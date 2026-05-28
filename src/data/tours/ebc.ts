@@ -59,7 +59,7 @@ export const ebcTour: TourData = {
         {
           day: 1,
           title: 'Arrival in Kathmandu',
-          description: 'Our airport representative will be receiving you at Tribhuvan International airport, Kathmandu and will be displaying our signboard outside the airport terminal. You will be then transferred to your hotel in our private tourist vehicle.'
+          description: 'Our airport representative will meet you at Tribhuvan International Airport, Kathmandu, holding our signboard outside the terminal. You will then be transferred to your hotel in our private tourist vehicle.'
         },
         {
           day: 2,
@@ -124,12 +124,12 @@ export const ebcTour: TourData = {
         {
           day: 14,
           title: 'Fly back to Kathmandu',
-          description: 'Enjoying your last glimpse of the mountains for one last time on the 35-minute scenic flight back to Kathmandu. On arrival, we are met and transferred back to our starting hotel. Overnight at Hotel.'
+          description: 'Take in the mountains one final time on the 35-minute scenic flight back to Kathmandu. On arrival, we are transferred back to our hotel. Overnight at Hotel.'
         },
         {
           day: 15,
           title: 'Final Departure',
-          description: 'The trip ends. Our airport representative will drop you to the Kathmandu International Airport for your flight departure from Nepal.'
+          description: 'Your Nepal adventure concludes today. Our airport representative will transfer you to Kathmandu International Airport for your departure flight.'
         }
       ],
       includes: [
@@ -185,7 +185,7 @@ export const ebcTour: TourData = {
         {
           day: 2,
           title: '加德滿都谷地觀光 (Sightseeing around Kathmandu valley)',
-          description: '享用完豐盛的早餐後，早上 8:30 我們將展開精彩的市區觀光。將由專車與專業響導陪同，探索這座城市的魅力。'
+          description: '享用完豐盛的早餐後，早上 8:30 我們將展開精彩的市區觀光。將由專車與專業嚮導陪同，探索這座城市的魅力。'
         },
         {
           day: 3,
@@ -220,7 +220,7 @@ export const ebcTour: TourData = {
         {
           day: 9,
           title: '健行至羅布崎 Lobuche (4,910m)',
-          description: '今天會沿著昆布冰河 (Khumb前u Glacier) 的側磧進，途中會經過許多為了紀念遇難登山者而立的石碑。步道持續攀升，最終抵達羅布崎——這其實只是巨大羅布崎峰山腳下的幾棟小屋。到了這個高度，您可能會開始覺得稍微有點喘，這是正常的現象。'
+          description: '今天會沿著昆布冰河 (Khumbu Glacier) 的側磧前進，途中會經過許多為了紀念遇難登山者而立的石碑。步道持續攀升，最終抵達羅布崎——這其實只是巨大羅布崎峰山腳下的幾棟小屋。到了這個高度，您可能會開始覺得稍微有點喘，這是正常的現象。'
         },
         {
           day: 10,

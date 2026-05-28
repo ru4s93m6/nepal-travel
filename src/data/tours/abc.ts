@@ -25,7 +25,7 @@ export const abcTour: TourData = {
         {
           day: 1,
           title: 'Drive to Nayapul - Trek to Ghandruk (1,940m)',
-          description: 'On the first day, after breakfast we will be driving to Nayalpul i.e. the starting point. It is a one and a half hour drive from Pokhara to Nayapul (1050m). From Nayapul the uphill trail to Ghandruk (1940m) is filled with panoramic views of snowcapped mountains. As we move further we will pass through various small villages such as Chimrong, Syauli Bazar, and Chame. Upon crossing the suspension bridge over Khumnu Khola, we will be reach Ghandruk, a slope settlement with stone houses mostly inhabited by the Gurung community. Highlights: Enjoy the stunningly close-up towering views of Fishtail, Annapurna South, and Hiuchuli mountains and also get acquaint with the simple and rich culture and tradition of the Gurung community at the Gurung Museum in Ghandruk.'
+          description: 'On the first day, after breakfast we will drive to Nayapul, the starting point — about a one and a half hour drive from Pokhara (1,050m). From Nayapul the uphill trail to Ghandruk (1,940m) is filled with panoramic views of snowcapped mountains. Along the way we pass through small villages such as Chimrong, Syauli Bazar, and Chame. Upon crossing the suspension bridge over Khumnu Khola, we reach Ghandruk, a terraced settlement of stone houses mostly inhabited by the Gurung community. Highlights: Enjoy close-up views of Fishtail, Annapurna South, and Hiuchuli, and get acquainted with the rich culture and traditions of the Gurung community at the Gurung Museum in Ghandruk.'
         },
         {
           day: 2,
@@ -45,7 +45,7 @@ export const abcTour: TourData = {
         {
           day: 5,
           title: 'Trek from ABC to Dobhan (2,600m)',
-          description: 'Annapurna Base Camp sanctuary boasts of a dynamic view without anything impeding panorama of the 360 degrees. Upon arrival at this panoramic view site, we savor the mesmerizing views of the Machhapuchhre, Annapurna south, Annapurna I, Hiuchuli and other peaks. Climax of our trip almost ends today then you will trek back from Annapurna Base Camp to Dobhan (2600m) which is most easy descending route.'
+          description: 'Annapurna Base Camp sanctuary boasts a breathtaking, unobstructed 360-degree panoramic view. Upon arriving at this spectacular viewpoint, we soak in the mesmerizing views of Machhapuchhre, Annapurna South, Annapurna I, Hiuchuli, and surrounding peaks. After savoring the highlight of the trek, we begin our descent from Annapurna Base Camp back to Dobhan (2,600m) via the easiest descending route.'
         },
         {
           day: 6,
@@ -127,7 +127,7 @@ export const abcTour: TourData = {
         {
           day: 5,
           title: '從 ABC 下撤至 Dobhan (2,600m)',
-          description: '安娜普納基地營擁有的 360 度環繞美景。抵達這個絕佳觀景點後，我們將盡情欣賞魚尾峰、安娜普納南峰、安娜普納一峰、Hiuchuli 等群峰令人著迷的壯麗景色。行程的高潮在今天告一段落，隨後我們將從安娜普納基地營折返，走一條相對輕鬆的下坡路線前往 Dobhan（2600m）。'
+          description: '安娜普納基地營坐擁無遮蔽的 360 度環繞全景。抵達這個絕佳觀景點後，我們將盡情欣賞魚尾峰、安娜普納南峰、安娜普納一峰、Hiuchuli 等群峰令人著迷的壯麗景色。行程的高潮在今天告一段落，隨後我們將從安娜普納基地營折返，走一條相對輕鬆的下坡路線前往 Dobhan（2,600m）。'
         },
         {
           day: 6,
