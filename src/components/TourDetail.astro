@@ -56,38 +56,48 @@ if (!images[imagePath]) {
   </div>
 
   <!-- Hero Section -->
-  <section class="relative min-h-[65vh] flex flex-col justify-end md:justify-center items-center pt-24 pb-16 md:pb-20">
-    {images[imagePath] ? (
-      <Image src={images[imagePath]()} alt={content.title} class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" quality={80} widths={[400, 800, 1200, 1920]} sizes="100vw" decoding="sync" />
-    ) : (
-      <img src={tour.heroImage} alt={content.title} class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="sync" />
-    )}
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
-    
-    <div class="relative z-20 text-center px-4 max-w-5xl mt-12">
+  <!-- Mobile: image at natural 16:9 ratio (no side cropping) + content panel below -->
+  <!-- Desktop: full-bleed overlay hero as before -->
+  <section class="relative flex flex-col items-center md:min-h-[65vh] md:justify-center md:pt-24 md:pb-20">
+    <!-- Image wrapper: natural size on mobile, absolute fill on desktop -->
+    <div class="relative w-full shrink-0 md:absolute md:inset-0">
+      {images[imagePath] ? (
+        <Image src={images[imagePath]()} alt={content.title} class="w-full h-auto aspect-video md:h-full md:aspect-auto object-cover" loading="eager" fetchpriority="high" quality={80} widths={[400, 800, 1200, 1920]} sizes="100vw" decoding="sync" />
+      ) : (
+        <img src={tour.heroImage} alt={content.title} class="w-full h-auto aspect-video md:h-full md:aspect-auto object-cover" loading="eager" fetchpriority="high" decoding="sync" />
+      )}
+      <!-- Mobile gradient: darkens bottom of image so overlaid text stays legible -->
+      <div class="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/80 z-10 md:hidden"></div>
+    </div>
+
+    <!-- Desktop gradient (full-section overlay) -->
+    <div class="hidden md:block absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
+
+    <!-- Content: overlaid on image bottom on mobile, centred overlay on desktop -->
+    <div class="relative z-20 text-center px-4 max-w-5xl w-full bg-brand-blue md:bg-transparent py-8 md:py-0 md:mt-12">
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-2xl leading-tight text-shadow-sm whitespace-pre-line">{content.title}</h1>
       <p class="text-xl md:text-2xl text-white/90 drop-shadow-lg mb-10 max-w-3xl mx-auto">{content.subtitle}</p>
-      
+
       <!-- Quick Facts -->
       <div class="flex flex-col md:flex-row justify-center items-center gap-x-8 gap-y-6 md:gap-y-4 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl py-8 px-6 md:p-6 mb-8 md:mb-0 text-white text-lg w-full max-w-3xl mx-auto shadow-2xl">
         <div class="flex flex-col items-center flex-1 w-full">
           <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.duration}</span>
           <span class="font-bold text-xl">{tour.durationDays} Days</span>
         </div>
-        
+
         <!-- Divider -->
         <div class="w-px self-stretch bg-white/20 hidden md:block"></div>
         <div class="h-px w-2/3 bg-white/10 md:hidden"></div>
-        
+
         <div class="flex flex-col items-center flex-1 w-full">
           <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.maxAlt}</span>
           <span class="font-bold text-xl">{tour.maxAltitude} m</span>
         </div>
-        
+
         <!-- Divider -->
         <div class="w-px self-stretch bg-white/20 hidden md:block"></div>
         <div class="h-px w-2/3 bg-white/10 md:hidden"></div>
-        
+
         <div class="flex flex-col items-center flex-1 w-full">
           <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.difficulty}</span>
           <span class="font-bold text-xl">{tour.difficulty}</span>
