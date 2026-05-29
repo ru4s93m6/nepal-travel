@@ -11,8 +11,8 @@ export const langtangTour: TourData = {
   locales: {
     en: {
       title: 'Langtang Valley Trek',
-      subtitle: 'The Valley of Glaciers - a scenic and culturally rich journey close to Kathmandu',
-      overview: 'Langtang Valley trek, also known as "the valley of glaciers trek," is one of the most popular trekking routes in the Langtang region. The valley offers pine forests, swift mountain streams, rugged rocks, snow-capped peaks, grassy downs, and meadows strewn with daisies and wild animals. In the upper part of the valley, there are snow bridges spanning angry torrents, high passes enveloped in mist, tiny lakes with icebergs floating on them, and waters of crystalline brightness. It gives superb views of the great peak of Langtang Lirung (7,246m), which dominates the upper valley and straddles the Tibetan border.\n\nPlease note: The 8-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization to ensure a safe and successful journey.',
+      subtitle: 'Trek the "Valley of Glaciers" - lush pine forests, Tibetan villages, and stunning snow peaks, just a day\'s drive from Kathmandu.',
+      overview: 'Langtang Valley trek, also known as "the valley of glaciers trek," is one of the most popular trekking routes in the Langtang region. The valley offers pine forests, swift mountain streams, rugged rock faces, and snow-capped peaks, with high-altitude meadows dotted with wildflowers and roaming wildlife. In the upper part of the valley, there are snow bridges spanning angry torrents, high passes enveloped in mist, tiny lakes with icebergs floating on them, and waters of crystalline brightness. It gives superb views of the great peak of Langtang Lirung (7,246m), which dominates the upper valley and straddles the Tibetan border.\n\nPlease note: The 8-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization to ensure a safe and successful journey.',
       highlights: [
         'Great close-up view of the Langtang range and Ganesh Himal',
         'Pass along the dramatic ridges and swift mountain streams',
@@ -95,7 +95,7 @@ export const langtangTour: TourData = {
     'zh-tw': {
       title: '朗塘谷健行\n(Langtang Valley Trek)',
       subtitle: '冰川之谷：距離加德滿都最近的絕美冰川與豐富藏族文化之旅',
-      overview: '朗塘谷健行（Langtang Valley Trek）又被譽為「冰川之谷健行」，是朗塘地區最受歡迎的路線之一。這座山谷擁有多變的自然景觀，從茂密的松林、湍急的高山溪流、崎嶇的岩石，到長滿雛菊與野生動物漫步的高山草甸。在山谷的較高處，冰雪覆蓋的橋樑橫跨著激流，高海拔的山口雲霧繚繞，清澈見底的冰川湖面上漂浮著浮冰，景色壯麗非凡。旅途將能欣賞到雄偉的朗塘里壤峰（Langtang Lirung，海拔 7,246 公尺），它傲視著整個上山谷並橫跨西藏邊境。\n\n請注意：8天的行程天數僅為預估。在實際健行過程中，我們的專業嚮導會根據您的體能狀況與高山適應程度彈性調整步伐，確保您能平安且愉快地完成這趟壯麗的旅程。',
+      overview: '朗塘谷健行（Langtang Valley Trek）又被譽為「冰川之谷健行」，是朗塘地區最受歡迎的路線之一。這座山谷擁有多變的自然景觀，從茂密的松林、湍急的高山溪流、崎嶇的岩石，到綴滿野花、牛隻悠遊其間的高山草甸。在山谷的較高處，冰雪覆蓋的橋樑橫跨著激流，高海拔的山口雲霧繚繞，清澈見底的冰川湖面上漂浮著浮冰，景色壯麗非凡。旅途將能欣賞到雄偉的朗塘里壤峰（Langtang Lirung，海拔 7,246 公尺），它傲視著整個上山谷並橫跨西藏邊境。\n\n請注意：8天的行程天數僅為預估。在實際健行過程中，我們的專業嚮導會根據您的體能狀況與高山適應程度彈性調整步伐，確保您能平安且愉快地完成這趟壯麗的旅程。',
       highlights: [
         '近距離欣賞壯闊的朗塘山脈 (Langtang range) 與格涅什峰 (Ganesh Himal)',
         '沿著令人屏息的山脊與湍急的高山溪流漫步',

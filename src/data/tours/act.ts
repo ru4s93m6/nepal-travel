@@ -11,7 +11,7 @@ export const actTour: TourData = {
   locales: {
     en: {
       title: 'Annapurna Circuit Trek',
-      subtitle: 'A legendary journey through diverse landscapes, culminating at the Thorong La Pass (5,416m)',
+      subtitle: 'A legendary high-altitude circuit through subtropical forests, Tibetan villages, and high-altitude deserts, crossing the Thorong La Pass at 5,416m.',
       overview: 'The Annapurna Circuit Trek is world-renowned for its incredible diversity, taking you from lush sub-tropical forests to the high-altitude desert of the Tibetan plateau. The highlight of the journey is crossing the Thorong La Pass at 5,416m, where you will be rewarded with spectacular views of the Annapurna and Dhaulagiri ranges. This trek offers a perfect blend of natural beauty and cultural immersion, passing through traditional villages of different ethnic groups.\n\nPlease note: This 10-day itinerary is a condensed version of the full circuit. We can customize the duration and route based on your preferences and fitness level.',
       highlights: [
         'Crossing the Thorong La Pass (5,416m), the highest point of the trek',

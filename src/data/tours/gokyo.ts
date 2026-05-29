@@ -12,7 +12,7 @@ export const gokyoTour: TourData = {
     en: {
       title: 'Gokyo Lake Trek',
       subtitle: 'A serene alternative to Everest Base Camp, featuring pristine turquoise lakes and panoramic Himalayan views.',
-      overview: 'Gokyo Lake trek is considered a fantastic alternative to the traditional Everest Base Camp trek. It offers magnificent views of the mountain peaks and the Ngozumpa Glacier—the largest in the Nepal Himalayas. The trek takes you through the less busy trails of Phortse Tenga to reach Gokyo, a former yak pasture blessed with beautiful high-altitude lakes. From the ridge above Gokyo (Gokyo Ri), you can witness four 8,000m peaks (Cho Oyu, Everest, Lhotse, and Makalu) at once.\n\nPlease note: This 13-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization.',
+      overview: 'Gokyo Lake trek is considered a fantastic alternative to the traditional Everest Base Camp trek. It offers magnificent views of the mountain peaks and the Ngozumpa Glacier—the largest in the Nepal Himalayas. The trek takes you through quieter trails via Phortse Tenga to reach Gokyo, a tranquil valley set among beautiful high-altitude glacial lakes. From the ridge above Gokyo (Gokyo Ri), you can witness four 8,000m peaks (Cho Oyu, Everest, Lhotse, and Makalu) at once.\n\nPlease note: This 13-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization.',
       highlights: [
         'Breathtaking scenic flight from Kathmandu to Lukla',
         'Explore the stunning turquoise Gokyo Lakes',
@@ -115,7 +115,7 @@ export const gokyoTour: TourData = {
     'zh-tw': {
       title: '高喬湖健行\n(Gokyo Lake Trek)',
       subtitle: '避開人潮的聖母峰絕美替代路線，探索湛藍高山湖泊與群山全景。',
-      overview: '高喬湖（Gokyo Lake）健行是傳統聖母峰基地營（EBC）路線的最佳替代路線。這條路線避開了最擁擠的主幹道，帶領您穿越寧靜的雪巴村落，最終抵達被譽為「人間仙境」的高喬湖泊群。清澈湛藍的冰川湖泊與世界最大的 Ngozumpa 冰河交相輝映。旅程的最大亮點是登頂海拔 5,357 公尺的高喬里（Gokyo Ri），在這裡您可以同時將包含聖母峰（Everest）、洛子峰（Lhotse）、馬卡魯峰（Makalu）與卓奧友峰（Cho Oyu）在內的四座 8,000 公尺級巨峰盡收眼底。\n\n請注意：本 13 天行程為為預估標準，我們會根據您的體能狀況與高山適應程度彈性調整步伐，確保您能在安全的前提下完成這趟的旅程。',
+      overview: '高喬湖（Gokyo Lake）健行是傳統聖母峰基地營（EBC）路線的最佳替代路線。這條路線避開了最擁擠的主幹道，帶領您穿越人煙稀少的雪巴村落，最終抵達如藍寶石般嵌在冰川之間的高喬湖泊群。清澈湛藍的冰川湖泊與世界最大的 Ngozumpa 冰河交相輝映。旅程的最大亮點是登頂海拔 5,357 公尺的高喬里（Gokyo Ri），在這裡您可以同時將包含聖母峰（Everest）、洛子峰（Lhotse）、馬卡魯峰（Makalu）與卓奧友峰（Cho Oyu）在內的四座 8,000 公尺級巨峰盡收眼底。\n\n請注意：本 13 天行程為為預估標準，我們會根據您的體能狀況與高山適應程度彈性調整步伐，確保您能在安全的前提下完成這趟的旅程。',
       highlights: [
         '往返盧卡拉 (Lukla) 的喜馬拉雅高空景觀航線',
         '探索如同藍寶石般湛藍純淨的高喬 (Gokyo) 高山湖泊群',
@@ -167,7 +167,7 @@ export const gokyoTour: TourData = {
         {
           day: 9,
           title: '從高喬下撤至多勒 Dole (4,038m)',
-          description: '在飽覽高橋湖的美景後，我們開始原路下山。沿著都德科西河輕鬆下行，再次回顧清澈的湖泊，並穿過馬切爾莫抵達多勒休息。'
+          description: '在飽覽高喬湖的美景後，我們開始原路下山。沿著都德科西河輕鬆下行，再次回顧清澈的湖泊，並穿過馬切爾莫抵達多勒休息。'
         },
         {
           day: 10,

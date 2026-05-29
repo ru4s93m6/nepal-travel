@@ -16,7 +16,7 @@ export const ui = {
     },
     home: {
       title: '喜馬拉雅山腳下的神秘國度',
-      subtitle: '具備多年旅遊經驗的在地團隊所打造的尼泊爾當地旅行社，帶您探索千年文化之美',
+      subtitle: '尼泊爾在地旅行社，由擁有20多年經驗的當地團隊陪伴，帶您深入探索喜馬拉雅山下的千年文化與壯麗山景',
     },
     button: {
       learnMore: '了解更多',
@@ -25,7 +25,7 @@ export const ui = {
       title: '關於我們',
       leadText: '認識帶領你探索喜馬拉雅的在地團隊',
       founderLabel: '創辦人介紹',
-      subtitle: '讓在地團隊，帶你走進真正的尼泊爾',
+      subtitle: '跟著在地團隊的腳步，走進真正的尼泊爾',
       intro: '創辦人 Raju 在尼泊爾旅遊業深耕超過 20 年。出於對這片土地與旅遊事業的深厚熱愛，他在近期決定創立這間屬於自己的旅行社，將過去累積的豐富經驗，轉化為更貼近旅客需求的專屬在地服務。',
       experience: '對我們來說，每一趟旅程都不只是行程安排，而是一段值得細細體驗的故事。因此，我們特別重視旅途中的每一個細節，讓旅行不只是「看見」，而是真正「走進」尼泊爾。',
       rotaryMember: '扶輪社會員',
@@ -49,24 +49,24 @@ export const ui = {
       founderYears: '深耕尼泊爾旅遊 20+ 年',
       customization: {
         title: '為您量身打造的旅程',
-        subtitle: '我們不只是帶您旅行，更希望您能在旅途中實現夢想、深度體驗尼泊爾的美',
+        subtitle: '我們不只是帶您旅行，更希望每一段旅程都能成為您生命中難以忘懷的回憶',
         item1: {
           title: '彈性團隊規模',
           desc: '我們主要採包團方式規劃行程，無論是一人獨自出發、親友同行，或是企業與大型旅遊團體，我們都能依需求妥善安排。行程內容、節奏與服務細節皆可彈性調整，為您打造最符合期待的專屬旅程。'
         },
         item2: {
-          title: '文化飲食安排',
+          title: '餐飲彈性安排',
           desc: '旅途中，我們會依照您的喜好協助安排餐食與餐廳。無論是想品嚐道地的尼泊爾料理，還是尋找合胃口的家鄉菜，我們都會從旁協助溝通與安排，照顧好您旅途中的飲食需求。'
         },
         item3: {
           title: '多語言服務',
-          desc: '我們的核心團隊提供流利的英文與法文服務。若您需要中文或其他語言的隨行嚮導，我們也能透過在地的專業合作網絡，為您妥善安排專屬的外包語系嚮導，讓語言完全不是旅行的障礙。'
+          desc: '我們的核心團隊提供流利的英文與法文服務。若您需要中文或其他語言的隨行嚮導，我們也能透過在地的專業合作網絡，為您安排特定語系的專屬嚮導，讓語言完全不是旅行的障礙。'
         }
       }
     },
     contact: {
       title: '聯絡我們',
-      subtitle: '期待與您一同探索尼泊爾的美麗',
+      subtitle: '期待與您一同，踏上屬於您的尼泊爾旅程',
       companyLabel: '公司名稱',
       phone: '電話',
       email: '電子郵件',
@@ -211,7 +211,7 @@ export const ui = {
     faq: [
       {
         question: "尼泊爾的最佳旅遊季節是什麼時候？",
-        answer: "尼泊爾的最佳旅遊季節通常是春季（3月至5月）和秋季（9月至11月）。這兩個季節天氣晴朗，適合進行戶外活動和健行。"
+        answer: "尼泊爾最受歡迎的旅遊旺季為春季（3 月至 5 月）與秋季（9 月至 11 月）。春季杜鵑花盛開、氣候溫和；秋季天空湛藍、能見度高，兩個季節都是高山健行與文化探索的黃金時節。"
       },
       {
         question: "旅行的費用大約是多少？",
@@ -249,7 +249,7 @@ export const ui = {
     },
     home: {
       title: 'Your Trusted Local Travel Agency in Nepal',
-      subtitle: 'Explore the mystical Himalayas with Oriental Express, a government-registered local team.',
+      subtitle: 'Explore Nepal\'s Himalayas with Oriental Express Travel — a government-registered local agency backed by 20+ years of expertise.',
     },
     button: {
       learnMore: 'Learn More',
@@ -282,13 +282,13 @@ export const ui = {
       founderYears: '20+ Years in Nepal Tourism',
       customization: {
         title: 'Tailored Journey Just for You',
-        subtitle: 'We don\'t just take you on a trip – we help you realize your dreams and deeply experience the beauty of Nepal',
+        subtitle: 'We don\'t just take you on a trip — we craft a journey that is uniquely yours, so every moment in Nepal feels personal and meaningful.',
         item1: {
           title: 'Flexible Group Size',
           desc: 'We primarily arrange private tours, welcoming everyone from solo travelers to families, friends, and large group tours. Each journey is thoughtfully planned according to your group size, travel style, and pace, allowing for flexible itineraries and personalized service to ensure a smooth and enjoyable experience for every traveler.'
         },
         item2: {
-          title: 'Cultural & Dietary Consideration',
+          title: 'Flexible Dining & Meal Support',
           desc: 'During your journey, we arrange meals and restaurants based on your preferences. Whether you wish to enjoy authentic Nepalese cuisine or prefer familiar and comforting flavors, our team will accompany you and make thoughtful arrangements, ensuring you can dine with ease and peace of mind while traveling abroad.'
         },
         item3: {
@@ -299,7 +299,7 @@ export const ui = {
     },
     contact: {
       title: 'Contact Us',
-      subtitle: 'We look forward to exploring Nepal\'s beauty with you',
+      subtitle: 'Ready to plan your Nepal adventure? Reach out and let\'s make it happen.',
       companyLabel: 'Company Name',
       phone: 'Phone',
       email: 'Email',
@@ -309,7 +309,7 @@ export const ui = {
     itinerary: {
       title: 'Top Destinations',
       subtitle: 'Discover the Hidden Wonders of Nepal',
-      description: 'Explore our handpicked selection of Nepal\'s most captivating destinations. You can refer to these classic tour packages as inspiration for your journey. Every itinerary can be fully customized and tailor-made to perfectly match your preferences and pace.',
+      description: 'Browse our handpicked Nepal destinations — from Himalayan treks to cultural tours and wildlife safaris. Each itinerary is a starting point and can be fully customized to your pace, interests, and travel dates.',
       destinationsCount: 'Destinations',
       regions: {
         kathmandu: 'Kathmandu Valley',
@@ -444,7 +444,7 @@ export const ui = {
     faq: [
       {
         question: "What is the best time to visit Nepal?",
-        answer: "The best time to visit Nepal is typically during spring (March to May) and autumn (September to November). These seasons offer clear weather, making them ideal for outdoor activities and trekking."
+        answer: "Spring (March–May) and autumn (September–November) are Nepal's peak trekking seasons. Spring brings blooming rhododendrons and mild temperatures, while autumn offers crystal-clear skies perfect for mountain views. Both seasons are ideal for high-altitude treks like EBC, ABC, and the Annapurna Circuit."
       },
       {
         question: "How much does a trip typically cost?",

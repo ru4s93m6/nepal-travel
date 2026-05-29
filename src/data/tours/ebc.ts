@@ -45,7 +45,7 @@ export const ebcTour: TourData = {
   locales: {
     en: {
       title: 'Everest Base Camp Trek',
-      subtitle: 'A journey to the top of the world, experiencing Sherpa culture and glacial wonders',
+      subtitle: 'Trek through legendary Sherpa villages and high-altitude glaciers to the foot of the world\'s highest peak.',
       overview: 'The Everest Base Camp (EBC) trek is one of the most iconic high-altitude treks in the world. This journey takes you deep into Sagarmatha National Park, trekking through traditional Sherpa villages, crossing spectacular suspension bridges, and admiring towering peaks including Mount Everest, Lhotse, and Ama Dablam. We will visit the famous Tengboche Monastery to experience the tranquility of high-altitude devotion, eventually reaching Everest Base Camp at 5,364 meters, and ascending Kala Patthar for a breathtaking sunrise over Everest.\n\nPlease note: The 15-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization. Our top priority is to ensure you complete this magnificent journey safely and successfully.',
       highlights: [
         'Scenic flight to and from Lukla',

@@ -9,7 +9,7 @@ export const manasluTour: TourData = {
   locales: {
     'en': {
       title: 'Manaslu Circuit Trek',
-      subtitle: 'A legendary and untouched Himalayan trek circling the 8th highest mountain in the world.',
+      subtitle: 'Circle Manaslu (8,163m) on one of the Himalayas\' most remote and untouched trekking routes.',
       overview: 'The Manaslu Circuit Trek is a stunning, less-crowded alternative to the Annapurna Circuit. Opening its borders to tourists only in 1992, the region has preserved its pristine natural beauty and authentic Tibetan-influenced culture. The 16-day journey takes you through ancient villages, lush subtropical forests, and high alpine meadows, culminating in the dramatic crossing of the Larke Pass at 5,162m. This is the perfect adventure for experienced trekkers seeking a pure, remote Himalayan experience.\n\nPlease note: This 16-day itinerary is a standard estimate. The actual schedule can be flexibly adjusted based on your physical condition and altitude acclimatization. Your safety and health are our top priorities for completing this magnificent journey.',
       highlights: [
         'Cross the challenging and spectacular Larke Pass (5,162m) with panoramic views of the Himalayas',

@@ -11,8 +11,8 @@ export const abcTour: TourData = {
   locales: {
     en: {
       title: 'Annapurna Base Camp Trek',
-      subtitle: 'A spectacular journey into the heart of the Himalayas, surrounded by towering peaks',
-      overview: 'The Annapurna Base Camp (ABC) trek is a magical high-altitude journey into a spectacular glacier basin naturally arrayed as an amphitheater, also known as the Annapurna Sanctuary. Surrounded by the towering peaks of the Annapurna range and the iconic Machhapuchhre (Fishtail) mountain, this 7-day trek begins from Nayapul and passes through picturesque Gurung villages, dense rhododendron forests, and soothing natural hot springs at Jhinu Danda. ABC offers breathtaking panoramic views in a relatively shorter timeframe.\n\nPlease note: This 7-day timeframe starting from Pokhara is an estimated standard. The actual itinerary can be flexibly adjusted or extended based on your physical condition, acclimatization, and personal requirements.',
+      subtitle: 'Enter the Annapurna Sanctuary at 4,230m - a natural amphitheater of peaks with breathtaking 360-degree Himalayan panoramas.',
+      overview: 'The Annapurna Base Camp (ABC) trek is a magical high-altitude journey into a spectacular glacier basin that forms a natural amphitheater, known as the Annapurna Sanctuary. Surrounded by the towering peaks of the Annapurna range and the iconic Machhapuchhre (Fishtail) mountain, this 7-day trek begins from Nayapul and passes through picturesque Gurung villages, dense rhododendron forests, and soothing natural hot springs at Jhinu Danda. ABC offers breathtaking panoramic views in a relatively shorter timeframe.\n\nPlease note: This 7-day timeframe starting from Pokhara is an estimated standard. The actual itinerary can be flexibly adjusted or extended based on your physical condition, acclimatization, and personal requirements.',
       highlights: [
         'Stunning 360-degree mountain panorama at Annapurna Base Camp',
         'Trekking through traditional Gurung Villages like Ghandruk',
@@ -40,7 +40,7 @@ export const abcTour: TourData = {
         {
           day: 4,
           title: 'Trek from Deurali to Annapurna Base Camp (4,230m)',
-          description: 'The track remains on the West Bank of the Modi, now flowing through a more open valley, and eventually emerges into the Sanctuary. Straight-ahead is the high lateral moraine of the South Annapurna glacier and the Modi follows a deep cliff to the right. This is the site of Annapurna Base camp (4230m) from which can be seen a spectacular panorama of mountains.'
+          description: 'The track remains on the western bank of the Modi River, now flowing through a more open valley, and eventually emerges into the Sanctuary. Straight-ahead is the high lateral moraine of the South Annapurna glacier and the Modi follows a deep cliff to the right. This is the site of Annapurna Base camp (4230m) from which can be seen a spectacular panorama of mountains.'
         },
         {
           day: 5,

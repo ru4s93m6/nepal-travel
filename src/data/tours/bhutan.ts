@@ -9,7 +9,7 @@ export const bhutanTour: TourData = {
   locales: {
     'en': {
       title: 'Bhutan Highlights Tour (Paro & Thimphu)',
-      subtitle: 'Discover the mystical Land of the Thunder Dragon on this essential 4-day journey.',
+      subtitle: 'Hike to the iconic Tiger\'s Nest, explore ancient dzongs, and experience the serenity of Bhutan\'s Himalayan culture in just 4 days.',
       overview: 'Bhutan is a pristine Shangri-La, famed for its breathtaking landscapes, vibrant Buddhist culture, and the philosophy of Gross National Happiness. This 4-day, 3-night essential highlights tour takes you from the scenic Paro valley to the capital city of Thimphu. You will witness the majestic Tashichho Dzong, giant Buddha Dordenma, and culminate your trip with a spectacular hike to the iconic Tiger\'s Nest Monastery (Paro Taktsang) clinging to a sheer cliff.\n\nPlease note: The exact itinerary and specific attraction visits are completely customizable based on your preferences. Furthermore, we handle all the logistics including your Bhutan visa and flights from Kathmandu. Detailed inclusion fees will be clearly outlined in your customized quote.',
       highlights: [
         'Hike up to the legendary Tiger\'s Nest Monastery (Paro Taktsang), an architectural marvel on a cliffside',
@@ -65,8 +65,8 @@ export const bhutanTour: TourData = {
     },
     'zh-tw': {
       title: '不丹精華 4 天 3 夜\n(帕羅與廷布)',
-      subtitle: '踏入神秘的「雷龍之國」，體驗無與倫比的幸福感與純淨美景。',
-      overview: '不丹，被譽為最後的香格里拉，以極度迷人的自然風光、深厚的佛教文化，以及重視「國民幸福毛額」的理念聞名於世。這趟 4 天 3 夜的精華之旅將帶您從景色優美的帕羅 (Paro) 一路探索至首都廷布 (Thimphu)。您將親眼見證宏偉的札西卻宗 (Tashichho Dzong)、巨大的釋迦牟尼佛像，並在旅程的重頭戲，健行攀登至懸掛於峭壁之上的標誌性聖地——虎穴寺 (Tiger\'s Nest)。\n\n注意：以上行程為預估標準，我們可依您的時間與興趣彈性調整各景點的參觀安排。我們與在地夥伴包辦不丹簽證與加德滿都來回機票等繁雜實務。詳細費用包含哪些項目，我們都會在報價時清楚列出，讓您安心。',
+      subtitle: '踏入神秘的「雷龍之國」，探訪千年虎穴寺與古老宗堡，沉浸在純淨的藏傳佛教文化之中。',
+      overview: '不丹，被譽為最後的香格里拉，以純淨壯麗的自然風光、深厚的佛教文化，以及舉世獨特的「國民幸福毛額」理念聞名於世。這趟 4 天 3 夜的精華之旅將帶您從景色優美的帕羅 (Paro) 一路探索至首都廷布 (Thimphu)。您將親眼見證宏偉的札西卻宗 (Tashichho Dzong)、巨大的釋迦牟尼佛像，並在旅程的重頭戲，健行攀登至懸掛於峭壁之上的標誌性聖地——虎穴寺 (Tiger\'s Nest)。\n\n注意：以上行程為預估標準，我們可依您的時間與興趣彈性調整各景點的參觀安排。我們與在地夥伴包辦不丹簽證與加德滿都來回機票等繁雜實務。詳細費用包含哪些項目，我們都會在報價時清楚列出，讓您安心。',
       highlights: [
         '健行攀登至不丹最著名的地標「虎穴寺」(Paro Taktsang)，近距離感受絕壁上的建築奇蹟',
         '探索「廷布」——全世界上唯一沒有紅綠燈的首都城市',

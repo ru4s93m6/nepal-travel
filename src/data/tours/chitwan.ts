@@ -11,7 +11,7 @@ export const chitwanTour: TourData = {
   locales: {
     en: {
       title: 'Chitwan National Park Tour',
-      subtitle: 'Experience Nepal’s rich biodiversity and wildlife up close',
+      subtitle: ‘Go on safari through Nepal\’s premier wildlife reserve - spot rhinos, tigers, and over 500 bird species in Chitwan National Park.’,
       overview: 'Chitwan National Park is the first national park in Nepal, a preserved area in the Terai Lowlands of south-central Nepal, renowned globally for its incredible biodiversity. Its dense forests and grassy plains are home to rare mammals like the one-horned rhinoceros and the majestic Bengal tiger. The park shelters numerous bird species, including the giant hornbill, and the Rapti River is home to both Gharial and mugger crocodiles. Beyond wildlife, you will also experience the vibrant culture of the indigenous Tharu community.\n\nPlease note: This 3-day itinerary can be fully customized based on your schedule, adjusting the number of safari activities or simply acting as a relaxing nature getaway.',
       highlights: [
         'Explore the UNESCO World Heritage Site - Chitwan National Park',
@@ -63,7 +63,7 @@ export const chitwanTour: TourData = {
     },
     'zh-tw': {
       title: '奇旺國家公園叢林探險\n(Chitwan Tour)',
-      subtitle: '深入叢林，近距離體驗尼泊爾豐富的野生生態與文化',
+      subtitle: '走進聯合國世界遺產奇旺國家公園，與獨角犀牛、孟加拉虎零距離相遇的叢林探險。',
       overview: '奇旺國家公園（Chitwan National Park）是尼泊爾第一座國家公園，位於中南部特萊平原（Terai Lowlands），以其令人驚嘆的生物多樣性聞名於世。這片茂密的森林與草原，是獨角犀牛與孟加拉虎等珍稀哺乳動物的家園。園區內棲息著豐富的鳥類，在拉普蒂河（Rapti River）上還能乘坐傳統獨木舟，近距離觀賞野生鱷魚。除了大自然的震撼之外，這趟旅程也會帶您走進特萊平原特有的塔魯族（Tharu）部落，感受最道地的文化風情。\n\n請注意：這份 3 天的標準行程均可依照您的時間與興趣進行客製化微調，不論是想增加叢林探險的深度，還是純粹想在渡假村放鬆，我們都能為您安排。',
       highlights: [
         '深入探險聯合國世界自然遺產 —— 奇旺國家公園',
