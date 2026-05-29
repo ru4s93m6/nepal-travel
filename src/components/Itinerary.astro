@@ -286,6 +286,35 @@ const categories = [
   </div>
 </section>
 
+<!-- ItemList Schema (JSON-LD) -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": lang === 'zh-tw' ? '尼泊爾熱門套裝行程' : 'Nepal Tour Packages',
+  "description": lang === 'zh-tw'
+    ? '探索尼泊爾最受歡迎的旅遊套裝行程，包含高山健行、文化巡禮與野生動物探險'
+    : 'Explore Nepal\'s most popular tour packages — Himalayan treks, cultural tours, and wildlife safaris',
+  "numberOfItems": 11,
+  "itemListElement": [
+    { id: 'ebc',              name: lang === 'zh-tw' ? '聖母峰基地營健行 (EBC Trek)'            : 'Everest Base Camp Trek' },
+    { id: 'abc',              name: lang === 'zh-tw' ? '安娜普納基地營健行 (ABC Trek)'          : 'Annapurna Base Camp Trek' },
+    { id: 'act',              name: lang === 'zh-tw' ? '安娜普納大環線 (Annapurna Circuit)'     : 'Annapurna Circuit Trek' },
+    { id: 'gokyo',            name: lang === 'zh-tw' ? '高喬湖健行 (Gokyo Lake Trek)'           : 'Gokyo Lake Trek' },
+    { id: 'langtang',         name: lang === 'zh-tw' ? '朗塘谷健行 (Langtang Valley Trek)'      : 'Langtang Valley Trek' },
+    { id: 'manaslu',          name: lang === 'zh-tw' ? '馬納斯魯大環線健行 (Manaslu Circuit)'   : 'Manaslu Circuit Trek' },
+    { id: 'poon_hill',        name: lang === 'zh-tw' ? '普恩山健行 (Poon Hill Trek)'            : 'Ghorepani Poon Hill Trek' },
+    { id: 'chitwan',          name: lang === 'zh-tw' ? '奇旺國家公園叢林探險 (Chitwan Tour)'    : 'Chitwan National Park Tour' },
+    { id: 'lumbini',          name: lang === 'zh-tw' ? '藍毗尼佛教聖地朝聖之旅 (Lumbini Tour)' : 'Lumbini Pilgrimage Tour' },
+    { id: 'kathmandu_valley', name: lang === 'zh-tw' ? '加德滿都谷地文化之旅'                   : 'Kathmandu Valley Tour' },
+    { id: 'bhutan',           name: lang === 'zh-tw' ? '不丹精華 4 天 3 夜'                     : 'Bhutan Highlights Tour (Paro & Thimphu)' },
+  ].map((tour, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": tour.name,
+    "url": `https://oriental-express-travel.com/${lang}/tours/${tour.id}/`
+  }))
+})} />
+
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
 <div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "act", "poon_hill", "manaslu", "gokyo"]' class="hidden"></div>

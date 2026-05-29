@@ -32,6 +32,12 @@ const seoTitle = `${content.title} | Oriental Express Travel`;
 const seoDescription = content.overview.substring(0, 150) + '...';
 const seoKeywords = `${content.title}, 尼泊爾旅遊, Nepal Trekking, 尼泊爾當地旅行社, ${id.toUpperCase()}`;
 
+const breadcrumbs = [
+  { name: '首頁', item: 'https://oriental-express-travel.com/zh-tw/' },
+  { name: '行程介紹', item: 'https://oriental-express-travel.com/zh-tw/#tours' },
+  { name: content.title.replace('\n', ' '), item: `https://oriental-express-travel.com/zh-tw/tours/${id}/` },
+];
+
 // Generate Schema Markup for TouristTrip
 const schemaData = {
   "@context": "https://schema.org",
@@ -57,11 +63,12 @@ const schemaData = {
   }
 };
 ---
-<BaseLayout 
+<BaseLayout
   title={seoTitle}
   description={seoDescription}
   keywords={seoKeywords}
   lang={lang}
+  breadcrumbs={breadcrumbs}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaData)} />
   <TourDetail tour={tour} />

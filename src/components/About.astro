@@ -207,3 +207,23 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<!-- Person Schema (JSON-LD) -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Raju Gurung",
+  "jobTitle": "Founder & CEO",
+  "worksFor": {
+    "@type": "TravelAgency",
+    "name": "Oriental Express Travel P. Ltd.",
+    "url": "https://oriental-express-travel.com"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Rotary Club of Himalayan Gurkhas",
+    "url": "https://rchimalayangurkhas.org.np/"
+  },
+  "description": "Founder and CEO of Oriental Express Travel with over 20 years of experience in Nepal's tourism industry.",
+  "knowsAbout": ["Nepal Trekking", "Himalayan Tourism", "Nepal Culture", "Adventure Travel", "Everest Base Camp", "Annapurna"]
+})} />
