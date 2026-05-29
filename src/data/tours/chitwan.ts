@@ -11,7 +11,7 @@ export const chitwanTour: TourData = {
   locales: {
     en: {
       title: 'Chitwan National Park Tour',
-      subtitle: ‘Go on safari through Nepal\’s premier wildlife reserve - spot rhinos, tigers, and over 500 bird species in Chitwan National Park.’,
+      subtitle: 'Go on safari through Nepal\’s premier wildlife reserve - spot rhinos, tigers, and over 500 bird species in Chitwan National Park.',
       overview: 'Chitwan National Park is the first national park in Nepal, a preserved area in the Terai Lowlands of south-central Nepal, renowned globally for its incredible biodiversity. Its dense forests and grassy plains are home to rare mammals like the one-horned rhinoceros and the majestic Bengal tiger. The park shelters numerous bird species, including the giant hornbill, and the Rapti River is home to both Gharial and mugger crocodiles. Beyond wildlife, you will also experience the vibrant culture of the indigenous Tharu community.\n\nPlease note: This 3-day itinerary can be fully customized based on your schedule, adjusting the number of safari activities or simply acting as a relaxing nature getaway.',
       highlights: [
         'Explore the UNESCO World Heritage Site - Chitwan National Park',
