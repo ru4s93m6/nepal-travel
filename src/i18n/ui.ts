@@ -26,12 +26,12 @@ export const ui = {
       leadText: '認識帶領你探索喜馬拉雅的在地團隊',
       founderLabel: '創辦人介紹',
       subtitle: '跟著在地團隊的腳步，走進真正的尼泊爾',
-      intro: '創辦人 Raju 在尼泊爾旅遊業深耕超過 20 年。出於對這片土地與旅遊事業的深厚熱愛，他在近期決定創立這間屬於自己的旅行社，將過去累積的豐富經驗，轉化為更貼近旅客需求的專屬在地服務。',
+      intro: '我是 Raju，在尼泊爾旅遊業深耕超過 20 年。出於對這片土地與旅遊事業的深厚熱愛，我在近期創立了這間旅行社，希望將過去累積的豐富經驗，轉化為更貼近每位旅客需求的專屬在地服務。',
       experience: '對我們來說，每一趟旅程都不只是行程安排，而是一段值得細細體驗的故事。因此，我們特別重視旅途中的每一個細節，讓旅行不只是「看見」，而是真正「走進」尼泊爾。',
       rotaryMember: '扶輪社會員',
       rotaryLink: 'https://rchimalayangurkhas.org.np/club-standing-committee/',
       rotaryAriaLabel: '前往扶輪社官網',
-      experience1: '憑藉著長年累積的從業經驗，我們服務過來自世界各地的旅客，無論您來自哪裡，我們都能提供貼心而可靠的在地服務。創辦人 Raju 同時也是扶輪社的活躍成員，致力於回饋尼泊爾社區。',
+      experience1: '憑藉著長年累積的從業經驗，我們曾服務來自世界各地的旅客，無論您來自哪裡，我們都能提供貼心而可靠的在地服務。此外，我也是扶輪社的活躍成員，長期致力於回饋尼泊爾在地社區。',
       feature1: {
         title: '熟悉山徑的在地嚮導',
         desc: '從聖母峰基地營到安娜普納環線等等，由熟悉地形的在地嚮導全程帶領您安全登頂'
@@ -259,12 +259,12 @@ export const ui = {
       leadText: 'Meet Your Local Team to the Himalayas',
       founderLabel: 'Founder & CEO',
       subtitle: 'Let a Local Team Take You Into the Real Nepal',
-      intro: 'Our founder, Raju, has been deeply involved in the Nepalese tourism industry for over 20 years. Driven by his profound love for this land and a lifelong passion for travel, he recently established his own agency. His goal is to channel decades of expertise into providing highly personalized and authentic local experiences.',
+      intro: "I'm Raju, and I've been deeply involved in Nepal's tourism industry for over 20 years. Driven by my love for this land and a lifelong passion for travel, I recently founded this agency to turn those decades of experience into something more personal — tailored, authentic journeys crafted around each traveler's needs.",
       experience: 'To us, travel is more than just an itinerary. It is a personal journey shaped by thoughtful planning and attention to detail, allowing each traveler to truly experience Nepal rather than simply pass through it.',
       rotaryMember: 'Rotary Club Member',
       rotaryLink: 'https://rchimalayangurkhas.org.np/club-standing-committee/',
       rotaryAriaLabel: 'Verify on Rotary Club website',
-      experience1: 'Drawing on decades of expertise, we have had the pleasure of welcoming travelers from all over the world. No matter where you come from, our team is committed to providing reliable, personalized, and genuinely local service throughout your journey. Raju is also an active Rotary Club member, dedicated to giving back to the Nepali community.',
+      experience1: "Drawing on decades of experience, we've had the pleasure of welcoming travelers from all over the world. No matter where you come from, we're committed to providing reliable, personalized, and genuinely local service throughout your journey. I'm also an active Rotary Club member — something I take great pride in as a way of giving back to the community that shaped me.",
       feature1: {
         title: 'Experienced Trekking Team',
         desc: 'From Everest Base Camp to the Annapurna Circuit, our local guides lead you with confidence and care.'
