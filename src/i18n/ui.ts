@@ -215,7 +215,7 @@ export const ui = {
       },
       {
         question: "旅行的費用大約是多少？",
-        answer: "旅行費用會根據行程長短、住宿標準和活動內容而有所不同。請聯繫我們以獲取量身定制的報價。"
+        answer: "旅行費用會根據行程長短、住宿標準和活動內容而有所不同。我們會依照旅客的預算彈性安排相關事項，盡可能將費用控制在您的預算範圍內。此外，若您有興趣體驗瑜珈課程、頌缽療癒、波卡拉划船、飛行傘或直升機觀光等特色活動，我們也可以一併協助預約安排。歡迎聯繫我們，讓我們為您量身打造最適合的行程報價。"
       },
       {
         question: "旅程包含哪些服務？",
@@ -448,7 +448,7 @@ export const ui = {
       },
       {
         question: "How much does a trip typically cost?",
-        answer: "Trip costs vary depending on the duration, accommodation standards, and activities included. Please contact us for a customized quote tailored to your needs."
+        answer: "Trip costs vary depending on the duration, accommodation standards, and activities included. We work flexibly around your budget, doing our best to arrange everything within your preferred spend. If you're also interested in add-ons such as yoga classes, singing bowl sessions, rowing on Phewa Lake, paragliding, or helicopter tours, we can take care of those bookings for you as well. Feel free to reach out and we'll put together a quote tailored to your needs."
       },
       {
         question: "What services are included in your trips?",
