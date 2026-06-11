@@ -14,9 +14,10 @@ import { kathmanduValleyTour } from '../../../data/tours/kathmandu_valley';
 import { bhutanTour } from '../../../data/tours/bhutan';
 import { actTour } from '../../../data/tours/act';
 import { gokyoTour } from '../../../data/tours/gokyo';
+import { pokharaTour } from '../../../data/tours/pokhara';
 
 export function getStaticPaths() {
-  const tours = [ebcTour, langtangTour, chitwanTour, lumbiniTour, abcTour, actTour, poonHillTour, manasluTour, kathmanduValleyTour, bhutanTour, gokyoTour];
+  const tours = [ebcTour, langtangTour, chitwanTour, lumbiniTour, abcTour, actTour, poonHillTour, manasluTour, kathmanduValleyTour, bhutanTour, gokyoTour, pokharaTour];
   return tours.map(tour => ({
     params: { id: tour.id },
     props: { tour },

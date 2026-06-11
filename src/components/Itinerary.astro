@@ -317,7 +317,7 @@ const categories = [
 
 <!-- Embedding Data for JS access -->
 <div id="destinations-data" data-destinations={JSON.stringify(destinations)} class="hidden"></div>
-<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "act", "poon_hill", "manaslu", "gokyo"]' class="hidden"></div>
+<div id="available-tours" data-tours='["ebc", "langtang", "chitwan", "lumbini", "abc", "act", "poon_hill", "manaslu", "gokyo", "pokhara"]' class="hidden"></div>
 <!-- Translations for JS -->
 <div id="translations-data" 
      data-names={JSON.stringify(destinations.reduce((acc, d) => ({...acc, [d.id]: t(`itinerary.destinations.${d.id}.name`) }), {}))}
@@ -416,6 +416,8 @@ const categories = [
             'bhaktapur': 'kathmandu_valley',
             'thamel': 'kathmandu_valley',
             'nagarkot': 'kathmandu_valley',
+            'phewa': 'pokhara',
+            'sarangkot': 'pokhara',
             'abc': ['abc', 'act'], // Special case: Annapurna Region links to both
             'ebc': ['ebc', 'gokyo'] // Special case: Everest Region links to both
           };
@@ -752,10 +754,10 @@ const categories = [
               const nodeCat = node.getAttribute('data-category');
               if (category === 'all' || nodeCat === category) {
                   gsap.to(node, { opacity: 1, duration: 0.3 });
-                  node.style.pointerEvents = 'auto';
+                  (node as HTMLElement).style.pointerEvents = 'auto';
               } else {
                   gsap.to(node, { opacity: 0, duration: 0.3 });
-                  node.style.pointerEvents = 'none';
+                  (node as HTMLElement).style.pointerEvents = 'none';
               }
           });
       });
