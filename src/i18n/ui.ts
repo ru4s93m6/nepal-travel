@@ -190,6 +190,11 @@ export const ui = {
           location: 'Manaslu Circuit',
           description: '被譽為安娜普納環線的最佳替代路線，這條隱秘的路線圍繞著世界第八高峰馬納斯魯峰。擁有未受破壞的藏族村落與令人屏息的高山隘口，是尋求遠離人潮的資深健行者的完美挑戰。',
         },
+        bardia: {
+          name: '巴迪亞國家公園',
+          location: 'Bardia National Park',
+          description: '尼泊爾西部最大的國家公園，是尋訪野生老虎的最佳秘境之一。相較於奇旺，這裡人潮稀少、自然生態幾乎原始未受干擾，能近距離觀賞孟加拉虎、獨角犀牛、亞洲象與罕見鳥類。適合嚮往深度生態探索、不希望與人潮共享叢林的旅人。',
+        },
       },
       button: {
         close: '返回',
@@ -422,6 +427,11 @@ export const ui = {
           name: 'Manaslu Circuit',
           location: 'Manaslu Circuit',
           description: 'Often considered the best alternative to the Annapurna Circuit, this pristine trek circles the 8th highest mountain in the world. With its untouched Tibetan villages and breathtaking high passes, it is the perfect challenge for experienced trekkers seeking a pure Himalayan escape.',
+        },
+        bardia: {
+          name: 'Bardia National Park',
+          location: 'Bardia National Park',
+          description: 'Nepal\'s largest national park in the far west — and one of the best places in the country to spot wild tigers. Far less visited than Chitwan, Bardia offers a raw, unspoiled wilderness experience where you can track Bengal tigers, one-horned rhinos, Asian elephants, and rare birds in near-pristine jungle.',
         },
       },
       button: {

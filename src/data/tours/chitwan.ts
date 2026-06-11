@@ -58,7 +58,8 @@ export const chitwanTour: TourData = {
         'Sun hat, sunglasses, and high SPF sunscreen',
         'Mosquito/Insect repellent cream',
         'Binoculars for wildlife spotting',
-        'Camera and extra batteries'
+        'Camera and extra batteries',
+        'Vaccinations (Recommended): Hepatitis A, Typhoid, Tetanus'
       ]
     },
     'zh-tw': {
@@ -110,7 +111,8 @@ export const chitwanTour: TourData = {
         '防曬帽、太陽眼鏡及防曬乳',
         '防蚊液與蚊蟲咬傷藥膏（叢林蚊蟲較多，必備）',
         '雙筒望遠鏡（有助於觀察遠方的鳥類與野生動物）',
-        '相機及充足的備用電池'
+        '相機及充足的備用電池',
+        '建議接種疫苗：A 型肝炎（Hepatitis A）、傷寒（Typhoid）、破傷風（Tetanus）'
       ]
     }
   }
