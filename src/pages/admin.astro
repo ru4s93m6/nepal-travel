@@ -761,16 +761,14 @@ if (!sessionCookie || sessionCookie !== validToken) {
   function getClickedDateFromEvent(info) {
     const dayEls = document.getElementById('calendar').querySelectorAll('.fc-daygrid-day[data-date]');
     const x = info.jsEvent.clientX;
-    const evStart = info.event.startStr, evEnd = info.event.endStr;
+    const y = info.jsEvent.clientY;
     for (const el of dayEls) {
       const r = el.getBoundingClientRect();
-      if (x >= r.left && x < r.right) {
-        const c = el.dataset.date;
-        if (c >= evStart && c < evEnd) return c;
-        break;
+      if (x >= r.left && x < r.right && y >= r.top && y < r.bottom) {
+        return el.dataset.date;
       }
     }
-    return evStart;
+    return info.event.startStr;
   }
 
   function openDayModal(date, primaryBookingId) {
