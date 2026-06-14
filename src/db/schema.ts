@@ -17,7 +17,9 @@ export const bookings = pgTable('bookings', {
   departureDate: date('departure_date').notNull(),
   departureTime: text('departure_time'),
   status: text('status').notNull().default('unpaid'),
+  amount: text('amount'),
   note: text('note'),
+  itineraryFilename: text('itinerary_filename'),
   itineraryDays: jsonb('itinerary_days').$type<ItineraryDay[]>().default([]),
   createdAt: timestamp('created_at').defaultNow(),
 });

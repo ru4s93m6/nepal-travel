@@ -27,8 +27,10 @@ export async function GET() {
     departure_date: b.departureDate,
     departure_time: b.departureTime,
     status: b.status,
+    amount: b.amount,
     note: b.note,
     itinerary_days: b.itineraryDays,
+    itinerary_filename: b.itineraryFilename,
     created_at: b.createdAt,
   }));
 
