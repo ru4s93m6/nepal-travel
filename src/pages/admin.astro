@@ -791,12 +791,26 @@ if (!sessionCookie || sessionCookie !== validToken) {
 
   // Split a dayEntry into { activity, overnight }.
   // If the parser already stored overnight separately, use it.
-  // Otherwise try keyword detection on the description for legacy merged data.
-  const ACCOMMODATION_RE = /^(.+?)\s+(Teahouse|Tea\s+House|Lodge|Hotel|Guesthouse|Guest\s+House|Camp|Homestay|Resort|B&B)\s*$/i;
+  // Otherwise infer from the last word(s) for legacy merged descriptions.
   function itinParts(dayEntry) {
     if (dayEntry.overnight) return { activity: dayEntry.description, overnight: dayEntry.overnight };
-    const m = dayEntry.description.match(ACCOMMODATION_RE);
-    return m ? { activity: m[1].trim(), overnight: m[2] } : { activity: dayEntry.description, overnight: null };
+    const words = dayEntry.description.split(/\s+/);
+    const n = words.length;
+    const last = words[n - 1] || '';
+    const prev = words[n - 2] || '';
+    // Two-word accommodations: "Tea House", "Guest House"
+    if (/^House$/i.test(last) && /^(Tea|Guest)$/i.test(prev) && n >= 3) {
+      return { activity: words.slice(0, n - 2).join(' '), overnight: prev + ' ' + last };
+    }
+    // Standalone single-word accommodations (no location prefix)
+    if (/^(Teahouse|Camp|Homestay)$/i.test(last) && n >= 2) {
+      return { activity: words.slice(0, n - 1).join(' '), overnight: last };
+    }
+    // Location-prefixed: "Kathmandu Hotel", "Pokhara Lodge" — take preceding word too
+    if (/^(Hotel|Lodge|Guesthouse|Resort|B&B)$/i.test(last) && n >= 3) {
+      return { activity: words.slice(0, n - 2).join(' '), overnight: prev + ' ' + last };
+    }
+    return { activity: dayEntry.description, overnight: null };
   }
 
   function renderDayModal() {
