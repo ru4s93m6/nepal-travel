@@ -22,12 +22,961 @@ if (!sessionCookie || sessionCookie !== validToken) {
 ---
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin - Oriental Express Travel</title>
-  </head>
-  <body>
-    <h1>Admin</h1>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Order Management | Oriental Express Travel</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    .admin-header {
+      background: #1A2B49;
+      color: white;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .admin-header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .btn-add {
+      background: #D4AF37;
+      color: #1A2B49;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-add:hover { background: #b8962e; }
+    .btn-logout {
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 7px 14px;
+      border-radius: 7px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-logout:hover { color: white; border-color: rgba(255,255,255,0.5); }
+
+    /* ── Main Layout ── */
+    .admin-main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 16px;
+      padding: 16px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── Calendar ── */
+    .calendar-section {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      overflow: auto;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    #calendar { height: 100%; min-height: 500px; }
+    .fc .fc-toolbar-title { font-size: 16px; font-weight: 600; }
+    .fc .fc-button { background: #1A2B49 !important; border-color: #1A2B49 !important; font-size: 13px !important; }
+    .fc .fc-button:hover { background: #243d65 !important; }
+    .fc .fc-daygrid-event { border-radius: 4px; font-size: 11px; padding: 1px 4px; cursor: pointer; }
+    .fc .fc-day-today { background: rgba(212, 175, 55, 0.08) !important; }
+
+    /* ── Sidebar ── */
+    .bookings-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow-y: auto;
+      border-radius: 12px;
+    }
+    .sidebar-header {
+      background: white;
+      border-radius: 12px 12px 0 0;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #f1f5f9;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    #sidebar-month { color: #1A2B49; }
+
+    .booking-card {
+      background: white;
+      padding: 14px 16px;
+      border-left: 4px solid transparent;
+      border-bottom: 1px solid #f1f5f9;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .booking-card:last-child { border-radius: 0 0 12px 12px; border-bottom: none; }
+    .booking-card:hover { background: #f8fafc; }
+    .booking-card .card-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .booking-card .card-dates { font-size: 12px; color: #64748b; margin-bottom: 6px; }
+    .booking-card .card-footer { display: flex; justify-content: space-between; align-items: center; }
+    .status-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .status-paid { background: #dcfce7; color: #15803d; }
+    .status-unpaid { background: #fee2e2; color: #b91c1c; }
+    .status-partially_paid { background: #fef9c3; color: #92400e; }
+    .card-whatsapp {
+      font-size: 12px;
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .card-whatsapp:hover { text-decoration: underline; }
+
+    .no-bookings {
+      background: white;
+      border-radius: 0 0 12px 12px;
+      padding: 32px 16px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* ── Modals ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: white;
+      border-radius: 14px;
+      padding: 28px;
+      width: 90%;
+      max-width: 520px;
+      max-height: 88vh;
+      overflow-y: auto;
+      transform: translateY(12px);
+      transition: transform 0.2s;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A2B49;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #94a3b8;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #475569; }
+
+    /* ── Form ── */
+    .form-row { margin-bottom: 14px; }
+    .form-row label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 7px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1e293b;
+      background: white;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus { border-color: #1A2B49; }
+    .form-row textarea { resize: vertical; min-height: 72px; }
+    .form-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-wa { display: grid; grid-template-columns: 110px 1fr; gap: 10px; }
+    .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+    .btn-primary {
+      background: #1A2B49;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #243d65; }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-secondary {
+      background: white;
+      color: #475569;
+      border: 1.5px solid #e2e8f0;
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-danger {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-danger:hover { background: #fecaca; }
+
+    /* ── Detail Modal ── */
+    .detail-field { margin-bottom: 12px; }
+    .detail-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 2px; }
+    .detail-value { font-size: 14px; color: #1e293b; }
+    .detail-divider { border: none; border-top: 1px solid #f1f5f9; margin: 16px 0; }
+
+    /* ── Itinerary Modal ── */
+    .itinerary-content {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #334155;
+      white-space: pre-wrap;
+    }
+
+    .form-file-hint { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+    .error-banner {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 14px;
+      display: none;
+    }
+
+    /* ── Detail Modal: info rows ── */
+    .detail-name-header {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1A2B49;
+      padding-bottom: 12px;
+      margin-bottom: 2px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .info-rows { }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label {
+      min-width: 88px;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      padding-top: 2px;
+    }
+    .info-value {
+      font-size: 14px;
+      color: #1e293b;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .wa-link {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .wa-link:hover { text-decoration: underline; }
+
+    /* ── Itinerary list in detail modal ── */
+    .itin-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #0891b2;
+      margin: 16px 0 8px;
+    }
+    .itin-list { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+    .itin-day {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .itin-day:last-child { border-bottom: none; }
+    .itin-day-meta {
+      background: #f0f9ff;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #e2e8f0;
+    }
+    .itin-day-num { font-size: 11px; font-weight: 800; color: #0891b2; text-transform: uppercase; }
+    .itin-day-date { font-size: 10px; color: #64748b; margin-top: 2px; text-align: center; }
+    .itin-day-desc { font-size: 13px; color: #334155; line-height: 1.55; padding: 10px 12px; }
+    .itin-overnight { font-size: 11px; color: #64748b; margin-top: 4px; }
+
+    /* ── Day-click Modal ── */
+    .day-modal-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .day-modal-nav-btn {
+      background: white;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .day-modal-nav-btn:hover:not(:disabled) { border-color: #1A2B49; color: #1A2B49; }
+    .day-modal-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .day-modal-nav-label {
+      flex: 1;
+      text-align: center;
+      font-size: 13px;
+      color: #1A2B49;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .day-modal-nav-sub { font-size: 11px; color: #94a3b8; font-weight: 400; }
+    .day-modal-arrival {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f0f9ff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #0369a1;
+      font-weight: 500;
+      border-left: 3px solid #38bdf8;
+    }
+    .day-modal-departure {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fdf4ff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #7e22ce;
+      font-weight: 500;
+      border-left: 3px solid #c084fc;
+    }
+    .day-modal-itin {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 14px 16px;
+      border: 1px solid #e2e8f0;
+    }
+    .day-modal-itin-desc { font-size: 15px; color: #1e293b; line-height: 1.6; font-weight: 500; }
+    .day-modal-overnight { font-size: 13px; color: #64748b; margin-top: 8px; }
+    .day-modal-no-data { text-align: center; color: #94a3b8; font-size: 14px; padding: 28px 0; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="admin-header">
+  <h1>&#x1F5D3; Order Management</h1>
+  <div class="header-actions">
+    <button class="btn-add" onclick="openAddModal()">+ Add Booking</button>
+    <button class="btn-logout" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="admin-main">
+  <!-- Calendar -->
+  <section class="calendar-section">
+    <div id="calendar"></div>
+  </section>
+
+  <!-- Sidebar -->
+  <aside class="bookings-sidebar">
+    <div class="sidebar-header">
+      Bookings — <span id="sidebar-month">this month</span>
+    </div>
+    <div id="sidebar-list">
+      <div class="no-bookings">Loading...</div>
+    </div>
+  </aside>
+</main>
+
+<!-- ── Modal: Add Booking ── -->
+<div class="modal-overlay" id="add-modal">
+  <div class="modal-box">
+    <div class="modal-title">
+      Add Booking
+      <button class="modal-close" onclick="closeModal('add-modal')">&times;</button>
+    </div>
+    <div class="error-banner" id="add-error"></div>
+    <form id="add-form" onsubmit="submitAddForm(event)">
+      <div class="form-row">
+        <label>Name *</label>
+        <input type="text" name="name" required placeholder="Guest name" />
+      </div>
+      <div class="form-row">
+        <label>WhatsApp *</label>
+        <div class="form-wa">
+          <input type="text" name="whatsappCountryCode" placeholder="+977" required />
+          <input type="text" name="whatsappNumber" placeholder="9818840319" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Arrival *</label>
+        <div class="form-two-col">
+          <input type="date" name="arrivalDate" required />
+          <input type="time" name="arrivalTime" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Departure *</label>
+        <div class="form-two-col">
+          <input type="date" name="departureDate" required />
+          <input type="time" name="departureTime" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Status *</label>
+        <select name="status" required>
+          <option value="unpaid">Unpaid</option>
+          <option value="paid">Paid</option>
+          <option value="partially_paid">Partially Paid</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Note</label>
+        <textarea name="note" placeholder="Any notes..."></textarea>
+      </div>
+      <div class="form-row">
+        <label>Itinerary PDF</label>
+        <input type="file" name="pdf" accept=".pdf" />
+        <div class="form-file-hint">Optional. Day-by-day itinerary will be parsed and shown when clicking the booking bar.</div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" onclick="closeModal('add-modal')">Cancel</button>
+        <button type="submit" class="btn-primary" id="add-submit-btn">Save Booking</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ── Modal: Booking Detail ── -->
+<div class="modal-overlay" id="detail-modal">
+  <div class="modal-box">
+    <div class="modal-title">
+      Booking Details
+      <button class="modal-close" onclick="closeModal('detail-modal')">&times;</button>
+    </div>
+    <div id="detail-content"></div>
+    <hr class="detail-divider" />
+    <div class="form-actions">
+      <button class="btn-danger" id="delete-btn" onclick="deleteCurrentBooking()">Delete Booking</button>
+      <button class="btn-secondary" onclick="closeModal('detail-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal: Day Itinerary (calendar bar click) ── -->
+<div class="modal-overlay" id="day-modal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span id="day-modal-title">Day Itinerary</span>
+      <button class="modal-close" onclick="closeModal('day-modal')">&times;</button>
+    </div>
+    <div class="day-modal-nav" id="day-modal-nav" style="display:none"></div>
+    <div id="day-modal-content"></div>
+  </div>
+</div>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script is:inline>
+  // ─── State ───────────────────────────────────────────────────────────────
+  let allBookings = [];
+  let calendar = null;
+  let currentViewDate = new Date();
+  let currentDetailBookingId = null;
+  let dayModalDate = null;
+  let dayModalBookings = [];
+  let dayModalIdx = 0;
+
+  // ─── Status helpers ──────────────────────────────────────────────────────
+  const STATUS_COLOR = {
+    paid: '#16a34a',
+    unpaid: '#dc2626',
+    partially_paid: '#d97706',
+  };
+  const STATUS_LABEL = {
+    paid: 'Paid',
+    unpaid: 'Unpaid',
+    partially_paid: 'Partially Paid',
+  };
+
+  function fmtDate(dateStr) {
+    if (!dateStr) return '—';
+    const [y, m, d] = dateStr.split('-');
+    return new Date(+y, +m - 1, +d).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric'
+    });
+  }
+
+  // FullCalendar end date is exclusive, so add 1 day to make it inclusive.
+  // Must use UTC to avoid local-timezone shift (e.g. Nepal UTC+5:45 would roll back one day).
+  function addOneDay(dateStr) {
+    const dt = new Date(dateStr + 'T00:00:00Z');
+    dt.setUTCDate(dt.getUTCDate() + 1);
+    return dt.toISOString().split('T')[0];
+  }
+
+  function waLink(cc, num) {
+    const clean = cc.replace(/\D/g, '') + num.replace(/\D/g, '');
+    return `https://wa.me/${clean}`;
+  }
+
+  // ─── Data fetching ───────────────────────────────────────────────────────
+  async function fetchBookings() {
+    const res = await fetch('/api/bookings/');
+    if (!res.ok) throw new Error('Failed to fetch bookings');
+    return res.json();
+  }
+
+  async function loadBookings() {
+    try {
+      allBookings = await fetchBookings();
+      refreshCalendarEvents();
+      refreshSidebar();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // ─── Calendar events builder ─────────────────────────────────────────────
+  function buildCalendarEvents(bookings) {
+    const events = [];
+    for (const b of bookings) {
+      events.push({
+        id: `booking-${b.id}`,
+        title: b.name,
+        start: b.arrival_date,
+        end: addOneDay(b.departure_date),
+        backgroundColor: '#dc2626',
+        borderColor: '#b91c1c',
+        textColor: '#fff',
+        extendedProps: { bookingId: b.id },
+      });
+    }
+    return events;
+  }
+
+  function refreshCalendarEvents() {
+    if (!calendar) return;
+    calendar.removeAllEvents();
+    calendar.addEventSource(buildCalendarEvents(allBookings));
+  }
+
+  // ─── Sidebar ─────────────────────────────────────────────────────────────
+  function refreshSidebar() {
+    const d = calendar ? calendar.getDate() : new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth(); // 0-indexed
+
+    document.getElementById('sidebar-month').textContent =
+      d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+    const filtered = allBookings.filter(b => {
+      if (!b.arrival_date) return false;
+      const [y, m] = b.arrival_date.split('-').map(Number);
+      return y === year && m === month + 1;
+    });
+
+    const list = document.getElementById('sidebar-list');
+    if (filtered.length === 0) {
+      list.innerHTML = '<div class="no-bookings">No bookings this month.</div>';
+      return;
+    }
+
+    list.innerHTML = filtered.map(b => `
+      <div class="booking-card" style="border-left-color:${STATUS_COLOR[b.status]}"
+           onclick="openDetailModal('${b.id}')">
+        <div class="card-name">${escHtml(b.name)}</div>
+        <div class="card-dates">${fmtDate(b.arrival_date)} → ${fmtDate(b.departure_date)}</div>
+        <div class="card-footer">
+          <span class="status-badge status-${b.status}">${STATUS_LABEL[b.status]}</span>
+          <a class="card-whatsapp" href="${waLink(b.whatsapp_country_code, b.whatsapp_number)}"
+             target="_blank" rel="noopener" onclick="event.stopPropagation()">
+            &#x1F4F1; WhatsApp
+          </a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ─── Calendar init ───────────────────────────────────────────────────────
+  function initCalendar() {
+    const el = document.getElementById('calendar');
+    calendar = new FullCalendar.Calendar(el, {
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: '',
+      },
+      height: '100%',
+      events: [],
+      dateClick: function(info) {
+        openDayModal(info.dateStr, null);
+      },
+      eventClick: function(info) {
+        const clickedDate = getClickedDateFromEvent(info);
+        openDayModal(clickedDate, info.event.extendedProps.bookingId);
+      },
+      datesSet: function() {
+        refreshSidebar();
+      },
+    });
+    calendar.render();
+  }
+
+  // ─── Modal helpers ────────────────────────────────────────────────────────
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+
+  // ─── Add Booking Modal ────────────────────────────────────────────────────
+  function openAddModal() {
+    document.getElementById('add-form').reset();
+    document.getElementById('add-error').style.display = 'none';
+    openModal('add-modal');
+  }
+
+  async function submitAddForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('add-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+    document.getElementById('add-error').style.display = 'none';
+
+    try {
+      const formData = new FormData(e.target);
+      const res = await fetch('/api/bookings/create/', {
+        method: 'POST',
+        body: formData,
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || 'Failed to save booking');
+      }
+      closeModal('add-modal');
+      await loadBookings();
+    } catch (err) {
+      const errEl = document.getElementById('add-error');
+      errEl.textContent = err.message;
+      errEl.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Save Booking';
+    }
+  }
+
+  // ─── Detail Modal ─────────────────────────────────────────────────────────
+  function openDetailModal(bookingId) {
+    const b = allBookings.find(x => x.id === bookingId);
+    if (!b) return;
+    currentDetailBookingId = bookingId;
+
+    const days = b.itinerary_days || [];
+
+    const itinSection = days.length > 0
+      ? `<div class="itin-section-title">&#x1F5FA; Itinerary &mdash; ${days.length} day${days.length > 1 ? 's' : ''}</div>
+         <div class="itin-list">
+           ${days.map(d => `
+             <div class="itin-day">
+               <div class="itin-day-meta">
+                 <div class="itin-day-num">Day ${d.day}</div>
+                 <div class="itin-day-date">${fmtDate(d.date)}</div>
+               </div>
+               <div class="itin-day-desc">
+                 ${escHtml(d.description)}
+                 ${d.overnight ? `<div class="itin-overnight">&#x1F3E8; ${escHtml(d.overnight)}</div>` : ''}
+               </div>
+             </div>
+           `).join('')}
+         </div>`
+      : '';
+
+    document.getElementById('detail-content').innerHTML = `
+      <div class="detail-name-header">${escHtml(b.name)}</div>
+      <div class="info-rows">
+        <div class="info-row">
+          <span class="info-label">Status</span>
+          <span class="info-value"><span class="status-badge status-${b.status}">${STATUS_LABEL[b.status]}</span></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">WhatsApp</span>
+          <span class="info-value">
+            <a class="wa-link" href="${waLink(b.whatsapp_country_code, b.whatsapp_number)}" target="_blank" rel="noopener">
+              &#x1F4F1; ${escHtml(b.whatsapp_country_code)} ${escHtml(b.whatsapp_number)}
+            </a>
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Arrival</span>
+          <span class="info-value">${fmtDate(b.arrival_date)}${b.arrival_time ? ' &middot; ' + b.arrival_time : ''}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Departure</span>
+          <span class="info-value">${fmtDate(b.departure_date)}${b.departure_time ? ' &middot; ' + b.departure_time : ''}</span>
+        </div>
+        ${b.note ? `
+        <div class="info-row">
+          <span class="info-label">Note</span>
+          <span class="info-value">${escHtml(b.note)}</span>
+        </div>` : ''}
+      </div>
+      ${itinSection}
+    `;
+
+    openModal('detail-modal');
+  }
+
+  async function deleteCurrentBooking() {
+    if (!currentDetailBookingId) return;
+    const b = allBookings.find(x => x.id === currentDetailBookingId);
+    if (!confirm(`Delete booking for "${b?.name}"? This cannot be undone.`)) return;
+
+    try {
+      const res = await fetch(`/api/bookings/${currentDetailBookingId}/`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Failed to delete');
+      closeModal('detail-modal');
+      await loadBookings();
+    } catch (err) {
+      alert('Failed to delete booking: ' + err.message);
+    }
+  }
+
+  // ─── Day Modal (calendar bar click) ──────────────────────────────────────
+  function getClickedDateFromEvent(info) {
+    // Determine which specific day column was clicked within a multi-day bar
+    // by matching the click's x-position to a day cell's horizontal bounds.
+    const calEl = document.getElementById('calendar');
+    const dayEls = calEl.querySelectorAll('.fc-daygrid-day[data-date]');
+    const x = info.jsEvent.clientX;
+    const evStart = info.event.startStr;
+    const evEnd = info.event.endStr; // exclusive
+
+    for (const dayEl of dayEls) {
+      const rect = dayEl.getBoundingClientRect();
+      if (x >= rect.left && x < rect.right) {
+        const candidate = dayEl.dataset.date;
+        if (candidate >= evStart && candidate < evEnd) return candidate;
+        break;
+      }
+    }
+    return evStart;
+  }
+
+  function openDayModal(date, primaryBookingId) {
+    dayModalDate = date;
+    // All bookings whose span includes this date
+    dayModalBookings = allBookings.filter(b =>
+      b.arrival_date <= date && b.departure_date >= date
+    );
+    // Put the clicked booking first
+    const primaryIdx = dayModalBookings.findIndex(b => b.id === primaryBookingId);
+    if (primaryIdx > 0) {
+      const [primary] = dayModalBookings.splice(primaryIdx, 1);
+      dayModalBookings.unshift(primary);
+    }
+    dayModalIdx = 0;
+    document.getElementById('day-modal-title').textContent = fmtDate(date);
+    renderDayModal();
+    openModal('day-modal');
+  }
+
+  function dayModalNav(dir) {
+    dayModalIdx = Math.max(0, Math.min(dayModalBookings.length - 1, dayModalIdx + dir));
+    renderDayModal();
+  }
+
+  function renderDayModal() {
+    const navEl = document.getElementById('day-modal-nav');
+    const contentEl = document.getElementById('day-modal-content');
+
+    if (dayModalBookings.length === 0) {
+      navEl.style.display = 'none';
+      contentEl.innerHTML = '<div class="day-modal-no-data">No bookings on this date.</div>';
+      return;
+    }
+
+    const b = dayModalBookings[dayModalIdx];
+    const date = dayModalDate;
+    const total = dayModalBookings.length;
+
+    // Navigation bar (shown only when multiple tourists share this date)
+    if (total > 1) {
+      navEl.style.display = 'flex';
+      navEl.innerHTML = `
+        <button class="day-modal-nav-btn" onclick="dayModalNav(-1)"
+          ${dayModalIdx === 0 ? 'disabled' : ''}>&#8592;</button>
+        <div class="day-modal-nav-label">
+          ${escHtml(b.name)}
+          <div class="day-modal-nav-sub">${dayModalIdx + 1} of ${total} tourists this day</div>
+        </div>
+        <button class="day-modal-nav-btn" onclick="dayModalNav(1)"
+          ${dayModalIdx === total - 1 ? 'disabled' : ''}>&#8594;</button>
+      `;
+    } else {
+      navEl.style.display = 'none';
+    }
+
+    const days = b.itinerary_days || [];
+    const dayEntry = days.find(d => d.date === date);
+    const isArrival = date === b.arrival_date;
+    const isDeparture = date === b.departure_date;
+
+    let html = '';
+
+    if (isArrival) {
+      const time = b.arrival_time || 'No Info';
+      html += `<div class="day-modal-arrival">
+        &#x2708; <span>Arrival Time: <strong>${escHtml(time)}</strong></span>
+      </div>`;
+    }
+
+    if (dayEntry) {
+      html += `<div class="day-modal-itin">
+        <div class="day-modal-itin-desc">${escHtml(dayEntry.description)}</div>
+        ${dayEntry.overnight ? `<div class="day-modal-overnight">&#x1F3E8; Overnight: ${escHtml(dayEntry.overnight)}</div>` : ''}
+      </div>`;
+    } else {
+      html += '<div class="day-modal-no-data">No Itinerary Data</div>';
+    }
+
+    if (isDeparture) {
+      const time = b.departure_time || 'No Info';
+      html += `<div class="day-modal-departure">
+        &#x1F3C1; <span>Departure Time: <strong>${escHtml(time)}</strong></span>
+      </div>`;
+    }
+
+    contentEl.innerHTML = html;
+  }
+
+  // ─── Logout ───────────────────────────────────────────────────────────────
+  async function logout() {
+    await fetch('/api/auth/logout/', { method: 'POST' }).catch(() => {});
+    document.cookie = 'admin_session=; Max-Age=0; path=/';
+    window.location.href = '/login/';
+  }
+
+  // ─── Utils ────────────────────────────────────────────────────────────────
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ─── Bootstrap ────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', async () => {
+    initCalendar();
+    await loadBookings();
+  });
+</script>
+</body>
 </html>

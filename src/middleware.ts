@@ -38,6 +38,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return context.redirect('/login/?error=1');
   }
 
+  // Protect bookings API — require valid session cookie, return 401 otherwise
+  if (pathname.startsWith('/api/bookings')) {
+    const sessionCookie = context.cookies.get('admin_session')?.value;
+    const validToken = await computeToken(
+      import.meta.env.ADMIN_USERNAME,
+      import.meta.env.ADMIN_PASSWORD,
+      import.meta.env.SESSION_SECRET
+    );
+    if (!sessionCookie || sessionCookie !== validToken) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  }
+
   // For /login and /admin pages, i18n routing overrides the status to 404
   // even though the pages render correctly. Fix the status after next().
   if (pathname.startsWith('/login') || pathname.startsWith('/admin')) {
