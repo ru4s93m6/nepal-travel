@@ -39,10 +39,8 @@ export function parseItineraryFromText(text: string, arrivalDate: string): Itine
 
     if (colSplit) {
       description = colSplit[1].replace(/\s+[–\-]\s*$/, '').trim();
-      const rawOvernight = colSplit[2]
-        .replace(/\s+[–\-]\s*$/, '')   // trailing dash = last-day marker
-        .replace(/\s+[\d,]+\s*m\s*$/i, '') // strip altitude e.g. "2,600 m"
-        .trim();
+      const rawOvernight = colSplit[2].replace(/\s+[–\-]\s*$/, '').trim();
+      // A lone dash means "no overnight" (last-day marker)
       overnight = /^[–\-]+$/.test(rawOvernight) ? undefined : rawOvernight || undefined;
     } else {
       // Single-spaced line — no column gap found; store whole line as description
