@@ -787,37 +787,40 @@ if (!sessionCookie || sessionCookie !== validToken) {
     renderDayModal();
   }
 
-  // Strip altitude notation (e.g. "2,600 m", "3500m") from overnight string.
-  function stripAltitude(str) {
-    return str.replace(/\s+[\d,]+\s*m\s*$/i, '').trim();
+  // Extract altitude notation (e.g. "2,600 m", "3500m") from the end of a string.
+  // Returns { text: string without altitude, altitude: string | null }
+  function extractAltitude(str) {
+    const m = str.match(/^(.*)\s+([\d,]+\s*m)\s*$/i);
+    return m ? { text: m[1].trim(), altitude: m[2].trim() } : { text: str, altitude: null };
   }
 
-  // Split a dayEntry into { activity, overnight }.
-  // If the parser already stored overnight separately, use it.
+  // Split a dayEntry into { activity, overnight, altitude }.
+  // If the parser stored overnight separately, use it directly.
   // Otherwise infer from the last word(s) for legacy merged descriptions.
   function itinParts(dayEntry) {
     if (dayEntry.overnight) {
-      return { activity: dayEntry.description, overnight: stripAltitude(dayEntry.overnight) || null };
+      const { text: overnight, altitude } = extractAltitude(dayEntry.overnight);
+      return { activity: dayEntry.description, overnight: overnight || null, altitude };
     }
-    // Strip altitude from end of description before splitting
-    const desc = stripAltitude(dayEntry.description);
+    // Extract altitude first, then split accommodation from the remainder
+    const { text: desc, altitude } = extractAltitude(dayEntry.description);
     const words = desc.split(/\s+/);
     const n = words.length;
     const last = words[n - 1] || '';
     const prev = words[n - 2] || '';
     // Two-word accommodations: "Tea House", "Guest House"
     if (/^House$/i.test(last) && /^(Tea|Guest)$/i.test(prev) && n >= 3) {
-      return { activity: words.slice(0, n - 2).join(' '), overnight: prev + ' ' + last };
+      return { activity: words.slice(0, n - 2).join(' '), overnight: prev + ' ' + last, altitude };
     }
     // Standalone single-word accommodations (no location prefix)
     if (/^(Teahouse|Camp|Homestay)$/i.test(last) && n >= 2) {
-      return { activity: words.slice(0, n - 1).join(' '), overnight: last };
+      return { activity: words.slice(0, n - 1).join(' '), overnight: last, altitude };
     }
     // Location-prefixed: "Kathmandu Hotel", "Pokhara Lodge" — take preceding word too
     if (/^(Hotel|Lodge|Guesthouse|Resort|B&B)$/i.test(last) && n >= 3) {
-      return { activity: words.slice(0, n - 2).join(' '), overnight: prev + ' ' + last };
+      return { activity: words.slice(0, n - 2).join(' '), overnight: prev + ' ' + last, altitude };
     }
-    return { activity: desc, overnight: null };
+    return { activity: desc, overnight: null, altitude };
   }
 
   function renderDayModal() {
@@ -845,7 +848,7 @@ if (!sessionCookie || sessionCookie !== validToken) {
     let html = '';
     if (isArrival) html += `<div class="day-modal-arrival">&#x2708; <span>Arrival Time: <strong>${escHtml(b.arrival_time || 'No Info')}</strong></span></div>`;
     if (dayEntry) {
-      const { activity, overnight } = itinParts(dayEntry);
+      const { activity, overnight, altitude } = itinParts(dayEntry);
       html += `<div class="day-modal-itin">
           <div class="day-modal-itin-row">
             <span class="day-modal-itin-label">Itinerary</span>
@@ -854,6 +857,10 @@ if (!sessionCookie || sessionCookie !== validToken) {
           ${overnight ? `<div class="day-modal-itin-row">
             <span class="day-modal-itin-label">Accommodation</span>
             <span class="day-modal-itin-desc">${escHtml(overnight)}</span>
+          </div>` : ''}
+          ${altitude ? `<div class="day-modal-itin-row">
+            <span class="day-modal-itin-label">Altitude</span>
+            <span class="day-modal-itin-desc">${escHtml(altitude)}</span>
           </div>` : ''}
         </div>`;
     } else {
