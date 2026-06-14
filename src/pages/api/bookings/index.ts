@@ -7,10 +7,10 @@ import { lt } from 'drizzle-orm';
 export async function GET() {
   const db = getDb();
 
-  // Auto-purge bookings older than 6 months
-  const sixMonthsAgo = new Date();
-  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-  const cutoff = sixMonthsAgo.toISOString().split('T')[0];
+  // Auto-purge bookings older than 13 months
+  const cutoffDate = new Date();
+  cutoffDate.setMonth(cutoffDate.getMonth() - 13);
+  const cutoff = cutoffDate.toISOString().split('T')[0];
 
   await db.delete(bookings).where(lt(bookings.arrivalDate, cutoff));
 
