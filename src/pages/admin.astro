@@ -274,9 +274,18 @@ if (!sessionCookie || sessionCookie !== validToken) {
       font-size: 15px; color: #7e22ce; font-weight: 500; border-left: 3px solid #c084fc;
     }
     .day-modal-itin {
-      background: #f8fafc; border-radius: 8px; padding: 16px 18px; border: 1px solid #e2e8f0;
+      background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;
     }
-    .day-modal-itin-desc { font-size: 16px; color: #1e293b; line-height: 1.6; font-weight: 500; }
+    .day-modal-itin-row {
+      display: grid; grid-template-columns: 120px 1fr; gap: 12px;
+      align-items: start; padding: 12px 18px;
+    }
+    .day-modal-itin-row + .day-modal-itin-row { border-top: 1px solid #e2e8f0; }
+    .day-modal-itin-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: #94a3b8; padding-top: 2px; white-space: nowrap;
+    }
+    .day-modal-itin-desc { font-size: 14px; color: #1e293b; line-height: 1.6; font-weight: 500; }
     .day-modal-overnight { font-size: 14px; color: #64748b; margin-top: 10px; }
     .day-modal-no-data { text-align: center; color: #94a3b8; font-size: 15px; padding: 32px 0; }
 
@@ -600,7 +609,6 @@ if (!sessionCookie || sessionCookie !== validToken) {
   // ─── Modal helpers ────────────────────────────────────────────────────────
   function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
-  document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); }));
 
   // ─── Add Modal ────────────────────────────────────────────────────────────
   function openAddModal() {
@@ -806,7 +814,16 @@ if (!sessionCookie || sessionCookie !== validToken) {
     let html = '';
     if (isArrival) html += `<div class="day-modal-arrival">&#x2708; <span>Arrival Time: <strong>${escHtml(b.arrival_time || 'No Info')}</strong></span></div>`;
     html += dayEntry
-      ? `<div class="day-modal-itin"><div class="day-modal-itin-desc">${escHtml(dayEntry.description)}</div>${dayEntry.overnight?`<div class="day-modal-overnight">&#x1F3E8; Overnight: ${escHtml(dayEntry.overnight)}</div>`:''}</div>`
+      ? `<div class="day-modal-itin">
+          <div class="day-modal-itin-row">
+            <span class="day-modal-itin-label">Itinerary</span>
+            <span class="day-modal-itin-desc">${escHtml(dayEntry.description)}</span>
+          </div>
+          ${dayEntry.overnight ? `<div class="day-modal-itin-row">
+            <span class="day-modal-itin-label">Accommodation</span>
+            <span class="day-modal-itin-desc">${escHtml(dayEntry.overnight)}</span>
+          </div>` : ''}
+        </div>`
       : '<div class="day-modal-no-data">No Itinerary Data</div>';
     if (isDeparture) html += `<div class="day-modal-departure">&#x1F3C1; <span>Departure Time: <strong>${escHtml(b.departure_time || 'No Info')}</strong></span></div>`;
     contentEl.innerHTML = html;

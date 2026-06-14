@@ -29,17 +29,31 @@ export function parseItineraryFromText(text: string, arrivalDate: string): Itine
     const rest = m[2].trim();
     // Skip the "Activity  Overnight" header row
     if (/^activity\b/i.test(rest)) continue;
-    // Remove trailing em-dash / dash (last-day marker meaning no overnight stay)
-    const description = rest.replace(/\s+[–\-]\s*$/, '').trim();
+
+    // PDF tables produce 2+ spaces between columns; use that gap to split
+    // activity (description) from accommodation (overnight).
+    // Greedy (.*) finds the LAST such gap, so multi-word activities are kept intact.
+    const colSplit = rest.match(/^(.*)\s{2,}(\S.+)$/);
+    let description: string;
+    let overnight: string | undefined;
+
+    if (colSplit) {
+      description = colSplit[1].replace(/\s+[–\-]\s*$/, '').trim();
+      const rawOvernight = colSplit[2].replace(/\s+[–\-]\s*$/, '').trim();
+      // A lone dash means "no overnight" (last-day marker)
+      overnight = /^[–\-]+$/.test(rawOvernight) ? undefined : rawOvernight || undefined;
+    } else {
+      // Single-spaced line — no column gap found; store whole line as description
+      description = rest.replace(/\s+[–\-]\s*$/, '').trim();
+    }
+
     if (!description) continue;
 
     const dt = new Date(arrival);
     dt.setUTCDate(dt.getUTCDate() + dayNum - 1);
-    results.push({
-      day: dayNum,
-      date: dt.toISOString().split('T')[0],
-      description,
-    });
+    const entry: ItineraryDay = { day: dayNum, date: dt.toISOString().split('T')[0], description };
+    if (overnight) entry.overnight = overnight;
+    results.push(entry);
   }
 
   return results;
