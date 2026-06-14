@@ -789,6 +789,16 @@ if (!sessionCookie || sessionCookie !== validToken) {
     renderDayModal();
   }
 
+  // Split a dayEntry into { activity, overnight }.
+  // If the parser already stored overnight separately, use it.
+  // Otherwise try keyword detection on the description for legacy merged data.
+  const ACCOMMODATION_RE = /^(.+?)\s+(Teahouse|Tea\s+House|Lodge|Hotel|Guesthouse|Guest\s+House|Camp|Homestay|Resort|B&B)\s*$/i;
+  function itinParts(dayEntry) {
+    if (dayEntry.overnight) return { activity: dayEntry.description, overnight: dayEntry.overnight };
+    const m = dayEntry.description.match(ACCOMMODATION_RE);
+    return m ? { activity: m[1].trim(), overnight: m[2] } : { activity: dayEntry.description, overnight: null };
+  }
+
   function renderDayModal() {
     const navEl = document.getElementById('day-modal-nav');
     const contentEl = document.getElementById('day-modal-content');
@@ -813,18 +823,21 @@ if (!sessionCookie || sessionCookie !== validToken) {
     const isDeparture = dayModalDate === b.departure_date;
     let html = '';
     if (isArrival) html += `<div class="day-modal-arrival">&#x2708; <span>Arrival Time: <strong>${escHtml(b.arrival_time || 'No Info')}</strong></span></div>`;
-    html += dayEntry
-      ? `<div class="day-modal-itin">
+    if (dayEntry) {
+      const { activity, overnight } = itinParts(dayEntry);
+      html += `<div class="day-modal-itin">
           <div class="day-modal-itin-row">
             <span class="day-modal-itin-label">Itinerary</span>
-            <span class="day-modal-itin-desc">${escHtml(dayEntry.description)}</span>
+            <span class="day-modal-itin-desc">${escHtml(activity)}</span>
           </div>
-          ${dayEntry.overnight ? `<div class="day-modal-itin-row">
+          ${overnight ? `<div class="day-modal-itin-row">
             <span class="day-modal-itin-label">Accommodation</span>
-            <span class="day-modal-itin-desc">${escHtml(dayEntry.overnight)}</span>
+            <span class="day-modal-itin-desc">${escHtml(overnight)}</span>
           </div>` : ''}
-        </div>`
-      : '<div class="day-modal-no-data">No Itinerary Data</div>';
+        </div>`;
+    } else {
+      html += '<div class="day-modal-no-data">No Itinerary Data</div>';
+    }
     if (isDeparture) html += `<div class="day-modal-departure">&#x1F3C1; <span>Departure Time: <strong>${escHtml(b.departure_time || 'No Info')}</strong></span></div>`;
     contentEl.innerHTML = html;
   }
