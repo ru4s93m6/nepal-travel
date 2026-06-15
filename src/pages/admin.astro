@@ -347,15 +347,15 @@ if (!sessionCookie || sessionCookie !== validToken) {
         <div class="form-row">
           <label>Arrival *</label>
           <div class="form-two-col">
-            <input type="date" name="arrivalDate" required />
-            <input type="time" name="arrivalTime" />
+            <input type="date" id="add-arrival-date" name="arrivalDate" required />
+            <input type="time" id="add-arrival-time" name="arrivalTime" />
           </div>
         </div>
         <div class="form-row">
           <label>Departure *</label>
           <div class="form-two-col">
-            <input type="date" name="departureDate" required />
-            <input type="time" name="departureTime" />
+            <input type="date" id="add-departure-date" name="departureDate" required />
+            <input type="time" id="add-departure-time" name="departureTime" />
           </div>
         </div>
         <div class="form-row">
@@ -610,10 +610,26 @@ if (!sessionCookie || sessionCookie !== validToken) {
   function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
 
+  // ─── Date validation helpers ─────────────────────────────────────────────
+  function validateDateRange(arrivalDate, arrivalTime, departureDate, departureTime) {
+    if (!arrivalDate || !departureDate) return null;
+    if (departureDate < arrivalDate) return 'Departure date cannot be earlier than arrival date.';
+    if (departureDate === arrivalDate && arrivalTime && departureTime && departureTime < arrivalTime) {
+      return 'Departure time cannot be earlier than arrival time on the same day.';
+    }
+    return null;
+  }
+
+  function syncDepartureDateMin(arrivalDateEl, departureDateEl) {
+    if (arrivalDateEl.value) departureDateEl.min = arrivalDateEl.value;
+    else departureDateEl.removeAttribute('min');
+  }
+
   // ─── Add Modal ────────────────────────────────────────────────────────────
   function openAddModal() {
     document.getElementById('add-form').reset();
     document.getElementById('add-error').style.display = 'none';
+    document.getElementById('add-departure-date').removeAttribute('min');
     const btn = document.getElementById('add-submit-btn');
     btn.disabled = false; btn.textContent = 'Save Booking';
     openModal('add-modal');
@@ -622,8 +638,17 @@ if (!sessionCookie || sessionCookie !== validToken) {
   async function submitAddForm(e) {
     e.preventDefault();
     const btn = document.getElementById('add-submit-btn');
-    btn.disabled = true; btn.textContent = 'Saving...';
     document.getElementById('add-error').style.display = 'none';
+
+    const f = e.target.elements;
+    const dateErr = validateDateRange(f['arrivalDate'].value, f['arrivalTime'].value, f['departureDate'].value, f['departureTime'].value);
+    if (dateErr) {
+      const el = document.getElementById('add-error');
+      el.textContent = dateErr; el.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true; btn.textContent = 'Saving...';
     try {
       const res = await fetch('/api/bookings/create/', { method: 'POST', body: new FormData(e.target) });
       if (!res.ok) { const err = await res.json().catch(()=>({})); throw new Error(err.error || 'Failed to save'); }
@@ -645,6 +670,7 @@ if (!sessionCookie || sessionCookie !== validToken) {
     document.getElementById('df-arrival-time').value  = b.arrival_time || '';
     document.getElementById('df-departure-date').value= b.departure_date || '';
     document.getElementById('df-departure-time').value= b.departure_time || '';
+    syncDepartureDateMin(document.getElementById('df-arrival-date'), document.getElementById('df-departure-date'));
     document.getElementById('df-status').value        = b.status || 'unpaid';
     document.getElementById('df-amount').value        = b.amount || '';
     document.getElementById('df-note').value          = b.note || '';
@@ -712,6 +738,19 @@ if (!sessionCookie || sessionCookie !== validToken) {
 
   async function saveDetailEdit() {
     if (!currentDetailBookingId) return;
+
+    const dateErr = validateDateRange(
+      document.getElementById('df-arrival-date').value,
+      document.getElementById('df-arrival-time').value,
+      document.getElementById('df-departure-date').value,
+      document.getElementById('df-departure-time').value
+    );
+    if (dateErr) {
+      const el = document.getElementById('detail-error');
+      el.textContent = dateErr; el.style.display = 'block';
+      return;
+    }
+
     const id = currentDetailBookingId;
     const btn = document.getElementById('detail-save-btn');
     btn.disabled = true; btn.textContent = 'Saving...';
@@ -877,7 +916,19 @@ if (!sessionCookie || sessionCookie !== validToken) {
     window.location.href = '/login/';
   }
 
-  document.addEventListener('DOMContentLoaded', async () => { initCalendar(); await loadBookings(); });
+  document.addEventListener('DOMContentLoaded', async () => {
+    initCalendar();
+    await loadBookings();
+
+    // Sync departure date min when arrival date changes (enables calendar jump + blocks past dates)
+    const addArrDate = document.getElementById('add-arrival-date');
+    const addDepDate = document.getElementById('add-departure-date');
+    addArrDate.addEventListener('change', () => syncDepartureDateMin(addArrDate, addDepDate));
+
+    const dfArrDate = document.getElementById('df-arrival-date');
+    const dfDepDate = document.getElementById('df-departure-date');
+    dfArrDate.addEventListener('change', () => syncDepartureDateMin(dfArrDate, dfDepDate));
+  });
 </script>
 </body>
 </html>
