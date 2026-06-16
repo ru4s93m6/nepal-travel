@@ -132,6 +132,11 @@ if (!sessionCookie || sessionCookie !== validToken) {
       font-size: 13px; color: #25D366; text-decoration: none; font-weight: 500;
     }
     .card-whatsapp:hover { text-decoration: underline; }
+    .card-hint {
+      margin-top: 10px; font-size: 11px; color: #94a3b8;
+      border-top: 1px solid #f1f5f9; padding-top: 8px;
+      text-align: center; letter-spacing: 0.02em;
+    }
     .no-bookings {
       background: white; border-radius: 10px;
       margin: 0; padding: 28px 16px; text-align: center; color: #94a3b8; font-size: 14px;
@@ -591,6 +596,7 @@ if (!sessionCookie || sessionCookie !== validToken) {
           <span class="status-badge status-${b.status}">${STATUS_LABEL[b.status]}</span>
         </div>
         <a class="card-whatsapp" href="${waLink(b.whatsapp_country_code, b.whatsapp_number)}" target="_blank" rel="noopener" onclick="event.stopPropagation()"> Open WhatsApp</a>
+        <div class="card-hint">Click card to view / edit / delete</div>
       </div>`).join('');
   }
 
