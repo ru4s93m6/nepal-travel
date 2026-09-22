@@ -29,7 +29,7 @@ export const ui = {
       intro: '我是 Raju，在尼泊爾旅遊業深耕超過 20 年。出於對這片土地與旅遊事業的深厚熱愛，我在近期創立了這間旅行社，希望將過去累積的豐富經驗，轉化為更貼近每位旅客需求的專屬在地服務。',
       experience: '對我們來說，每一趟旅程都不只是行程安排，而是一段值得細細體驗的故事。因此，我們特別重視旅途中的每一個細節，讓旅行不只是「看見」，而是真正「走進」尼泊爾。',
       rotaryMember: '扶輪社會員',
-      rotaryLink: 'https://rchimalayangurkhas.org.np/club-standing-committee/',
+      rotaryLink: 'https://rchimalayangurkhas.org.np/board-of-directors/',
       rotaryAriaLabel: '前往扶輪社官網',
       experience1: '憑藉著長年累積的從業經驗，我們曾服務來自世界各地的旅客，無論您來自哪裡，我們都能提供貼心而可靠的在地服務。此外，我也是扶輪社的活躍成員，長期致力於回饋尼泊爾在地社區。',
       feature1: {
@@ -267,7 +267,7 @@ export const ui = {
       intro: "I'm Raju, and I've been deeply involved in Nepal's tourism industry for over 20 years. Driven by my love for this land and a lifelong passion for travel, I recently founded this agency to turn those decades of experience into something more personal — tailored, authentic journeys crafted around each traveler's needs.",
       experience: 'To us, travel is more than just an itinerary. It is a personal journey shaped by thoughtful planning and attention to detail, allowing each traveler to truly experience Nepal rather than simply pass through it.',
       rotaryMember: 'Rotary Club Member',
-      rotaryLink: 'https://rchimalayangurkhas.org.np/club-standing-committee/',
+      rotaryLink: 'https://rchimalayangurkhas.org.np/board-of-directors/',
       rotaryAriaLabel: 'Verify on Rotary Club website',
       experience1: "Drawing on decades of experience, we've had the pleasure of welcoming travelers from all over the world. No matter where you come from, we're committed to providing reliable, personalized, and genuinely local service throughout your journey. I'm also an active Rotary Club member — something I take great pride in as a way of giving back to the community that shaped me.",
       feature1: {
