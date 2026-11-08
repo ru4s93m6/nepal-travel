@@ -72,6 +72,7 @@ const schemaData = {
   breadcrumbs={breadcrumbs}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(schemaData)} />
+  <Navigation lang={lang} />
   <TourDetail tour={tour} />
   <Contact lang={lang} />
 </BaseLayout>

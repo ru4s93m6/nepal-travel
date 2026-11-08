@@ -12,298 +12,441 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const content = tour.locales[lang];
 
-// UI Strings for Tour Detail Page
 const ui = {
   'zh-tw': {
-    overview: '行程總覽',
+    overview:  '行程總覽',
     itinerary: '每日行程',
-    includes: '費用包含與不含',
-    gear: '建議裝備',
-    duration: '行程天數',
-    difficulty: '難度',
-    maxAlt: '最高海拔',
-    day: 'Day',
+    includes:  '費用包含與不含',
+    gear:      '建議裝備',
+    duration:  '行程天數',
+    difficulty:'難度',
+    maxAlt:    '最高海拔',
+    day:       'Day',
     daySuffix: '',
-    faq: '常見問題 (FAQ)',
+    faq:       '常見問題 (FAQ)',
+    included:  '費用包含',
+    excluded:  '費用不含',
+    highlights:'行程亮點',
   },
   'en': {
-    overview: 'Overview',
+    overview:  'Overview',
     itinerary: 'Itinerary',
-    includes: 'Includes & Excludes',
-    gear: 'Equipment',
-    duration: 'Duration',
-    difficulty: 'Difficulty',
-    maxAlt: 'Max Altitude',
-    day: 'Day',
+    includes:  'Includes & Excludes',
+    gear:      'Equipment',
+    duration:  'Duration',
+    difficulty:'Difficulty',
+    maxAlt:    'Max Altitude',
+    day:       'Day',
     daySuffix: '',
-    faq: 'Frequently Asked Questions',
-  }
+    faq:       'Frequently Asked Questions',
+    included:  "What's Included",
+    excluded:  "What's Not Included",
+    highlights:'Trip Highlights',
+  },
 }[lang];
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
 const imagePath = tour.heroImage;
-if (!images[imagePath]) {
-  console.warn(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`);
-}
 ---
-<div class="tour-detail-page bg-brand-cream min-h-screen font-sans relative">
-  <!-- Back Button (Floating on Hero) -->
-  <div class="absolute top-6 left-6 md:top-8 md:left-8 z-50">
-    <a href={lang === 'zh-tw' ? '/zh-tw/' : '/en/'} class="flex items-center gap-2 px-4 py-2.5 bg-black/30 hover:bg-black/50 text-white rounded-full backdrop-blur-md transition-all border border-white/20 shadow-lg hover:shadow-xl hover:-translate-x-1">
-      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-      <span class="font-medium text-sm md:text-base">{lang === 'zh-tw' ? '回首頁' : 'Back to Home'}</span>
-    </a>
-  </div>
 
-  <!-- Hero Section -->
-  <!-- Mobile: image at natural 16:9 ratio (no side cropping) + content panel below -->
-  <!-- Desktop: full-bleed overlay hero as before -->
-  <section class="relative flex flex-col items-center md:min-h-[65vh] md:justify-center md:pt-24 md:pb-20">
-    <!-- Image wrapper: natural size on mobile, absolute fill on desktop -->
-    <div class="relative w-full shrink-0 md:absolute md:inset-0">
+<div class="tour-detail-page bg-brand-cream min-h-screen font-sans">
+
+  <!-- ── Hero ── -->
+  <section class="relative flex flex-col md:min-h-[70vh] md:justify-center">
+
+    <!-- Image (mobile: natural ratio, desktop: absolute fill) -->
+    <div class="relative w-full shrink-0 md:absolute md:inset-0 overflow-hidden">
       {images[imagePath] ? (
-        <Image src={images[imagePath]()} alt={content.title} class="w-full h-auto aspect-video md:h-full md:aspect-auto object-cover" loading="eager" fetchpriority="high" quality={80} widths={[400, 800, 1200, 1920]} sizes="100vw" decoding="sync" />
+        <Image
+          src={images[imagePath]()}
+          alt={content.title}
+          class="tour-hero-img w-full h-auto aspect-video md:h-full md:aspect-auto object-cover"
+          loading="eager"
+          fetchpriority="high"
+          quality={80}
+          widths={[400, 800, 1200, 1920]}
+          sizes="100vw"
+          decoding="sync"
+        />
       ) : (
-        <img src={tour.heroImage} alt={content.title} class="w-full h-auto aspect-video md:h-full md:aspect-auto object-cover" loading="eager" fetchpriority="high" decoding="sync" />
+        <img
+          src={tour.heroImage}
+          alt={content.title}
+          class="tour-hero-img w-full h-auto aspect-video md:h-full md:aspect-auto object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
+        />
       )}
-      <!-- Mobile gradient: darkens bottom of image so overlaid text stays legible -->
-      <div class="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/80 z-10 md:hidden"></div>
+
+      <!-- Mobile overlay -->
+      <div class="absolute inset-0 md:hidden pointer-events-none" style="background:linear-gradient(to bottom,rgba(0,0,0,0.42) 0%,transparent 35%,rgba(0,0,0,0.80) 100%)"></div>
     </div>
 
-    <!-- Desktop gradient (full-section overlay) -->
-    <div class="hidden md:block absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black/80 z-10"></div>
+    <!-- Desktop cinematic overlays (same 4-layer system as homepage) -->
+    <div class="hidden md:block absolute inset-0 pointer-events-none" style="background:rgba(0,0,0,0.22)"></div>
+    <div class="hidden md:block absolute inset-0 pointer-events-none" style="background:linear-gradient(to bottom,rgba(0,0,0,0.60) 0%,rgba(0,0,0,0.15) 40%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.80) 100%)"></div>
+    <div class="hidden md:block absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 55%,rgba(0,0,0,0.30) 0%,transparent 65%)"></div>
 
-    <!-- Content: overlaid on image bottom on mobile, centred overlay on desktop -->
-    <div class="relative z-20 text-center px-4 max-w-5xl w-full bg-brand-blue md:bg-transparent py-8 md:py-0 md:mt-12">
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-2xl leading-tight text-shadow-sm whitespace-pre-line">{content.title}</h1>
-      <p class="text-xl md:text-2xl text-white/90 drop-shadow-lg mb-10 max-w-3xl mx-auto">{content.subtitle}</p>
+    <!-- Content -->
+    <div class="relative z-20 text-center px-4 max-w-4xl w-full mx-auto bg-brand-blue md:bg-transparent py-10 md:py-24">
 
-      <!-- Quick Facts -->
-      <div class="flex flex-col md:flex-row justify-center items-center gap-x-8 gap-y-6 md:gap-y-4 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl py-8 px-6 md:p-6 mb-8 md:mb-0 text-white text-lg w-full max-w-3xl mx-auto shadow-2xl">
-        <div class="flex flex-col items-center flex-1 w-full">
-          <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.duration}</span>
-          <span class="font-bold text-xl">{tour.durationDays} Days</span>
+      <!-- Eyebrow -->
+      <div class="tour-hero-eyebrow flex items-center justify-center gap-4 mb-5" style="opacity:0; transform:translateY(20px)">
+        <div class="w-8 h-px bg-brand-gold hidden md:block"></div>
+        <span class="text-brand-gold text-xs tracking-[0.4em] uppercase font-sans font-medium">
+          Oriental Express Travel
+        </span>
+        <div class="w-8 h-px bg-brand-gold hidden md:block"></div>
+      </div>
+
+      <!-- Title -->
+      <h1
+        class="tour-hero-title text-4xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-tight mb-5 drop-shadow-2xl whitespace-pre-line"
+        style="opacity:0; transform:translateY(30px)"
+      >{content.title}</h1>
+
+      <!-- Subtitle -->
+      <p
+        class="tour-hero-subtitle text-base md:text-xl text-white/85 drop-shadow-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+        style="opacity:0; transform:translateY(20px)"
+      >{content.subtitle}</p>
+
+      <!-- Quick facts -->
+      <div
+        class="tour-hero-facts inline-flex flex-col md:flex-row justify-center items-stretch gap-0 bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden shadow-2xl w-full max-w-2xl mx-auto"
+        style="opacity:0; transform:translateY(20px)"
+      >
+        <div class="flex flex-col items-center justify-center flex-1 px-6 py-5 md:border-r border-white/15 border-b md:border-b-0">
+          <span class="text-white/55 text-[10px] font-sans font-semibold tracking-[0.3em] uppercase mb-1">{ui.duration}</span>
+          <span class="font-black text-2xl text-white">{tour.durationDays} <span class="font-normal text-lg">Days</span></span>
         </div>
-
-        <!-- Divider -->
-        <div class="w-px self-stretch bg-white/20 hidden md:block"></div>
-        <div class="h-px w-2/3 bg-white/10 md:hidden"></div>
-
-        <div class="flex flex-col items-center flex-1 w-full">
-          <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.maxAlt}</span>
-          <span class="font-bold text-xl">{tour.maxAltitude} m</span>
+        <div class="flex flex-col items-center justify-center flex-1 px-6 py-5 md:border-r border-white/15 border-b md:border-b-0">
+          <span class="text-white/55 text-[10px] font-sans font-semibold tracking-[0.3em] uppercase mb-1">{ui.maxAlt}</span>
+          <span class="font-black text-2xl text-white">{tour.maxAltitude.toLocaleString()} <span class="font-normal text-lg">m</span></span>
         </div>
-
-        <!-- Divider -->
-        <div class="w-px self-stretch bg-white/20 hidden md:block"></div>
-        <div class="h-px w-2/3 bg-white/10 md:hidden"></div>
-
-        <div class="flex flex-col items-center flex-1 w-full">
-          <span class="text-white/60 text-sm mb-1 uppercase tracking-wider font-semibold">{ui.difficulty}</span>
-          <span class="font-bold text-xl">{tour.difficulty}</span>
+        <div class="flex flex-col items-center justify-center flex-1 px-6 py-5">
+          <span class="text-white/55 text-[10px] font-sans font-semibold tracking-[0.3em] uppercase mb-1">{ui.difficulty}</span>
+          <span class="font-black text-2xl text-white">{tour.difficulty}</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sticky Tab Navigation -->
-  <div class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm" id="tour-tabs">
-    <div class="max-w-6xl mx-auto px-4 flex overflow-x-auto hide-scrollbar gap-8 text-brand-blue font-bold whitespace-nowrap">
-      <a href="#overview" class="tab-link active py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.overview}</a>
-      <a href="#itinerary" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.itinerary}</a>
-      <a href="#includes" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.includes}</a>
-      <a href="#gear" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.gear}</a>
+  <!-- ── Sticky tab nav ── -->
+  <div class="sticky top-[68px] z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm" id="tour-tabs">
+    <div class="max-w-4xl mx-auto px-4 flex overflow-x-auto hide-scrollbar gap-6 text-brand-blue font-semibold text-sm whitespace-nowrap">
+      <a href="#overview"  class="tab-link py-4 border-b-2 border-transparent hover:border-brand-gold hover:text-brand-gold transition-all duration-200">{ui.overview}</a>
+      <a href="#itinerary" class="tab-link py-4 border-b-2 border-transparent hover:border-brand-gold hover:text-brand-gold transition-all duration-200">{ui.itinerary}</a>
+      <a href="#includes"  class="tab-link py-4 border-b-2 border-transparent hover:border-brand-gold hover:text-brand-gold transition-all duration-200">{ui.includes}</a>
+      <a href="#gear"      class="tab-link py-4 border-b-2 border-transparent hover:border-brand-gold hover:text-brand-gold transition-all duration-200">{ui.gear}</a>
       {content.faq && content.faq.length > 0 && (
-        <a href="#faq" class="tab-link py-4 border-b-[3px] border-transparent hover:border-brand-gold transition-colors">{ui.faq}</a>
+        <a href="#faq" class="tab-link py-4 border-b-2 border-transparent hover:border-brand-gold hover:text-brand-gold transition-all duration-200">{ui.faq}</a>
       )}
     </div>
   </div>
 
-  <!-- Content Sections -->
-  <main class="max-w-4xl mx-auto px-4 flex flex-col gap-12 py-12 pb-32">
-    
-    <div class="flex flex-col gap-16">
-        <!-- Overview Section -->
-        <section id="overview" class="scroll-mt-20">
-          <h2 class="text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
-             <span class="w-8 h-1 bg-brand-gold inline-block rounded-full"></span> 
-             {ui.overview}
-          </h2>
-          <p class="text-lg text-stone-700 leading-relax mb-8 whitespace-pre-line">{content.overview}</p>
-          
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
-            <h3 class="text-xl font-bold text-brand-blue mb-5">⭐ Trip Highlights</h3>
-            <ul class="space-y-4">
-              {content.highlights.map(h => (
-                <li class="flex items-start gap-4 text-stone-700 text-lg">
-                   <svg class="w-6 h-6 text-brand-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                   <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-    
-        <!-- Itinerary Section (Accordion) -->
-        <section id="itinerary" class="scroll-mt-20">
-          <h2 class="text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
-             <span class="w-8 h-1 bg-brand-gold inline-block rounded-full"></span> 
-             {ui.itinerary}
-          </h2>
-          <div class="space-y-4">
-            {content.itinerary.map((day, index) => (
-              <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden" open={index === 0}>
-                <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-xl text-brand-blue hover:bg-stone-50 transition-colors">
-                  <span class="font-bold flex items-center gap-4">
-                     <span class="bg-brand-blue text-white text-sm px-4 py-1.5 rounded-full shadow-sm whitespace-nowrap">{ui.day} {day.day} {ui.daySuffix}</span>
-                     {day.title}
-                  </span>
-                  <span class="transition group-open:rotate-180 text-brand-gold ml-4">
-                    <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                  </span>
-                </summary>
-                <div class="text-stone-600 p-6 pt-0 text-lg leading-relaxed border-t border-stone-100 bg-stone-50/50">
-                  <p class="mt-4">{day.description}</p>
-                </div>
-              </details>
-            ))}
-          </div>
-        </section>
-    
-        <!-- Includes/Excludes Section -->
-        <section id="includes" class="scroll-mt-20">
-          <h2 class="text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
-             <span class="w-8 h-1 bg-brand-gold inline-block rounded-full"></span> 
-             {ui.includes}
-          </h2>
-          <div class="flex flex-col md:flex-row gap-6">
-            <!-- Includes -->
-            <div class="flex-1 bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
-              <h3 class="text-2xl font-bold text-emerald-700 mb-6 flex items-center gap-2">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                {lang === 'zh-tw' ? '費用包含' : "What's Included"}
-              </h3>
-              <ul class="space-y-4">
-                {content.includes.map(item => (
-                  <li class="flex items-start gap-3 text-stone-700 text-lg">
-                     <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                     <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <!-- Excludes -->
-            <div class="flex-1 bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
-              <h3 class="text-2xl font-bold text-stone-600 mb-6 flex items-center gap-2">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                {lang === 'zh-tw' ? '費用不含' : "What's Not Included"}
-              </h3>
-              <ul class="space-y-4">
-                {content.excludes.map(item => (
-                  <li class="flex items-start gap-3 text-stone-500 text-lg">
-                     <svg class="w-6 h-6 text-stone-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                     <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-    
-        <!-- Equipment List -->
-        <section id="gear" class="scroll-mt-20">
-          <h2 class="text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
-             <span class="w-8 h-1 bg-brand-gold inline-block rounded-full"></span> 
-             {ui.gear}
-          </h2>
-          <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
-            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {content.notes.map(item => (
-                <li class="flex items-start gap-3 text-stone-700 bg-stone-50 px-5 py-4 rounded-xl border border-stone-200 shadow-sm text-lg">
-                   <span class="text-brand-gold font-bold text-2xl leading-none mt-[-2px]">•</span>
-                   <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+  <!-- ── Content ── -->
+  <main class="max-w-4xl mx-auto px-4 flex flex-col gap-16 py-14 pb-32">
 
-        <!-- FAQ Section -->
-        {content.faq && content.faq.length > 0 && (
-          <section id="faq" class="scroll-mt-20">
-            <h2 class="text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
-               <span class="w-8 h-1 bg-brand-gold inline-block rounded-full"></span> 
-               {ui.faq}
-            </h2>
-            <div class="space-y-4">
-              {content.faq.map((item) => (
-                <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
-                  <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-xl text-brand-blue hover:bg-stone-50 transition-colors">
-                    <span class="font-bold flex items-center gap-4">
-                       <span class="text-brand-gold font-bold text-2xl leading-none mt-[-2px]">Q.</span>
-                       {item.question}
-                    </span>
-                    <span class="transition group-open:rotate-180 text-brand-gold ml-4">
-                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                  </summary>
-                  <div class="text-stone-600 p-6 pt-0 text-lg leading-relaxed border-t border-stone-100 bg-stone-50/50">
-                    <p class="mt-4"><span class="font-bold text-emerald-600 mr-2">A.</span>{item.answer}</p>
-                  </div>
-                </details>
-              ))}
+    <!-- Overview -->
+    <section id="overview" class="scroll-mt-32">
+      <h2 class="section-h2 text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
+        <span class="w-8 h-1 bg-brand-gold inline-block rounded-full flex-shrink-0"></span>
+        {ui.overview}
+      </h2>
+      <p class="overview-body text-lg text-stone-700 leading-relaxed mb-8 whitespace-pre-line">{content.overview}</p>
+
+      <div class="highlights-box bg-white p-8 rounded-2xl shadow-sm border border-stone-200">
+        <h3 class="text-xl font-bold text-brand-blue mb-5 flex items-center gap-2">
+          <svg class="w-5 h-5 text-brand-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          {ui.highlights}
+        </h3>
+        <ul class="space-y-4">
+          {content.highlights.map(h => (
+            <li class="highlight-item flex items-start gap-4 text-stone-700 text-base">
+              <svg class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Itinerary -->
+    <section id="itinerary" class="scroll-mt-32">
+      <h2 class="section-h2 text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
+        <span class="w-8 h-1 bg-brand-gold inline-block rounded-full flex-shrink-0"></span>
+        {ui.itinerary}
+      </h2>
+      <div class="space-y-3" id="itin-list">
+        {content.itinerary.map((day, index) => (
+          <div class="itin-item bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+            <button
+              type="button"
+              class="itin-trigger w-full text-left flex justify-between items-center p-5 md:p-6 text-brand-blue hover:bg-stone-50 transition-colors duration-150"
+              aria-expanded={index === 0 ? 'true' : 'false'}
+            >
+              <span class="font-bold flex items-center gap-3 text-base md:text-lg flex-1 min-w-0">
+                <span class="bg-brand-blue text-white text-xs px-3 py-1.5 rounded-full shadow-sm whitespace-nowrap flex-shrink-0">
+                  {ui.day} {day.day}
+                </span>
+                <span class="truncate">{day.title}</span>
+              </span>
+              <svg
+                class="itin-chevron w-5 h-5 text-brand-gold flex-shrink-0 ml-3 transition-transform duration-300"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="itin-panel" style={`overflow:hidden; height:${index === 0 ? 'auto' : '0'}`}>
+              <div class="itin-panel-inner px-5 md:px-6 pb-5 md:pb-6 pt-0 text-stone-600 text-base leading-relaxed border-t border-stone-100 bg-stone-50/50">
+                <p class="mt-4">{day.description}</p>
+              </div>
             </div>
-          </section>
-        )}
-    </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Includes / Excludes -->
+    <section id="includes" class="scroll-mt-32">
+      <h2 class="section-h2 text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
+        <span class="w-8 h-1 bg-brand-gold inline-block rounded-full flex-shrink-0"></span>
+        {ui.includes}
+      </h2>
+      <div class="flex flex-col md:flex-row gap-5">
+        <!-- Included -->
+        <div class="includes-col flex-1 bg-white p-7 rounded-2xl shadow-sm border border-stone-200">
+          <h3 class="text-xl font-bold text-emerald-700 mb-5 flex items-center gap-2">
+            <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            {ui.included}
+          </h3>
+          <ul class="space-y-3">
+            {content.includes.map(item => (
+              <li class="flex items-start gap-3 text-stone-700 text-sm leading-relaxed">
+                <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Excluded -->
+        <div class="includes-col flex-1 bg-white p-7 rounded-2xl shadow-sm border border-stone-200">
+          <h3 class="text-xl font-bold text-stone-500 mb-5 flex items-center gap-2">
+            <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            {ui.excluded}
+          </h3>
+          <ul class="space-y-3">
+            {content.excludes.map(item => (
+              <li class="flex items-start gap-3 text-stone-500 text-sm leading-relaxed">
+                <svg class="w-4 h-4 text-stone-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gear / Notes -->
+    <section id="gear" class="scroll-mt-32">
+      <h2 class="section-h2 text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
+        <span class="w-8 h-1 bg-brand-gold inline-block rounded-full flex-shrink-0"></span>
+        {ui.gear}
+      </h2>
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-stone-200">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {content.notes.map(item => (
+            <li class="gear-item flex items-start gap-3 text-stone-700 bg-stone-50 px-4 py-3 rounded-xl border border-stone-200 text-sm leading-relaxed">
+              <span class="text-brand-gold font-black text-xl leading-none mt-[-1px] flex-shrink-0">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tour FAQ -->
+    {content.faq && content.faq.length > 0 && (
+      <section id="faq" class="scroll-mt-32">
+        <h2 class="section-h2 text-3xl font-serif font-bold text-brand-blue mb-6 flex items-center gap-3">
+          <span class="w-8 h-1 bg-brand-gold inline-block rounded-full flex-shrink-0"></span>
+          {ui.faq}
+        </h2>
+        <div class="space-y-3" id="faq-list">
+          {content.faq.map((item) => (
+            <div class="tour-faq-item bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+              <button
+                type="button"
+                class="tour-faq-trigger w-full text-left flex justify-between items-center p-5 md:p-6 text-brand-blue hover:bg-stone-50 transition-colors duration-150"
+                aria-expanded="false"
+              >
+                <span class="font-bold flex items-center gap-3 text-base flex-1 min-w-0">
+                  <span class="text-brand-gold font-black text-xl leading-none flex-shrink-0">Q.</span>
+                  <span>{item.question}</span>
+                </span>
+                <svg
+                  class="tour-faq-chevron w-5 h-5 text-brand-gold flex-shrink-0 ml-3 transition-transform duration-300"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"></path>
+                </svg>
+              </button>
+              <div class="tour-faq-panel" style="overflow:hidden; height:0">
+                <div class="tour-faq-inner px-5 md:px-6 pb-5 md:pb-6 pt-0 text-stone-600 text-base leading-relaxed border-t border-stone-100 bg-stone-50/50">
+                  <p class="mt-4"><span class="font-bold text-emerald-600 mr-2">A.</span>{item.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
   </main>
 </div>
 
 <script>
-  // Simple active tab highlight on scroll
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.tab-link');
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
 
-  let isTicking = false;
+  // ── Hero entrance ──
+  gsap.to('.tour-hero-eyebrow', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.25 });
+  gsap.to('.tour-hero-title',   { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.45 });
+  gsap.to('.tour-hero-subtitle',{ opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.65 });
+  gsap.to('.tour-hero-facts',   { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.85 });
+
+  // ── Hero image — slow Ken Burns zoom ──
+  gsap.fromTo('.tour-hero-img',
+    { scale: 1 },
+    { scale: 1.07, duration: 14, ease: 'none' }
+  );
+
+  // ── Sticky tab active state on scroll ──
+  const sections  = Array.from(document.querySelectorAll('main section[id]')) as HTMLElement[];
+  const tabLinks  = document.querySelectorAll('.tab-link');
+  let isTicking   = false;
 
   window.addEventListener('scroll', () => {
-    if (!isTicking) {
-      window.requestAnimationFrame(() => {
-        let current = '';
-        
-        sections.forEach(section => {
-          const sectionTop = (section as HTMLElement).offsetTop;
-          if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id') || '';
-          }
-        });
-
-        navLinks.forEach(link => {
-          link.classList.remove('border-brand-gold', 'text-brand-gold');
-          link.classList.add('border-transparent');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.remove('border-transparent');
-            link.classList.add('border-brand-gold', 'text-brand-gold');
-          }
-        });
-        isTicking = false;
+    if (isTicking) return;
+    isTicking = true;
+    requestAnimationFrame(() => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 160) current = s.id;
       });
-      isTicking = true;
-    }
+      tabLinks.forEach(link => {
+        const active = link.getAttribute('href') === `#${current}`;
+        link.classList.toggle('border-brand-gold', active);
+        link.classList.toggle('text-brand-gold', active);
+        link.classList.toggle('border-transparent', !active);
+      });
+      isTicking = false;
+    });
   }, { passive: true });
+
+  // ── Itinerary accordion (GSAP) ──
+  // Measure and set height for initially open first item
+  const firstItinPanel = document.querySelector('#itin-list .itin-item:first-child .itin-panel') as HTMLElement;
+  const firstItinInner = document.querySelector('#itin-list .itin-item:first-child .itin-panel-inner') as HTMLElement;
+  if (firstItinPanel && firstItinInner) {
+    firstItinPanel.style.height = firstItinInner.scrollHeight + 'px';
+    firstItinPanel.closest('.itin-item')?.querySelector('.itin-chevron')?.classList.add('rotate-180');
+  }
+
+  function makeAccordion(triggerSel: string, panelSel: string, innerSel: string, chevronSel: string) {
+    document.querySelectorAll(triggerSel).forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item    = trigger.closest('[class*="-item"]')!;
+        const panel   = item.querySelector(panelSel)   as HTMLElement;
+        const inner   = item.querySelector(innerSel)   as HTMLElement;
+        const chevron = trigger.querySelector(chevronSel) as HTMLElement;
+        const isOpen  = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all siblings
+        trigger.closest('div[id$="-list"], div.space-y-3')
+          ?.querySelectorAll(`${triggerSel}[aria-expanded="true"]`)
+          .forEach(other => {
+            if (other === trigger) return;
+            const op = other.closest('[class*="-item"]')!.querySelector(panelSel) as HTMLElement;
+            const oc = other.querySelector(chevronSel) as HTMLElement;
+            gsap.to(op, { height: 0, duration: 0.35, ease: 'power2.inOut' });
+            oc?.classList.remove('rotate-180');
+            other.setAttribute('aria-expanded', 'false');
+          });
+
+        if (isOpen) {
+          gsap.to(panel, { height: 0, duration: 0.35, ease: 'power2.inOut' });
+          chevron?.classList.remove('rotate-180');
+          trigger.setAttribute('aria-expanded', 'false');
+        } else {
+          gsap.to(panel, { height: inner.scrollHeight, duration: 0.4, ease: 'power2.out' });
+          chevron?.classList.add('rotate-180');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  makeAccordion('.itin-trigger',     '.itin-panel',     '.itin-panel-inner',  '.itin-chevron');
+  makeAccordion('.tour-faq-trigger', '.tour-faq-panel', '.tour-faq-inner',    '.tour-faq-chevron');
+
+  // ── Scroll-triggered section animations ──
+  const st = (trigger: string) => ({ trigger, start: 'top 82%', once: true });
+
+  // Section headings
+  gsap.from('.section-h2', {
+    opacity: 0, x: -28, duration: 0.7, ease: 'power3.out',
+    stagger: 0.1,
+    scrollTrigger: { trigger: 'main', start: 'top 90%', once: true },
+  });
+
+  // Overview body + highlights
+  gsap.from('.overview-body', { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', scrollTrigger: st('#overview') });
+  gsap.from('.highlights-box', { opacity: 0, y: 28, duration: 0.7, ease: 'power3.out', scrollTrigger: st('.highlights-box') });
+  gsap.from('.highlight-item', { opacity: 0, x: -18, duration: 0.45, stagger: 0.06, ease: 'power3.out', scrollTrigger: st('.highlights-box') });
+
+  // Itinerary items
+  gsap.from('.itin-item', { opacity: 0, y: 22, duration: 0.45, stagger: 0.05, ease: 'power3.out', scrollTrigger: st('#itinerary') });
+
+  // Includes/Excludes columns
+  gsap.from('.includes-col', { opacity: 0, y: 32, duration: 0.6, stagger: 0.12, ease: 'power3.out', scrollTrigger: st('#includes') });
+
+  // Gear items
+  gsap.from('.gear-item', { opacity: 0, scale: 0.96, duration: 0.4, stagger: 0.04, ease: 'power3.out', scrollTrigger: st('#gear') });
+
+  // Tour FAQ items
+  gsap.from('.tour-faq-item', { opacity: 0, y: 22, duration: 0.45, stagger: 0.06, ease: 'power3.out', scrollTrigger: st('#faq') });
 </script>
 
 <style>
-  html {
-    scroll-behavior: smooth;
+  .tour-hero-img {
+    will-change: transform;
+    transform-origin: center center;
   }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .itin-panel, .tour-faq-panel { will-change: height; }
+
+  /* Smooth tab underline */
+  .tab-link { transition: color 0.2s, border-color 0.2s; }
 </style>
 
 <!-- Semantic JSON-LD -->
@@ -312,21 +455,13 @@ if (!images[imagePath]) {
   "@type": "TouristTrip",
   "name": content.title,
   "description": content.subtitle,
-  "touristType": [
-    "Sightseeing",
-    "Mountain Trekking",
-    "Culture"
-  ],
+  "touristType": ["Mountain Trekking", "Sightseeing", "Culture"],
   "itinerary": {
     "@type": "ItemList",
     "itemListElement": content.itinerary.map((day, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "item": {
-        "@type": "TouristAttraction",
-        "name": day.title,
-        "description": day.description
-      }
+      "item": { "@type": "TouristAttraction", "name": day.title, "description": day.description }
     }))
   }
 })} />
@@ -338,10 +473,7 @@ if (!images[imagePath]) {
   "mainEntity": content.faq.map(item => ({
     "@type": "Question",
     "name": item.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.answer
-    }
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
   }))
 })} />
 )}
