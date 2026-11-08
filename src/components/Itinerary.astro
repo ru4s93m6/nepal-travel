@@ -276,7 +276,7 @@ const categories = [
             <p id="detail-description" class="text-stone-700 leading-relaxed text-lg mb-12"></p>
             
             <div class="mt-auto flex flex-wrap gap-4 justify-end" id="detail-tour-links-container">
-              <a id="detail-tour-link" href="#" target="_blank" style="display: none;" class="items-center gap-2 text-white font-medium transition-all bg-brand-blue hover:bg-brand-gold shadow-md hover:shadow-lg hover:-translate-y-0.5 px-6 py-3 rounded-full tracking-wide">
+              <a id="detail-tour-link" href="#" target="_blank" rel="noopener noreferrer" style="display: none;" class="items-center gap-2 text-white font-medium transition-all bg-brand-blue hover:bg-brand-gold shadow-md hover:shadow-lg hover:-translate-y-0.5 px-6 py-3 rounded-full tracking-wide">
                 {t('itinerary.button.checkTour')}
               </a>
             </div>
@@ -443,6 +443,7 @@ const categories = [
               const btn = document.createElement('a');
               btn.href = `${baseUrl}/tours/${tourId}`;
               btn.target = '_blank';
+              btn.rel = 'noopener noreferrer';
               btn.className = 'flex items-center gap-2 text-white font-medium transition-all bg-brand-blue hover:bg-brand-gold shadow-md hover:shadow-lg hover:-translate-y-0.5 px-6 py-3 rounded-full tracking-wide';
               
               // Custom label logic

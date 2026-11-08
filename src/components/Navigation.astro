@@ -280,6 +280,16 @@ const otherLangs  = languages.filter(l => l.code !== lang);
 
   hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
 
+  // Save language preference cookie when user explicitly switches language
+  document.querySelectorAll('a[href*="/zh-tw/"], a[href*="/en/"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const href = (link as HTMLAnchorElement).href;
+      const lang = href.includes('/zh-tw/') ? 'zh-tw' : 'en';
+      document.cookie = `preferredLanguage=${lang}; path=/; max-age=31536000; samesite=lax`;
+      localStorage.setItem('preferredLanguage', lang);
+    });
+  });
+
   // Close on nav link click
   mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 

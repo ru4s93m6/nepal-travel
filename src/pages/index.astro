@@ -190,12 +190,11 @@
           targetLang = 'en';
         }
         
-        // Save preference
+        // Save preference in both localStorage and cookie so middleware can read it next time
         localStorage.setItem('preferredLanguage', targetLang);
-        
-        setTimeout(function() {
-          window.location.replace('/' + targetLang + '/');
-        }, 1000);
+        document.cookie = 'preferredLanguage=' + targetLang + '; path=/; max-age=31536000; samesite=lax';
+
+        window.location.replace('/' + targetLang + '/');
       })();
     </script>
   </body>

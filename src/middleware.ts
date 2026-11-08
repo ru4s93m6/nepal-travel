@@ -11,6 +11,38 @@ async function computeToken(username: string, password: string, secret: string):
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname } = context.url;
 
+  // ── Language detection: redirect root "/" to the appropriate locale ──
+  if (pathname === '/' || pathname === '') {
+    // 1. Returning visitor — read saved cookie preference
+    const savedLang = context.cookies.get('preferredLanguage')?.value;
+    if (savedLang === 'zh-tw' || savedLang === 'en') {
+      return context.redirect(`/${savedLang}/`, 302);
+    }
+
+    // 2. First visit — detect from Accept-Language header
+    const acceptLang = context.request.headers.get('Accept-Language') ?? '';
+    // Primary tag only (before the first comma / quality value)
+    const primary = acceptLang.split(',')[0].trim().toLowerCase();
+    // Traditional Chinese: zh, zh-tw, zh-hk, zh-mo, zh-hant — but NOT zh-cn, zh-hans, zh-sg
+    const isZhTw =
+      primary.startsWith('zh') &&
+      !primary.startsWith('zh-cn') &&
+      !primary.startsWith('zh-hans') &&
+      !primary.startsWith('zh-sg');
+    const targetLang: 'zh-tw' | 'en' = isZhTw ? 'zh-tw' : 'en';
+
+    // Save preference in a cookie so the next visit is instant
+    context.cookies.set('preferredLanguage', targetLang, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      sameSite: 'lax',
+      httpOnly: false, // readable by client JS as well
+      secure: import.meta.env.PROD,
+    });
+
+    return context.redirect(`/${targetLang}/`, 302);
+  }
+
   // Handle login POST directly — i18n routing would block the API endpoint entirely
   if (
     (pathname === '/api/auth/login' || pathname === '/api/auth/login/') &&
