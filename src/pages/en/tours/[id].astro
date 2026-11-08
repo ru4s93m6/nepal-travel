@@ -29,9 +29,25 @@ const { tour } = Astro.props;
 const lang = 'en';
 const content = tour.locales[lang as 'zh-tw' | 'en'];
 
-const seoTitle = `${content.title} | Oriental Express Travel`;
-const seoDescription = content.overview.substring(0, 150) + '...';
-const seoKeywords = `${content.title}, Nepal Trekking, Nepal local travel agency, ${id.toUpperCase()}`;
+const isNepalTour = tour.id !== 'bhutan';
+const cleanTitle = content.title.replace(/\n/g, ' ');
+
+const seoTitle = isNepalTour
+  ? `Nepal ${cleanTitle} ${tour.durationDays} Days | Oriental Express Travel`
+  : `${cleanTitle} ${tour.durationDays} Days | Oriental Express Travel`;
+
+const shortSubtitle = content.subtitle.length > 95
+  ? content.subtitle.substring(0, 93) + '…'
+  : content.subtitle;
+const descSuffix = isNepalTour
+  ? ' Private guided tour by local Nepal agency, 20+ yrs expertise.'
+  : ' Visa, accommodation & tours arranged by Oriental Express Travel.';
+const descRaw = shortSubtitle + descSuffix;
+const seoDescription = descRaw.length > 160 ? descRaw.substring(0, 158) + '…' : descRaw;
+
+const seoKeywords = isNepalTour
+  ? `Nepal ${cleanTitle}, Nepal trekking, Nepal travel agency, Nepal tours, Nepal local guide, ${id.toUpperCase()}`
+  : `${cleanTitle}, Bhutan tour, Bhutan travel, Oriental Express Travel`;
 
 const breadcrumbs = [
   { name: 'Home', item: 'https://oriental-express-travel.com/en/' },

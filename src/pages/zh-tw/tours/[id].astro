@@ -29,9 +29,23 @@ const { tour } = Astro.props;
 const lang = 'zh-tw';
 const content = tour.locales[lang as 'zh-tw' | 'en'];
 
-const seoTitle = `${content.title} | Oriental Express Travel`;
-const seoDescription = content.overview.substring(0, 150) + '...';
-const seoKeywords = `${content.title}, 尼泊爾旅遊, Nepal Trekking, 尼泊爾當地旅行社, ${id.toUpperCase()}`;
+const isNepalTour = tour.id !== 'bhutan';
+const cleanTitle = content.title.replace(/\n/g, ' ');
+
+const seoTitle = isNepalTour
+  ? `尼泊爾${cleanTitle} ${tour.durationDays}天行程 | Oriental Express Travel`
+  : `${cleanTitle} | Oriental Express Travel`;
+
+const descSuffix = isNepalTour
+  ? '，尼泊爾在地旅行社帶隊，彈性客製包團，含嚮導住宿交通。'
+  : '，含簽證、機票、住宿全包，彈性規劃。';
+const cleanSubtitle = content.subtitle.replace(/[。！？，、\.!\?]$/, '');
+const descRaw = cleanSubtitle + descSuffix;
+const seoDescription = descRaw.length > 160 ? descRaw.substring(0, 158) + '…' : descRaw;
+
+const seoKeywords = isNepalTour
+  ? `尼泊爾${cleanTitle}, ${content.title.split('\n')[0]}, 尼泊爾旅遊, 尼泊爾健行, 尼泊爾旅行社, 尼泊爾當地旅行社, ${id.toUpperCase()}`
+  : `${cleanTitle}, 不丹旅遊, 不丹行程, 不丹旅行社, Oriental Express Travel`;
 
 const breadcrumbs = [
   { name: '首頁', item: 'https://oriental-express-travel.com/zh-tw/' },
