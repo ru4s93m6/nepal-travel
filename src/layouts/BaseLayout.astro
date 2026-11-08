@@ -37,7 +37,7 @@ const {
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
 
     <!--SEO components - includes all meta tags -->
     <SEO
@@ -53,8 +53,59 @@ const {
 
     <!-- Ahrefs Analytics -->
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="TQaiGzLleP/fWkZUF4BWlw" async></script>
+
+    <!-- Global: scroll progress + custom cursor -->
+    <script>
+      import { gsap } from 'gsap';
+
+      // ---- Scroll progress bar ----
+      const progressBar = document.getElementById('scroll-progress');
+      function updateProgress() {
+        if (!progressBar) return;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.transform = max > 0 ? `scaleX(${window.scrollY / max})` : 'scaleX(0)';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      // ---- Custom cursor (hover-capable devices only) ----
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const dot  = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        if (dot && ring) {
+          document.documentElement.classList.add('has-custom-cursor');
+          gsap.set([dot, ring], { xPercent: -50, yPercent: -50 });
+
+          let mx = -100, my = -100;
+
+          document.addEventListener('mousemove', (e) => {
+            mx = e.clientX; my = e.clientY;
+            gsap.set(dot, { x: mx, y: my });
+            gsap.to(ring, { x: mx, y: my, duration: 0.42, ease: 'power2.out' });
+          });
+
+          // Scale ring on interactive elements
+          document.addEventListener('mouseover', (e) => {
+            const target = e.target as HTMLElement;
+            const isInteractive = target.closest('a, button, [role="button"], label, input, textarea, select') !== null;
+            if (isInteractive) {
+              gsap.to(ring, { width: 50, height: 50, borderColor: 'rgba(212,175,55,0.45)', duration: 0.25 });
+            } else {
+              gsap.to(ring, { width: 32, height: 32, borderColor: 'rgba(212,175,55,0.75)', duration: 0.25 });
+            }
+          });
+        }
+      }
+    </script>
   </head>
   <body>
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Custom cursor (desktop only — hidden on touch) -->
+    <div id="cursor-dot"  aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
     <slot />
 
     <!-- Global Floating WhatsApp Action Button -->

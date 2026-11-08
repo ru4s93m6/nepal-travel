@@ -92,6 +92,56 @@ h6 {
   }
 }
 
+/* ── Scroll progress bar ── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #D4AF37, #f0d060);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 9997;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ── Custom cursor ── */
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  background: #D4AF37;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  border: 1.5px solid rgba(212,175,55,0.75);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+}
+
+/* Hide default cursor only when custom cursor is active */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* ── Section entrance utilities ── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
 /* Hide details marker of default style of safari */
 summary::-webkit-details-marker {
   display: none;

@@ -93,7 +93,7 @@ const categories = [
 <section id="tours" class="py-20 bg-brand-cream overflow-hidden">
   <div class="container mx-auto px-6">
     <!-- Title Section -->
-    <div class="text-center mb-12">
+    <div class="tours-title-block text-center mb-12">
       <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-blue mb-4">
         {t('itinerary.title')}
       </h2>
@@ -339,6 +339,15 @@ const categories = [
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
+
+  // Tours section title entrance
+  gsap.from('.tours-title-block', {
+    opacity: 0,
+    y: 36,
+    duration: 0.9,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '#tours', start: 'top 78%', once: true },
+  });
 
   const cardsGrid = document.getElementById('cards-grid');
   const detailView = document.getElementById('detail-view');

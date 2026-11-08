@@ -12,40 +12,51 @@ const faqs = t('faq');
 
 <section id="faq" class="py-20 px-6 bg-brand-cream">
   <div class="max-w-4xl mx-auto">
-    <!-- Title Section -->
-    <div class="text-center mb-16">
+
+    <!-- Title -->
+    <div class="faq-title text-center mb-16">
       <div class="inline-block mb-6">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-gold to-yellow-600 mx-auto"></div>
+        <div class="h-1 w-20 bg-gradient-to-r from-brand-gold to-yellow-500 mx-auto rounded-full"></div>
       </div>
       <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-blue mb-4">
         {lang === 'zh-tw' ? '常見問題' : 'Frequently Asked Questions'}
       </h2>
     </div>
 
-    <!-- FAQ Accordion -->
-    <div class="space-y-4">
+    <!-- Accordion -->
+    <div class="faq-list space-y-4">
       {faqs.map((faq, index) => (
-        <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-lg transition-all duration-300">
-          <summary class="cursor-pointer p-6 flex items-center justify-between font-semibold text-lg text-brand-blue hover:text-brand-gold transition-colors list-none">
+        <div class="faq-item bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+
+          <!-- Trigger -->
+          <button
+            type="button"
+            class="faq-trigger w-full text-left p-6 flex items-center justify-between gap-4 font-semibold text-lg text-brand-blue hover:text-brand-gold transition-colors duration-200"
+            aria-expanded="false"
+          >
             <span class="flex items-start gap-4 flex-1">
               <span class="w-8 h-8 bg-brand-gold rounded-lg flex items-center justify-center flex-shrink-0 text-white text-sm font-bold">
                 {(index + 1).toString().padStart(2, '0')}
               </span>
               <span class="pt-0.5">{faq.question}</span>
             </span>
-            <svg 
-              class="w-6 h-6 text-brand-gold flex-shrink-0 ml-4 transition-transform duration-300 group-open:rotate-180" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+            <svg
+              class="faq-chevron w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
-          </summary>
-          <div class="px-6 pb-6 pt-2">
-            <div class="pl-12 text-brand-blue/80 leading-relaxed border-l-4 border-brand-gold/30 pl-6 ml-8" set:html={faq.answer} />
+          </button>
+
+          <!-- Answer panel -->
+          <div class="faq-panel" style="height:0; overflow:hidden;">
+            <div class="faq-panel-inner px-6 pb-6 pt-1">
+              <div class="pl-12 text-brand-blue/75 leading-relaxed border-l-4 border-brand-gold/30 pl-6 ml-8 text-base"
+                   set:html={faq.answer} />
+            </div>
           </div>
-        </details>
+        </div>
       ))}
     </div>
   </div>
@@ -55,24 +66,63 @@ const faqs = t('faq');
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map((faq) => ({
+  "mainEntity": faqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
+      "text": faq.answer,
+    },
+  })),
 })} />
 
-<style>
-  /* Smooth animation for accordion */
-  details[open] summary {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Hide default marker */
-  summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Smooth accordion ──
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item    = trigger.closest('.faq-item')!;
+      const panel   = item.querySelector('.faq-panel')   as HTMLElement;
+      const inner   = item.querySelector('.faq-panel-inner') as HTMLElement;
+      const chevron = trigger.querySelector('.faq-chevron') as HTMLElement;
+      const isOpen  = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all other open panels
+      document.querySelectorAll('.faq-trigger[aria-expanded="true"]').forEach(other => {
+        if (other === trigger) return;
+        const otherPanel   = other.closest('.faq-item')!.querySelector('.faq-panel')   as HTMLElement;
+        const otherChevron = other.querySelector('.faq-chevron') as HTMLElement;
+        gsap.to(otherPanel, { height: 0, duration: 0.35, ease: 'power2.inOut' });
+        otherChevron?.classList.remove('rotate-180');
+        other.setAttribute('aria-expanded', 'false');
+      });
+
+      if (isOpen) {
+        gsap.to(panel, { height: 0, duration: 0.35, ease: 'power2.inOut' });
+        chevron?.classList.remove('rotate-180');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        const targetH = inner.scrollHeight;
+        gsap.to(panel, { height: targetH, duration: 0.4, ease: 'power2.out' });
+        chevron?.classList.add('rotate-180');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ── Scroll-triggered entrance ──
+  gsap.from('.faq-title', {
+    opacity: 0, y: 28, duration: 0.8,
+    scrollTrigger: { trigger: '#faq', start: 'top 78%', once: true },
+  });
+
+  gsap.from('.faq-item', {
+    opacity: 0, y: 32, duration: 0.5,
+    stagger: 0.07,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.faq-list', start: 'top 80%', once: true },
+  });
+</script>

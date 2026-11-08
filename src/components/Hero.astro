@@ -14,185 +14,300 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// Hero carousel images
 const heroImages = [
-  { src: heroImg, alt: 'Boudhanath Stupa' },
-  { src: sadhuImg, alt: 'Nepal Sadhu' },
-  { src: flagImg, alt: 'Nepal Flag and mountain' },
-  { src: annapurnaImg, alt: 'Annapurna Range' },
-  { src: titasImg, alt: 'Kathmandu Valley' },
+  { src: heroImg, alt: 'Boudhanath Stupa, Kathmandu' },
+  { src: sadhuImg, alt: 'Sacred Sadhu in Nepal' },
+  { src: flagImg, alt: 'Prayer flags over Himalayan peaks' },
+  { src: annapurnaImg, alt: 'Annapurna Range at sunrise' },
+  { src: titasImg, alt: 'Kathmandu Valley panorama' },
 ];
+
+const isZhTw = lang === 'zh-tw';
 ---
 
-<section class="relative h-screen w-full overflow-hidden">
-  <!-- Carousel Container -->
-  <div class="carousel-container absolute inset-0">
+<section id="hero" class="hero relative h-screen w-full overflow-hidden">
+
+  <!-- Slides -->
+  <div id="hero-slides" class="absolute inset-0">
     {heroImages.map((image, index) => (
-      <div 
-        class={`carousel-slide absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+      <div
+        class="hero-slide absolute inset-0"
         data-index={index}
+        style={`z-index:${index === 0 ? 2 : 1}; opacity:${index === 0 ? 1 : 0};`}
       >
-        <Image 
-          src={image.src} 
-          alt={image.alt} 
-          class="w-full h-full object-cover"
+        <Image
+          src={image.src}
+          alt={image.alt}
+          class="hero-img absolute inset-0 w-full h-full object-cover"
           loading={index === 0 ? 'eager' : 'lazy'}
           fetchpriority={index === 0 ? 'high' : 'low'}
-          decoding={index === 0 ? 'sync' : 'async'}
           quality={80}
           width={1920}
           height={1080}
           widths={[480, 720, 1080, 1920]}
           sizes="(max-width: 480px) 480px, (max-width: 768px) 720px, (max-width: 1200px) 1080px, 1920px"
         />
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/80 z-10"></div>
       </div>
     ))}
   </div>
 
-  <!-- Navigation Dots -->
-  <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
-    {heroImages.map((_, index) => (
-      <button
-        class={`carousel-dot w-3 h-3 rounded-full transition-all duration-300 ${
-          index === 0 ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/75'
-        }`}
-        data-index={index}
-        aria-label={`Go to slide ${index + 1}`}
-      ></button>
-    ))}
+  <!-- Cinematic overlays -->
+  <!-- Base: subtle overall darkening so every image has a consistent floor -->
+  <div class="absolute inset-0 z-10 pointer-events-none" style="background:rgba(0,0,0,0.22)"></div>
+  <!-- Bottom: strong gradient covering the content area -->
+  <div class="absolute inset-0 z-10 pointer-events-none" style="background:linear-gradient(to top,rgba(6,11,24,0.96) 0%,rgba(6,11,24,0.72) 30%,rgba(6,11,24,0.30) 58%,transparent 78%)"></div>
+  <!-- Top: for nav readability -->
+  <div class="absolute inset-0 z-10 pointer-events-none" style="background:linear-gradient(to bottom,rgba(0,0,0,0.58) 0%,transparent 30%)"></div>
+  <!-- Left: depth for bottom-left content -->
+  <div class="absolute inset-0 z-10 pointer-events-none" style="background:linear-gradient(to right,rgba(0,0,0,0.38) 0%,transparent 60%)"></div>
+
+  <!-- Content: bottom-left aligned -->
+  <div class="relative z-20 h-full flex flex-col justify-end">
+    <div class="px-8 md:px-14 lg:px-20 pb-28 md:pb-32 max-w-4xl">
+
+      <!-- Eyebrow -->
+      <div class="overflow-hidden mb-5">
+        <div class="hero-eyebrow flex items-center gap-4" style="transform:translateY(110%)">
+          <div class="w-10 h-px bg-brand-gold flex-shrink-0"></div>
+          <span class="text-brand-gold text-xs tracking-[0.4em] uppercase font-sans font-medium select-none">
+            Oriental Express Travel
+          </span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="overflow-hidden mb-6">
+        <h1 class="hero-title font-serif font-black text-white leading-[1.06]" style="transform:translateY(110%)">
+          {t('home.title')}
+        </h1>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="overflow-hidden mb-10">
+        <p class="hero-subtitle text-white/70 leading-relaxed max-w-lg font-sans" style="transform:translateY(110%)">
+          {t('home.subtitle')}
+        </p>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero-ctas flex items-center gap-6 flex-wrap" style="opacity:0">
+        <a
+          href="#tours"
+          class="hero-cta-btn group relative inline-flex overflow-hidden rounded-full px-8 py-4 font-sans font-semibold text-sm tracking-widest uppercase"
+        >
+          <span class="cta-gold absolute inset-0 bg-brand-gold"></span>
+          <span class="cta-white absolute inset-0 bg-white" style="transform:translateX(-101%)"></span>
+          <span class="relative z-10 text-brand-blue">
+            {isZhTw ? '探索行程' : 'Explore Tours'}
+          </span>
+        </a>
+        <a
+          href="#aboutUs"
+          class="group flex items-center gap-2 text-white/75 hover:text-white font-sans text-sm font-medium tracking-widest uppercase transition-colors duration-200"
+        >
+          {isZhTw ? '關於我們' : 'About Us'}
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <!-- Navigation Arrows -->
-  <button 
-    class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all cursor-pointer"
-    aria-label="Previous slide"
-  >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-    </svg>
-  </button>
-  <button 
-    class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all cursor-pointer"
-    aria-label="Next slide"
-  >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-    </svg>
-  </button>
-
-  <!-- Content -->
-  <div class="relative h-full flex flex-col items-center justify-center text-center px-8 md:px-4 z-20">
-    <h1 class="text-4xl md:text-7xl font-bold mb-4 md:mb-6 text-white drop-shadow-2xl max-w-4xl">
-      {t('home.title')}
-    </h1>
-    <p class="text-lg md:text-2xl my-8 text-white/90 drop-shadow-lg max-w-2xl leading-relaxed">
-      {t('home.subtitle')}
-    </p>
+  <!-- Slide counter + progress indicators (bottom right) -->
+  <div class="absolute bottom-10 right-8 md:right-14 lg:right-20 z-30 flex items-center gap-4">
+    <span id="hero-counter" class="text-white/40 text-[11px] font-mono tabular-nums font-sans tracking-widest hidden sm:block">
+      01 / 05
+    </span>
+    <div class="flex items-center gap-1.5" id="hero-indicators">
+      {heroImages.map((_, index) => (
+        <button
+          class="hero-indicator relative overflow-hidden rounded-full cursor-pointer"
+          data-index={index}
+          aria-label={`Slide ${index + 1}`}
+          style={`height:2px; width:${index === 0 ? '32px' : '14px'}; background:rgba(255,255,255,0.22); transition:width 0.4s ease;`}
+        >
+          <div class="hero-ind-fill absolute inset-y-0 left-0 w-full bg-brand-gold" style="transform:scaleX(0); transform-origin:left center;"></div>
+        </button>
+      ))}
+    </div>
   </div>
 
-  <!-- Scroll Down Hint -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-10">
-    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-    </svg>
+  <!-- Scroll cue (bottom center) — animated chevron arrow -->
+  <div id="scroll-cue" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 cursor-pointer" aria-label="Scroll down">
+    <span class="text-white/50 text-[9px] font-sans tracking-[0.3em] uppercase hidden md:block mb-1">Scroll</span>
+    <div class="flex flex-col items-center gap-0">
+      <svg class="scroll-chevron w-6 h-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 12" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2 2l10 8 10-8"></path>
+      </svg>
+      <svg class="scroll-chevron w-6 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 12" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2 2l10 8 10-8"></path>
+      </svg>
+      <svg class="scroll-chevron w-6 h-4 text-white/25" fill="none" stroke="currentColor" viewBox="0 0 24 12" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2 2l10 8 10-8"></path>
+      </svg>
+    </div>
   </div>
+
 </section>
 
 <script>
-  // Carousel functionality
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const totalSlides = slides.length;
-  let autoPlayInterval: number;
+  import { gsap } from 'gsap';
 
-  function showSlide(index: number) {
-    // Hide all slides
-    slides.forEach(slide => {
-      slide.classList.remove('opacity-100');
-      slide.classList.add('opacity-0');
+  const SLIDE_DURATION = 7000;
+  const FADE_DURATION  = 1.5;
+  const TOTAL          = 5;
+
+  const slides     = Array.from(document.querySelectorAll('.hero-slide'))     as HTMLElement[];
+  const indicators = Array.from(document.querySelectorAll('.hero-indicator')) as HTMLElement[];
+  const fills      = Array.from(document.querySelectorAll('.hero-ind-fill'))  as HTMLElement[];
+  const counter    = document.getElementById('hero-counter');
+
+  let current       = 0;
+  let transitioning = false;
+  let timer: ReturnType<typeof setInterval>;
+  let fillTween: gsap.core.Tween | null = null;
+
+  // Ken Burns presets — different zoom direction per slide
+  const KB = [
+    { xs:1,    xe:1.1,  xsP:'0%',  xeP:'-2%', ysP:'0%',  yeP:'-1.5%' },
+    { xs:1.08, xe:1,    xsP:'2%',  xeP:'0%',  ysP:'1.5%',yeP:'0%'    },
+    { xs:1,    xe:1.1,  xsP:'-1%', xeP:'2%',  ysP:'2%',  yeP:'-1%'   },
+    { xs:1.1,  xe:1,    xsP:'1%',  xeP:'-1%', ysP:'-2%', yeP:'1%'    },
+    { xs:1,    xe:1.08, xsP:'0%',  xeP:'-1%', ysP:'-1%', yeP:'1.5%'  },
+  ];
+
+  function startKB(index: number, duration: number) {
+    const img = slides[index].querySelector('.hero-img') as HTMLElement;
+    if (!img) return;
+    const p = KB[index % KB.length];
+    gsap.fromTo(img,
+      { scale: p.xs, x: p.xsP, y: p.ysP },
+      { scale: p.xe, x: p.xeP, y: p.yeP, duration, ease: 'none' }
+    );
+  }
+
+  function startFill(index: number) {
+    indicators.forEach((ind, i) => {
+      ind.style.width = i === index ? '32px' : '14px';
+      gsap.set(fills[i], { scaleX: i < index ? 1 : 0 });
+    });
+    if (fillTween) fillTween.kill();
+    fillTween = gsap.to(fills[index], { scaleX: 1, duration: SLIDE_DURATION / 1000, ease: 'none' });
+  }
+
+  function goTo(index: number) {
+    if (transitioning || index === current) return;
+    transitioning = true;
+
+    const prev = slides[current];
+    const next = slides[index];
+
+    gsap.set(next, { opacity: 0, zIndex: 2 });
+    gsap.set(prev, { zIndex: 1 });
+
+    startKB(index, SLIDE_DURATION / 1000 + FADE_DURATION);
+
+    gsap.to(next, {
+      opacity: 1,
+      duration: FADE_DURATION,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        gsap.set(prev, { opacity: 0, zIndex: 1 });
+        current       = index;
+        transitioning = false;
+      },
     });
 
-    // Update dots
-    dots.forEach(dot => {
-      dot.classList.remove('bg-white', 'w-8');
-      dot.classList.add('bg-white/50', 'w-3');
-    });
-
-    // Show current slide
-    slides[index].classList.remove('opacity-0');
-    slides[index].classList.add('opacity-100');
-
-    // Highlight current dot
-    dots[index].classList.remove('bg-white/50', 'w-3');
-    dots[index].classList.add('bg-white', 'w-8');
-
-    currentSlide = index;
+    if (counter) counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(TOTAL).padStart(2, '0')}`;
+    startFill(index);
   }
 
-  function nextSlide() {
-    const next = (currentSlide + 1) % totalSlides;
-    showSlide(next);
+  function next() { goTo((current + 1) % TOTAL); }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, SLIDE_DURATION);
   }
 
-  function prevSlide() {
-    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(prev);
-  }
-
-  function startAutoPlay() {
-    autoPlayInterval = window.setInterval(nextSlide, 5000);
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-
-  // Event listeners
-  document.querySelector('.carousel-next')?.addEventListener('click', () => {
-    stopAutoPlay();
-    nextSlide();
-    startAutoPlay();
-  });
-
-  document.querySelector('.carousel-prev')?.addEventListener('click', () => {
-    stopAutoPlay();
-    prevSlide();
-    startAutoPlay();
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      stopAutoPlay();
-      showSlide(index);
-      startAutoPlay();
+  indicators.forEach((ind, i) => {
+    ind.addEventListener('click', () => {
+      if (i === current) return;
+      clearInterval(timer);
+      goTo(i);
+      startTimer();
     });
   });
 
-  // Pause on hover
-  const carouselContainer = document.querySelector('.carousel-container');
-  carouselContainer?.addEventListener('mouseenter', stopAutoPlay);
-  carouselContainer?.addEventListener('mouseleave', startAutoPlay);
+  // CTA button — white fill slide-in on hover
+  const ctaBtn  = document.querySelector('.hero-cta-btn')  as HTMLElement;
+  const ctaFill = ctaBtn?.querySelector('.cta-white')       as HTMLElement;
+  if (ctaBtn && ctaFill) {
+    ctaBtn.addEventListener('mouseenter', () => gsap.to(ctaFill, { x: '0%',    duration: 0.5, ease: 'power3.out' }));
+    ctaBtn.addEventListener('mouseleave', () => gsap.to(ctaFill, { x: '-101%', duration: 0.4, ease: 'power3.in'  }));
+  }
 
-  // Start autoplay
-  startAutoPlay();
+  // Entrance animation
+  const revealEls = document.querySelectorAll('.hero-eyebrow, .hero-title, .hero-subtitle');
+  gsap.to(revealEls, {
+    y: '0%',
+    duration: 1.0,
+    stagger: 0.14,
+    ease: 'power4.out',
+    delay: 0.35,
+  });
+  gsap.to('.hero-ctas', {
+    opacity: 1,
+    duration: 0.7,
+    ease: 'power2.out',
+    delay: 0.9,
+  });
+
+  // Scroll cue — cascade each chevron down in sequence
+  const chevrons = document.querySelectorAll('.scroll-chevron');
+  gsap.to(chevrons, {
+    y: 6,
+    opacity: 0,
+    duration: 0.55,
+    stagger: 0.18,
+    ease: 'power2.in',
+    repeat: -1,
+    repeatDelay: 0.4,
+    yoyo: false,
+  });
+
+  // Click scroll cue → smooth scroll to next section
+  document.getElementById('scroll-cue')?.addEventListener('click', () => {
+    document.getElementById('aboutUs')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Init
+  startKB(0, SLIDE_DURATION / 1000 + FADE_DURATION);
+  startFill(0);
+  startTimer();
 </script>
 
 <style>
-  .carousel-slide {
-    transition: opacity 1s ease-in-out;
+  .hero-title {
+    font-size: clamp(1.9rem, 4.8vw, 4.4rem);
+    line-height: 1.07;
   }
 
-  .carousel-dot {
-    cursor: pointer;
+  .hero-subtitle {
+    font-size: clamp(0.875rem, 1.5vw, 1.05rem);
   }
 
-  @media (max-width: 768px) {
-    .carousel-prev,
-    .carousel-next {
-      display: none;
-    }
+  .hero-img {
+    will-change: transform;
+    transform-origin: center center;
+  }
+
+  .hero-ind-fill {
+    will-change: transform;
+  }
+
+  .cta-gold,
+  .cta-white {
+    transition: none; /* managed by GSAP */
   }
 </style>

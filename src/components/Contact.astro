@@ -18,7 +18,7 @@ const t = useTranslations(lang);
 
   <div class="relative max-w-6xl mx-auto">
     <!-- Title Section -->
-    <div class="text-center mb-12">
+    <div class="contact-title-block text-center mb-12">
       <div class="inline-block mb-6">
         <div class="h-0.5 w-16 bg-brand-gold mx-auto"></div>
       </div>
@@ -29,9 +29,9 @@ const t = useTranslations(lang);
         {t('contact.subtitle')}
       </p>
     </div>
-    
+
     <!-- Contact Card -->
-    <div class="bg-stone-700/50 backdrop-blur-sm rounded-2xl border border-stone-600/50 p-8 md:p-12">
+    <div class="contact-card bg-stone-700/50 backdrop-blur-sm rounded-2xl border border-stone-600/50 p-8 md:p-12">
       <!-- Company Information -->
       <div class="mb-10 pb-8 border-b border-stone-600/50">
         <p class="text-stone-400 text-sm mb-2 uppercase tracking-wide">{t('contact.companyLabel')}</p>
@@ -143,4 +143,19 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.contact-title-block', {
+    opacity: 0, y: 32, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '#contactUs', start: 'top 80%', once: true },
+  });
+  gsap.from('.contact-card', {
+    opacity: 0, y: 48, duration: 1.0, ease: 'power3.out',
+    scrollTrigger: { trigger: '#contactUs', start: 'top 75%', once: true },
+  });
+</script>
 

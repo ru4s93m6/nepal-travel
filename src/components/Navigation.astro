@@ -25,134 +25,277 @@ function getPathForLang(targetLang: 'zh-tw' | 'en') {
 const isEn = lang === 'en';
 const baseUrl = isEn ? '/en' : '/zh-tw';
 
-// Language options
-const languages = [
-  { code: 'zh-tw', name: '中文', flag: '🇹🇼', url: getPathForLang('zh-tw') },
-  { code: 'en', name: 'English', flag: '🇬🇧', url: getPathForLang('en') },
+const navLinks = [
+  { href: `${baseUrl}/`,           label: t('nav.home')    },
+  { href: `${baseUrl}/#aboutUs`,   label: t('nav.about')   },
+  { href: `${baseUrl}/#tours`,     label: t('nav.tours')   },
+  { href: `${baseUrl}/#faq`,       label: t('nav.FAQ')     },
+  { href: `${baseUrl}/#contactUs`, label: t('nav.contact') },
 ];
 
-const currentLang = languages.find(l => l.code === lang);
-const otherLangs = languages.filter(l => l.code !== lang);
+const languages = [
+  { code: 'zh-tw', name: '中文',    url: getPathForLang('zh-tw') },
+  { code: 'en',    name: 'English', url: getPathForLang('en')    },
+];
+
+const currentLang = languages.find(l => l.code === lang)!;
+const otherLangs  = languages.filter(l => l.code !== lang);
 ---
 
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-black/25 backdrop-blur-lg border-b border-white/10 transition-all duration-300">
-  <div class="flex items-center justify-between py-4 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- ─── Main nav bar ─── -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:rgba(0,0,0,0.0); backdrop-filter:blur(0px);">
+  <div class="flex items-center justify-between py-4 px-6 md:px-10 max-w-7xl mx-auto">
+
     <!-- Logo -->
-    <div id="logo">
-      <a href={`${baseUrl}/`}>
-        <img src="/logo.png" alt="Oriental Express Travel Logo" class="h-10 md:h-12 w-auto" />
-      </a>
-    </div>
-    
-    <!-- Desktop Navigation -->
-    <div class="hidden lg:flex gap-8 text-white font-medium">
-      <a href={`${baseUrl}/`} class="hover:text-amber-400 transition-colors">
-        {t('nav.home')}
-      </a>
-      <a href={`${baseUrl}/#aboutUs`} class="hover:text-amber-400 transition-colors">
-        {t('nav.about')}
-      </a>
-      <a href={`${baseUrl}/#tours`} class="hover:text-amber-400 transition-colors">
-        {t('nav.tours')}
-      </a>
-      <a href={`${baseUrl}/#faq`} class="hover:text-amber-400 transition-colors">
-        {t('nav.FAQ')}
-      </a>
-      <a href={`${baseUrl}/#contactUs`} class="hover:text-amber-400 transition-colors">
-        {t('nav.contact')}
-      </a>
-    </div>
-    
-    <div class="hidden md:flex gap-2 text-white text-sm">
-      {languages.map((language, index) => (
-        <>
-          <a 
-            href={language.url} 
-            class={`px-3 py-1.5 rounded transition-all ${
-              lang === language.code 
-                ? 'bg-brand-gold font-bold shadow-lg text-brand-blue' 
-                : 'hover:bg-white/10'
-            }`}
-          >
-            {/* <span class="hidden lg:inline">{language.flag}</span> */}
-            {' '}{language.name}
-          </a>
-          {index < languages.length - 1 && (
-            <span class="self-center text-white/50">|</span>
-          )}
-        </>
+    <a href={`${baseUrl}/`} class="relative z-50">
+      <img src="/logo.png" alt="Oriental Express Travel Logo" class="h-10 md:h-11 w-auto" />
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden lg:flex items-center gap-8 text-white font-medium text-sm">
+      {navLinks.map(link => (
+        <a href={link.href} class="nav-link relative group py-1">
+          {link.label}
+          <span class="absolute bottom-0 left-0 w-0 h-px bg-brand-gold transition-all duration-300 ease-out group-hover:w-full"></span>
+        </a>
       ))}
     </div>
 
-    <!-- Language Selector - Mobile (下拉式) -->
-    <div class="relative md:hidden" id="mobile-lang-selector">
-      <!-- 當前語言按鈕 -->
-      <button 
-        type="button"
-        id="lang-button"
-        class="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-all"
-        aria-label="選擇語言"
-      >
-        <!-- <span class="text-xl">{currentLang.flag}</span> -->
-        <span class="font-medium text-sm">{currentLang.name}</span>
-        <svg class="w-4 h-4 transition-transform" id="lang-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
+    <!-- Desktop language + mobile controls -->
+    <div class="flex items-center gap-3">
 
-      <!-- 下拉選單 -->
-      <div 
-        id="lang-dropdown"
-        class="absolute right-0 mt-2 w-40 bg-brand-blue/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 overflow-hidden opacity-0 invisible transition-all duration-200 transform origin-top-right scale-95"
-      >
-        {otherLangs.map((language) => (
-          <a 
-            href={language.url}
-            class="flex items-center gap-3 px-4 py-3 text-white hover:bg-brand-gold hover:text-brand-blue transition-colors"
-          >
-            {/* <span class="text-xl">{language.flag}</span> */}
-            <span class="font-medium text-sm">{language.name}</span>
-          </a>
+      <!-- Desktop language selector -->
+      <div class="hidden md:flex items-center gap-1 text-white text-sm">
+        {languages.map((language, index) => (
+          <>
+            <a
+              href={language.url}
+              class={`px-3 py-1.5 rounded-full transition-all duration-200 text-sm font-medium ${
+                lang === language.code
+                  ? 'bg-brand-gold text-brand-blue font-bold'
+                  : 'hover:bg-white/10'
+              }`}
+            >
+              {language.name}
+            </a>
+            {index < languages.length - 1 && (
+              <span class="text-white/30 text-xs">|</span>
+            )}
+          </>
         ))}
       </div>
-    </div>
 
-    <!-- <button 
-      type="button"
-      id="mobile-menu-button"
-      class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg ml-2"
-      aria-label="選單"
-    >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button> -->
+      <!-- Mobile: language toggle -->
+      <div class="relative md:hidden" id="mobile-lang-selector">
+        <button
+          type="button"
+          id="lang-button"
+          class="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-white text-sm font-medium transition-all relative z-50"
+          aria-label="Language"
+        >
+          {currentLang.name}
+          <svg class="w-3.5 h-3.5 transition-transform" id="lang-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          id="lang-dropdown"
+          class="absolute right-0 mt-2 w-36 bg-brand-blue/95 backdrop-blur-sm rounded-xl shadow-xl border border-white/10 overflow-hidden opacity-0 invisible transition-all duration-200 origin-top-right scale-95"
+        >
+          {otherLangs.map(language => (
+            <a
+              href={language.url}
+              class="flex items-center px-4 py-3 text-white hover:bg-brand-gold hover:text-brand-blue transition-colors text-sm font-medium"
+            >
+              {language.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Mobile: hamburger button -->
+      <button
+        type="button"
+        id="hamburger"
+        class="lg:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-[5px] group"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span class="ham-line block w-6 h-[1.5px] bg-white transition-all duration-350 origin-center"></span>
+        <span class="ham-line block w-6 h-[1.5px] bg-white transition-all duration-350"></span>
+        <span class="ham-line block w-6 h-[1.5px] bg-white transition-all duration-350 origin-center"></span>
+      </button>
+    </div>
   </div>
 </nav>
 
+<!-- ─── Mobile full-screen menu ─── -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 lg:hidden pointer-events-none"
+  aria-hidden="true"
+  style="opacity:0"
+>
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-brand-blue/97 backdrop-blur-md"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 h-full flex flex-col justify-between px-8 pt-28 pb-12 overflow-y-auto">
+
+    <!-- Nav links -->
+    <nav aria-label="Mobile navigation">
+      <ul class="space-y-1">
+        {navLinks.map((link, i) => (
+          <li>
+            <a
+              href={link.href}
+              class="mobile-nav-link block font-serif font-bold text-white py-3 border-b border-white/10 transition-colors hover:text-brand-gold text-3xl sm:text-4xl"
+              data-index={i}
+              style="transform:translateX(-48px); opacity:0;"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Bottom: language + contact -->
+    <div class="mt-10 space-y-6">
+      <!-- Language -->
+      <div class="flex gap-4">
+        {languages.map(language => (
+          <a
+            href={language.url}
+            class={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+              lang === language.code
+                ? 'bg-brand-gold text-brand-blue font-bold'
+                : 'border border-white/30 text-white hover:border-brand-gold hover:text-brand-gold'
+            }`}
+          >
+            {language.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- WhatsApp contact -->
+      <a
+        href="https://wa.me/9779818840319"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-contact flex items-center gap-3 text-white/60 hover:text-white text-sm font-medium transition-colors"
+        style="transform:translateY(16px); opacity:0;"
+      >
+        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
-  const langButton = document.getElementById('lang-button');
-  const langDropdown = document.getElementById('lang-dropdown');
-  const langArrow = document.getElementById('lang-arrow');
-  const navbar = document.getElementById('navbar');
+  import { gsap } from 'gsap';
 
-  // Navbar 滾動偵測 (改變背景深色度以凸顯白字)
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar?.classList.add('nav-scrolled');
-    } else {
-      navbar?.classList.remove('nav-scrolled');
+  const navbar     = document.getElementById('navbar')!;
+  const hamburger  = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  const hamLines   = hamburger.querySelectorAll('.ham-line') as NodeListOf<HTMLElement>;
+  const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link') as NodeListOf<HTMLElement>;
+  const mobileContact = mobileMenu.querySelector('.mobile-contact') as HTMLElement;
+
+  let menuOpen = false;
+
+  // ── Navbar scroll behaviour ──
+  function updateNavbar() {
+    const scrolled = window.scrollY > 60;
+    if (scrolled) {
+      navbar.style.background    = 'rgba(13,20,38,0.88)';
+      navbar.style.backdropFilter = 'blur(16px)';
+      navbar.style.boxShadow     = '0 1px 0 rgba(255,255,255,0.06)';
+    } else if (!menuOpen) {
+      navbar.style.background    = 'rgba(0,0,0,0.0)';
+      navbar.style.backdropFilter = 'blur(0px)';
+      navbar.style.boxShadow     = 'none';
     }
-  });
+  }
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+  updateNavbar();
 
-  if (langButton && langDropdown) {
-    let isOpen = false;
+  // ── Mobile menu open/close ──
+  function openMenu() {
+    menuOpen = true;
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenu.style.pointerEvents = 'auto';
 
-    // 切換下拉選單
-    const toggleDropdown = () => {
-      isOpen = !isOpen;
-      
-      if (isOpen) {
+    // Solid bg on nav while menu open
+    navbar.style.background    = 'rgba(13,20,38,0.0)';
+    navbar.style.backdropFilter = 'blur(0px)';
+
+    // Animate menu
+    gsap.to(mobileMenu, { opacity: 1, duration: 0.35, ease: 'power2.out' });
+    gsap.to(mobileLinks, {
+      x: 0,
+      opacity: 1,
+      duration: 0.55,
+      stagger: 0.07,
+      ease: 'power3.out',
+      delay: 0.1,
+    });
+    gsap.to(mobileContact, {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power3.out',
+      delay: 0.4,
+    });
+
+    // Hamburger → X
+    gsap.to(hamLines[0], { y: 6.5,  rotation: 45,  duration: 0.35, ease: 'power2.inOut' });
+    gsap.to(hamLines[1], { opacity: 0, scaleX: 0,   duration: 0.2 });
+    gsap.to(hamLines[2], { y: -6.5, rotation: -45, duration: 0.35, ease: 'power2.inOut' });
+  }
+
+  function closeMenu() {
+    menuOpen = false;
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+
+    gsap.to(mobileMenu, {
+      opacity: 0,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete: () => { mobileMenu.style.pointerEvents = 'none'; },
+    });
+
+    // X → hamburger
+    gsap.to(hamLines[0], { y: 0, rotation: 0,  duration: 0.3, ease: 'power2.inOut' });
+    gsap.to(hamLines[1], { opacity: 1, scaleX: 1, duration: 0.2, delay: 0.05 });
+    gsap.to(hamLines[2], { y: 0, rotation: 0,  duration: 0.3, ease: 'power2.inOut' });
+
+    updateNavbar();
+  }
+
+  hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+
+  // Close on nav link click
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Close on ESC
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(); });
+
+  // ── Desktop language dropdown ──
+  const langBtn      = document.getElementById('lang-button');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const langArrow    = document.getElementById('lang-arrow');
+
+  if (langBtn && langDropdown) {
+    let ddOpen = false;
+    const toggle = () => {
+      ddOpen = !ddOpen;
+      if (ddOpen) {
         langDropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
         langDropdown.classList.add('opacity-100', 'visible', 'scale-100');
         langArrow?.classList.add('rotate-180');
@@ -162,37 +305,25 @@ const otherLangs = languages.filter(l => l.code !== lang);
         langArrow?.classList.remove('rotate-180');
       }
     };
-
-    // 點擊按鈕切換
-    langButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleDropdown();
+    langBtn.addEventListener('click', e => { e.stopPropagation(); toggle(); });
+    document.addEventListener('click', e => {
+      if (ddOpen && !langBtn.contains(e.target as Node) && !langDropdown.contains(e.target as Node)) toggle();
     });
-
-    // 點擊外部關閉
-    document.addEventListener('click', (e) => {
-      if (isOpen && !langButton.contains(e.target as Node) && !langDropdown.contains(e.target as Node)) {
-        toggleDropdown();
-      }
-    });
-
-    // ESC 鍵關閉
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        toggleDropdown();
-      }
-    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && ddOpen) toggle(); });
   }
-
 </script>
 
 <style>
-  .nav-scrolled {
-    background-color: rgba(15, 23, 42, 0.85) !important; /* 對應深藍色 (brand-blue) 的磨砂感 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  #lang-arrow {
+    transition: transform 0.2s ease;
   }
 
-  #lang-arrow {
-    transition: transform 0.2s ease-in-out;
+  /* Desktop nav link hover line */
+  .nav-link {
+    color: rgba(255,255,255,0.88);
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: #fff;
   }
 </style>
