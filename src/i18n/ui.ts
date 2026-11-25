@@ -298,7 +298,7 @@ export const ui = {
         },
         item3: {
           title: 'Multilingual Service',
-          desc: 'Our core team speaks fluent English and French. Should you require a guide in Chinese or other languages, we can easily arrange trusted freelance guides through our local network, ensuring seamless communication throughout your journey.'
+          desc: 'Our core team speaks fluent English and French. Should you require a guide in Chinese or other languages, we can arrange a dedicated guide through our local network, so you can truly connect with Nepal\'s culture and stories.'
         }
       }
     },
