@@ -254,7 +254,7 @@ export const ui = {
     },
     home: {
       title: 'Your Trusted Local Travel Agency in Nepal',
-      subtitle: 'Explore Nepal\'s Himalayas with Oriental Express Travel — a government-registered local agency backed by 20+ years of expertise.',
+      subtitle: 'Explore Nepal\'s Himalayas with Oriental Express Travel, your government-registered local agency backed by 20+ years of expertise.',
     },
     button: {
       learnMore: 'Learn More',
