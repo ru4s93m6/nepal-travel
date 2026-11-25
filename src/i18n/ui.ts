@@ -253,7 +253,7 @@ export const ui = {
       contact: 'Contact',
     },
     home: {
-      title: 'Your Trusted Local Travel Agency in Nepal',
+      title: 'The Mystical Kingdom at the Foot of the Himalayas',
       subtitle: 'Explore Nepal\'s Himalayas with Oriental Express Travel, your government-registered local agency backed by 20+ years of expertise.',
     },
     button: {
@@ -264,12 +264,12 @@ export const ui = {
       leadText: 'Meet Your Local Team to the Himalayas',
       founderLabel: 'Founder & CEO',
       subtitle: 'Let a Local Team Take You Into the Real Nepal',
-      intro: "I'm Raju, and I've been deeply involved in Nepal's tourism industry for over 20 years. Driven by my love for this land and a lifelong passion for travel, I recently founded this agency to turn those decades of experience into something more personal — tailored, authentic journeys crafted around each traveler's needs.",
+      intro: "I'm Raju, and I've been deeply involved in Nepal's tourism industry for over 20 years. Driven by my love for this land and a lifelong passion for travel, I recently founded this agency to turn those decades of experience into something more personal. Every journey is tailored and authentic, crafted around each traveler's needs.",
       experience: 'To us, travel is more than just an itinerary. It is a personal journey shaped by thoughtful planning and attention to detail, allowing each traveler to truly experience Nepal rather than simply pass through it.',
       rotaryMember: 'Rotary Club Member',
       rotaryLink: 'https://rchimalayangurkhas.org.np/board-of-directors/',
       rotaryAriaLabel: 'Verify on Rotary Club website',
-      experience1: "Drawing on decades of experience, we've had the pleasure of welcoming travelers from all over the world. No matter where you come from, we're committed to providing reliable, personalized, and genuinely local service throughout your journey. I'm also an active Rotary Club member — something I take great pride in as a way of giving back to the community that shaped me.",
+      experience1: "Drawing on decades of experience, we've had the pleasure of welcoming travelers from all over the world. No matter where you come from, we're committed to providing reliable, personalized, and genuinely local service throughout your journey. I'm also an active Rotary Club member. It's something I take great pride in, as a way of giving back to the community that shaped me.",
       feature1: {
         title: 'Experienced Trekking Team',
         desc: 'From Everest Base Camp to the Annapurna Circuit, our local guides lead you with confidence and care.'
