@@ -4,6 +4,8 @@ import { Image } from 'astro:assets';
 import busGroup from '../assets/bus-group.webp';
 import busExterior from '../assets/bus-exterior.webp';
 import busInterior from '../assets/bus-interior.webp';
+import privateSuvJomsom from '../assets/private-suv-jomsom.webp';
+import soloTravelBus from '../assets/solo-travel-bus.webp';
 
 interface Props {
   lang: 'zh-tw' | 'en';
@@ -168,39 +170,130 @@ const t = useTranslations(lang);
 
       <!-- Real Tour & Transport Gallery -->
       <div class="mt-16 pt-12 border-t border-stone-200">
-        <div class="text-center mb-8">
-          <h4 class="text-2xl font-bold text-stone-900 mb-3">{lang === 'zh-tw' ? '舒適的專車接送與團體服務' : 'Comfortable Private Transport & Group Services'}</h4>
+        <div class="text-center mb-10">
+          <h4 class="text-2xl font-bold text-stone-900 mb-3">
+            {lang === 'zh-tw' ? '舒適的專車接送與團體服務' : 'Comfortable Private Transport & Group Services'}
+          </h4>
           <p class="text-stone-600 max-w-2xl mx-auto leading-relaxed">
-            {lang === 'zh-tw' 
-              ? '我們會依照您的實際人數，安排最適合的專屬車型。從適合 1-4 人小團體的舒適休旅車，到專為多人團體準備的寬敞冷氣巴士，皆能提供平穩又舒適的點對點接送服務。' 
-              : 'We arrange the most suitable transportation based on your group size. From comfortable SUVs for small groups of up to 4 people, to spacious air-conditioned buses for larger parties, we ensure your intercity travel is safe, relaxing, and hassle-free.'}
+            {lang === 'zh-tw'
+              ? '我們依照您的人數與行程需求，靈活安排最適合的交通方式，確保每一段旅途都安全、舒適、順暢。'
+              : 'We tailor transport arrangements to your group size and itinerary — ensuring every leg of your journey is safe, comfortable, and seamlessly handled.'}
           </p>
         </div>
-        
+
+        <!-- Featured: 2 new photos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <!-- Private SUV -->
+          <div class="transport-card group rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
+            <div class="relative overflow-hidden aspect-[16/10]">
+              <Image
+                src={privateSuvJomsom}
+                alt={lang === 'zh-tw' ? '旅客在 Jomsom 搭乘私人 SUV' : 'Travellers on private SUV in Jomsom'}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                quality={80}
+              />
+            </div>
+            <div class="p-5">
+              <h5 class="font-bold text-brand-blue text-lg mb-2">
+                {lang === 'zh-tw' ? '小型家庭或好友專屬私人 SUV' : 'Private SUV for Families & Small Groups'}
+              </h5>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                {lang === 'zh-tw'
+                  ? '1 至 6 人的小型旅遊團體，我們提供舒適的私人 SUV 接送服務，全程專屬、靈活彈性。曾有旅客搭乘我們的 SUV 前往 Jomsom，沿途欣賞到壯闊雪山美景，開心地說這是此生最難忘的旅行回憶！'
+                  : 'Ideal for 1–6 travellers, our private SUV service offers a personalized, door-to-door experience. One of our groups took this route to Jomsom and was rewarded with breathtaking Himalayan scenery along the way — a truly happy and unforgettable memory.'}
+              </p>
+            </div>
+          </div>
+
+          <!-- Solo / Flexible transport -->
+          <div class="transport-card group rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
+            <div class="relative overflow-hidden aspect-[16/10]">
+              <Image
+                src={soloTravelBus}
+                alt={lang === 'zh-tw' ? '協助散客搭乘公車或 SUV' : 'Assisting solo travellers with bus or SUV transport'}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                quality={80}
+              />
+            </div>
+            <div class="p-5">
+              <h5 class="font-bold text-brand-blue text-lg mb-2">
+                {lang === 'zh-tw' ? '散客與單人旅遊彈性交通安排' : 'Flexible Transport for Solo Travellers'}
+              </h5>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                {lang === 'zh-tw'
+                  ? '一人出遊或行程較彈性的旅客，我們可依您的實際需求協助安排當地公車票購票事宜，或視情況改乘私人 SUV，確保您以最靈活、最省心的方式暢遊尼泊爾，完全不必煩惱交通問題。'
+                  : 'Travelling solo or on a flexible schedule? We can assist with purchasing local bus tickets or arrange an SUV depending on your needs and destination — giving you the freedom to explore Nepal your way, without any transport headaches.'}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Existing 3 transport photos -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3] group">
-            <Image 
-              src={busGroup} 
-              alt="Happy tourists with our transport" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              quality={80}
-            />
+          <!-- Group bus -->
+          <div class="transport-card group rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
+            <div class="relative overflow-hidden aspect-[4/3]">
+              <Image
+                src={busGroup}
+                alt={lang === 'zh-tw' ? '大型旅遊團體與旅遊巴士' : 'Large tour group with tourist coach'}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                quality={80}
+              />
+            </div>
+            <div class="p-5">
+              <h5 class="font-bold text-brand-blue text-lg mb-2">
+                {lang === 'zh-tw' ? '大型旅遊團體巴士服務' : 'Coach Service for Large Groups'}
+              </h5>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                {lang === 'zh-tw'
+                  ? '若您的旅遊團體人數眾多，我們備有專屬旅遊巴士，可一次接送整個團隊，省去個別安排的繁瑣，讓大型旅遊行程更加順暢圓滿。'
+                  : 'For larger tour groups, we provide a dedicated tourist coach to transfer your entire team at once — removing the hassle of individual arrangements and keeping your group trip running smoothly.'}
+              </p>
+            </div>
           </div>
-          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3] group">
-            <Image 
-              src={busExterior} 
-              alt="Modern tourist bus exterior" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              quality={80}
-            />
+
+          <!-- Bus exterior -->
+          <div class="transport-card group rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
+            <div class="relative overflow-hidden aspect-[4/3]">
+              <Image
+                src={busExterior}
+                alt={lang === 'zh-tw' ? '現代化旅遊巴士外觀' : 'Modern tourist coach exterior'}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                quality={80}
+              />
+            </div>
+            <div class="p-5">
+              <h5 class="font-bold text-brand-blue text-lg mb-2">
+                {lang === 'zh-tw' ? '現代化、定期保養的車隊' : 'Modern & Well-Maintained Fleet'}
+              </h5>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                {lang === 'zh-tw'
+                  ? '我們的車輛定期進行安全檢查與保養維護，確保每一趟旅程都能平穩、安全地抵達目的地，讓您對每段行程都放心無慮。'
+                  : 'Our vehicles undergo regular safety checks and maintenance to ensure every journey is smooth and reliable — so you can sit back and enjoy the ride with complete peace of mind.'}
+              </p>
+            </div>
           </div>
-          <div class="rounded-xl overflow-hidden shadow-md aspect-[4/3] group">
-            <Image 
-              src={busInterior} 
-              alt="Comfortable tourist bus interior" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              quality={80}
-            />
+
+          <!-- Bus interior -->
+          <div class="transport-card group rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
+            <div class="relative overflow-hidden aspect-[4/3]">
+              <Image
+                src={busInterior}
+                alt={lang === 'zh-tw' ? '旅遊巴士寬敞冷氣座艙' : 'Spacious air-conditioned bus interior'}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                quality={80}
+              />
+            </div>
+            <div class="p-5">
+              <h5 class="font-bold text-brand-blue text-lg mb-2">
+                {lang === 'zh-tw' ? '寬敞舒適、全車冷氣' : 'Spacious Seats with Full Air-Conditioning'}
+              </h5>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                {lang === 'zh-tw'
+                  ? '車廂內設有寬敞、整潔的座位，並配備全車冷氣系統。無論旅途多遠，您都能在涼爽舒適的環境中放鬆，同時欣賞窗外的尼泊爾美景。'
+                  : 'Our cabins offer wide, clean seats with full air-conditioning throughout. No matter the distance, you can relax in cool, comfortable surroundings and enjoy the scenery rolling past your window.'}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -241,6 +334,14 @@ const t = useTranslations(lang);
     stagger: 0.1,
     ease: 'power3.out',
     scrollTrigger: { trigger: '.customization-section', start: 'top 80%', once: true },
+  });
+
+  // Transport cards — staggered rise
+  gsap.from('.transport-card', {
+    opacity: 0, y: 40, duration: 0.6,
+    stagger: 0.1,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.transport-card', start: 'top 85%', once: true },
   });
 </script>
 
