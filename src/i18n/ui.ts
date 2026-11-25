@@ -314,7 +314,7 @@ export const ui = {
     itinerary: {
       title: 'Top Destinations',
       subtitle: 'Discover the Hidden Wonders of Nepal',
-      description: 'Browse our handpicked Nepal destinations — from Himalayan treks to cultural tours and wildlife safaris. Each itinerary is a starting point and can be fully customized to your pace, interests, and travel dates.',
+      description: 'Browse our handpicked Nepal destinations, from Himalayan treks to cultural tours and wildlife safaris. Each itinerary is a starting point and can be fully customized to your pace, interests, and travel dates.',
       destinationsCount: 'Destinations',
       regions: {
         kathmandu: 'Kathmandu Valley',
