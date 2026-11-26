@@ -227,6 +227,10 @@ export const ui = {
         answer: "我們的旅程通常包含住宿、交通、導遊服務和部分餐食。如果您已經有規畫好的行程，我們可以依照您的需求提供客製化的服務，如果您第一次來尼泊爾旅遊，我們也可以提供完整的行前規劃服務。如果您需要幫忙協助訂購機票、詢問簽證等相關事宜，我們也很樂意提供幫助。"
       },
       {
+        question: "我可以只訂購部分服務嗎？",
+        answer: "可以！如果您只需要特定的協助，例如機場接送、包車租用、嚮導服務、機票代訂，或是協助安排住宿，我們都可以單獨提供。歡迎告訴我們您的需求，讓我們為您打造最適合的行程。"
+      },
+      {
         question: "如何聯絡我們？",
         answer: "您可以透過WhatsApp或電子郵件與我們聯絡。我們會盡快回覆您的詢問，協助您規劃理想的尼泊爾之旅。如果是中文服務需求，我們也有中文小編可以協助您。\b中文小編主要協助將您的中文詢問內容（行程規劃、報價需求等）翻譯給負責人，負責人會以英文提供報價單及行程安排。若您希望收到中文回覆，請在詢問時特別註明，我們會安排中文小編協助您跟進。"
       },
@@ -463,6 +467,10 @@ export const ui = {
       {
         question: "What services are included in your trips?",
         answer: "Our trips typically include accommodation, transportation, guide services, and some meals. If you already have a planned itinerary, we can provide customized services based on your needs. For first-time visitors to Nepal, we also offer comprehensive pre-trip planning services. If you need assistance with flight bookings, visa inquiries, or other related matters, we're happy to help."
+      },
+      {
+        question: "Can I book individual services rather than a full package?",
+        answer: "Absolutely. If you simply need help with specific things, such as airport transfers, private car rental, guide services, flight bookings, or accommodation arrangements, we're happy to assist with just those. Let us know what you're looking for and we'll be happy to create a plan that fits your needs."
       },
       {
         question: "How can I contact you?",
