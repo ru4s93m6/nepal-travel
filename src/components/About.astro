@@ -6,6 +6,7 @@ import busExterior from '../assets/bus-exterior.webp';
 import busInterior from '../assets/bus-interior.webp';
 import privateSuvJomsom from '../assets/private-suv-jomsom.webp';
 import soloTravelBus from '../assets/solo-travel-bus.webp';
+import director from '../assets/director.webp';
 
 interface Props {
   lang: 'zh-tw' | 'en';
@@ -22,104 +23,99 @@ const t = useTranslations(lang);
       {t('about.title')}
     </h2>
 
-    <!-- Main Content -->
-    <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-      <div class="founder-image-container relative md:order-2">
-        <!-- 標籤 -->
-        <div class="absolute -top-3 left-6 z-10">
-          <span class="bg-brand-blue text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            {t('about.founderLabel')}
-          </span>
-        </div>
-        
-        <div class="relative rounded-lg overflow-hidden shadow-xl border-4 border-white">
-          <img 
-            src="/founder.webp" 
+    <!-- About text -->
+    <div class="about-text-block max-w-3xl mx-auto space-y-4 mb-12">
+      <h3 class="text-3xl font-serif font-bold text-brand-blue leading-tight">
+        {t('about.subtitle')}
+      </h3>
+      <p class="text-lg text-stone-700 leading-relaxed">
+        {t('about.intro')}
+      </p>
+      <p class="text-lg text-stone-700 leading-relaxed">
+        {t('about.experience')}
+      </p>
+    </div>
+
+    <!-- Team portraits -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <!-- Raju -->
+      <div class="founder-image-container group bg-white rounded-lg overflow-hidden shadow-md border border-stone-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="relative overflow-hidden">
+          <div class="absolute top-4 left-4 z-10">
+            <span class="bg-brand-blue text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-md">
+              {t('about.founderTitle')}
+            </span>
+          </div>
+          <img
+            src="/founder.webp"
             alt={t('about.founderAlt')}
-            class="w-full h-[400px] md:h-[500px] object-cover"
+            class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
             decoding="async"
             width="600"
-            height="500"
+            height="400"
           />
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-blue/95 via-brand-blue/60 to-transparent p-6">
-            <p class="text-white font-bold text-xl mb-1">Raju Gurung</p>
-            <!-- <p class="text-brand-gold text-sm font-medium mb-2">{t('about.founderTitle')}</p> -->
-            <p class="text-white/90 text-sm">{t('about.founderYears')}</p>
-
-            <!-- Rotary Club Member -->
-            <div class="flex items-center gap-2 mt-3">
-              <a 
-                href={t('about.rotaryLink')}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 hover:bg-white/30 transition-all duration-300 group"
-                aria-label={t('about.rotaryAriaLabel')}
-              >
-                <svg class="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
-                </svg>
-                <span class="text-white/90 text-xs font-medium group-hover:text-white transition-colors">
-                  {t('about.rotaryMember')}
-                </span>
-                <!-- External Link Icon -->
-                <svg class="w-4 h-4 text-white/60 group-hover:text-white/90 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                </svg>
-              </a>
-            </div>
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/50 to-transparent p-6">
+            <p class="text-white font-bold text-xl mb-0.5">Raju Gurung</p>
+            <p class="text-white text-sm font-medium mb-3">{t('about.founderYears')}</p>
+            <a
+              href={t('about.rotaryLink')}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 hover:bg-white/30 transition-all duration-300 group/rotary"
+              aria-label={t('about.rotaryAriaLabel')}
+            >
+              <svg class="w-3.5 h-3.5 text-amber-300 group-hover/rotary:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+              </svg>
+              <span class="text-white/90 text-xs font-medium group-hover/rotary:text-white transition-colors">
+                {t('about.rotaryMember')}
+              </span>
+              <svg class="w-3.5 h-3.5 text-white/60 group-hover/rotary:text-white/90 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
           </div>
+        </div>
+        <div class="p-5">
+          <p class="text-stone-600 text-md leading-relaxed">
+            {lang === 'zh-tw'
+              ? '在尼泊爾旅遊業深耕逾 20 年，以在地深度服務為核心，帶領旅客真正走進尼泊爾。同時也是扶輪社的活躍會員，長期致力回饋在地社區。'
+              : 'With over 20 years in Nepal\'s tourism industry, Raju founded Oriental Express Travel to deliver authentic, locally grounded journeys. He is also an active Rotary Club member, committed to giving back to the community.'}
+          </p>
         </div>
       </div>
 
-      <div class="about-text-block space-y-6 md:order-1">
-        <h3 class="text-3xl font-serif font-bold text-brand-blue leading-tight">
-          {t('about.subtitle')}
-        </h3>
-        
-        <p class="text-lg text-stone-700 leading-relaxed">
-          {t('about.intro')}
-        </p>
-
-        <p class="text-lg text-stone-700 leading-relaxed">
-          {t('about.experience')}
-        </p>
-
-        <p class="text-lg text-stone-700 leading-relaxed">
-          {t('about.experience1')}
-        </p>
-
-        <!-- Main features -->
-        <div class="space-y-4 pt-4">
-          <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div>
-              <h4 class="font-semibold text-stone-900">{t('about.feature1.title')}</h4>
-              <p class="text-stone-600">{t('about.feature1.desc')}</p>
-            </div>
+      <!-- Yathartha -->
+      <div class="director-image-container group bg-white rounded-lg overflow-hidden shadow-md border border-stone-100 hover:shadow-xl transition-shadow duration-300">
+        <div class="relative overflow-hidden">
+          <div class="absolute top-4 left-4 z-10">
+            <span class="bg-brand-blue text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-md">
+              {lang === 'zh-tw' ? '國際關係總監' : 'Director of International Relations'}
+            </span>
           </div>
-
-          <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div>
-              <h4 class="font-semibold text-stone-900">{t('about.feature2.title')}</h4>
-              <p class="text-stone-600">{t('about.feature2.desc')}</p>
-            </div>
+          <Image
+            src={director}
+            alt={lang === 'zh-tw' ? '國際關係總監 Yathartha Gurung' : 'Director of International Relations Yathartha Gurung'}
+            class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+            width={600}
+            height={400}
+            quality={85}
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/50 to-transparent p-6">
+            <p class="text-white font-bold text-xl mb-0.5">Yathartha Gurung</p>
+            <p class="text-white text-sm font-medium">
+              {lang === 'zh-tw' ? '澳洲餐旅與活動管理學士' : 'BA Hospitality & Events Management, Australia'}
+            </p>
           </div>
-
-          <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div>
-              <h4 class="font-semibold text-stone-900">{t('about.feature3.title')}</h4>
-              <p class="text-stone-600">{t('about.feature3.desc')}</p>
-            </div>
-          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-stone-600 text-md leading-relaxed">
+            {lang === 'zh-tw'
+              ? '擁有澳洲餐旅與活動管理學士學位，並在澳洲餐旅業積累多年豐富經驗。現負責 Oriental Express Travel 的全球夥伴關係與國際客戶服務，將世界級的服務標準融入每段旅程。'
+              : 'Holding a BA in Hospitality & Events Management from Australia and years of experience in the Australian hospitality sector, Yathartha leads global partnerships and international client engagement at Oriental Express Travel, bringing world-class service standards to every journey.'}
+          </p>
         </div>
       </div>
     </div>
@@ -138,7 +134,7 @@ const t = useTranslations(lang);
       <!-- Service items -->
       <div class="grid md:grid-cols-3 gap-6">
         <div class="customization-card bg-white/80 backdrop-blur-sm rounded-lg p-6 transition-shadow">
-          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
@@ -148,7 +144,7 @@ const t = useTranslations(lang);
         </div>
 
         <div class="customization-card bg-white/80 backdrop-blur-sm rounded-lg p-6 transition-shadow">
-          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
             </svg>
@@ -158,7 +154,7 @@ const t = useTranslations(lang);
         </div>
 
         <div class="customization-card bg-white/80 backdrop-blur-sm rounded-lg p-6 transition-shadow">
-          <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
             </svg>
@@ -302,18 +298,19 @@ const t = useTranslations(lang);
     scrollTrigger: { trigger: '#aboutUs', start: 'top 78%', once: true },
   });
 
-  // Founder image — slide in from right
-  gsap.from('.founder-image-container', {
-    opacity: 0, x: 56, duration: 1.0,
+  // Text block — fade up
+  gsap.from('.about-text-block', {
+    opacity: 0, y: 32, duration: 0.9,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '.founder-image-container', start: 'top 80%', once: true },
+    scrollTrigger: { trigger: '#aboutUs', start: 'top 70%', once: true },
   });
 
-  // Text block — slide in from left
-  gsap.from('.about-text-block', {
-    opacity: 0, x: -48, duration: 0.9,
+  // Portrait cards — staggered slide up
+  gsap.from('.founder-image-container, .director-image-container', {
+    opacity: 0, y: 48, duration: 0.9,
+    stagger: 0.15,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '.about-text-block', start: 'top 80%', once: true },
+    scrollTrigger: { trigger: '.founder-image-container', start: 'top 80%', once: true },
   });
 
   // Customization cards — staggered rise
@@ -333,7 +330,7 @@ const t = useTranslations(lang);
   });
 </script>
 
-<!-- Person Schema (JSON-LD) -->
+<!-- Person Schema (JSON-LD) — Raju Gurung -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Person",
@@ -351,4 +348,19 @@ const t = useTranslations(lang);
   },
   "description": "Founder and CEO of Oriental Express Travel with over 20 years of experience in Nepal's tourism industry.",
   "knowsAbout": ["Nepal Trekking", "Himalayan Tourism", "Nepal Culture", "Adventure Travel", "Everest Base Camp", "Annapurna"]
+})} />
+
+<!-- Person Schema (JSON-LD) — Yathartha Gurung -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Yathartha Gurung",
+  "jobTitle": "Director of International Relations",
+  "worksFor": {
+    "@type": "TravelAgency",
+    "name": "Oriental Express Travel P. Ltd.",
+    "url": "https://oriental-express-travel.com"
+  },
+  "description": "Director of International Relations at Oriental Express Travel, leading global partnerships and international client engagement with hospitality expertise from Australia.",
+  "knowsAbout": ["International Tourism", "Hospitality Management", "Nepal Travel", "Client Relations"]
 })} />

@@ -25,7 +25,7 @@ export const ui = {
       title: '關於我們',
       leadText: '認識帶領你探索喜馬拉雅的在地團隊',
       founderLabel: '創辦人介紹',
-      subtitle: '跟著在地團隊的腳步，走進真正的尼泊爾',
+      subtitle: '跟著在地團隊的腳步，走進尼泊爾深處',
       intro: '我是 Raju，在尼泊爾旅遊業深耕超過 20 年。出於對這片土地與旅遊事業的深厚熱愛，我在近期創立了這間旅行社，希望將過去累積的豐富經驗，轉化為更貼近每位旅客需求的專屬在地服務。',
       experience: '對我們來說，每一趟旅程都不只是行程安排，而是一段值得細細體驗的故事。因此，我們特別重視旅途中的每一個細節，讓旅行不只是「看見」，而是真正「走進」尼泊爾。',
       rotaryMember: '扶輪社會員',
@@ -45,7 +45,7 @@ export const ui = {
         desc: '提供專車接送與行程協助，讓您專心享受旅程本身'
       },
       founderAlt: '創辦人 Raju Gurung',
-      founderTitle: '創辦人&執行長',
+      founderTitle: '創辦人 & 執行長',
       founderYears: '深耕尼泊爾旅遊 20+ 年',
       customization: {
         title: '為您量身打造的旅程',
