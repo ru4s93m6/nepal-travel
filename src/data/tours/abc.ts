@@ -25,7 +25,7 @@ export const abcTour: TourData = {
         {
           day: 1,
           title: 'Drive to Nayapul - Trek to Ghandruk (1,940m)',
-          description: 'On the first day, after breakfast we will drive to Nayapul, the starting point — about a one and a half hour drive from Pokhara (1,050m). From Nayapul the uphill trail to Ghandruk (1,940m) is filled with panoramic views of snowcapped mountains. Along the way we pass through small villages such as Chimrong, Syauli Bazar, and Chame. Upon crossing the suspension bridge over Khumnu Khola, we reach Ghandruk, a terraced settlement of stone houses mostly inhabited by the Gurung community. Highlights: Enjoy close-up views of Fishtail, Annapurna South, and Hiuchuli, and get acquainted with the rich culture and traditions of the Gurung community at the Gurung Museum in Ghandruk.'
+          description: 'On the first day, after breakfast we will drive to Nayapul, the starting point, about a one and a half hour drive from Pokhara (1,050m). From Nayapul the uphill trail to Ghandruk (1,940m) is filled with panoramic views of snowcapped mountains. Along the way we pass through small villages such as Chimrong, Syauli Bazar, and Chame. Upon crossing the suspension bridge over Khumnu Khola, we reach Ghandruk, a terraced settlement of stone houses mostly inhabited by the Gurung community. Highlights: Enjoy close-up views of Fishtail, Annapurna South, and Hiuchuli, and get acquainted with the rich culture and traditions of the Gurung community at the Gurung Museum in Ghandruk.'
         },
         {
           day: 2,

@@ -10,7 +10,7 @@ export const kathmanduValleyTour: TourData = {
     'en': {
       title: 'Kathmandu Valley Tour',
       subtitle: 'A fascinating 4-day showcase of rich culture, ancient art, and living traditions.',
-      overview: 'This comprehensive 4-day tour takes you on an exotic journey across the Kathmandu Valley. Encircled by green terraced hills, the valley is the cultural and political hub of Nepal, where Hinduism and Buddhism perfectly intertwine. You will explore three distinctive ancient cities—Kathmandu, Bhaktapur, and Patan—each boasting world-class temples, stunning Newari wood-crafted palace squares, and vibrant daily festivals. Included is a scenic drive to the hill station of Nagarkot to witness a spectacular Himalayan sunrise.\n\nPlease note: The above itinerary is a standard estimate. We can flexibly adjust the visits to various squares and temples based on your time and interests. The specific entrance fees included in the tour will be clearly specified in our formal quote to ensure transparency.',
+      overview: 'This comprehensive 4-day tour takes you on an exotic journey across the Kathmandu Valley. Encircled by green terraced hills, the valley is the cultural and political hub of Nepal, where Hinduism and Buddhism perfectly intertwine. You will explore three distinctive ancient cities: Kathmandu, Bhaktapur, and Patan, each boasting world-class temples, stunning Newari wood-crafted palace squares, and vibrant daily festivals. Included is a scenic drive to the hill station of Nagarkot to witness a spectacular Himalayan sunrise.\n\nPlease note: The above itinerary is a standard estimate. We can flexibly adjust the visits to various squares and temples based on your time and interests. The specific entrance fees included in the tour will be clearly specified in our formal quote to ensure transparency.',
       highlights: [
         'Explore the intricate wooden architectures of Patan and Bhaktapur Durbar Squares',
         'Soak in the spiritual peace at Swayambhunath (Monkey Temple) and Boudhanath Stupa',
@@ -67,7 +67,7 @@ export const kathmanduValleyTour: TourData = {
       highlights: [
         '漫步於帕坦 (Patan) 與巴德崗 (Bhaktapur) 杜巴廣場，欣賞歷經歲月洗禮的精緻木雕與宮殿',
         '造訪猴廟 (Swayambhunath) 與博達哈大佛塔 (Boudhanath)，感受濃厚的藏傳佛教寧靜氛圍',
-        '參訪尼泊爾最大的印度教聖地——帕殊帕提那神廟 (Pashupatinath，又稱燒屍廟)',
+        '參訪尼泊爾最大的印度教聖地，帕殊帕提那神廟 (Pashupatinath，又稱燒屍廟)',
         '前往納加闊特 (Nagarkot) 山城，欣賞絕美的喜馬拉雅山脈日出與日落'
       ],
       includes: [

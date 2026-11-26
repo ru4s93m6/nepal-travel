@@ -12,7 +12,7 @@ export const gokyoTour: TourData = {
     en: {
       title: 'Gokyo Lake Trek',
       subtitle: 'A serene alternative to Everest Base Camp, featuring pristine turquoise lakes and panoramic Himalayan views.',
-      overview: 'Gokyo Lake trek is considered a fantastic alternative to the traditional Everest Base Camp trek. It offers magnificent views of the mountain peaks and the Ngozumpa Glacier—the largest in the Nepal Himalayas. The trek takes you through quieter trails via Phortse Tenga to reach Gokyo, a tranquil valley set among beautiful high-altitude glacial lakes. From the ridge above Gokyo (Gokyo Ri), you can witness four 8,000m peaks (Cho Oyu, Everest, Lhotse, and Makalu) at once.\n\nPlease note: This 13-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization.',
+      overview: 'Gokyo Lake trek is considered a fantastic alternative to the traditional Everest Base Camp trek. It offers magnificent views of the mountain peaks and the Ngozumpa Glacier, the largest in the Nepal Himalayas. The trek takes you through quieter trails via Phortse Tenga to reach Gokyo, a tranquil valley set among beautiful high-altitude glacial lakes. From the ridge above Gokyo (Gokyo Ri), you can witness four 8,000m peaks (Cho Oyu, Everest, Lhotse, and Makalu) at once.\n\nPlease note: This 13-day timeframe is an estimated standard. The actual itinerary will be flexibly adjusted based on your physical condition and acclimatization.',
       highlights: [
         'Breathtaking scenic flight from Kathmandu to Lukla',
         'Explore the stunning turquoise Gokyo Lakes',
@@ -152,7 +152,7 @@ export const gokyoTour: TourData = {
         {
           day: 6,
           title: '健行至馬切爾莫 Machhermo (4,470m)',
-          description: '步道穿越高山森林與草甸，沿途可以欣賞到卓奧友峰與 Thamserku 等壯麗山容。經過幾個夏季放牧聚落後，我們抵達高喬湖前最後一個主要村落——馬切爾莫。'
+          description: '步道穿越高山森林與草甸，沿途可以欣賞到卓奧友峰與 Thamserku 等壯麗山容。經過幾個夏季放牧聚落後，我們抵達高喬湖前最後一個主要村落，馬切爾莫。'
         },
         {
           day: 7,

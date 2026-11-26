@@ -122,7 +122,7 @@ export const poonHillTour: TourData = {
         {
           day: 3,
           title: '登頂普恩山 (3210m)，隨後下坡至甘德魯克 (Ghandruk, 1920m)',
-          description: '清晨摸黑起床，步行約一小時前往普恩山 (Poon Hill, 3210m) 觀景台。在此您將欣賞到金黃色陽光灑在喜馬拉雅群峰上的震撼日出大景。飽覽美景後返回 Ghorepani 吃早餐，接著步道將轉往 Tadapani 方向，最後一路下坡抵達充滿傳統石板屋與濃厚文化氣息的古隆族聚落——甘德魯克 (Ghandruk)。'
+          description: '清晨摸黑起床，步行約一小時前往普恩山 (Poon Hill, 3210m) 觀景台。在此您將欣賞到金黃色陽光灑在喜馬拉雅群峰上的震撼日出大景。飽覽美景後返回 Ghorepani 吃早餐，接著步道將轉往 Tadapani 方向，最後一路下坡抵達充滿傳統石板屋與濃厚文化氣息的古隆族聚落甘德魯克 (Ghandruk)。'
         },
         {
           day: 4,

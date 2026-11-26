@@ -14,24 +14,23 @@ const faqs = t('faq');
   <div class="max-w-4xl mx-auto">
 
     <!-- Title -->
-    <div class="faq-title text-center mb-16">
-      <div class="inline-block mb-6">
-        <div class="h-1 w-20 bg-gradient-to-r from-brand-gold to-yellow-500 mx-auto rounded-full"></div>
+    <div class="faq-title mb-12">
+      <div class="border-t-2 border-brand-gold pt-8">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-blue">
+          {lang === 'zh-tw' ? '常見問題' : 'Frequently Asked Questions'}
+        </h2>
       </div>
-      <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-blue mb-4">
-        {lang === 'zh-tw' ? '常見問題' : 'Frequently Asked Questions'}
-      </h2>
     </div>
 
     <!-- Accordion -->
-    <div class="faq-list space-y-4">
+    <div class="faq-list divide-y divide-stone-200">
       {faqs.map((faq, index) => (
-        <div class="faq-item bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div class="faq-item">
 
           <!-- Trigger -->
           <button
             type="button"
-            class="faq-trigger w-full text-left p-6 flex items-center justify-between gap-4 font-semibold text-lg text-brand-blue hover:text-brand-gold transition-colors duration-200"
+            class="faq-trigger w-full text-left py-6 flex items-center justify-between gap-4 font-semibold text-base text-brand-blue hover:text-brand-gold transition-colors duration-200"
             aria-expanded="false"
           >
             <span class="flex items-start gap-4 flex-1">
@@ -51,8 +50,8 @@ const faqs = t('faq');
 
           <!-- Answer panel -->
           <div class="faq-panel" style="height:0; overflow:hidden;">
-            <div class="faq-panel-inner px-6 pb-6 pt-1">
-              <div class="pl-12 text-brand-blue/75 leading-relaxed border-l-4 border-brand-gold/30 pl-6 ml-8 text-base"
+            <div class="faq-panel-inner pb-6 pt-1">
+              <div class="text-brand-blue/70 leading-relaxed border-l-2 border-brand-gold/40 pl-6 ml-12 text-sm"
                    set:html={faq.answer} />
             </div>
           </div>

@@ -36,8 +36,8 @@ const t = useTranslations(lang);
       </p>
     </div>
 
-    <!-- Team portraits -->
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
+    <!-- Team portraits — card style -->
+    <div class="grid md:grid-cols-2 gap-8 mb-24">
       <!-- Raju -->
       <div class="founder-image-container group bg-white rounded-lg overflow-hidden shadow-md border border-stone-100 hover:shadow-xl transition-shadow duration-300">
         <div class="relative overflow-hidden">
@@ -57,7 +57,7 @@ const t = useTranslations(lang);
           />
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/50 to-transparent p-6">
             <p class="text-white font-bold text-xl mb-0.5">Raju Gurung</p>
-            <p class="text-white text-sm font-medium mb-3">{t('about.founderYears')}</p>
+            <p class="text-white/80 text-sm mb-3">{t('about.founderYears')}</p>
             <a
               href={t('about.rotaryLink')}
               target="_blank"
@@ -78,10 +78,10 @@ const t = useTranslations(lang);
           </div>
         </div>
         <div class="p-5">
-          <p class="text-stone-600 text-md leading-relaxed">
+          <p class="text-stone-600 text-sm leading-relaxed">
             {lang === 'zh-tw'
               ? '在尼泊爾旅遊業深耕逾 20 年，以在地深度服務為核心，帶領旅客真正走進尼泊爾。同時也是扶輪社的活躍會員，長期致力回饋在地社區。'
-              : 'With over 20 years in Nepal\'s tourism industry, Raju founded Oriental Express Travel to deliver authentic, locally grounded journeys. He is also an active Rotary Club member, committed to giving back to the community.'}
+              : "With over 20 years in Nepal's tourism industry, Raju founded Oriental Express Travel to deliver authentic, locally grounded journeys. He is also an active Rotary Club member, committed to giving back to the community."}
           </p>
         </div>
       </div>
@@ -105,13 +105,13 @@ const t = useTranslations(lang);
           />
           <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/50 to-transparent p-6">
             <p class="text-white font-bold text-xl mb-0.5">Yathartha Gurung</p>
-            <p class="text-white text-sm font-medium">
+            <p class="text-white/80 text-sm">
               {lang === 'zh-tw' ? '澳洲餐旅與活動管理學士' : 'BA Hospitality & Events Management, Australia'}
             </p>
           </div>
         </div>
         <div class="p-5">
-          <p class="text-stone-600 text-md leading-relaxed">
+          <p class="text-stone-600 text-sm leading-relaxed">
             {lang === 'zh-tw'
               ? '擁有澳洲餐旅與活動管理學士學位，並在澳洲餐旅業積累多年豐富經驗。現負責 Oriental Express Travel 的全球夥伴關係與國際客戶服務，將世界級的服務標準融入每段旅程。'
               : 'Holding a BA in Hospitality & Events Management from Australia and years of experience in the Australian hospitality sector, Yathartha leads global partnerships and international client engagement at Oriental Express Travel, bringing world-class service standards to every journey.'}
@@ -120,165 +120,135 @@ const t = useTranslations(lang);
       </div>
     </div>
 
-    <!-- Customization services -->
-    <div class="customization-section bg-gradient-to-br from-amber-50 to-stone-100 rounded-lg p-8 md:p-12">
-      <div class="text-center mb-8">
-        <h3 class="text-2xl md:text-3xl font-bold text-stone-900 mb-4">
+    <!-- Customization — typographic numbered list -->
+    <div class="customization-section mb-24">
+      <div class="border-t-2 border-brand-gold pt-8 mb-10 md:flex md:items-end md:gap-12">
+        <h3 class="text-3xl md:text-4xl font-serif font-bold text-brand-blue mb-3 md:mb-0 flex-shrink-0">
           {t('about.customization.title')}
         </h3>
-        <p class="text-lg text-stone-700 max-w-3xl mx-auto">
+        <p class="text-stone-500 text-sm leading-relaxed max-w-md">
           {t('about.customization.subtitle')}
         </p>
       </div>
-
-      <!-- Service items -->
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="customization-card bg-white/80 backdrop-blur-sm rounded-lg p-6 transition-shadow">
-          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
+      <div class="divide-y divide-stone-200">
+        <div class="customization-item py-8 grid grid-cols-[64px_1fr] md:grid-cols-[96px_1fr] gap-4 md:gap-8 items-start">
+          <span class="text-5xl md:text-6xl font-serif text-stone-200 leading-none select-none">01</span>
+          <div>
+            <h4 class="text-base font-bold text-stone-900 mb-2">{t('about.customization.item1.title')}</h4>
+            <p class="text-stone-500 text-sm leading-relaxed">{t('about.customization.item1.desc')}</p>
           </div>
-          <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item1.title')}</h4>
-          <p class="text-stone-600 text-sm">{t('about.customization.item1.desc')}</p>
+        </div>
+        <div class="customization-item py-8 grid grid-cols-[64px_1fr] md:grid-cols-[96px_1fr] gap-4 md:gap-8 items-start">
+          <span class="text-5xl md:text-6xl font-serif text-stone-200 leading-none select-none">02</span>
+          <div>
+            <h4 class="text-base font-bold text-stone-900 mb-2">{t('about.customization.item2.title')}</h4>
+            <p class="text-stone-500 text-sm leading-relaxed">{t('about.customization.item2.desc')}</p>
+          </div>
+        </div>
+        <div class="customization-item py-8 grid grid-cols-[64px_1fr] md:grid-cols-[96px_1fr] gap-4 md:gap-8 items-start">
+          <span class="text-5xl md:text-6xl font-serif text-stone-200 leading-none select-none">03</span>
+          <div>
+            <h4 class="text-base font-bold text-stone-900 mb-2">{t('about.customization.item3.title')}</h4>
+            <p class="text-stone-500 text-sm leading-relaxed">{t('about.customization.item3.desc')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transport — asymmetric photo mosaic -->
+    <div class="transport-section">
+      <div class="border-t-2 border-brand-gold pt-8 mb-10">
+        <h3 class="text-2xl md:text-3xl font-serif font-bold text-brand-blue mb-2">
+          {lang === 'zh-tw' ? '舒適的專車接送與團體服務' : 'Private Transport & Group Services'}
+        </h3>
+        <p class="text-stone-500 text-sm leading-relaxed max-w-xl">
+          {lang === 'zh-tw'
+            ? '我們會依照您的人數與行程需求，安排最適合的交通方式，讓您每一段旅途都安全、舒適。'
+            : "We arrange the right transport for your group size — from private SUVs for couples and small families to full coaches for large tours."}
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:h-[480px] gap-4">
+        <!-- Large photo -->
+        <div class="transport-photo group relative overflow-hidden aspect-[4/3] md:aspect-auto md:flex-[3]">
+          <Image
+            src={soloTravelBus}
+            alt={lang === 'zh-tw' ? '協助散客搭乘公車或 SUV' : 'Assisting solo travellers with transport'}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            quality={80}
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/65 to-transparent p-5">
+            <p class="text-white font-semibold text-sm mb-0.5">
+              {lang === 'zh-tw' ? '散客與彈性旅客' : 'Solo & Flexible Travellers'}
+            </p>
+            <p class="text-white/70 text-xs">
+              {lang === 'zh-tw' ? 'SUV 接送及票務協助' : 'Private SUV + ticketing assistance'}
+            </p>
+          </div>
         </div>
 
-        <div class="customization-card bg-white/80 backdrop-blur-sm rounded-lg p-6 transition-shadow">
-          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-            </svg>
+        <!-- Two stacked photos -->
+        <div class="md:flex-[2] flex flex-col gap-4">
+          <div class="transport-photo group relative overflow-hidden aspect-[4/3] md:aspect-auto md:flex-1">
+            <Image
+              src={privateSuvJomsom}
+              alt={lang === 'zh-tw' ? '旅客在 Jomsom 搭乘私人 SUV' : 'Private SUV in Jomsom'}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              quality={80}
+            />
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/65 to-transparent p-4">
+              <p class="text-white font-semibold text-xs">
+                {lang === 'zh-tw' ? '小團體專屬 SUV · 1–6 人' : 'Private SUV · 1–6 People'}
+              </p>
+            </div>
           </div>
-          <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item2.title')}</h4>
-          <p class="text-stone-600 text-sm">{t('about.customization.item2.desc')}</p>
-        </div>
-
-        <div class="customization-card bg-white/80 backdrop-blur-sm rounded-lg p-6 transition-shadow">
-          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-            </svg>
+          <div class="transport-photo group relative overflow-hidden aspect-[4/3] md:aspect-auto md:flex-1">
+            <Image
+              src={busGroup}
+              alt={lang === 'zh-tw' ? '大型旅遊團體與旅遊巴士' : 'Large tour group with tourist bus'}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              quality={80}
+            />
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/65 to-transparent p-4">
+              <p class="text-white font-semibold text-xs">
+                {lang === 'zh-tw' ? '大型團體包車' : 'Coach · Large Groups'}
+              </p>
+            </div>
           </div>
-          <h4 class="font-bold text-stone-900 mb-2">{t('about.customization.item3.title')}</h4>
-          <p class="text-stone-600 text-sm">{t('about.customization.item3.desc')}</p>
         </div>
       </div>
 
-      <!-- Real Tour & Transport Gallery -->
-      <div class="mt-16 pt-12 border-t border-stone-200">
-        <div class="text-center mb-10">
-          <h4 class="text-2xl font-bold text-stone-900 mb-3">
-            {lang === 'zh-tw' ? '舒適的專車接送與團體服務' : 'Comfortable Private Transport & Group Services'}
-          </h4>
-          <p class="text-stone-600 max-w-2xl mx-auto leading-relaxed">
+      <!-- Transport descriptions -->
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div>
+          <h5 class="font-semibold text-brand-blue text-sm mb-1">
+            {lang === 'zh-tw' ? '散客與彈性旅客的交通安排' : 'Transport for Solo & Flexible Travellers'}
+          </h5>
+          <p class="text-stone-500 text-sm leading-relaxed">
             {lang === 'zh-tw'
-              ? '我們會依照您的人數與行程需求，安排最適合的交通方式，讓您每一段旅途都安全、舒適。'
-              : "We'll sort out the best transport for your group size and plans, so every part of your trip feels safe and comfortable."}
+              ? '獨旅或行程較彈性的旅客，我們可以幫您安排 SUV，並視需求協助處理長途巴士票或飛機票，讓您不必煩惱交通問題。'
+              : 'For solo or flexible travellers, we can arrange private transport and assist with bus or flight tickets, giving you the freedom to explore Nepal your way.'}
           </p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <!-- Solo / Flexible transport -->
-          <div class="transport-card group rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
-            <div class="relative overflow-hidden aspect-[16/10]">
-              <Image
-                src={soloTravelBus}
-                alt={lang === 'zh-tw' ? '協助散客搭乘公車或 SUV' : 'Assisting solo travellers with bus or SUV transport'}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                quality={80}
-              />
-            </div>
-            <div class="p-5">
-              <h5 class="font-bold text-brand-blue text-lg mb-2">
-                {lang === 'zh-tw' ? '散客與彈性旅客的交通安排' : 'Transport for Solo & Flexible Travellers'}
-              </h5>
-              <p class="text-stone-600 text-sm leading-relaxed">
-                {lang === 'zh-tw'
-                  ? '獨旅或行程較彈性的旅客，我們可以幫您安排SUV，並且視需求協助處理長途巴士票或飛機票購票等相關事宜以銜接行程，讓您不必煩惱交通問題。'
-                  : 'For solo or flexible travellers, we can arrange private transport and assist with any additional travel arrangements, such as bus or flight tickets, giving you the freedom to explore Nepal your way.'}
-              </p>
-            </div>
-          </div>
-
-           <!-- Private SUV -->
-          <div class="transport-card group rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
-            <div class="relative overflow-hidden aspect-[16/10]">
-              <Image
-                src={privateSuvJomsom}
-                alt={lang === 'zh-tw' ? '旅客在 Jomsom 搭乘私人 SUV' : 'Travellers on private SUV in Jomsom'}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                quality={80}
-              />
-            </div>
-            <div class="p-5">
-              <h5 class="font-bold text-brand-blue text-lg mb-2">
-                {lang === 'zh-tw' ? '小團體專屬 SUV' : 'Private SUV for Families & Small Groups'}
-              </h5>
-              <p class="text-stone-600 text-sm leading-relaxed">
-                {lang === 'zh-tw'
-                  ? '對於 1 至 6 人的小型旅遊團體，我們提供舒適的私人 SUV 接送服務。我們很開心Jomsom沿途壯麗的風景讓我們的旅客留下難忘的回憶 :)'
-                  : 'Perfect for small groups of 1 to 6, we\'ll take care of transfers in a comfortable private SUV. We\'re so glad that the stunning scenery on the way to Jomsom left our guests with memories they\'ll carry with them forever. :)'}
-              </p>
-            </div>
-          </div>
+        <div>
+          <h5 class="font-semibold text-brand-blue text-sm mb-1">
+            {lang === 'zh-tw' ? '小團體專屬 SUV' : 'Private SUV for Families & Small Groups'}
+          </h5>
+          <p class="text-stone-500 text-sm leading-relaxed">
+            {lang === 'zh-tw'
+              ? '對於 1 至 6 人的小型旅遊團體，我們提供舒適的私人 SUV 接送服務。Jomsom 沿途壯麗的風景讓旅客留下難忘的回憶 :)'
+              : "Perfect for small groups of 1 to 6, we'll take care of transfers in a comfortable private SUV. The stunning scenery on the way to Jomsom leaves our guests with memories they'll carry forever. :)"}
+          </p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Group bus -->
-          <div class="transport-card group rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
-            <div class="relative overflow-hidden aspect-[4/3]">
-              <Image
-                src={busGroup}
-                alt={lang === 'zh-tw' ? '大型旅遊團體與旅遊巴士' : 'Large tour group with tourist bus'}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                quality={80}
-              />
-            </div>
-            <div class="p-5">
-              <h5 class="font-bold text-brand-blue text-lg mb-2">
-                {lang === 'zh-tw' ? '團體包車服務' : 'Bus Service for Large Groups'}
-              </h5>
-              <p class="text-stone-600 text-sm leading-relaxed">
-                {lang === 'zh-tw'
-                  ? '若您的旅遊團體人數較多，我們也有旅遊巴士可一次接送整個團隊，省去個別安排交通的繁瑣，讓大型旅遊行程更加順暢。'
-                  : 'For larger tour groups, we provide a dedicated tourist bus to transfer your entire team at once, keeping your group trip running smoothly.'}
-              </p>
-            </div>
-          </div>
-
-          <!-- Bus exterior -->
-          <div class="hidden transport-card group rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
-            <div class="relative overflow-hidden aspect-[4/3]">
-              <Image
-                src={busExterior}
-                alt={lang === 'zh-tw' ? '現代化旅遊巴士外觀' : 'Modern tourist bus exterior'}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                quality={80}
-              />
-            </div>
-          </div>
-
-          <!-- Bus interior -->
-          <div class="transport-card group rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition-shadow duration-300">
-            <div class="relative overflow-hidden aspect-[4/3]">
-              <Image
-                src={busInterior}
-                alt={lang === 'zh-tw' ? '旅遊巴士寬敞冷氣座艙' : 'Spacious air-conditioned bus interior'}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                quality={80}
-              />
-            </div>
-            <div class="p-5">
-              <h5 class="font-bold text-brand-blue text-lg mb-2">
-                {lang === 'zh-tw' ? '舒適乘車體驗' : 'Comfortable Travel Experience'}
-              </h5>
-              <p class="text-stone-600 text-sm leading-relaxed">
-                {lang === 'zh-tw'
-                  ? '車廂內設有寬敞、整潔的座位並配備冷氣。無論旅途多遠，您都能在舒適的環境中放鬆，同時欣賞窗外的尼泊爾美景。'
-                  : 'Our cabins offer wide, clean seats with full air-conditioning throughout. No matter the distance, you can relax in cool, comfortable surroundings and enjoy the scenery rolling past your window.'}
-              </p>
-            </div>
-          </div>
+        <div>
+          <h5 class="font-semibold text-brand-blue text-sm mb-1">
+            {lang === 'zh-tw' ? '團體包車服務' : 'Bus Service for Large Groups'}
+          </h5>
+          <p class="text-stone-500 text-sm leading-relaxed">
+            {lang === 'zh-tw'
+              ? '若旅遊團體人數較多，我們提供旅遊巴士一次接送整個團隊，省去個別安排交通的繁瑣，讓大型旅遊行程更加順暢。'
+              : 'For larger tour groups, we provide a dedicated tourist bus to transfer your entire team at once, keeping your group trip running smoothly.'}
+          </p>
         </div>
       </div>
     </div>
@@ -310,7 +280,7 @@ const t = useTranslations(lang);
     opacity: 0, y: 48, duration: 0.9,
     stagger: 0.15,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '.founder-image-container', start: 'top 80%', once: true },
+    scrollTrigger: { trigger: '.founder-image-container', start: 'top 82%', once: true },
   });
 
   // Customization cards — staggered rise

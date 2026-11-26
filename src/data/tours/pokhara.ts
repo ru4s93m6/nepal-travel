@@ -11,8 +11,8 @@ export const pokharaTour: TourData = {
   locales: {
     en: {
       title: 'Pokhara Tour Package',
-      subtitle: 'Nepal\'s most beloved lakeside city — Himalayan sunrises over Annapurna, sacred temples on the water, and the gateway to the world\'s greatest trekking routes.',
-      overview: 'Pokhara is Nepal\'s second-largest city and undoubtedly its most enchanting — a laid-back lakeside destination framed by the dramatic Annapurna and Dhaulagiri ranges. Nestled on the shores of Phewa Lake, the city offers a rare combination of natural beauty, cultural depth, and adventure access that few destinations in the world can match.\n\nThis 3-day itinerary is designed to give you a true taste of Pokhara\'s highlights — from a predawn drive up to Sarangkot to witness the Annapurna peaks ignite at sunrise, to a serene boat ride across Phewa Lake to the floating Tal Barahi Temple, to subterranean wonders at Davis Falls and Gupteshwor Cave. Whether you\'re an adventure traveler, a couple seeking a romantic escape, or a family looking for a culturally rich and easy-paced holiday, Pokhara delivers.\n\nNote: This itinerary is fully flexible and can be adjusted to your pace, budget, or interests. Optional add-ons such as paragliding, zip-lining, and mountain bike tours can be arranged on request.',
+      subtitle: 'Nepal\'s most beloved lakeside city, with Himalayan sunrises over Annapurna, sacred temples on the water, and the gateway to the world\'s greatest trekking routes.',
+      overview: 'Pokhara is Nepal\'s second-largest city and undoubtedly its most enchanting, a laid-back lakeside destination framed by the dramatic Annapurna and Dhaulagiri ranges. Nestled on the shores of Phewa Lake, the city offers a rare combination of natural beauty, cultural depth, and adventure access that few destinations in the world can match.\n\nThis 3-day itinerary is designed to give you a true taste of Pokhara\'s highlights, from a predawn drive up to Sarangkot to witness the Annapurna peaks ignite at sunrise, to a serene boat ride across Phewa Lake to the floating Tal Barahi Temple, to subterranean wonders at Davis Falls and Gupteshwor Cave. Whether you\'re an adventure traveler, a couple seeking a romantic escape, or a family looking for a culturally rich and easy-paced holiday, Pokhara delivers.\n\nNote: This itinerary is fully flexible and can be adjusted to your pace, budget, or interests. Optional add-ons such as paragliding, zip-lining, and mountain bike tours can be arranged on request.',
       highlights: [
         'Watch sunrise over the Annapurna and Dhaulagiri ranges from Sarangkot viewpoint',
         'Boat across Phewa Lake and visit the sacred Tal Barahi Temple on its island',
@@ -25,12 +25,12 @@ export const pokharaTour: TourData = {
         {
           day: 1,
           title: 'Arrival in Pokhara & Lakeside Evening',
-          description: 'Depart Kathmandu by tourist bus (approx. 6–7 hours along the Prithvi Highway, with scenic river valley views) or by domestic flight (25 minutes). On arrival, transfer to your lakeside hotel and take time to settle in. In the afternoon, board a traditional rowboat on Phewa Lake and glide across to Tal Barahi Temple — a two-roofed pagoda sitting on a small island that is one of the most photographed sites in Pokhara. Return to the lakeside for a leisurely evening exploring the vibrant Lakeside bazaar, boutique cafes, and restaurants overlooking the water.'
+          description: 'Depart Kathmandu by tourist bus (approx. 6–7 hours along the Prithvi Highway, with scenic river valley views) or by domestic flight (25 minutes). On arrival, transfer to your lakeside hotel and take time to settle in. In the afternoon, board a traditional rowboat on Phewa Lake and glide across to Tal Barahi Temple, a two-roofed pagoda sitting on a small island that is one of the most photographed sites in Pokhara. Return to the lakeside for a leisurely evening exploring the vibrant Lakeside bazaar, boutique cafes, and restaurants overlooking the water.'
         },
         {
           day: 2,
           title: 'Sarangkot Sunrise, City Highlights & World Peace Pagoda',
-          description: 'Rise before dawn for the highlight of the trip: a short drive up to Sarangkot viewpoint (1,592 m). As the first light breaks, watch the snowcaps of the Annapurna massif, Machhapuchhre (Fishtail), and Dhaulagiri gradually turn gold and then pink — one of the most breathtaking sunrise scenes in all of Nepal. Return to the hotel for breakfast, then spend the morning at Davis Falls, where the Pardi Khola river disappears underground into a thundering gorge, and the adjacent Gupteshwor Mahadev Cave, a sacred Hindu shrine winding deep into the hillside. After lunch, visit the International Mountain Museum for an inspiring look at Himalayan climbing history and Nepal\'s high-altitude culture, followed by an afternoon hike (or short drive) to the hilltop World Peace Pagoda for sweeping 360° views of Phewa Lake and the Annapurna range. Return to Lakeside for a free evening.'
+          description: 'Rise before dawn for the highlight of the trip: a short drive up to Sarangkot viewpoint (1,592 m). As the first light breaks, watch the snowcaps of the Annapurna massif, Machhapuchhre (Fishtail), and Dhaulagiri gradually turn gold and then pink, one of the most breathtaking sunrise scenes in all of Nepal. Return to the hotel for breakfast, then spend the morning at Davis Falls, where the Pardi Khola river disappears underground into a thundering gorge, and the adjacent Gupteshwor Mahadev Cave, a sacred Hindu shrine winding deep into the hillside. After lunch, visit the International Mountain Museum for an inspiring look at Himalayan climbing history and Nepal\'s high-altitude culture, followed by an afternoon hike (or short drive) to the hilltop World Peace Pagoda for sweeping 360° views of Phewa Lake and the Annapurna range. Return to Lakeside for a free evening.'
         },
         {
           day: 3,
@@ -39,8 +39,8 @@ export const pokharaTour: TourData = {
         }
       ],
       includes: [
-        'Return transportation between Kathmandu and Pokhara (tourist bus or domestic flight — based on chosen package tier)',
-        'Hotel accommodation for 2 nights (standard, deluxe, or luxury — based on chosen package tier)',
+        'Return transportation between Kathmandu and Pokhara (tourist bus or domestic flight (based on chosen package tier))',
+        'Hotel accommodation for 2 nights (standard, deluxe, or luxury (based on chosen package tier))',
         'Daily hotel breakfast',
         'Private vehicle with driver for all local transfers and sightseeing',
         'Boat ride on Phewa Lake'
@@ -58,12 +58,12 @@ export const pokharaTour: TourData = {
         'Light, comfortable clothing for sightseeing; a warm layer for the early-morning Sarangkot drive',
         'Comfortable walking shoes for cave and waterfall visits',
         'Sunglasses, hat, and sunscreen for lakeside and open viewpoints',
-        'Camera — Sarangkot sunrise and Phewa Lake reflections are unmissable shots'
+        'Camera: Sarangkot sunrise and Phewa Lake reflections are unmissable shots'
       ]
     },
     'zh-tw': {
       title: '波卡拉精選套裝行程\n(Pokhara Tour)',
-      subtitle: '湖畔山城的詩意時光——在薩朗科特迎接安娜普納的金色日出，乘舟橫渡費瓦湖，走進尼泊爾最令人心醉的城市。',
+      subtitle: '湖畔山城的詩意時光，在薩朗科特迎接安娜普納的金色日出，乘舟橫渡費瓦湖，走進尼泊爾最令人心醉的城市。',
       overview: '波卡拉（Pokhara）是尼泊爾第二大城市，也是公認最迷人的旅遊目的地。這座寧靜的湖畔山城靜臥於費瓦湖畔（Phewa Lake），背倚安娜普納（Annapurna）與道拉吉里（Dhaulagiri）兩大山脈，以其獨特的自然美景、豐富的文化底蘊，以及作為世界級健行路線起點的地位而聞名於世。\n\n這份 3 天的精選行程，將帶您領略波卡拉最精華的面貌。清晨驅車前往薩朗科特（Sarangkot）觀景台，親眼目睹安娜普納山脈在黎明的第一道光芒中由金轉玫瑰紅；乘坐傳統木船橫渡費瓦湖，前往湖中小島上的塔爾巴拉希神廟（Tal Barahi Temple）祈福；探訪地底奔騰的大衛瀑布（Davis Falls）與神秘的古普特修爾馬哈戴夫岩洞（Gupteshwor Cave）。無論您是尋求冒險的旅人、尋找浪漫假期的情侶，還是想來一趟輕鬆文化之旅的家庭，波卡拉都能給您最完美的答案。\n\n備注：以上為標準參考行程，可依您的時間、預算與興趣完全客製化調整。如有興趣，還可加選飛行傘、高空滑索（Zip-lining）、輕型飛機觀光、費瓦湖划船等特色體驗活動，歡迎隨時告知我們。',
       highlights: [
         '登上薩朗科特（Sarangkot，1,592 公尺）觀景台，欣賞安娜普納山脈最壯麗的日出美景',
@@ -82,7 +82,7 @@ export const pokharaTour: TourData = {
         {
           day: 2,
           title: '薩朗科特日出、城市名勝與世界和平塔',
-          description: '清晨 5 點前起床，驅車前往薩朗科特觀景台（海拔 1,592 公尺）。隨著第一道曙光劃破天際，安娜普納山群（Annapurna Massif）、魚尾峰（Machhapuchhre）與道拉吉里（Dhaulagiri）的皚皚雪峰逐漸由金黃轉為玫瑰紅，這是全尼泊爾最震撼人心的日出景觀之一。欣賞完日出後返回飯店享用早餐，隨後前往大衛瀑布（Davis Falls）——湍急的河水在此突然消失於地底裂縫，轟隆回響令人印象深刻；緊鄰旁邊的古普特修爾馬哈戴夫岩洞（Gupteshwor Cave）是一處深入地底的印度教聖地，洞內蘊藏神秘的岩石形貌與地下瀑布。午餐後，參觀國際山岳博物館，透過豐富的展覽一窺喜馬拉雅登山史的深度。下午健走或驅車登上世界和平塔山丘，俯瞰費瓦湖與安娜普納山脈的壯闊全景。傍晚返回湖畔，享受自由活動時光。'
+          description: '清晨 5 點前起床，驅車前往薩朗科特觀景台（海拔 1,592 公尺）。隨著第一道曙光劃破天際，安娜普納山群（Annapurna Massif）、魚尾峰（Machhapuchhre）與道拉吉里（Dhaulagiri）的皚皚雪峰逐漸由金黃轉為玫瑰紅，這是全尼泊爾最震撼人心的日出景觀之一。欣賞完日出後返回飯店享用早餐，隨後前往大衛瀑布（Davis Falls），湍急的河水在此突然消失於地底裂縫，轟隆回響令人印象深刻；緊鄰旁邊的古普特修爾馬哈戴夫岩洞（Gupteshwor Cave）是一處深入地底的印度教聖地，洞內蘊藏神秘的岩石形貌與地下瀑布。午餐後，參觀國際山岳博物館，透過豐富的展覽一窺喜馬拉雅登山史的深度。下午健走或驅車登上世界和平塔山丘，俯瞰費瓦湖與安娜普納山脈的壯闊全景。傍晚返回湖畔，享受自由活動時光。'
         },
         {
           day: 3,
